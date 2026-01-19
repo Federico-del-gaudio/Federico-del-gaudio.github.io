@@ -29,8 +29,7 @@
             background: var(--darker);
             color: var(--light);
             min-height: 100vh;
-            overflow: hidden;
-            touch-action: pan-y;
+            overflow-x: hidden;
         }
         
         /* Navigation Bar */
@@ -129,12 +128,14 @@
             height: 100%;
             padding-top: 80px;
         }
+      
+
         
         .swiper-slide {
             position: relative;
             overflow: hidden;
             width: 85%;
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
         }
@@ -429,6 +430,7 @@
             transition: all 0.5s ease;
         }
         
+        
         /* Active state for preview */
         .swiper-slide-active .slide-preview-left,
         .swiper-slide-active .slide-preview-right {
@@ -459,7 +461,57 @@
             opacity: 0.6;
             transform: scale(1);
         }
-        
+        /* Soft fade effect for all videos */
+/* Soluzione completa */
+.slide-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.02);
+    min-width: 100.5%;
+    min-height: 100.5%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    object-fit: cover;
+    /* Bordo opaco integrato */
+    box-shadow: 
+        inset 0 0 0 1px rgba(13, 13, 13, 0.3),
+        inset 0 0 0 2px rgba(13, 13, 13, 0.1);
+}
+
+/* Modifica l'overlay esistente */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%; /* Aumenta la larghezza */
+    height: 100%;
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
+    z-index: 2;
+    transition: opacity 0.5s ease;
+    /* Sposta leggermente per centrare */
+    transform: translateX(-0.5%);
+}
+
+/* Oppure con margin negativo per estendersi oltre */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: -19px; /* Estende a sinistra */
+    width: calc(100% + 29px); /* Estende a destra */
+    height: 100%;
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+/* Add soft shadow to slide edges */
+.swiper-slide {
+    box-shadow: 
+        inset 50px 0 50px -20px rgba(13, 13, 13, 0.7),
+        inset -50px 0 50px -20px rgba(13, 13, 13, 0.7);
+}
         /* Pagination Dots */
         .swiper-pagination {
             position: fixed !important;
@@ -500,6 +552,9 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
         }
         
         .swiper-button-next:after,
@@ -536,7 +591,20 @@
             z-index: 1002;
             width: 220px;
         }
-        
+        .slide-content {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.swiper-slide {
+    pointer-events: none;
+}
+
+.swiper-slide-active {
+    pointer-events: auto;
+}
+
         /* Progress Bar */
         .swiper-progress {
             width: 100%;
@@ -644,12 +712,23 @@
             padding: 10px 20px;
             border-radius: 8px;
         }
+        .swiper {
+    touch-action: pan-y pan-x;
+}
+
         
         .mobile-menu a:hover,
         .mobile-menu a.active {
             background: rgba(255, 255, 255, 0.1);
             transform: scale(1.05);
         }
+        .swiper-pagination-bullet {
+    opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
         
         .close-menu {
             position: absolute;
@@ -669,7 +748,7 @@
             }
             
             .swiper-slide {
-                width: 90%;
+                width: 120%;
             }
         }
         
@@ -770,6 +849,27 @@
             .mobile-menu.active {
                 display: flex;
             }
+            
+            /* Mobile touch area improvement */
+            .cta-button {
+                padding: 18px 30px;
+                font-size: 1rem;
+                min-height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .task-list li {
+                margin-bottom: 15px;
+                padding-left: 30px;
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -778,8 +878,8 @@
             }
             
             .cta-button {
-                padding: 14px 25px;
-                font-size: 0.8rem;
+                padding: 16px 25px;
+                font-size: 0.9rem;
             }
             
             .carousel-indicators {
@@ -791,6 +891,21 @@
                 padding: 18px 12px;
                 font-size: 0.8rem;
             }
+            .swiper-slide {
+  height: 100vh;
+  overflow: visible;
+}
+
+.slide-content {
+  overflow: auto;
+  max-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.slide-content a {
+  position: relative;
+  z-index: 50;
+}
         }
         
         @media (max-width: 480px) {
@@ -818,7 +933,85 @@
             .project-counter {
                 font-size: 0.8rem;
             }
+            .swiper-slide {
+  height: 100vh;
+  overflow: visible;
+}
+
+.slide-content {
+  overflow: auto;
+  max-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.slide-content a {
+  position: relative;
+  z-index: 50;
+}
+            /* Mobile navigation arrows */
+            .mobile-nav-arrows {
+                position: fixed;
+                bottom: 120px;
+                left: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+                z-index: 1001;
+            }
+            
+            .mobile-nav-arrow {
+                width: 50px;
+                height: 50px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
         }
+        
+        /* Mobile swipe indicator */
+        .mobile-swipe-hint {
+            display: none;
+            position: fixed;
+            bottom: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 1002;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-swipe-hint {
+                display: block;
+            }
+        }
+
+        .video-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+
+  background:
+    radial-gradient(closest-side, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9));
+}
+
     </style>
 </head>
 <body>
@@ -852,9 +1045,10 @@
                 <!-- Slide 1: Tears of Ash -->
                 <div class="swiper-slide">
                     <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                        <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
                     <!-- Left Preview -->
@@ -862,7 +1056,8 @@
                         <div class="preview-content">
                             <div class="preview-title">The Sun Vanished</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                                <source src="Videos/TrailerVanished .mp4" type="video/mp4">
+                                
                             </video>
                         </div>
                     </div>
@@ -872,7 +1067,7 @@
                         <div class="preview-content">
                             <div class="preview-title">Pummel</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                                <source src="Videos/VideoPummel.mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -881,7 +1076,7 @@
                         <div class="left-column">
                             <div class="project-category">Horror Game</div>
                             <h1 class="project-title">Tears of Ash</h1>
-                            <div class="project-year">2024</div>
+                            <div class="project-year">Scream jam 2024</div>
                             <p class="project-description">
                                 Step into a chilling horror experience inspired by P.T., where memories, dreams, reality, and guilt blend into a twisted nightmare.
                             </p>
@@ -897,28 +1092,17 @@
                             </div>
                             <a href="TearsOfAsh.html" class="cta-button">My Contributions</a>
                         </div>
-                        <div class="right-column">
-                            <div class="gameplay-preview">
-                                <video class="gameplay-video" poster="Photos/project3.jpg">
-                                    <source src="Videos/tears-of-ash-gameplay.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="gameplay-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 
                 <!-- Slide 2: Pummel -->
                 <div class="swiper-slide">
                     <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                        <source src="Videos/VideoPummel.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
                     <!-- Left Preview -->
@@ -926,7 +1110,7 @@
                         <div class="preview-content">
                             <div class="preview-title">Tears of Ash</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                                <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -936,16 +1120,16 @@
                         <div class="preview-content">
                             <div class="preview-title">The Bubble</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                                <source src="Videos/BubbleTrailer.mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">2D Action Game</div>
+                            <div class="project-category">2D Action Prototype</div>
                             <h1 class="project-title">Pummel</h1>
-                            <div class="project-year">2024</div>
+                            <div class="project-year">2024 - 3 Months</div>
                             <p class="project-description">
                                 Exploration of PaperZD plugin for UE5 with focus on flipbook animations, dynamic combat systems, and comprehensive gameplay mechanics.
                             </p>
@@ -959,30 +1143,19 @@
                                     <li>Damage and health system development</li>
                                 </ul>
                             </div>
-                            <a href="Pummel.html" class="cta-button">My Contributions</a>
+                            <a href="Pummel.html" class="cta-button">View Project</a>
                         </div>
-                        <div class="right-column">
-                            <div class="gameplay-preview">
-                                <video class="gameplay-video" poster="Photos/project1.jpg">
-                                    <source src="Videos/VideoPummel.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="gameplay-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
                 </div>
                 
                 <!-- Slide 3: The Bubble -->
                 <div class="swiper-slide">
                     <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                        <source src="Videos/BubbleTrailer.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
                     <!-- Left Preview -->
@@ -990,7 +1163,7 @@
                         <div class="preview-content">
                             <div class="preview-title">Pummel</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                                <source src="Videos/VideoPummel.mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -999,9 +1172,7 @@
                     <div class="slide-preview-right">
                         <div class="preview-content">
                             <div class="preview-title">Project A</div>
-                            <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/project-a-bg.mp4" type="video/mp4">
-                            </video>
+                            
                         </div>
                     </div>
                     
@@ -1009,7 +1180,7 @@
                         <div class="left-column">
                             <div class="project-category">Sci-Fi Horror</div>
                             <h1 class="project-title">The Bubble</h1>
-                            <div class="project-year">2023</div>
+                            <div class="project-year">Global Game Jam 2024</div>
                             <p class="project-description">
                                 A sci-fi horror experience set aboard a spaceship trapped by an alien force field, focusing on environmental storytelling and atmospheric tension.
                             </p>
@@ -1025,19 +1196,7 @@
                             </div>
                             <a href="Thebubble.html" class="cta-button">My Contributions</a>
                         </div>
-                        <div class="right-column">
-                            <div class="gameplay-preview">
-                                <video class="gameplay-video" poster="Photos/THE BUBBLE COVER.png">
-                                    <source src="Videos/the-bubble-gameplay.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="gameplay-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 
@@ -1047,6 +1206,7 @@
                         <source src="Videos/project-a-bg.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
                     <!-- Left Preview -->
@@ -1054,7 +1214,7 @@
                         <div class="preview-content">
                             <div class="preview-title">The Bubble</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                                <source src="Videos/BubbleTrailer.mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -1064,7 +1224,7 @@
                         <div class="preview-content">
                             <div class="preview-title">The Sun Vanished</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                                <source src="Videos/TrailerVanished .mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -1073,7 +1233,7 @@
                         <div class="left-column">
                             <div class="project-category">Combat Design Project</div>
                             <h1 class="project-title">Project A</h1>
-                            <div class="project-year">2023</div>
+                            <div class="project-year">2023 - 3 Months</div>
                             <p class="project-description">
                                 Three-month intensive focus on Souls-like combat design, featuring complex animation systems, enemy AI, and responsive gameplay mechanics.
                             </p>
@@ -1087,7 +1247,7 @@
                                     <li>Niagara effects and visual feedback systems</li>
                                 </ul>
                             </div>
-                            <a href="Project A.html" class="cta-button">My Contributions</a>
+                            <a href="Project A.html" class="cta-button">View Project</a>
                         </div>
                         <div class="right-column">
                             <div class="gameplay-preview">
@@ -1108,18 +1268,17 @@
                 <!-- Slide 5: The Sun Vanished -->
                 <div class="swiper-slide">
                     <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                        <source src="Videos/TrailerVanished .mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
                     <!-- Left Preview -->
                     <div class="slide-preview-left">
                         <div class="preview-content">
-                            <div class="preview-title">Project A</div>
-                            <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/project-a-bg.mp4" type="video/mp4">
-                            </video>
+                            <div class="preview-title">The Sun Vanished</div>
+                         
                         </div>
                     </div>
                     
@@ -1128,7 +1287,7 @@
                         <div class="preview-content">
                             <div class="preview-title">Tears of Ash</div>
                             <video class="preview-video" muted loop playsinline>
-                                <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                                <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -1137,7 +1296,7 @@
                         <div class="left-column">
                             <div class="project-category">Horror Prototype</div>
                             <h1 class="project-title">The Sun Vanished</h1>
-                            <div class="project-year">2023</div>
+                            <div class="project-year">2025</div>
                             <p class="project-description">
                                 A horror prototype where the sun has vanished, forcing navigation through LiDAR scanning while avoiding creatures with formidable hearing.
                             </p>
@@ -1151,21 +1310,9 @@
                                     <li>Prototype development and testing</li>
                                 </ul>
                             </div>
-                            <a href="TheSunVanished.html" class="cta-button">My Contributions</a>
+                            <a href="TheSunVanished.html" class="cta-button">View Project</a>
                         </div>
-                        <div class="right-column">
-                            <div class="gameplay-preview">
-                                <video class="gameplay-video" poster="Photos/TheSunVanishedPorrtfolio.png">
-                                    <source src="Videos/sun-vanished-gameplay.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="gameplay-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -1175,8 +1322,23 @@
             <div class="swiper-button-prev"></div>
             
             <!-- Pagination dots -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-slide"></div>
         </div>
+    </div>
+    
+    <!-- Mobile navigation arrows for touch devices -->
+    <div class="mobile-nav-arrows" style="display: none;">
+        <div class="mobile-nav-arrow mobile-prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="mobile-nav-arrow mobile-next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    
+    <!-- Mobile swipe hint -->
+    <div class="mobile-swipe-hint">
+        Swipe left/right to navigate
     </div>
     
     <!-- Nuovo container unificato per progress bar e counter -->
@@ -1203,79 +1365,144 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        const wrapper = document.querySelector('.swiper-wrapper');
+const slides = Array.from(wrapper.children);
+
+// Duplica le slide finché ne abbiamo abbastanza per il loop
+while (wrapper.children.length < slides.length * 3) {
+    slides.forEach(slide => {
+        wrapper.appendChild(slide.cloneNode(true));
+    });
+}
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Swiper con configurazione semplice e funzionante
+            const realSlideCount = document.querySelectorAll(
+        '.swiper-slide:not(.swiper-slide-duplicate)'
+    ).length;
+            // Initialize Swiper con configurazione corretta
             const swiper = new Swiper('.swiper', {
-                direction: 'horizontal',
-                loop: true,
-                speed: 1000,
-                spaceBetween: 50,
-                slidesPerView: 'auto',
-                centeredSlides: true,
                 
-                // Mousewheel funzionante
-                mousewheel: {
-                    enabled: true,
-                    forceToAxis: true,
-                    sensitivity: 0.5,
-                    releaseOnEdges: false,
-                    eventsTarget: '.swiper-container',
-                    thresholdDelta: 20,
-                },
                 
-                // Free mode disabilitato
-                freeMode: false,
                 
-                // Keyboard control
-                keyboard: {
-                    enabled: true,
-                },
-                
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                
-                // Pagination dots
                 pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    type: 'bullets',
-                },
-                
-                // Slide effect
-                effect: 'slide',
-                slideToClickedSlide: true,
-                threshold: 15,
-                touchRatio: 0.8,
-                touchAngle: 45,
-                grabCursor: true,
-                resistanceRatio: 0.7,
-                longSwipesRatio: 0.1,
-                
-                // BREAKPOINTS
-                breakpoints: {
-                    1400: {
-                        spaceBetween: 40,
-                    },
-                    1200: {
-                        spaceBetween: 30,
-                    },
-                    768: {
-                        spaceBetween: 20,
-                        mousewheel: {
-                            sensitivity: 0.4
-                        }
-                    }
-                }
-            });
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet: (index, className) => {
+        if (index >= realSlideCount) return '';
+        return `<span class="${className}"></span>`;
+    }
+    
+},
+
+                slidesPerView: 'auto',
+    centeredSlides: true,
+    loop: true,
+    
+    loopAdditionalSlides: 0, // 🔥 ora non serve
+    speed: 600,
+    mousewheel: false,
+    
+    freeMode: {
+        enabled: true,
+        momentum: false
+    },
+
+    // Touch
+    simulateTouch: true,
+    allowTouchMove: true,
+    touchStartPreventDefault: false,
+
+    keyboard: {
+        enabled: true,
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+
+    resistanceRatio: 0.85,
+    grabCursor: true,
+
+    breakpoints: {
+        0: {
+            freeMode: false,
+            mousewheel: false
+        },
+        1024: {
+            freeMode: {
+                enabled: true,
+                momentum: false
+            }
+        }
+    }
+    
+    
+ });
+ 
             
+            let currentTranslate = swiper.getTranslate();
+let targetTranslate = currentTranslate;
+let isAnimating = false;
+
+// Smooth animation loop
+function animate() {
+    if (!isAnimating) return;
+
+    currentTranslate += (targetTranslate - currentTranslate) * 0.08;
+
+    swiper.setTranslate(currentTranslate);
+    swiper.updateProgress();
+    swiper.updateActiveIndex();
+    swiper.updateSlidesClasses();
+
+    // LOOP FIX
+    const max = swiper.maxTranslate();
+    const min = swiper.minTranslate();
+
+    if (currentTranslate < max || currentTranslate > min) {
+        swiper.loopFix();
+        currentTranslate = swiper.getTranslate();
+        targetTranslate = currentTranslate;
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// Wheel control (desktop only)
+window.addEventListener('wheel', (e) => {
+    if (window.innerWidth < 1024) return;
+
+    e.preventDefault();
+    targetTranslate -= e.deltaY * 0.8;
+
+    if (!isAnimating) {
+        isAnimating = true;
+        animate();
+    }
+}, { passive: false });
+
+// Stop smooth animation when scrolling stops
+let wheelTimeout;
+window.addEventListener('wheel', () => {
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+        isAnimating = false;
+    }, 120);
+});
+
+
+
             // Aggiorna progress bar
             const progressBar = document.querySelector('.swiper-progress-bar');
             const updateProgressBar = () => {
-                const totalSlides = 5; // 5 slide totali
-                const realIndex = swiper.realIndex;
+                const totalSlides = 5;
+                const realIndex = ((swiper.realIndex % 5) + 5) % 5;
                 const progress = (realIndex / (totalSlides - 1)) * 100;
                 progressBar.style.width = `${progress}%`;
             };
@@ -1285,9 +1512,10 @@
             const totalSlidesEl = document.querySelector('.total-slides');
             
             const updateCounter = () => {
-                const realIndex = swiper.realIndex + 1;
-                currentSlideEl.textContent = realIndex.toString().padStart(2, '0');
-                totalSlidesEl.textContent = '05';
+                const realIndex = ((swiper.realIndex % 5) + 5) % 5;
+currentSlideEl.textContent = (realIndex + 1).toString().padStart(2, '0');
+totalSlidesEl.textContent = '05';
+
             };
             
             // Initialize
@@ -1299,16 +1527,15 @@
                 updateProgressBar();
                 updateCounter();
                 
-                // Rimuovi le classi CSS problematiche che nascondono i testi
+                // Rimuovi le classi CSS problematiche
                 document.querySelectorAll('.swiper-slide').forEach(slide => {
                     const content = slide.querySelector('.slide-content');
                     if (content) {
-                        // Rimuovi qualsiasi opacità impostata via JS
                         content.style.opacity = '';
                         content.style.transform = '';
                     }
                     
-                    // Ripristina la visibilità di tutti i testi nella slide
+                    // Ripristina la visibilità di tutti i testi
                     const textElements = slide.querySelectorAll('.left-column > *, .right-column > *');
                     textElements.forEach(el => {
                         el.style.opacity = '';
@@ -1326,10 +1553,11 @@
                 }
             });
             
-            // Play button functionality for gameplay videos
+            // Play button functionality
             document.querySelectorAll('.play-button').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.stopPropagation();
+                    e.preventDefault();
                     const video = this.closest('.gameplay-preview').querySelector('.gameplay-video');
                     const overlay = this.closest('.gameplay-overlay');
                     
@@ -1342,6 +1570,17 @@
                         overlay.style.opacity = '1';
                         this.style.opacity = '1';
                     }
+                }, { passive: false });
+            });
+            
+            // Per mobile: migliora l'accessibilità dei bottoni
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('touchstart', function(e) {
+                    e.stopPropagation();
+                }, { passive: true });
+                
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
                 });
             });
             
@@ -1357,6 +1596,34 @@
                     }
                 });
             });
+            
+            // Mobile navigation arrows
+            const mobilePrev = document.querySelector('.mobile-prev');
+            const mobileNext = document.querySelector('.mobile-next');
+            const mobileNavArrows = document.querySelector('.mobile-nav-arrows');
+            
+            if (mobilePrev && mobileNext) {
+                mobilePrev.addEventListener('click', () => {
+                    swiper.slidePrev();
+                });
+                
+                mobileNext.addEventListener('click', () => {
+                    swiper.slideNext();
+                });
+                
+                // Mostra le frecce solo su mobile
+                if (window.innerWidth <= 768) {
+                    mobileNavArrows.style.display = 'flex';
+                }
+                
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth <= 768) {
+                        mobileNavArrows.style.display = 'flex';
+                    } else {
+                        mobileNavArrows.style.display = 'none';
+                    }
+                });
+            }
             
             // Add active class to navigation
             const currentPage = window.location.pathname.split('/').pop();
@@ -1376,19 +1643,22 @@
             
             hamburg.addEventListener('click', (e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 mobileMenu.classList.add('active');
                 document.body.style.overflow = 'hidden';
-            });
+            }, { passive: false });
             
             closeMenu.addEventListener('click', (e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
-            });
+            }, { passive: false });
             
             // Close mobile menu when clicking on a link
             mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
                 });
@@ -1415,7 +1685,7 @@
                 }
             }, 100);
             
-            console.log('Swiper inizializzato: scroll mouse funzionante, testi visibili, counter 05');
+            console.log('Swiper inizializzato: scroll mouse funzionante, mobile migliorato');
         });
     </script>
 </body>
