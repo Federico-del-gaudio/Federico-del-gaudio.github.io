@@ -5,91 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tears of Ash - Federico Del Gaudio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
         
         :root {
-            --primary-blue: #1a2a6c;
-            --dark-blue: #0d1b2a;
-            --accent-blue: #3498db;
-            --accent-orange: #e67e22;
-            --light-orange: #f39c12;
-            --text-light: #ecf0f1;
-            --text-gray: #bdc3c7;
-            --card-bg: rgba(26, 37, 46, 0.9);
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --light: #f5f5f5;
+            --gray-light: #e0e0e0;
+            --gray-medium: #95a5a6;
+            --gray-dark: #2c3e50;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(35, 35, 35, 0.9);
         }
         
         body {
-            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue), #2a4d69);
-            color: var(--text-light);
+            background: var(--darker);
+            color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
         
-        /* Blood splatter effect */
-        .blood-splatter {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/concrete-wall-2.png');
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: -2;
-        }
-        
-        /* Ash particles */
-        .ash-particle {
-            position: fixed;
-            background: rgba(189, 195, 199, 0.7);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 15s infinite linear;
-            pointer-events: none;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0) rotate(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
-        }
-        
-        /* Navigation Bar - Stile uniformato alla pagina projects */
+        /* Navigation Bar */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(13, 27, 42, 0.95);
+            padding: 20px 50px;
+            background: rgba(26, 26, 26, 0.95);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--accent-orange);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .logo {
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--accent-blue);
-            text-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
-            font-family: 'Orbitron', sans-serif;
+            color: var(--light);
+            letter-spacing: 1px;
+            font-family: 'Raleway', sans-serif;
         }
         
         .logo span {
-            color: var(--accent-orange);
+            color: var(--gray-medium);
+            font-weight: 300;
         }
         
         .nav-links {
@@ -99,18 +70,18 @@
         
         .nav-links a {
             text-decoration: none;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 600;
+            color: var(--gray-light);
+            font-size: 1.1rem;
+            font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
             padding: 8px 0;
-            text-transform: uppercase;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .nav-links a:hover {
-            color: var(--accent-orange);
+            color: var(--light);
         }
         
         .nav-links a::after {
@@ -119,10 +90,9 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
-            background: var(--accent-orange);
+            height: 2px;
+            background: var(--light);
             transition: width 0.3s ease;
-            border-radius: 2px;
         }
         
         .nav-links a:hover::after {
@@ -133,348 +103,246 @@
             display: none;
             font-size: 1.8rem;
             cursor: pointer;
-            color: var(--text-light);
+            color: var(--light);
         }
         
-        /* Header section - Full width */
+        /* Project Header */
         .project-header {
-            text-align: center;
-            padding: 140px 20px 60px;
-            background: linear-gradient(rgba(13, 27, 42, 0.9), rgba(20, 0, 10, 0.7));
-            position: relative;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #8a0303;
-        }
-        
-        .project-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .project-header h1 {
-            font-size: 4.5rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            color: #d63030;
-            text-shadow: 0 0 20px rgba(214, 48, 48, 0.7);
-            letter-spacing: 6px;
-            font-weight: 900;
-            position: relative;
-        }
-        
-        .project-header h2 {
-            font-size: 2rem;
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            letter-spacing: 2px;
-        }
-        
-        .project-header .subtitle {
-            font-size: 1.4rem;
-            color: var(--text-light);
-            background: rgba(90, 0, 0, 0.4);
-            padding: 15px 30px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-top: 20px;
-            border: 1px solid #8a0303;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            font-weight: 500;
-            position: relative;
-        }
-        
-        .project-header .subtitle span {
-            color: var(--accent-orange);
-            font-weight: 600;
-        }
-        
-        /* Main content - Full width with constrained content */
-        .project-container {
+            padding: 140px 50px 80px;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            text-align: center;
+            position: relative;
         }
         
-        /* About section */
+        .project-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(245, 245, 245, 0.3);
+        }
+        
+        .project-subtitle {
+            font-size: 1.8rem;
+            color: var(--gray-light);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .project-meta {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .project-meta span {
+            color: var(--gray-medium);
+        }
+        
+        /* Main Content Layout */
+        .project-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px 80px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        /* About Section */
         .about-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--accent-orange);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
         
-        .about-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        
-        .about-section h3 {
+        .section-title {
             font-size: 2.5rem;
-            color: var(--accent-orange);
+            font-weight: 700;
+            color: var(--light);
             margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(230, 126, 34, 0.4);
             position: relative;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            padding-bottom: 15px;
         }
         
-        .about-section p {
-            font-size: 1.2rem;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--light);
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
             line-height: 1.8;
+            color: var(--gray-light);
             margin-bottom: 25px;
-            color: var(--text-light);
-            position: relative;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         
         .highlight {
-            color: var(--light-orange);
+            color: var(--light);
             font-weight: 600;
-            text-shadow: 0 0 8px rgba(243, 156, 18, 0.4);
         }
         
-        /* Trailer section */
+        /* Trailer Section */
         .trailer-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--accent-blue);
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .trailer-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        
-        .trailer-section h3 {
-            font-size: 2.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(230, 126, 34, 0.4);
-            position: relative;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         }
         
         .trailer-container {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-        }
-        
-        .trailer-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #1a0a0a, #3a0a0a);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 30px rgba(52, 152, 219, 0.4);
+            border: 1px solid var(--border-color);
+            position: relative;
+            min-height: 300px;
         }
         
-        .trailer-placeholder::before {
-            content: "";
-            position: absolute;
+        .trailer-video {
             width: 100%;
             height: 100%;
-            background: url('Videos/Tears\ of\ Ash\ \(Scream\ Jam\ 24\ entry\)\ -\ TRAILER\ -\ ETP\ Studios\ \(1080p\,\ h264\).mp4') center/cover;
-            filter: blur(3px) brightness(0.3);
+            object-fit: cover;
         }
         
-        .play-button {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background: rgba(214, 48, 48, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-            box-shadow: 0 0 30px rgba(214, 48, 48, 0.7);
-            border: 3px solid #a00;
-        }
-        
-        .play-button:hover {
-            transform: scale(1.1);
-            background: rgba(214, 48, 48, 1);
-            box-shadow: 0 0 40px rgba(214, 48, 48, 0.9);
-        }
-        
-        .play-button i {
-            font-size: 3.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-left: 8px;
-        }
-        .lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    overflow: auto;
-    text-align: center;
-}
-
-.lightbox-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90%;
-    margin-top: 5vh;
-    animation: zoom 0.3s;
-    border: 3px solid var(--accent-orange);
-    box-shadow: 0 0 30px rgba(230, 126, 34, 0.6);
-}
-
-@keyframes zoom {
-    from {transform: scale(0.8); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
-}
-
-.close-lightbox {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: var(--accent-orange);
-    font-size: 3rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-lightbox:hover {
-    color: #d63030;
-    transform: rotate(90deg);
-}
-
-/* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: var(--accent-orange);
-    font-weight: bold;
-    font-size: 2rem;
-    transition: 0.3s;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev {
-    left: 0;
-    border-radius: 0 3px 3px 0;
-}
-
-        
-        /* Gallery section - Full width */
-        .gallery-section {
-            grid-column: 1 / -1;
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--accent-orange);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gallery-section::before {
-            content: "";
+        .play-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.2;
-            pointer-events: none;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
         
-        .gallery-section h3 {
+        .play-overlay:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: var(--light);
+        }
+        
+        .play-button i {
             font-size: 2.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(230, 126, 34, 0.4);
+            color: var(--dark);
+            margin-left: 5px;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .action-button {
+            padding: 16px 25px;
+            background: transparent;
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
             text-align: center;
             position: relative;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .action-button:hover {
+            color: var(--dark);
+        }
+        
+        .action-button:hover::before {
+            left: 0;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
         }
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
         
         .gallery-item {
-            height: 300px;
+            height: 250px;
             border-radius: 10px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-            transition: all 0.4s ease;
-            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
         }
         
         .gallery-item:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(214, 48, 48, 0.6);
-            border-color: #d63030;
-            z-index: 2;
+            transform: translateY(-10px);
+            border-color: var(--light);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
         .gallery-item img {
@@ -485,244 +353,225 @@
         }
         
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
-        /* Contributions section - Full width */
+        /* Contributions Section */
         .contributions-section {
-            grid-column: 1 / -1;
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--accent-orange);
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contributions-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        
-        .contributions-section h3 {
-            font-size: 2.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(230, 126, 34, 0.4);
-            text-align: center;
-            position: relative;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
         }
         
         .contributions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
         
         .contribution-card {
-            background: rgba(30, 15, 25, 0.7);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid var(--accent-blue);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-        }
-        
-        .contribution-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-            opacity: 0.2;
-            pointer-events: none;
         }
         
         .contribution-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(214, 48, 48, 0.4);
-            border-color: var(--accent-orange);
-        }
-        
-        .contribution-card i {
-            font-size: 3.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(230, 126, 34, 0.4);
-        }
-        
-        .contribution-card h4 {
-            font-size: 1.7rem;
-            color: var(--accent-blue);
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-        }
-        
-        .contribution-card p {
-            color: var(--text-light);
-            line-height: 1.8;
-            font-size: 1.1rem;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Buttons section */
-        .project-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .project-button {
-            flex: 1;
-            text-align: center;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: 1px solid var(--accent-blue);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-button:hover {
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.7);
+            border-color: var(--light);
         }
         
-        .project-button:nth-child(2) {
-            background: linear-gradient(135deg, var(--accent-orange), #d35400);
-            border: 1px solid var(--accent-orange);
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+        .contribution-icon {
+            font-size: 3rem;
+            color: var(--light);
+            margin-bottom: 20px;
         }
         
-        .project-button:nth-child(2):hover {
-            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.7);
+        .contribution-title {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         
-        /* Footer section - Full width */
-        .project-footer {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(rgba(13, 27, 42, 0.9), rgba(15, 0, 5, 0.9));
-            position: relative;
-            border-top: 1px solid var(--accent-orange);
-            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.7);
-            margin-top: 60px;
+        .contribution-description {
+            color: var(--gray-light);
+            line-height: 1.6;
         }
         
-        .project-footer::before {
-            content: "";
-            position: absolute;
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-            opacity: 0.3;
-            pointer-events: none;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            overflow: hidden;
         }
         
-        .project-footer h3 {
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--light);
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-lightbox:hover {
+            color: var(--gray-light);
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        
+        .lightbox-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--light);
+            color: var(--light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-nav button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Footer */
+        .project-footer {
+            background: var(--darker);
+            padding: 60px 50px 40px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .footer-title {
             font-size: 2.5rem;
-            color: var(--accent-orange);
+            font-weight: 700;
+            color: var(--light);
             margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-            position: relative;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+            margin: 40px 0;
         }
         
-        .social-links a {
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 70px;
-            height: 70px;
-            background: rgba(30, 15, 25, 0.7);
-            color: var(--accent-orange);
-            border-radius: 50%;
-            font-size: 2rem;
-            transition: all 0.4s ease;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
+            font-size: 1.8rem;
+            color: var(--light);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
-            background: rgba(52, 152, 219, 0.3);
-            color: var(--accent-blue);
-            transform: translateY(-8px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
-        }
-        
-        .social-links a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-            opacity: 0.3;
-            pointer-events: none;
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--light);
         }
         
         .copyright {
-            color: var(--text-gray);
-            font-size: 1.1rem;
+            color: var(--gray-light);
+            font-size: 1rem;
             margin-top: 40px;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            position: relative;
         }
         
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 1200px) {
-            .project-container {
-                grid-template-columns: 1fr;
-                max-width: 1000px;
+            .project-main, .project-header {
+                padding: 140px 30px 60px;
             }
             
-            .project-header h1 {
+            .content-grid {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-title {
                 font-size: 4rem;
+            }
+            
+            .gallery-grid, .contributions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
         
         @media (max-width: 768px) {
             .navbar {
-                padding: 15px 5%;
+                padding: 15px 30px;
             }
             
             .logo {
@@ -738,68 +587,103 @@
             }
             
             .project-header {
-                padding: 120px 20px 40px;
+                padding: 120px 20px 50px;
             }
             
-            .project-header h1 {
-                font-size: 3rem;
+            .project-main {
+                padding: 0 20px 50px;
             }
             
-            .project-header .subtitle {
+            .project-title {
+                font-size: 3.5rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .about-section, .trailer-section, .gallery-section,
+            .contributions-section {
+                padding: 30px;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .lightbox-nav button {
+                width: 50px;
+                height: 50px;
                 font-size: 1.2rem;
             }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        @media (max-width: 576px) {
+            .project-title {
+                font-size: 2.8rem;
             }
             
-            .gallery-item {
-                height: 250px;
+            .project-subtitle {
+                font-size: 1.3rem;
             }
             
-            .project-buttons {
-                flex-direction: column;
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid, .contributions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-footer {
+                padding: 50px 20px 30px;
+            }
+            
+            .footer-title {
+                font-size: 2rem;
+            }
+            
+            .action-button {
+                padding: 14px 20px;
+                font-size: 0.85rem;
             }
         }
         
         @media (max-width: 480px) {
-            .project-header h1 {
+            .project-title {
                 font-size: 2.5rem;
-                letter-spacing: 3px;
             }
             
-            .project-header h2 {
-                font-size: 1.5rem;
-            }
-            
-            .about-section h3, 
-            .trailer-section h3, 
-            .gallery-section h3, 
-            .contributions-section h3,
-            .project-footer h3 {
-                font-size: 2rem;
-            }
-            
-            .about-section, 
-            .trailer-section, 
-            .gallery-section, 
-            .contributions-section {
-                padding: 30px 20px;
+            .project-meta {
+                font-size: 1rem;
+                padding: 10px 20px;
             }
             
             .contribution-card {
-                padding: 25px 20px;
+                padding: 25px;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 70%;
+            }
+            
+            .lightbox-nav button {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Blood splatter background effect -->
-    <div class="blood-splatter"></div>
-    
-    <!-- Navigation Bar - Stile uniformato -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Federico <span>Del Gaudio</span></div>
+        <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -810,203 +694,228 @@
         <i class="fa-solid fa-bars hamburg"></i>
     </nav>
     
-    <!-- Header section -->
+    <!-- Project Header -->
     <header class="project-header">
-        <h1>Tears of Ash</h1>
-        <h2>Horror Scream Jam 2024</h2>
-        <div class="subtitle">Role: <span>Game Designer/Level designer</span></div>
+        <h1 class="project-title">Tears of Ash</h1>
+        <p class="project-subtitle">Horror Scream Jam 2024</p>
+        <div class="project-meta">Role: <span>Game Designer / Level Designer</span></div>
     </header>
     
     <!-- Main Content -->
-    <main class="project-container">
-        <!-- About Section -->
-        <section class="about-section">
-            <h3>About the Project</h3>
-            <p>First game developed with a team of <span class="highlight">four people</span> for a horror-themed game jam.</p>
-            <p>Step into a <span class="highlight">chilling horror experience</span> inspired by P.T., where memories, dreams, reality, and guilt blend into a twisted nightmare.</p>
-            <p>Navigate through a haunting atmosphere as you confront disturbing visions and unravel the secrets buried in your mind. Each fragment of your past holds a clue, challenging you to connect the dots and uncover the dark truth lurking beneath the surface.</p>
-            <p>Our goal was to create a psychological horror experience that stays with players long after they finish the game. The environment design uses subtle audio cues and visual distortions to create a sense of unease and tension throughout the experience.</p>
-        </section>
-        
-        <!-- Trailer Section -->
-        <section class="trailer-section">
-            <h3>Trailer</h3>
-            <div class="trailer-container">
-                <div class="trailer-placeholder">
-                    <video id="gameTrailer" width="100%" height="100%" controls style="display:none;">
+    <main class="project-main">
+        <!-- About & Trailer Grid -->
+        <div class="content-grid">
+            <!-- About Section -->
+            <section class="about-section">
+                <h2 class="section-title">About the Project</h2>
+                <div class="about-content">
+                    <p>First game developed with a team of <span class="highlight">four people</span> for a horror-themed game jam.</p>
+                    <p>Step into a <span class="highlight">chilling horror experience</span> inspired by P.T., where memories, dreams, reality, and guilt blend into a twisted nightmare.</p>
+                    <p>Navigate through a haunting atmosphere as you confront disturbing visions and unravel the secrets buried in your mind. Each fragment of your past holds a clue, challenging you to connect the dots and uncover the dark truth lurking beneath the surface.</p>
+                    <p>Our goal was to create a psychological horror experience that stays with players long after they finish the game. The environment design uses subtle audio cues and visual distortions to create a sense of unease and tension throughout the experience.</p>
+                </div>
+            </section>
+            
+            <!-- Trailer Section -->
+            <section class="trailer-section">
+                <h2 class="section-title">Game Trailer</h2>
+                <div class="trailer-container">
+                    <video class="trailer-video" id="gameTrailer" controls style="display: none;">
                         <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div class="play-button" id="playTrailerButton">
-                        <i class="fas fa-play"></i>
+                    <div class="play-overlay" id="playOverlay">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="project-buttons">
-                <a href="https://brrbrr9.itch.io/tearsofash" class="project-button" target="blank">
-                    <i class="fas fa-gamepad"></i> Play on itch.io
-                </a>
-                <a href="https://www.youtube.com/watch?v=xevANeo-01Q" class="project-button" target="blank">
-                    <i class="fab fa-youtube"></i> Watch Trailer
-                </a>
-            </div>
-        </section>
+                <div class="action-buttons">
+                    <a href="https://brrbrr9.itch.io/tearsofash" class="action-button" target="_blank">
+                        <i class="fas fa-gamepad"></i> Play on itch.io
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=xevANeo-01Q" class="action-button" target="_blank">
+                        <i class="fab fa-youtube"></i> Watch Trailer
+                    </a>
+                </div>
+            </section>
+        </div>
+        
         <!-- Gallery Section -->
         <section class="gallery-section">
-            <h3>Game Screenshots</h3>
+            <h2 class="section-title">Game Screenshots</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" data-index="1">
                     <img src="Photos/Scream jam foto 3.jpg" alt="Horror Game Environment">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-index="2">
                     <img src="Photos/Screamjamfoto2 (1).jpg" alt="Dark Corridor">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-index="3">
                     <img src="Photos/screamjamfoto4.jpg" alt="Eerie Atmosphere">
                 </div>
-             
             </div>
         </section>
         
         <!-- Contributions Section -->
         <section class="contributions-section">
-            <h3>My Contributions</h3>
+            <h2 class="section-title">My Contributions</h2>
             <div class="contributions-grid">
                 <div class="contribution-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h4>Game Design & Horror events </h4>
-                    <p>Developed the core horror events focusing on psychological elements and player immersion.</p>
+                    <div class="contribution-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="contribution-title">Game Design & Horror Events</h3>
+                    <p class="contribution-description">Developed the core horror events focusing on psychological elements and player immersion.</p>
                 </div>
                 <div class="contribution-card">
-                    <i class="fas fa-sitemap"></i>
-                    <h4>Level Structure</h4>
-                    <p>Designed the non-linear level structure and pacing to maximize tension and narrative discovery.</p>
+                    <div class="contribution-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="contribution-title">Level Structure</h3>
+                    <p class="contribution-description">Designed the non-linear level structure and pacing to maximize tension and narrative discovery.</p>
                 </div>
                 <div class="contribution-card">
-                    <i class="fas fa-puzzle-piece"></i>
-                    <h4>Puzzle Design</h4>
-                    <p>Created psychological horror mechanics and environmental puzzles that integrate seamlessly with the narrative.</p>
+                    <div class="contribution-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="contribution-title">Puzzle Design</h3>
+                    <p class="contribution-description">Created psychological horror mechanics and environmental puzzles that integrate seamlessly with the narrative.</p>
                 </div>
-               
             </div>
         </section>
     </main>
     
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-nav">
+            <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 3</div>
+    </div>
+    
     <!-- Footer -->
     <footer class="project-footer">
-        <h3>Federico Del Gaudio | Game Designer</h3>
+        <h3 class="footer-title">Federico Del Gaudio | Game Designer</h3>
         <div class="social-links">
-            <a href="https://github.com/Federico-del-gaudio"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/emyportfolio/"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/Federico-del-gaudio" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/emyportfolio/" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
         <p class="copyright">© 2024 Federico Del Gaudio. All rights reserved.</p>
     </footer>
-         <!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-    <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-    <a class="next" onclick="changeImage(1)">&#10095;</a>
-</div>
+
     <script>
-              // Lightbox functionality
-              const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const closeLightbox = document.querySelector(".close-lightbox");
-        const galleryItems = document.querySelectorAll(".gallery-item img");
-        
-        // Current image index
-        let currentImageIndex = 0;
-        const images = Array.from(galleryItems).map(img => img.src);
-        
-        // Open lightbox when clicking on gallery image
-        galleryItems.forEach((img, index) => {
-            img.addEventListener('click', function() {
-                currentImageIndex = index;
-                lightbox.style.display = "block";
-                lightboxImg.src = this.src;
-            });
-        });
-        
-        // Close lightbox
-        closeLightbox.addEventListener('click', function() {
-            lightbox.style.display = "none";
-        });
-        
-        // Close when clicking outside image
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
-                lightbox.style.display = "none";
-            }
-        });
-        
-        // Change image function
-        window.changeImage = function(n) {
-            currentImageIndex += n;
-            
-            // Wrap around if at beginning or end
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            }
-            
-            lightboxImg.src = images[currentImageIndex];
-        }
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (lightbox.style.display === "block") {
-                if (e.key === "ArrowLeft") {
-                    changeImage(-1);
-                } else if (e.key === "ArrowRight") {
-                    changeImage(1);
-                } else if (e.key === "Escape") {
-                    lightbox.style.display = "none";
-                }
-            }
-        });
-        // Create ash particles
         document.addEventListener('DOMContentLoaded', function() {
-            const body = document.querySelector('body');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'ash-particle';
-                particle.style.width = `${Math.random() * 8 + 2}px`;
-                particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                body.appendChild(particle);
+            // Video Trailer Functionality
+            const trailer = document.getElementById('gameTrailer');
+            const playOverlay = document.getElementById('playOverlay');
+            
+            if (playOverlay && trailer) {
+                playOverlay.addEventListener('click', function() {
+                    this.style.display = 'none';
+                    trailer.style.display = 'block';
+                    trailer.play().catch(e => console.error("Error playing video:", e));
+                    
+                    trailer.addEventListener('ended', function() {
+                        playOverlay.style.display = 'flex';
+                        trailer.style.display = 'none';
+                    });
+                });
             }
             
-            // Play button functionality
-             // Trailer functionality
-        const playButton = document.getElementById('playTrailerButton');
-        const trailer = document.getElementById('gameTrailer');
-        
-        if (playButton && trailer) {
-            playButton.addEventListener('click', function() {
-                this.style.display = 'none';
-                trailer.style.display = 'block';
-                trailer.play().catch(e => console.error("Error playing video:", e));
-                
-                trailer.addEventListener('ended', function() {
-                    playButton.style.display = 'flex';
-                    trailer.style.display = 'none';
+            // Lightbox Functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeLightbox = document.querySelector('.close-lightbox');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const lightboxCounter = document.getElementById('lightbox-counter');
+            
+            // Get all gallery images
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const images = Array.from(galleryItems).map(item => {
+                return {
+                    src: item.querySelector('img').src,
+                    alt: item.querySelector('img').alt
+                };
+            });
+            
+            let currentImageIndex = 0;
+            
+            // Open lightbox when clicking gallery image
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentImageIndex = index;
+                    openLightbox();
                 });
             });
-        }
-        
             
-            // Add subtle background animation
-            const bloodSplatter = document.querySelector('.blood-splatter');
-            let offset = 0;
-            setInterval(() => {
-                offset = (offset + 0.1) % 100;
-                bloodSplatter.style.backgroundPosition = `${offset}% ${offset}%`;
-            }, 50);
+            function openLightbox() {
+                lightbox.style.display = 'block';
+                updateLightboxImage();
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightboxFunc() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            function updateLightboxImage() {
+                const image = images[currentImageIndex];
+                lightboxImg.src = image.src;
+                lightboxImg.alt = image.alt;
+                lightboxCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+            }
+            
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateLightboxImage();
+            }
+            
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateLightboxImage();
+            }
+            
+            // Event listeners for lightbox controls
+            closeLightbox.addEventListener('click', closeLightboxFunc);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            
+            // Close lightbox when clicking outside image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightboxFunc();
+                }
+            });
+            
+            // Keyboard navigation for lightbox
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape':
+                            closeLightboxFunc();
+                            break;
+                        case 'ArrowLeft':
+                            prevImage();
+                            break;
+                        case 'ArrowRight':
+                            nextImage();
+                            break;
+                    }
+                }
+            });
         });
     </script>
 </body>

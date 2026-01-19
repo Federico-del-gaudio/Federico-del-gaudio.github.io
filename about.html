@@ -6,7 +6,6 @@
     <title>About | Federico Del Gaudio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         * {
             margin: 0;
@@ -16,9 +15,6 @@
         }
         
         :root {
-            --primary: #2c3e50;
-            --secondary: #7f8c8d;
-            --accent: #3498db;
             --dark: #1a1a1a;
             --darker: #0d0d0d;
             --light: #f5f5f5;
@@ -26,41 +22,17 @@
             --gray-medium: #95a5a6;
             --gray-dark: #2c3e50;
             --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(30, 30, 30, 0.8);
         }
         
         body {
-            background: linear-gradient(135deg, var(--darker), var(--dark), var(--primary));
+            background: var(--darker);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
-        }
-        
-        /* Particle background effect */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px) scale(1.5); opacity: 0; }
         }
         
         /* Navigation Bar */
@@ -136,226 +108,385 @@
             color: var(--light);
         }
         
-        /* Main Content Container */
-        .page-container {
-            flex: 1;
-            padding-bottom: 60px;
-        }
-        
-        /* About Section */
-        #about {
-            padding: 140px 50px 50px;
-            max-width: 1400px;
+        /* Main Content */
+        .main-content {
+            padding-top: 140px;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
+            padding: 140px 50px 80px;
         }
         
-        .main-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 50px;
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
         
-        .about-content {
-            flex: 1;
-            max-width: 600px;
-        }
-        
-        .about-content h1 {
+        .page-header h1 {
             font-size: 3.5rem;
-            margin-bottom: 30px;
+            font-weight: 700;
             color: var(--light);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 1.3rem;
+            color: var(--gray-medium);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .profile-image {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gray-dark), var(--gray-medium));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--light);
+            border: 3px solid var(--light);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-content {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 15px;
             font-weight: 600;
+        }
+        
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--light);
+            margin-bottom: 50px;
+            font-weight: 600;
+            text-align: center;
             position: relative;
             padding-bottom: 20px;
-            letter-spacing: 2px;
         }
         
-        .about-content h1::after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 3px;
             background: var(--light);
-            border-radius: 2px;
         }
         
-        .about-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            color: var(--gray-light);
-            font-weight: 300;
-        }
-        
-        /* Enhanced Timeline */
-        .timeline-container {
-            flex: 1;
-            max-width: 600px;
-            position: relative;
-        }
-        
+        /* Timeline with animation */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
-        .timeline::before {
-            content: '';
+        /* Vertical line with animation */
+        .timeline-line {
             position: absolute;
             top: 0;
-            left: 0;
-            height: 100%;
+            left: 35px;
             width: 2px;
-            background: linear-gradient(to bottom, var(--gray-light), var(--gray-medium));
-            border-radius: 1px;
+            height: 0; /* Start at 0 */
+            background: var(--gray-medium);
+            transition: height 2s ease;
         }
         
+        .timeline-line.progress {
+            height: 100%; /* Fill when in view */
+        }
+        
+        /* Circle markers with centered text */
+        .timeline-marker {
+            position: absolute;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background: var(--light);
+            border-radius: 50%;
+            border: 3px solid var(--dark);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .timeline-marker.visible {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+        }
+        
+        .timeline-marker span {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.75rem;
+            line-height: 1;
+            text-align: center;
+            display: block;
+            width: 100%;
+            padding: 0 2px;
+        }
+        
+        /* Content items with animation */
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
-            padding-left: 40px;
+            margin-bottom: 70px;
+            padding-left: 100px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
         
-        /* New date design - integrated into content */
-        .timeline-date {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--light);
-            padding: 8px 15px;
-            background: rgba(26, 26, 26, 0.8);
-            border-radius: 20px;
-            border: 1px solid var(--gray-light);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         
-        .timeline-date::before {
-            content: '';
-            position: absolute;
-            left: -50px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--light);
-            border: 2px solid var(--dark);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-        
-        .timeline-icon {
-            font-size: 1.3rem;
-            color: var(--light);
-            margin-right: 10px;
-        }
-        
+        /* Content box */
         .timeline-content {
-            background: rgba(26, 26, 26, 0.3);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 2px solid var(--gray-light);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         
         .timeline-content:hover {
-            transform: translateX(10px);
+            transform: translateY(-5px);
             border-color: var(--gray-light);
         }
         
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .timeline-title {
+            font-size: 1.4rem;
             color: var(--light);
+            margin-bottom: 15px;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .timeline-content p {
+        .timeline-date-text {
+            display: block;
+            margin-bottom: 10px;
             font-size: 1rem;
-            line-height: 1.6;
+            color: var(--gray-medium);
+            font-weight: 600;
+        }
+        
+        .timeline-description {
             color: var(--gray-light);
+            line-height: 1.7;
             margin-bottom: 15px;
         }
         
-        .project-button {
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .timeline-tag {
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gray-light);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .current-badge {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 3px 10px;
+            background: var(--light);
+            color: var(--dark);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        /* Skills Section */
+        .skills-section {
+            margin-bottom: 80px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gray-light);
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            border: 2px solid var(--border-color);
+        }
+        
+        .skill-title {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .skill-items {
+            list-style: none;
+        }
+        
+        .skill-items li {
+            color: var(--gray-light);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-items li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--light);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 35px;
             background: transparent;
             color: var(--light);
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
+            border-radius: 8px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border: 1px solid var(--gray-light);
+            border: 2px solid var(--light);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            font-size: 0.95rem;
+            opacity: 0;
+            transform: translateY(20px);
         }
         
-        .project-button:hover {
+        .btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+        
+        .btn:hover {
             background: var(--light);
             color: var(--dark);
-            border-color: var(--light);
             transform: translateY(-3px);
         }
         
-        /* Current Status Indicator */
-        .current-status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background-color: var(--light);
+        .btn-primary {
+            background: var(--light);
             color: var(--dark);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 10px;
-            animation: pulse 2s infinite;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--light);
         }
         
         /* Footer */
         .footer-main {
             background: var(--darker);
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             color: var(--gray-light);
             font-size: 1rem;
             border-top: 1px solid var(--border-color);
-            margin-top: auto;
-            letter-spacing: 1px;
+            margin-top: 60px;
         }
         
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .main-container {
+        @media (max-width: 992px) {
+            .profile-section {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
             }
             
-            .about-content, .timeline-container {
-                max-width: 100%;
-            }
-            
-            .timeline-container {
-                margin-top: 50px;
-                width: 100%;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -376,68 +507,88 @@
                 display: block;
             }
             
-            #about {
-                padding: 120px 20px 30px;
+            .main-content {
+                padding: 120px 20px 60px;
             }
             
-            .about-content h1 {
+            .page-header h1 {
                 font-size: 2.5rem;
             }
             
-            .about-content p {
+            .page-header p {
                 font-size: 1.1rem;
             }
             
-            .timeline-date {
-                padding: 6px 12px;
-                font-size: 1rem;
+            .profile-image {
+                width: 180px;
+                height: 180px;
+                font-size: 4rem;
             }
             
-            .timeline-date::before {
-                width: 14px;
-                height: 14px;
-                left: -40px;
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .timeline-line {
+                left: 25px;
+            }
+            
+            .timeline-marker {
+                left: 10px;
+                width: 28px;
+                height: 28px;
+            }
+            
+            .timeline-marker span {
+                font-size: 0.7rem;
+            }
+            
+            .timeline-item {
+                padding-left: 70px;
             }
             
             .timeline-content {
                 padding: 20px;
             }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         
         @media (max-width: 480px) {
-            .about-content h1 {
+            .page-header h1 {
                 font-size: 2rem;
             }
             
-            .timeline-content h3 {
-                font-size: 1.3rem;
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
             }
             
-            .timeline-date {
-                font-size: 0.9rem;
-                padding: 5px 10px;
-            }
-            
-            .timeline-date::before {
-                width: 12px;
-                height: 12px;
-                left: -35px;
-            }
-            
-            .timeline::before {
-                left: 5px;
+            .section-title {
+                font-size: 1.8rem;
             }
             
             .timeline-item {
-                padding-left: 30px;
+                padding-left: 60px;
+            }
+            
+            .timeline-marker {
+                width: 25px;
+                height: 25px;
+                left: 8px;
+            }
+            
+            .timeline-marker span {
+                font-size: 0.65rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particle background -->
-    <div class="particles" id="particles"></div>
-    
     <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
@@ -451,109 +602,233 @@
         <i class="fa-solid fa-bars hamburg"></i>
     </nav>
     
-    <!-- Main Content Container -->
-    <div class="page-container">
-        <!-- About Section -->
-        <section id="about">
-            <div class="main-container">
-                <!-- Text on left -->
-                <div class="about-content" data-aos="fade-right" data-aos-duration="1500">
-                    <h1>ABOUT ME</h1>
-                    <p>
-                        I'm Federico Del Gaudio, and I hold a high school diploma from a technical institute specializing in computer science. I have a strong passion for video games and a growing interest in game design.
-                    </p>
-                    <p>
-                        Currently, I'm attending an academy focused on game design, where I'm deepening my understanding of the skills needed to become a game designer, inspired by the possibility of creating interactive and immersive worlds.
-                    </p>
-                    <p>
-                        My journey has led me to explore the universe of Unreal Engine, where I've had the opportunity to experiment and bring my ideas to life through various projects.
-                    </p>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>MY JOURNEY</h1>
+            <p>From technical foundations to game design passion - A timeline of my growth and development</p>
+        </header>
+        
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-image">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="profile-content">
+                <h2 class="profile-name">Federico Del Gaudio</h2>
+                <p class="profile-description">
+                    Aspiring game designer with a strong technical background. My path has evolved from programming 
+                    to game design, combining analytical thinking with creative expression to craft engaging gameplay experiences.
+                </p>
+                <p class="profile-description">
+                    Each step in my journey has built upon the previous, creating a unique blend of technical precision 
+                    and design intuition that informs my approach to game development.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Timeline Section with Animation -->
+        <section class="timeline-section">
+            <h2 class="section-title">Career Timeline</h2>
+            
+            <div class="timeline">
+                <!-- Progress line -->
+                <div class="timeline-line" id="timelineProgress"></div>
+                
+                <!-- 2019-2024 -->
+                <div class="timeline-item" id="timelineItem1">
+                    <div class="timeline-marker" id="marker1">
+                        
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date-text">2019 - 2024</span>
+                        <h3 class="timeline-title">
+                            <i class="fas fa-graduation-cap"></i> Technical Diploma
+                        </h3>
+                        <p class="timeline-description">
+                            Completed comprehensive computer science studies, building strong foundations in programming, 
+                            algorithms, and software development. This period established my technical mindset and 
+                            problem-solving approach.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Programming</span>
+                            <span class="timeline-tag">Algorithms</span>
+                            <span class="timeline-tag">C#</span>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Enhanced Timeline on right -->
-                <div class="timeline-container" data-aos="fade-left" data-aos-duration="1500">
-                    <div class="timeline">
-                        <!-- Event 1 - School -->
-                        <div class="timeline-item">
-                            <div class="timeline-date">
-                                <i class="fas fa-graduation-cap timeline-icon"></i> 2019-2024
-                            </div>
-                            <div class="timeline-content">
-                                <h3>Technical Diploma</h3>
-                                <p>Completed my studies at a technical institute specializing in computer science, gaining foundational knowledge in programming, algorithms, and problem-solving.</p>
-                            </div>
+                
+                <!-- 2022-2023 -->
+                <div class="timeline-item" id="timelineItem2">
+                    <div class="timeline-marker" id="marker2">
+                       
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date-text">2022 - 2023</span>
+                        <h3 class="timeline-title">
+                            <i class="fas fa-gamepad"></i> Unreal Engine Mastery
+                        </h3>
+                        <p class="timeline-description">
+                            Dedicated focus on mastering Unreal Engine, transitioning from programming to comprehensive 
+                            game development. Created multiple prototypes and interactive experiences, discovering my 
+                            passion for game design.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Unreal Engine</span>
+                            <span class="timeline-tag">Blueprints</span>
+                            <span class="timeline-tag">Prototyping</span>
                         </div>
-                        
-                        <!-- Event 2 - Unreal Engine -->
-                        <div class="timeline-item">
-                            <div class="timeline-date">
-                                <i class="fas fa-gamepad timeline-icon"></i> 2022-2023
-                            </div>
-                            <div class="timeline-content">
-                                <h3>Unreal Engine</h3>
-                                <p>Dedicated myself to mastering Unreal Engine, creating prototypes and developing interactive experiences. This period marked my transition from programming to game design.</p>
-                                <a href="projects.html" class="project-button">View Projects</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Event 3 - Academy -->
-                        <div class="timeline-item">
-                            <div class="timeline-date">
-                                <i class="fas fa-university timeline-icon"></i> 2024-2026 <span class="current-status">CURRENT</span>
-                            </div>
-                            <div class="timeline-content">
-                                <h3>Digital Bros Academy</h3>
-                                <p>Currently enrolled in game design courses at Digital Bros Academy, focusing on professional development to become a skilled game designer capable of working in development teams.</p>
-                            </div>
+                    </div>
+                </div>
+                
+                <!-- 2024-2026 -->
+                <div class="timeline-item" id="timelineItem3">
+                    <div class="timeline-marker" id="marker3">
+                      
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date-text">2024 - 2026</span>
+                        <h3 class="timeline-title">
+                            <i class="fas fa-university"></i> Game Design Academy
+                            <span class="current-badge">CURRENT</span>
+                        </h3>
+                        <p class="timeline-description">
+                            Currently enrolled in professional game design education at Digital Bros Academy. Focusing 
+                            on industry-standard workflows, team collaboration, and advanced design principles to 
+                            prepare for professional game development.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Game Design</span>
+                            <span class="timeline-tag">Team Collaboration</span>
+                            <span class="timeline-tag">Industry Training</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+     
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="section-title">Explore My Projects</h2>
+            <p style="color: var(--gray-light); font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                See how I've applied these skills and experiences in real game projects
+            </p>
+            <div class="cta-buttons">
+                <a href="projects.html" class="btn btn-primary" id="btnProjects">View Portfolio</a>
+                <a href="contact.html" class="btn" id="btnContact">Contact Me</a>
+            </div>
+        </section>
     </div>
 
     <footer class="footer-main">
-        <p>Copyright © 2020-2024 Federico Del Gaudio</p>
+        <p>© 2025 Federico Del Gaudio | Game Design Portfolio</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 25;
+        // Timeline animation on scroll
+        function animateTimeline() {
+            const timelineLine = document.getElementById('timelineProgress');
+            const timelineItems = [
+                document.getElementById('timelineItem1'),
+                document.getElementById('timelineItem2'),
+                document.getElementById('timelineItem3')
+            ];
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random properties
-                const size = Math.random() * 15 + 3;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const animationDuration = Math.random() * 20 + 10;
-                const animationDelay = Math.random() * 5;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.animationDuration = `${animationDuration}s`;
-                particle.style.animationDelay = `${animationDelay}s`;
-                
-                particlesContainer.appendChild(particle);
+            const markers = [
+                document.getElementById('marker1'),
+                document.getElementById('marker2'),
+                document.getElementById('marker3')
+            ];
+            
+            const skillCards = [
+                document.getElementById('skillCard1'),
+                document.getElementById('skillCard2'),
+                document.getElementById('skillCard3')
+            ];
+            
+            const buttons = [
+                document.getElementById('btnProjects'),
+                document.getElementById('btnContact')
+            ];
+            
+            // Check if elements are in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight * 0.85) &&
+                    rect.bottom >= (window.innerHeight * 0.15)
+                );
             }
-        }
-        
-        // Initialize AOS and particles
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100
+            
+            // Animate timeline line
+            if (timelineLine && isInViewport(timelineLine)) {
+                timelineLine.classList.add('progress');
+            }
+            
+            // Animate timeline items and markers
+            timelineItems.forEach((item, index) => {
+                if (item && isInViewport(item)) {
+                    item.classList.add('visible');
+                    if (markers[index]) {
+                        markers[index].classList.add('visible');
+                    }
+                }
             });
             
-            createParticles();
+            // Animate skill cards
+            skillCards.forEach(card => {
+                if (card && isInViewport(card)) {
+                    card.classList.add('visible');
+                }
+            });
+            
+            // Animate buttons
+            buttons.forEach(btn => {
+                if (btn && isInViewport(btn)) {
+                    btn.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initialize on load and scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            animateTimeline(); // Check on load
+            
+            window.addEventListener('scroll', () => {
+                animateTimeline();
+            });
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add initial animation delay for timeline markers
+            setTimeout(() => {
+                const markers = document.querySelectorAll('.timeline-marker');
+                markers.forEach((marker, index) => {
+                    setTimeout(() => {
+                        if (marker.classList.contains('visible')) {
+                            marker.style.transitionDelay = `${index * 0.3}s`;
+                        }
+                    }, 100);
+                });
+            }, 500);
         });
     </script>
 </body>

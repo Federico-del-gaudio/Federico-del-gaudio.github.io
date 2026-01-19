@@ -6,8 +6,7 @@
     <title>Projects | Federico Del Gaudio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         * {
             margin: 0;
@@ -17,14 +16,11 @@
         }
         
         :root {
-            --primary: #2c3e50;
-            --secondary: #7f8c8d;
             --dark: #1a1a1a;
             --darker: #0d0d0d;
             --light: #f5f5f5;
             --gray-light: #e0e0e0;
             --gray-medium: #95a5a6;
-            --gray-dark: #2c3e50;
             --border-color: rgba(255, 255, 255, 0.1);
             --card-bg: rgba(30, 30, 30, 0.7);
         }
@@ -33,8 +29,8 @@
             background: var(--darker);
             color: var(--light);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            overflow: hidden;
+            touch-action: pan-y;
         }
         
         /* Navigation Bar */
@@ -116,278 +112,183 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--light);
+            z-index: 1001;
         }
         
-        /* Projects Header */
-        .projects-header {
-            padding: 140px 50px 80px;
+        /* Main Swiper Container */
+        .swiper-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding-top: 80px;
+        }
+        
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            width: 85%;
             max-width: 1400px;
             margin: 0 auto;
-            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
         }
         
-        .projects-title {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 25px;
+        /* ========== GESTIONE OPACITÀ ========== */
+        /* Slide non attive: opacità ridotta */
+        .swiper-slide:not(.swiper-slide-active) {
+            opacity: 0.5 !important;
         }
         
-        .projects-title::after {
-            content: '';
+        /* Slide attiva: opacità completa */
+        .swiper-slide-active {
+            opacity: 1 !important;
+        }
+        
+        /* Slide successiva: preparazione per transizione */
+        .swiper-slide-next {
+            opacity: 0.7 !important;
+        }
+        
+        /* ========== FINE GESTIONE OPACITÀ ========== */
+        
+        /* Video Background */
+        .slide-bg-video {
             position: absolute;
-            bottom: 0;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--light);
-        }
-        
-        .projects-subtitle {
-            font-size: 1.3rem;
-            color: var(--gray-light);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-        
-        /* Projects Grid */
-        .projects-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px 80px;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 40px;
-        }
-        
-        /* Modern Card Style */
-        .project-card {
-            background: linear-gradient(145deg, rgba(35, 35, 35, 0.9), rgba(25, 25, 25, 0.9));
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Card Image Container with Gradient Overlay */
-        .project-image-wrapper {
-            position: relative;
-            overflow: hidden;
-            height: 240px;
-            background: linear-gradient(45deg, #1a1a1a, #2c3e50);
-        }
-        
-        .project-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             z-index: 1;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
         }
         
-        .project-image {
+        /* Dark Overlay */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: brightness(0.9);
-        }
-        
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-            filter: brightness(1);
-        }
-        
-        /* Engine Badge */
-        .engine-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--light);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
             z-index: 2;
-            display: flex;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* Slide Content Container */
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            padding: 120px 50px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: opacity 0.5s ease;
         }
         
-        .engine-icon {
-            font-size: 1.1rem;
+        /* Left Column - Project Info */
+        .left-column {
+            padding-right: 20px;
         }
         
-        /* Card Content */
-        .project-content {
-            padding: 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Project Title with Accent Line */
-        .project-header {
-            margin-bottom: 20px;
-            position: relative;
+        .project-category {
+            font-size: 0.9rem;
+            color: var(--gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         
         .project-title {
-            font-size: 2.1rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             color: var(--light);
-            margin-bottom: 15px;
-            line-height: 1.2;
-            letter-spacing: 0.5px;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
         }
         
-        .project-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--light);
-            transition: width 0.3s ease;
-        }
-        
-        .project-card:hover .project-title::after {
-            width: 60px;
-        }
-        
-        /* Project Description */
-        .project-description {
-            color: var(--gray-light);
-            line-height: 1.7;
-            margin-bottom: 25px;
-            flex: 1;
-            font-weight: 300;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-        }
-        
-        /* Tech Tags - Modern Style */
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-        
-        .project-tag {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--gray-light);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover .project-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        /* Project Metadata */
-        .project-metadata {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .metadata-item {
-            text-align: center;
-        }
-        
-        .metadata-value {
+        .project-year {
             font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--light);
-            margin-bottom: 5px;
+            color: var(--gray-light);
+            margin-bottom: 30px;
+            font-weight: 400;
         }
         
-        .metadata-label {
-            font-size: 0.8rem;
-            color: var(--gray-medium);
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 500px;
+        }
+        
+        .task-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        /* Button - Modern Style */
-        .project-button {
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-list li {
+            color: var(--gray-light);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .task-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--light);
+            font-size: 1.2rem;
+        }
+        
+        .cta-button {
             display: inline-block;
-            padding: 14px 30px;
+            padding: 16px 35px;
             background: transparent;
             color: var(--light);
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             border: 2px solid var(--light);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 0.9rem;
-            text-align: center;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            width: 100%;
         }
         
-        .project-button::before {
+        .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
@@ -395,66 +296,425 @@
             width: 100%;
             height: 100%;
             background: var(--light);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             z-index: -1;
         }
         
-        .project-button:hover {
+        .cta-button:hover {
             color: var(--dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .project-button:hover::before {
+        .cta-button:hover::before {
             left: 0;
+        }
+        
+        /* Right Column - Gameplay Preview */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gameplay-preview {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gameplay-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gameplay-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gameplay-preview:hover .gameplay-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: var(--light);
+        }
+        
+        .play-button i {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-left: 5px;
+        }
+        
+        /* Adjacent Slide Preview */
+        .slide-preview-left,
+        .slide-preview-right {
+            position: absolute;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+        }
+        
+        .slide-preview-left {
+            left: -25%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 30px;
+        }
+        
+        .slide-preview-right {
+            right: -25%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 30px;
+        }
+        
+        .preview-content {
+            width: 300px;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+        }
+        
+        .preview-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 10px;
+            opacity: 0.7;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        
+        .preview-video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0.4;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+        
+        /* Active state for preview */
+        .swiper-slide-active .slide-preview-left,
+        .swiper-slide-active .slide-preview-right {
+            opacity: 0.7 !important;
+        }
+        
+        .swiper-slide-active .slide-preview-left .preview-content,
+        .swiper-slide-active .slide-preview-right .preview-content {
+            transform: scale(1);
+        }
+        
+        .swiper-slide-active .slide-preview-left .preview-title {
+            transform: translateX(0);
+            opacity: 0.8;
+        }
+        
+        .swiper-slide-active .slide-preview-right .preview-title {
+            transform: translateX(0);
+            opacity: 0.8;
+        }
+        
+        .swiper-slide-active .slide-preview-left .preview-video {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        
+        .swiper-slide-active .slide-preview-right .preview-video {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        
+        /* Pagination Dots */
+        .swiper-pagination {
+            position: fixed !important;
+            left: 40px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: auto !important;
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin: 0 !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--light);
+            transform: scale(1.3);
+        }
+        
+        /* Navigation Arrows */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--light) !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.5rem !important;
+            font-weight: bold;
+        }
+        
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next {
+            right: 40px !important;
+        }
+        
+        .swiper-button-prev {
+            left: 40px !important;
+        }
+        
+        /* ========== NUOVA POSIZIONE PER PROGRESS BAR E COUNTER ========== */
+        /* Contenitore unificato per progress bar e counter */
+        .carousel-indicators {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 1002;
+            width: 220px;
+        }
+        
+        /* Progress Bar */
+        .swiper-progress {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        
+        .swiper-progress-bar {
+            height: 100%;
+            background: var(--light);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1px;
+        }
+        
+        /* Project Counter */
+        .project-counter {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-align: center;
+            min-width: 60px;
+        }
+        
+        /* ========== FINE NUOVA POSIZIONE ========== */
+        
+        /* Scroll Hint */
+        .scroll-hint {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gray-light);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1002;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+        
+        .scroll-hint i {
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+            40% {transform: translateX(5px);}
+            60% {transform: translateX(3px);}
         }
         
         /* Footer */
         .footer-main {
-            background: var(--darker);
-            padding: 25px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px;
             text-align: center;
             color: var(--gray-light);
-            font-size: 1rem;
+            font-size: 0.9rem;
+            z-index: 1001;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
             border-top: 1px solid var(--border-color);
-            letter-spacing: 1px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 13, 13, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .mobile-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1000;
         }
         
         /* Responsive Design */
+        @media (max-width: 1400px) {
+            .slide-preview-left,
+            .slide-preview-right {
+                display: none;
+            }
+            
+            .swiper-slide {
+                width: 90%;
+            }
+        }
+        
         @media (max-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                gap: 35px;
+            .slide-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-top: 150px;
+            }
+            
+            .left-column {
+                padding-right: 0;
+            }
+            
+            .project-title {
+                font-size: 3rem;
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none !important;
+            }
+            
+            .scroll-hint {
+                bottom: 130px;
             }
         }
         
         @media (max-width: 992px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-                gap: 30px;
-            }
-            
-            .projects-title {
-                font-size: 3.5rem;
+            .slide-content {
+                padding: 150px 30px 50px;
             }
             
             .project-title {
-                font-size: 1.9rem;
+                font-size: 2.5rem;
             }
             
-            .project-image-wrapper {
-                height: 220px;
-            }
-            
-            .project-metadata {
-                grid-template-columns: repeat(3, 1fr);
-                padding: 15px;
+            .swiper-pagination {
+                left: 20px !important;
             }
         }
         
         @media (max-width: 768px) {
             nav {
-                padding: 15px 30px;
+                padding: 15px 20px;
             }
             
             .logo {
@@ -469,100 +729,94 @@
                 display: block;
             }
             
-            .projects-header {
-                padding: 120px 30px 60px;
+            .slide-content {
+                padding: 130px 20px 40px;
+                gap: 30px;
             }
             
-            .projects-section {
-                padding: 0 30px 60px;
+            .project-title {
+                font-size: 2.2rem;
             }
             
-            .projects-title {
-                font-size: 3rem;
+            .project-description {
+                font-size: 1rem;
             }
             
-            .projects-subtitle {
-                font-size: 1.1rem;
+            .swiper-pagination {
+                display: none !important;
             }
             
-            .projects-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 0 auto;
+            .scroll-hint {
+                display: none;
             }
             
-            .project-metadata {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+            .gameplay-preview {
+                max-width: 100%;
+            }
+            
+            .carousel-indicators {
+                bottom: 75px;
+                width: 180px;
+            }
+            
+            .footer-main {
+                padding: 20px 15px;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
+            
+            .mobile-menu.active {
+                display: flex;
             }
         }
         
         @media (max-width: 576px) {
-            .projects-header {
-                padding: 120px 20px 50px;
+            .project-title {
+                font-size: 2rem;
             }
             
-            .projects-section {
-                padding: 0 20px 50px;
+            .cta-button {
+                padding: 14px 25px;
+                font-size: 0.8rem;
             }
             
-            .projects-title {
-                font-size: 2.5rem;
+            .carousel-indicators {
+                width: 150px;
+                bottom: 70px;
+            }
+            
+            .footer-main {
+                padding: 18px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide-content {
+                padding: 120px 15px 30px;
             }
             
             .project-title {
                 font-size: 1.8rem;
             }
             
-            .project-image-wrapper {
-                height: 200px;
-            }
-            
-            .project-content {
-                padding: 25px;
-            }
-            
-            .project-button {
-                padding: 12px 25px;
-                font-size: 0.9rem;
-            }
-            
-            .project-metadata {
-                grid-template-columns: repeat(3, 1fr);
-                padding: 15px;
-                gap: 10px;
-            }
-            
-            .metadata-value {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .projects-title {
-                font-size: 2.2rem;
-            }
-            
-            .projects-subtitle {
+            .project-year {
                 font-size: 1rem;
             }
             
-            .project-title {
-                font-size: 1.7rem;
+            .section-title {
+                font-size: 1.1rem;
             }
             
-            .project-description {
-                font-size: 0.95rem;
+            .carousel-indicators {
+                width: 120px;
+                bottom: 65px;
             }
             
-            .project-tag {
+            .project-counter {
                 font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-            
-            .project-metadata {
-                grid-template-columns: 1fr;
-                gap: 15px;
             }
         }
     </style>
@@ -581,172 +835,532 @@
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Projects Header -->
-    <header class="projects-header" data-aos="fade-down">
-        <h1 class="projects-title">Academic Projects</h1>
-        <p class="projects-subtitle">Team-based projects developed during academy training, focusing on collaborative game development and production pipelines</p>
-    </header>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
     
-    <!-- Projects Grid -->
-    <main class="projects-section">
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image-wrapper">
-                    <img src="Photos/patch me if you can.png" alt="Patch me if you can" class="project-image">
-                    <div class="engine-badge">
-                        <i class="fab fa-unity engine-icon"></i>
-                        <span>Unity</span>
+    <!-- Main Swiper Container -->
+    <div class="swiper-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1: Tears of Ash -->
+                <div class="swiper-slide">
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="slide-overlay"></div>
+                    
+                    <!-- Left Preview -->
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">The Sun Vanished</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Preview -->
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">Pummel</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">Horror Game</div>
+                            <h1 class="project-title">Tears of Ash</h1>
+                            <div class="project-year">2024</div>
+                            <p class="project-description">
+                                Step into a chilling horror experience inspired by P.T., where memories, dreams, reality, and guilt blend into a twisted nightmare.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Task Overview</h3>
+                                <ul class="task-list">
+                                    <li>Level design and environmental storytelling</li>
+                                    <li>Atmosphere creation and lighting setup</li>
+                                    <li>Puzzle system implementation</li>
+                                    <li>Sound design and audio integration</li>
+                                    <li>Team coordination and project management</li>
+                                </ul>
+                            </div>
+                            <a href="TearsOfAsh.html" class="cta-button">My Contributions</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/project3.jpg">
+                                    <source src="Videos/tears-of-ash-gameplay.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">Patch me if you can</h3>
-                    </div>
+                <!-- Slide 2: Pummel -->
+                <div class="swiper-slide">
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="slide-overlay"></div>
                     
-                    <p class="project-description">
-                        A fast-paced FPS where players use a magical needle-shooting rifle to purify possessed dolls. Features dynamic combat, enemy AI, and an eerie atmospheric setting developed as a team project.
-                    </p>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">FPS</span>
-                        <span class="project-tag">AI Behavior</span>
-                        <span class="project-tag">Shooting Mechanics</span>
-                        <span class="project-tag">Team Work</span>
-                        <span class="project-tag">Level Design</span>
-                    </div>
-                    
-                    <div class="project-metadata">
-                        <div class="metadata-item">
-                            <div class="metadata-value">Game Designer</div>
-                            <div class="metadata-label">Role</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">4</div>
-                            <div class="metadata-label">Team Size</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">3 Months</div>
-                            <div class="metadata-label">Duration</div>
+                    <!-- Left Preview -->
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">Tears of Ash</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                     
-                    <a href="Patchmeifyoucan.html" class="project-button">View Project Details</a>
+                    <!-- Right Preview -->
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">The Bubble</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">2D Action Game</div>
+                            <h1 class="project-title">Pummel</h1>
+                            <div class="project-year">2024</div>
+                            <p class="project-description">
+                                Exploration of PaperZD plugin for UE5 with focus on flipbook animations, dynamic combat systems, and comprehensive gameplay mechanics.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Task Overview</h3>
+                                <ul class="task-list">
+                                    <li>PaperZD plugin integration and animation workflow</li>
+                                    <li>Combo system design and implementation</li>
+                                    <li>Enemy AI behavior programming</li>
+                                    <li>2D animation state machine setup</li>
+                                    <li>Damage and health system development</li>
+                                </ul>
+                            </div>
+                            <a href="Pummel.html" class="cta-button">My Contributions</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/project1.jpg">
+                                    <source src="Videos/VideoPummel.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </article>
+                
+                <!-- Slide 3: The Bubble -->
+                <div class="swiper-slide">
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="slide-overlay"></div>
+                    
+                    <!-- Left Preview -->
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">Pummel</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/pummel-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Preview -->
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">Project A</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/project-a-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">Sci-Fi Horror</div>
+                            <h1 class="project-title">The Bubble</h1>
+                            <div class="project-year">2023</div>
+                            <p class="project-description">
+                                A sci-fi horror experience set aboard a spaceship trapped by an alien force field, focusing on environmental storytelling and atmospheric tension.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Task Overview</h3>
+                                <ul class="task-list">
+                                    <li>Environmental storytelling and level design</li>
+                                    <li>Atmospheric lighting and sound design</li>
+                                    <li>Survival mechanics implementation</li>
+                                    <li>Team collaboration and asset integration</li>
+                                    <li>Puzzle and progression system design</li>
+                                </ul>
+                            </div>
+                            <a href="Thebubble.html" class="cta-button">My Contributions</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/THE BUBBLE COVER.png">
+                                    <source src="Videos/the-bubble-gameplay.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Project A -->
+                <div class="swiper-slide">
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/project-a-bg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="slide-overlay"></div>
+                    
+                    <!-- Left Preview -->
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">The Bubble</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/the-bubble-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Preview -->
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">The Sun Vanished</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">Combat Design Project</div>
+                            <h1 class="project-title">Project A</h1>
+                            <div class="project-year">2023</div>
+                            <p class="project-description">
+                                Three-month intensive focus on Souls-like combat design, featuring complex animation systems, enemy AI, and responsive gameplay mechanics.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Task Overview</h3>
+                                <ul class="task-list">
+                                    <li>Souls-like combat system implementation</li>
+                                    <li>Root motion animation and character rigging</li>
+                                    <li>Enemy AI with custom attack behaviors</li>
+                                    <li>Boss fight design with phase transitions</li>
+                                    <li>Niagara effects and visual feedback systems</li>
+                                </ul>
+                            </div>
+                            <a href="Project A.html" class="cta-button">My Contributions</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/Projecta photy.png">
+                                    <source src="Videos/ProgWIP.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: The Sun Vanished -->
+                <div class="swiper-slide">
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/sun-vanished-bg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="slide-overlay"></div>
+                    
+                    <!-- Left Preview -->
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">Project A</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/project-a-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Preview -->
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">Tears of Ash</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/tears-of-ash-bg.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">Horror Prototype</div>
+                            <h1 class="project-title">The Sun Vanished</h1>
+                            <div class="project-year">2023</div>
+                            <p class="project-description">
+                                A horror prototype where the sun has vanished, forcing navigation through LiDAR scanning while avoiding creatures with formidable hearing.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Task Overview</h3>
+                                <ul class="task-list">
+                                    <li>LiDAR scanning system implementation</li>
+                                    <li>Sound-based enemy AI behavior</li>
+                                    <li>Atmospheric horror environment design</li>
+                                    <li>Navigation and exploration mechanics</li>
+                                    <li>Prototype development and testing</li>
+                                </ul>
+                            </div>
+                            <a href="TheSunVanished.html" class="cta-button">My Contributions</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/TheSunVanishedPorrtfolio.png">
+                                    <source src="Videos/sun-vanished-gameplay.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <!-- Project 2 -->
-            <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-image-wrapper">
-                    <img src="Photos/RagnaraftLogo.png" alt="Ragnaraft" class="project-image">
-                    <div class="engine-badge">
-                        <i class="fab fa-unity engine-icon"></i>
-                        <span>Unity</span>
-                    </div>
-                </div>
-                
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">Ragnaraft</h3>
-                    </div>
-                    
-                    <p class="project-description">
-                        A humorous story-driven game about two Viking friends navigating a river full of obstacles. Focuses on puzzle-solving mechanics, character interactions, and narrative-driven gameplay.
-                    </p>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Puzzle Game</span>
-                        <span class="project-tag">Story-Driven</span>
-                        <span class="project-tag">Mobile</span>
-                        <span class="project-tag">Character Design</span>
-                        <span class="project-tag">2D Game</span>
-                    </div>
-                    
-                    <div class="project-metadata">
-                        <div class="metadata-item">
-                            <div class="metadata-value">Level Designer</div>
-                            <div class="metadata-label">Role</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">5</div>
-                            <div class="metadata-label">Team Size</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">2 Months</div>
-                            <div class="metadata-label">Duration</div>
-                        </div>
-                    </div>
-                    
-                    <a href="Ragnaraft.html" class="project-button">View Project Details</a>
-                </div>
-            </article>
+            <!-- Navigation arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
             
-            <!-- Project 3 -->
-            <article class="project-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-image-wrapper">
-                    <img src="Photos/THE BUBBLE COVER.png" alt="The Bubble" class="project-image">
-                    <div class="engine-badge">
-                        <i class="fab fa-unity engine-icon"></i>
-                        <span>Unity</span>
-                    </div>
-                </div>
-                
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">The Bubble</h3>
-                    </div>
-                    
-                    <p class="project-description">
-                        A sci-fi horror experience set aboard a spaceship trapped by an alien force field. Focuses on environmental storytelling, atmospheric tension, and survival mechanics.
-                    </p>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Sci-Fi Horror</span>
-                        <span class="project-tag">3D Environment</span>
-                        <span class="project-tag">Atmospheric</span>
-                        <span class="project-tag">Survival</span>
-                        <span class="project-tag">Horror</span>
-                    </div>
-                    
-                    <div class="project-metadata">
-                        <div class="metadata-item">
-                            <div class="metadata-value">Environment Artist</div>
-                            <div class="metadata-label">Role</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">6</div>
-                            <div class="metadata-label">Team Size</div>
-                        </div>
-                        <div class="metadata-item">
-                            <div class="metadata-value">4 Months</div>
-                            <div class="metadata-label">Duration</div>
-                        </div>
-                    </div>
-                    
-                    <a href="Thebubble.html" class="project-button">View Project Details</a>
-                </div>
-            </article>
+            <!-- Pagination dots -->
+            <div class="swiper-pagination"></div>
         </div>
-    </main>
-
+    </div>
+    
+    <!-- Nuovo container unificato per progress bar e counter -->
+    <div class="carousel-indicators">
+        <div class="swiper-progress">
+            <div class="swiper-progress-bar"></div>
+        </div>
+        <div class="project-counter">
+            <span class="current-slide">01</span> / <span class="total-slides">05</span>
+        </div>
+    </div>
+    
+    <!-- Scroll Hint -->
+    <div class="scroll-hint">
+        <span>Scroll to navigate</span>
+        <i class="fas fa-arrow-right"></i>
+    </div>
+    
+    <!-- Footer -->
     <footer class="footer-main">
-        <p>Copyright © 2020-2024 Federico Del Gaudio</p>
+        <p>Copyright © 2020-2025 Federico Del Gaudio</p>
     </footer>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize AOS
         document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100
+            // Initialize Swiper con configurazione semplice e funzionante
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                loop: true,
+                speed: 1000,
+                spaceBetween: 50,
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                
+                // Mousewheel funzionante
+                mousewheel: {
+                    enabled: true,
+                    forceToAxis: true,
+                    sensitivity: 0.5,
+                    releaseOnEdges: false,
+                    eventsTarget: '.swiper-container',
+                    thresholdDelta: 20,
+                },
+                
+                // Free mode disabilitato
+                freeMode: false,
+                
+                // Keyboard control
+                keyboard: {
+                    enabled: true,
+                },
+                
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                
+                // Pagination dots
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    type: 'bullets',
+                },
+                
+                // Slide effect
+                effect: 'slide',
+                slideToClickedSlide: true,
+                threshold: 15,
+                touchRatio: 0.8,
+                touchAngle: 45,
+                grabCursor: true,
+                resistanceRatio: 0.7,
+                longSwipesRatio: 0.1,
+                
+                // BREAKPOINTS
+                breakpoints: {
+                    1400: {
+                        spaceBetween: 40,
+                    },
+                    1200: {
+                        spaceBetween: 30,
+                    },
+                    768: {
+                        spaceBetween: 20,
+                        mousewheel: {
+                            sensitivity: 0.4
+                        }
+                    }
+                }
+            });
+            
+            // Aggiorna progress bar
+            const progressBar = document.querySelector('.swiper-progress-bar');
+            const updateProgressBar = () => {
+                const totalSlides = 5; // 5 slide totali
+                const realIndex = swiper.realIndex;
+                const progress = (realIndex / (totalSlides - 1)) * 100;
+                progressBar.style.width = `${progress}%`;
+            };
+            
+            // Update project counter
+            const currentSlideEl = document.querySelector('.current-slide');
+            const totalSlidesEl = document.querySelector('.total-slides');
+            
+            const updateCounter = () => {
+                const realIndex = swiper.realIndex + 1;
+                currentSlideEl.textContent = realIndex.toString().padStart(2, '0');
+                totalSlidesEl.textContent = '05';
+            };
+            
+            // Initialize
+            updateProgressBar();
+            updateCounter();
+            
+            // Update on slide change
+            swiper.on('slideChange', () => {
+                updateProgressBar();
+                updateCounter();
+                
+                // Rimuovi le classi CSS problematiche che nascondono i testi
+                document.querySelectorAll('.swiper-slide').forEach(slide => {
+                    const content = slide.querySelector('.slide-content');
+                    if (content) {
+                        // Rimuovi qualsiasi opacità impostata via JS
+                        content.style.opacity = '';
+                        content.style.transform = '';
+                    }
+                    
+                    // Ripristina la visibilità di tutti i testi nella slide
+                    const textElements = slide.querySelectorAll('.left-column > *, .right-column > *');
+                    textElements.forEach(el => {
+                        el.style.opacity = '';
+                        el.style.transform = '';
+                    });
+                });
+                
+                // Attiva la slide corrente
+                const activeSlide = swiper.slides[swiper.activeIndex];
+                if (activeSlide) {
+                    const activeContent = activeSlide.querySelector('.slide-content');
+                    if (activeContent) {
+                        activeContent.style.opacity = '1';
+                    }
+                }
+            });
+            
+            // Play button functionality for gameplay videos
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const video = this.closest('.gameplay-preview').querySelector('.gameplay-video');
+                    const overlay = this.closest('.gameplay-overlay');
+                    
+                    if (video.paused) {
+                        video.play();
+                        overlay.style.opacity = '0';
+                        this.style.opacity = '0';
+                    } else {
+                        video.pause();
+                        overlay.style.opacity = '1';
+                        this.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Pause video when switching slides
+            swiper.on('slideChangeTransitionStart', () => {
+                document.querySelectorAll('.gameplay-video').forEach(video => {
+                    video.pause();
+                    const overlay = video.closest('.gameplay-preview').querySelector('.gameplay-overlay');
+                    const playButton = overlay.querySelector('.play-button');
+                    if (overlay && playButton) {
+                        overlay.style.opacity = '1';
+                        playButton.style.opacity = '1';
+                    }
+                });
             });
             
             // Add active class to navigation
             const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a');
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
             
             navLinks.forEach(link => {
                 const linkPage = link.getAttribute('href');
@@ -755,44 +1369,53 @@
                 }
             });
             
-            // Enhanced hover effects with parallax
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateY = (x - centerX) / 25;
-                    const rotateX = (centerY - y) / 25;
-                    
-                    this.style.transform = `translateY(-12px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1) rotateX(0) rotateY(0)';
-                    this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                });
-                
-                card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            // Mobile menu toggle
+            const hamburg = document.getElementById('hamburg');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            
+            hamburg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Close mobile menu when clicking on a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 });
             });
             
-            // Button hover effect
-            const projectButtons = document.querySelectorAll('.project-button');
-            projectButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mobileMenu.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !hamburg.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             });
+            
+            // Assicurati che tutti i testi siano visibili all'inizio
+            setTimeout(() => {
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                if (activeSlide) {
+                    const content = activeSlide.querySelector('.slide-content');
+                    if (content) {
+                        content.style.opacity = '1';
+                    }
+                }
+            }, 100);
+            
+            console.log('Swiper inizializzato: scroll mouse funzionante, testi visibili, counter 05');
         });
     </script>
 </body>
