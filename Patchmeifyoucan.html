@@ -106,13 +106,59 @@
             color: var(--light);
         }
         
-        /* Project Header */
+        /* Project Header with Background Image */
         .project-header {
-            padding: 140px 50px 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
+            padding: 180px 50px 120px;
             position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) contrast(1.1);
+            z-index: -1;
+        }
+        
+        /* Gradient overlay that fades to background color */
+        .header-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to bottom, transparent 0%, var(--darker) 100%);
+            z-index: 0;
+        }
+        
+        /* Additional overlay for smoother transition */
+        .header-overlay {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(13, 13, 13, 0) 0%, var(--darker) 100%);
+            z-index: 1;
         }
         
         .project-title {
@@ -121,6 +167,9 @@
             color: var(--light);
             margin-bottom: 15px;
             letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
         }
         
         .project-subtitle {
@@ -128,20 +177,32 @@
             color: var(--gray-light);
             margin-bottom: 25px;
             font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
         
         .project-meta {
             display: inline-block;
             padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 1.2rem;
             color: var(--light);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .project-meta:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
         }
         
         .project-meta span {
-            color: var(--gray-medium);
+            color: var(--gray-light);
         }
         
         /* Main Content Layout */
@@ -149,8 +210,11 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 50px 80px;
+            position: relative;
+            z-index: 3;
         }
         
+        /* Content grid rest stays the same... */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -164,6 +228,7 @@
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
         
         .section-title {
@@ -205,6 +270,7 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
         }
         
         .trailer-container {
@@ -328,6 +394,7 @@
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
         }
         
         .gallery-grid {
@@ -370,6 +437,7 @@
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
         }
         
         .contributions-grid {
@@ -417,6 +485,7 @@
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
         
         .design-grid {
@@ -702,11 +771,19 @@
         /* Responsive Design */
         @media (max-width: 1200px) {
             .project-main, .project-header {
-                padding: 140px 30px 60px;
+                padding: 180px 30px 120px;
             }
             
             .content-grid {
                 gap: 40px;
+            }
+            
+            .header-gradient {
+                height: 250px;
+            }
+            
+            .header-overlay {
+                height: 120px;
             }
         }
         
@@ -725,6 +802,14 @@
             
             .action-buttons {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header-gradient {
+                height: 200px;
+            }
+            
+            .header-overlay {
+                height: 100px;
             }
         }
         
@@ -746,7 +831,8 @@
             }
             
             .project-header {
-                padding: 120px 20px 50px;
+                padding: 160px 20px 100px;
+                min-height: 70vh;
             }
             
             .project-main {
@@ -788,6 +874,14 @@
                 height: 50px;
                 font-size: 1.2rem;
             }
+            
+            .header-gradient {
+                height: 180px;
+            }
+            
+            .header-overlay {
+                height: 80px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -819,6 +913,19 @@
                 padding: 14px 20px;
                 font-size: 0.85rem;
             }
+            
+            .project-header {
+                padding: 140px 20px 80px;
+                min-height: 60vh;
+            }
+            
+            .header-gradient {
+                height: 150px;
+            }
+            
+            .header-overlay {
+                height: 60px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -845,6 +952,42 @@
                 height: 40px;
                 font-size: 1rem;
             }
+            
+            .header-gradient {
+                height: 120px;
+            }
+            
+            .header-overlay {
+                height: 50px;
+            }
+        }
+        
+        /* Animation for smooth loading */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .project-title, .project-subtitle, .project-meta {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .project-title {
+            animation-delay: 0.2s;
+        }
+        
+        .project-subtitle {
+            animation-delay: 0.4s;
+        }
+        
+        .project-meta {
+            animation-delay: 0.6s;
         }
     </style>
 </head>
@@ -862,8 +1005,13 @@
         <i class="fa-solid fa-bars hamburg"></i>
     </nav>
     
-    <!-- Project Header -->
+    <!-- Project Header with Background Image -->
     <header class="project-header">
+        <div class="header-background">
+            <img src="Photos/patch me if you can.png" alt="Patch Me If You Can Background" class="header-image">
+            <div class="header-gradient"></div>
+            <div class="header-overlay"></div>
+        </div>
         <h1 class="project-title">Patch Me If You Can</h1>
         <p class="project-subtitle">Fast-Paced FPS Academy Project</p>
         <div class="project-meta">Role: <span>Game Designer</span></div>
@@ -899,7 +1047,6 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                  
                     <a href="#design-details" class="action-button">
                         <i class="fa-solid fa-info"></i> Design Details
                     </a>
@@ -1105,31 +1252,6 @@
                 });
             }
             
-            // GDD Modal Functionality
-            const modal = document.getElementById('gddModal');
-            const gddButton = document.getElementById('gddButton');
-            const closeModal = document.querySelector('.close-modal');
-            
-            if (gddButton) {
-                gddButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                });
-            }
-            
-            if (closeModal) {
-                closeModal.addEventListener('click', function() {
-                    modal.style.display = 'none';
-                });
-            }
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -1231,17 +1353,23 @@
                 }
             });
             
-            // Build download link setup (replace with actual link)
-            const downloadBuildBtn = document.querySelector('.action-button.download');
-            if (downloadBuildBtn) {
-                // Replace with your actual build download link
-                // downloadBuildBtn.href = "https://your-actual-build-download-link.com";
-                // For now, it's set to a placeholder
-                downloadBuildBtn.addEventListener('click', function(e) {
-                    if (this.href.includes('your-build-link-here')) {
-                        e.preventDefault();
-                        alert('Please update the download link in the HTML code with your actual build URL.');
-                    }
+            // Parallax effect for header image on scroll
+            const headerImage = document.querySelector('.header-image');
+            if (headerImage) {
+                window.addEventListener('scroll', function() {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.3;
+                    headerImage.style.transform = `translate3d(0, ${rate}px, 0)`;
+                });
+            }
+            
+            // Mobile menu toggle functionality
+            const hamburg = document.querySelector('.hamburg');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburg && navLinks) {
+                hamburg.addEventListener('click', function() {
+                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
                 });
             }
         });

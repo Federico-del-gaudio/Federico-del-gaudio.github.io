@@ -226,6 +226,34 @@
             letter-spacing: 2px;
             margin-bottom: 15px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Loghi Engine */
+        .engine-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            width: auto;
+            vertical-align: middle;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .engine-logo:hover {
+            opacity: 1;
+        }
+        
+        .unity-logo {
+            height: 18px;
+        }
+        
+        .unreal-logo {
+            height: 20px;
         }
         
         .project-title {
@@ -750,6 +778,20 @@
             z-index: 1000;
         }
         
+        /* Video Shadow */
+        .video-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            background:
+                radial-gradient(closest-side, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
+                linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9));
+        }
+        
         /* Responsive Design */
         @media (max-width: 1400px) {
             .slide-preview-left,
@@ -798,6 +840,14 @@
             
             .swiper-pagination {
                 left: 20px !important;
+            }
+            
+            .engine-logo {
+                height: 18px;
+            }
+            
+            .unity-logo {
+                height: 16px;
             }
         }
         
@@ -880,6 +930,18 @@
                 padding-left: 30px;
                 font-size: 1.1rem;
             }
+            
+            .project-category {
+                font-size: 0.85rem;
+            }
+            
+            .engine-logo {
+                height: 16px;
+            }
+            
+            .unity-logo {
+                height: 14px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -916,6 +978,18 @@
             .slide-content a {
                 position: relative;
                 z-index: 50;
+            }
+            
+            .project-category {
+                font-size: 0.8rem;
+            }
+            
+            .engine-logo {
+                height: 14px;
+            }
+            
+            .unity-logo {
+                height: 12px;
             }
         }
         
@@ -1010,19 +1084,6 @@
                 display: block;
             }
         }
-
-        .video-shadow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 150%;
-            height: 100%;
-            z-index: 3;
-            pointer-events: none;
-            background:
-                radial-gradient(closest-side, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
-                linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9));
-        }
     </style>
 </head>
 <body>
@@ -1065,7 +1126,6 @@
                     <!-- Left Preview -->
                     <div class="slide-preview-left">
                         <div class="preview-content">
-                          
                             <div class="preview-title">The Last Coin</div>
                             <img src="Photos/LastCoin.png" alt="The Last Coin" class="preview-image">
                         </div>
@@ -1081,9 +1141,11 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Academic Project • FPS Game  <i class="fab fa-unity"></i>  </div>
+                            <div class="project-category">Academic Project • FPS Game 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/2560px-Unity_Technologies_logo.svg.png" alt="Unity" class="engine-logo unity-logo">
+                            </div>
                             <h1 class="project-title">Patch me if you can</h1>
-                            <div class="project-year">2025 • 2 Months </div>
+                            <div class="project-year">2025 • 2 Months</div>
                             <p class="project-description">
                                 A fast-paced FPS where players use a magical needle-shooting rifle to purify possessed dolls. Features dynamic combat, enemy AI, and an eerie atmospheric setting developed as a team project.
                             </p>
@@ -1093,13 +1155,11 @@
                                     <li>Game and combat system design</li>
                                     <li>Enemy AI design</li>
                                     <li>Shooting mechanics design</li>
-                                    <li>Team work </li>
-                                    
+                                    <li>Team work</li>
                                 </ul>
                             </div>
                             <a href="Patchmeifyoucan.html" class="cta-button">My Contributions</a>
                         </div>
-                       
                     </div>
                 </div>
                 
@@ -1130,7 +1190,9 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Academic Project • Puzzle Game  <i class="fab fa-unity"></i></div>
+                            <div class="project-category">Academic Project • Puzzle Game 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/2560px-Unity_Technologies_logo.svg.png" alt="Unity" class="engine-logo unity-logo">
+                            </div>
                             <h1 class="project-title">Ragnaraft</h1>
                             <div class="project-year">2024 • 2 Months</div>
                             <p class="project-description">
@@ -1148,7 +1210,6 @@
                             </div>
                             <a href="Ragnaraft.html" class="cta-button">My Contributions</a>
                         </div>
-                      
                     </div>
                 </div>
                 
@@ -1165,20 +1226,21 @@
                     <div class="slide-preview-left">
                         <div class="preview-content">
                             <div class="preview-title">Ragnaraft</div>
-                           
                         </div>
                     </div>
                     
                     <!-- Right Preview -->
                     <div class="slide-preview-right">
                         <div class="preview-content">
-                            <div class="preview-title">Patch me if you can</div> 
+                            <div class="preview-title">Patch me if you can</div>
                         </div>
                     </div>
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Game Jam • Horror Experience  <i class="fab devicon-unrealengine-original"></i></div>
+                            <div class="project-category">Game Jam • Horror Experience 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
                             <h1 class="project-title">The Last Coin</h1>
                             <div class="project-year">2025 • 1 Week</div>
                             <p class="project-description">
@@ -1196,9 +1258,6 @@
                             </div>
                             <a href="TheLastCoin.html" class="cta-button">My Contributions</a>
                         </div>
-                        <div class="right-column">
-                            
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1206,9 +1265,6 @@
             <!-- Navigation arrows -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            
-            <!-- Pagination dots -->
-          <!--   <div class="swiper-pagination"></div> -->
         </div>
     </div>
     
@@ -1378,7 +1434,7 @@
             // Aggiorna progress bar
             const progressBar = document.querySelector('.swiper-progress-bar');
             const updateProgressBar = () => {
-                const totalSlides = 3; // Modificato da 5 a 3
+                const totalSlides = 3;
                 const realIndex = ((swiper.realIndex % 3) + 3) % 3;
                 const progress = (realIndex / (totalSlides - 1)) * 100;
                 progressBar.style.width = `${progress}%`;
@@ -1389,9 +1445,9 @@
             const totalSlidesEl = document.querySelector('.total-slides');
             
             const updateCounter = () => {
-                const realIndex = ((swiper.realIndex % 3) + 3) % 3; // Modificato da 5 a 3
+                const realIndex = ((swiper.realIndex % 3) + 3) % 3;
                 currentSlideEl.textContent = (realIndex + 1).toString().padStart(2, '0');
-                totalSlidesEl.textContent = '03'; // Modificato da '05' a '03'
+                totalSlidesEl.textContent = '03';
             };
             
             // Initialize

@@ -128,8 +128,6 @@
             height: 100%;
             padding-top: 80px;
         }
-      
-
         
         .swiper-slide {
             position: relative;
@@ -163,22 +161,25 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
+            transform: translate(-50%, -50%) scale(1.02);
+            min-width: 100.5%;
+            min-height: 100.5%;
             width: auto;
             height: auto;
             z-index: 1;
             object-fit: cover;
             transition: opacity 0.5s ease;
+            box-shadow: 
+                inset 0 0 0 1px rgba(13, 13, 13, 0.3),
+                inset 0 0 0 2px rgba(13, 13, 13, 0.1);
         }
         
         /* Dark Overlay */
         .slide-overlay {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: -19px;
+            width: calc(100% + 29px);
             height: 100%;
             background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
             z-index: 2;
@@ -211,6 +212,34 @@
             letter-spacing: 2px;
             margin-bottom: 15px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Loghi Engine */
+        .engine-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            width: auto;
+            vertical-align: middle;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .engine-logo:hover {
+            opacity: 1;
+        }
+        
+        .unity-logo {
+            height: 18px;
+        }
+        
+        .unreal-logo {
+            height: 20px;
         }
         
         .project-title {
@@ -430,7 +459,6 @@
             transition: all 0.5s ease;
         }
         
-        
         /* Active state for preview */
         .swiper-slide-active .slide-preview-left,
         .swiper-slide-active .slide-preview-right {
@@ -461,57 +489,14 @@
             opacity: 0.6;
             transform: scale(1);
         }
-        /* Soft fade effect for all videos */
-/* Soluzione completa */
-.slide-bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.02);
-    min-width: 100.5%;
-    min-height: 100.5%;
-    width: auto;
-    height: auto;
-    z-index: 1;
-    object-fit: cover;
-    /* Bordo opaco integrato */
-    box-shadow: 
-        inset 0 0 0 1px rgba(13, 13, 13, 0.3),
-        inset 0 0 0 2px rgba(13, 13, 13, 0.1);
-}
-
-/* Modifica l'overlay esistente */
-.slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 101%; /* Aumenta la larghezza */
-    height: 100%;
-    background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
-    z-index: 2;
-    transition: opacity 0.5s ease;
-    /* Sposta leggermente per centrare */
-    transform: translateX(-0.5%);
-}
-
-/* Oppure con margin negativo per estendersi oltre */
-.slide-overlay {
-    position: absolute;
-    top: 0;
-    left: -19px; /* Estende a sinistra */
-    width: calc(100% + 29px); /* Estende a destra */
-    height: 100%;
-    background: linear-gradient(to right, rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.7));
-    z-index: 2;
-    transition: opacity 0.5s ease;
-}
-
-/* Add soft shadow to slide edges */
-.swiper-slide {
-    box-shadow: 
-        inset 50px 0 50px -20px rgba(13, 13, 13, 0.7),
-        inset -50px 0 50px -20px rgba(13, 13, 13, 0.7);
-}
+        
+        /* Soft shadow to slide edges */
+        .swiper-slide {
+            box-shadow: 
+                inset 50px 0 50px -20px rgba(13, 13, 13, 0.7),
+                inset -50px 0 50px -20px rgba(13, 13, 13, 0.7);
+        }
+        
         /* Pagination Dots */
         .swiper-pagination {
             position: fixed !important;
@@ -591,20 +576,21 @@
             z-index: 1002;
             width: 220px;
         }
+        
         .slide-content {
-    position: relative;
-    z-index: 20;
-    pointer-events: auto;
-}
-
-.swiper-slide {
-    pointer-events: none;
-}
-
-.swiper-slide-active {
-    pointer-events: auto;
-}
-
+            position: relative;
+            z-index: 20;
+            pointer-events: auto;
+        }
+        
+        .swiper-slide {
+            pointer-events: none;
+        }
+        
+        .swiper-slide-active {
+            pointer-events: auto;
+        }
+        
         /* Progress Bar */
         .swiper-progress {
             width: 100%;
@@ -712,23 +698,24 @@
             padding: 10px 20px;
             border-radius: 8px;
         }
+        
         .swiper {
-    touch-action: pan-y pan-x;
-}
-
+            touch-action: pan-y pan-x;
+        }
         
         .mobile-menu a:hover,
         .mobile-menu a.active {
             background: rgba(255, 255, 255, 0.1);
             transform: scale(1.05);
         }
+        
         .swiper-pagination-bullet {
-    opacity: 0.3;
-}
-.swiper-pagination-bullet-active {
-    opacity: 1;
-}
-
+            opacity: 0.3;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
         
         .close-menu {
             position: absolute;
@@ -738,6 +725,20 @@
             color: var(--light);
             cursor: pointer;
             z-index: 1000;
+        }
+        
+        /* Video Shadow */
+        .video-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            background:
+                radial-gradient(closest-side, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
+                linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9));
         }
         
         /* Responsive Design */
@@ -788,6 +789,14 @@
             
             .swiper-pagination {
                 left: 20px !important;
+            }
+            
+            .engine-logo {
+                height: 18px;
+            }
+            
+            .unity-logo {
+                height: 16px;
             }
         }
         
@@ -870,6 +879,18 @@
                 padding-left: 30px;
                 font-size: 1.1rem;
             }
+            
+            .project-category {
+                font-size: 0.85rem;
+            }
+            
+            .engine-logo {
+                height: 16px;
+            }
+            
+            .unity-logo {
+                height: 14px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -891,21 +912,34 @@
                 padding: 18px 12px;
                 font-size: 0.8rem;
             }
+            
             .swiper-slide {
-  height: 100vh;
-  overflow: visible;
-}
-
-.slide-content {
-  overflow: auto;
-  max-height: 100vh;
-  padding-bottom: 120px;
-}
-
-.slide-content a {
-  position: relative;
-  z-index: 50;
-}
+                height: 100vh;
+                overflow: visible;
+            }
+            
+            .slide-content {
+                overflow: auto;
+                max-height: 100vh;
+                padding-bottom: 120px;
+            }
+            
+            .slide-content a {
+                position: relative;
+                z-index: 50;
+            }
+            
+            .project-category {
+                font-size: 0.8rem;
+            }
+            
+            .engine-logo {
+                height: 14px;
+            }
+            
+            .unity-logo {
+                height: 12px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -933,21 +967,23 @@
             .project-counter {
                 font-size: 0.8rem;
             }
+            
             .swiper-slide {
-  height: 100vh;
-  overflow: visible;
-}
-
-.slide-content {
-  overflow: auto;
-  max-height: 100vh;
-  padding-bottom: 120px;
-}
-
-.slide-content a {
-  position: relative;
-  z-index: 50;
-}
+                height: 100vh;
+                overflow: visible;
+            }
+            
+            .slide-content {
+                overflow: auto;
+                max-height: 100vh;
+                padding-bottom: 120px;
+            }
+            
+            .slide-content a {
+                position: relative;
+                z-index: 50;
+            }
+            
             /* Mobile navigation arrows */
             .mobile-nav-arrows {
                 position: fixed;
@@ -975,7 +1011,7 @@
             }
         }
         
-        /* Mobile swipe indicator */
+        /* Mobile swipe hint */
         .mobile-swipe-hint {
             display: none;
             position: fixed;
@@ -997,21 +1033,6 @@
                 display: block;
             }
         }
-
-        .video-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 150%;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-
-  background:
-    radial-gradient(closest-side, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
-    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9));
-}
-
     </style>
 </head>
 <body>
@@ -1057,7 +1078,6 @@
                             <div class="preview-title">The Sun Vanished</div>
                             <video class="preview-video" muted loop playsinline>
                                 <source src="Videos/TrailerVanished .mp4" type="video/mp4">
-                                
                             </video>
                         </div>
                     </div>
@@ -1074,7 +1094,9 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Horror Game   </div>
+                            <div class="project-category">Horror Game 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
                             <h1 class="project-title">Tears of Ash</h1>
                             <div class="project-year">Scream jam • 2024</div>
                             <p class="project-description">
@@ -1092,7 +1114,6 @@
                             </div>
                             <a href="TearsOfAsh.html" class="cta-button">My Contributions</a>
                         </div>
-                       
                     </div>
                 </div>
                 
@@ -1127,7 +1148,9 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">2D Action Prototype</div>
+                            <div class="project-category">2D Action Prototype 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
                             <h1 class="project-title">Pummel</h1>
                             <div class="project-year">2024 • 3 Months</div>
                             <p class="project-description">
@@ -1145,7 +1168,6 @@
                             </div>
                             <a href="Pummel.html" class="cta-button">View Project</a>
                         </div>
-                    
                     </div>
                 </div>
                 
@@ -1172,16 +1194,16 @@
                     <div class="slide-preview-right">
                         <div class="preview-content">
                             <div class="preview-title">Project A</div>
-                            
                         </div>
                     </div>
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Sci-Fi Horror <i class="fab fa-unity"></i> </div> 
-                          
+                            <div class="project-category">Sci-Fi Horror 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/2560px-Unity_Technologies_logo.svg.png" alt="Unity" class="engine-logo unity-logo">
+                            </div>
                             <h1 class="project-title">The Bubble</h1>
-                            <div class="project-year">Global Game Jam • 2024 </div>
+                            <div class="project-year">Global Game Jam • 2024</div>
                             <p class="project-description">
                                 A sci-fi horror experience set aboard a spaceship trapped by an alien force field, focusing on environmental storytelling and atmospheric tension.
                             </p>
@@ -1197,7 +1219,6 @@
                             </div>
                             <a href="Thebubble.html" class="cta-button">My Contributions</a>
                         </div>
-                       
                     </div>
                 </div>
                 
@@ -1232,7 +1253,9 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Combat Design Project</div>
+                            <div class="project-category">Combat Design Project 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
                             <h1 class="project-title">Project A</h1>
                             <div class="project-year">2023 • 3 Months</div>
                             <p class="project-description">
@@ -1278,8 +1301,7 @@
                     <!-- Left Preview -->
                     <div class="slide-preview-left">
                         <div class="preview-content">
-                            <div class="preview-title">The Sun Vanished</div>
-                         
+                            <div class="preview-title">Project A</div>
                         </div>
                     </div>
                     
@@ -1295,7 +1317,9 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Horror Prototype  </i></div> 
+                            <div class="project-category">Horror Prototype 
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
                             <h1 class="project-title">The Sun Vanished</h1>
                             <div class="project-year">2025</div>
                             <p class="project-description">
@@ -1313,7 +1337,6 @@
                             </div>
                             <a href="TheSunVanished.html" class="cta-button">View Project</a>
                         </div>
-                      
                     </div>
                 </div>
             </div>
@@ -1321,9 +1344,6 @@
             <!-- Navigation arrows -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            
-            <!-- Pagination dots -->
-            <div class="swiper-slide"></div>
         </div>
     </div>
     
@@ -1367,137 +1387,119 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const wrapper = document.querySelector('.swiper-wrapper');
-const slides = Array.from(wrapper.children);
+        const slides = Array.from(wrapper.children);
 
-// Duplica le slide finché ne abbiamo abbastanza per il loop
-while (wrapper.children.length < slides.length * 3) {
-    slides.forEach(slide => {
-        wrapper.appendChild(slide.cloneNode(true));
-    });
-}
+        // Duplica le slide finché ne abbiamo abbastanza per il loop
+        while (wrapper.children.length < slides.length * 3) {
+            slides.forEach(slide => {
+                wrapper.appendChild(slide.cloneNode(true));
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const realSlideCount = document.querySelectorAll(
-        '.swiper-slide:not(.swiper-slide-duplicate)'
-    ).length;
+                '.swiper-slide:not(.swiper-slide-duplicate)'
+            ).length;
+            
             // Initialize Swiper con configurazione corretta
             const swiper = new Swiper('.swiper', {
-                
-                
-                
                 pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-    renderBullet: (index, className) => {
-        if (index >= realSlideCount) return '';
-        return `<span class="${className}"></span>`;
-    }
-    
-},
-
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    renderBullet: (index, className) => {
+                        if (index >= realSlideCount) return '';
+                        return `<span class="${className}"></span>`;
+                    }
+                },
                 slidesPerView: 'auto',
-    centeredSlides: true,
-    loop: true,
-    
-    loopAdditionalSlides: 0, // 🔥 ora non serve
-    speed: 600,
-    mousewheel: false,
-    
-    freeMode: {
-        enabled: true,
-        momentum: false
-    },
-
-    // Touch
-    simulateTouch: true,
-    allowTouchMove: true,
-    touchStartPreventDefault: false,
-
-    keyboard: {
-        enabled: true,
-    },
-
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-
-    resistanceRatio: 0.85,
-    grabCursor: true,
-
-    breakpoints: {
-        0: {
-            freeMode: false,
-            mousewheel: false
-        },
-        1024: {
-            freeMode: {
-                enabled: true,
-                momentum: false
-            }
-        }
-    }
-    
-    
- });
- 
+                centeredSlides: true,
+                loop: true,
+                loopAdditionalSlides: 0,
+                speed: 600,
+                mousewheel: false,
+                freeMode: {
+                    enabled: true,
+                    momentum: false
+                },
+                simulateTouch: true,
+                allowTouchMove: true,
+                touchStartPreventDefault: false,
+                keyboard: {
+                    enabled: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                resistanceRatio: 0.85,
+                grabCursor: true,
+                breakpoints: {
+                    0: {
+                        freeMode: false,
+                        mousewheel: false
+                    },
+                    1024: {
+                        freeMode: {
+                            enabled: true,
+                            momentum: false
+                        }
+                    }
+                }
+            });
             
             let currentTranslate = swiper.getTranslate();
-let targetTranslate = currentTranslate;
-let isAnimating = false;
+            let targetTranslate = currentTranslate;
+            let isAnimating = false;
 
-// Smooth animation loop
-function animate() {
-    if (!isAnimating) return;
+            // Smooth animation loop
+            function animate() {
+                if (!isAnimating) return;
 
-    currentTranslate += (targetTranslate - currentTranslate) * 0.08;
+                currentTranslate += (targetTranslate - currentTranslate) * 0.08;
 
-    swiper.setTranslate(currentTranslate);
-    swiper.updateProgress();
-    swiper.updateActiveIndex();
-    swiper.updateSlidesClasses();
+                swiper.setTranslate(currentTranslate);
+                swiper.updateProgress();
+                swiper.updateActiveIndex();
+                swiper.updateSlidesClasses();
 
-    // LOOP FIX
-    const max = swiper.maxTranslate();
-    const min = swiper.minTranslate();
+                // LOOP FIX
+                const max = swiper.maxTranslate();
+                const min = swiper.minTranslate();
 
-    if (currentTranslate < max || currentTranslate > min) {
-        swiper.loopFix();
-        currentTranslate = swiper.getTranslate();
-        targetTranslate = currentTranslate;
-    }
+                if (currentTranslate < max || currentTranslate > min) {
+                    swiper.loopFix();
+                    currentTranslate = swiper.getTranslate();
+                    targetTranslate = currentTranslate;
+                }
 
-    requestAnimationFrame(animate);
-}
+                requestAnimationFrame(animate);
+            }
 
-// Wheel control (desktop only)
-window.addEventListener('wheel', (e) => {
-    if (window.innerWidth < 1024) return;
+            // Wheel control (desktop only)
+            window.addEventListener('wheel', (e) => {
+                if (window.innerWidth < 1024) return;
 
-    e.preventDefault();
-    targetTranslate -= e.deltaY * 0.8;
+                e.preventDefault();
+                targetTranslate -= e.deltaY * 0.8;
 
-    if (!isAnimating) {
-        isAnimating = true;
-        animate();
-    }
-}, { passive: false });
+                if (!isAnimating) {
+                    isAnimating = true;
+                    animate();
+                }
+            }, { passive: false });
 
-// Stop smooth animation when scrolling stops
-let wheelTimeout;
-window.addEventListener('wheel', () => {
-    clearTimeout(wheelTimeout);
-    wheelTimeout = setTimeout(() => {
-        isAnimating = false;
-    }, 120);
-});
-
-
+            // Stop smooth animation when scrolling stops
+            let wheelTimeout;
+            window.addEventListener('wheel', () => {
+                clearTimeout(wheelTimeout);
+                wheelTimeout = setTimeout(() => {
+                    isAnimating = false;
+                }, 120);
+            });
 
             // Aggiorna progress bar
             const progressBar = document.querySelector('.swiper-progress-bar');
@@ -1514,9 +1516,8 @@ window.addEventListener('wheel', () => {
             
             const updateCounter = () => {
                 const realIndex = ((swiper.realIndex % 5) + 5) % 5;
-currentSlideEl.textContent = (realIndex + 1).toString().padStart(2, '0');
-totalSlidesEl.textContent = '05';
-
+                currentSlideEl.textContent = (realIndex + 1).toString().padStart(2, '0');
+                totalSlidesEl.textContent = '05';
             };
             
             // Initialize
