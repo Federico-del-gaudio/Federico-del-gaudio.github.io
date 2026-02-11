@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sun Vanished - Federico Del Gaudio</title>
+    <title>One Night in Venice - Federico Del Gaudio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -23,6 +23,8 @@
             --gray-dark: #2c3e50;
             --border-color: rgba(255, 255, 255, 0.1);
             --card-bg: rgba(35, 35, 35, 0.9);
+            --itch-color: #fa5c5c;
+            --ggj-color: #ff6b4a;
         }
         
         body {
@@ -304,15 +306,15 @@
             font-size: 0.95rem;
         }
         
-        /* Combat Features */
-        .combat-features {
+        /* Game Modes Section */
+        .game-modes {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-top: 20px;
         }
         
-        .feature-card {
+        .mode-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 15px;
@@ -321,22 +323,27 @@
             transition: all 0.3s ease;
         }
         
-        .feature-card:hover {
+        .mode-card:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
             border-color: var(--light);
         }
         
-        .feature-title {
+        .mode-title {
             color: var(--light);
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.1rem;
         }
         
-        .feature-desc {
+        .mode-time {
             color: var(--gray-medium);
             font-size: 0.9rem;
+        }
+        
+        .mode-time span {
+            color: var(--light);
+            font-weight: 600;
         }
         
         /* Trailer Section */
@@ -455,7 +462,34 @@
             left: 0;
         }
         
-        /* Platform Buttons */
+        /* Button variants */
+        .itch-button {
+            border-color: var(--itch-color) !important;
+            color: var(--itch-color) !important;
+        }
+        
+        .itch-button::before {
+            background: var(--itch-color) !important;
+        }
+        
+        .itch-button:hover {
+            color: var(--dark) !important;
+        }
+        
+        .ggj-button {
+            border-color: var(--ggj-color) !important;
+            color: var(--ggj-color) !important;
+        }
+        
+        .ggj-button::before {
+            background: var(--ggj-color) !important;
+        }
+        
+        .ggj-button:hover {
+            color: var(--dark) !important;
+        }
+        
+        /* Platform Buttons (alternative style) */
         .platform-buttons {
             display: flex;
             justify-content: center;
@@ -476,7 +510,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
         
@@ -484,10 +518,28 @@
             font-size: 1.3rem;
         }
         
-        .platform-button:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .platform-button.itch {
+            background: var(--itch-color);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .platform-button.itch:hover {
+            background: #ff4444;
             transform: translateY(-3px);
-            border-color: var(--light);
+            box-shadow: 0 10px 20px rgba(250, 92, 92, 0.3);
+        }
+        
+        .platform-button.ggj {
+            background: var(--ggj-color);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .platform-button.ggj:hover {
+            background: #ff5533;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 74, 0.3);
         }
         
         /* Gallery Section */
@@ -532,7 +584,7 @@
             transform: scale(1.05);
         }
         
-        /* Before/After Comparator Section - Root Motion */
+        /* Before/After Comparator Section */
         .comparator-section {
             background: var(--card-bg);
             border-radius: 15px;
@@ -550,7 +602,7 @@
         .comparator-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             overflow: hidden;
             border-radius: 12px;
             border: 1px solid var(--border-color);
@@ -576,11 +628,12 @@
             height: 100%;
             object-fit: cover;
             pointer-events: none;
+            transition: filter 0.2s ease;
         }
         
         .before-image {
             z-index: 2;
-            width: 50%;
+            width: 50%; /* Initial split position */
         }
         
         .after-image {
@@ -595,6 +648,7 @@
             object-position: right;
         }
         
+        /* Image Labels */
         .image-label {
             position: absolute;
             bottom: 20px;
@@ -615,15 +669,16 @@
         .before-label {
             left: 20px;
             background: rgba(0, 0, 0, 0.8);
-            border-left: 3px solid #95a5a6;
+            border-left: 3px solid var(--ggj-color);
         }
         
         .after-label {
             right: 20px;
             background: rgba(0, 0, 0, 0.8);
-            border-right: 3px solid #fa5c5c;
+            border-right: 3px solid var(--itch-color);
         }
         
+        /* Draggable Divider */
         .comparator-divider {
             position: absolute;
             top: 0;
@@ -646,6 +701,7 @@
             height: 10px;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
+            left: -3px;
         }
         
         .comparator-divider::before {
@@ -692,11 +748,12 @@
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
         }
         
-        @keyframes pulse-arrows {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
+        /* Hover effect on images */
+        .comparator-wrapper:hover .divider-handle {
+            background: var(--light);
         }
         
+        /* Caption */
         .comparator-caption {
             text-align: center;
             margin-top: 20px;
@@ -707,6 +764,16 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             border: 1px solid var(--border-color);
+        }
+        
+        /* Animation for handle arrows */
+        @keyframes pulse-arrows {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }
         }
         
         /* Contributions Section */
@@ -757,6 +824,29 @@
             line-height: 1.6;
         }
         
+        /* Record Section */
+        .record-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .record-quote {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .record-challenge {
+            font-size: 1.3rem;
+            color: var(--gray-medium);
+        }
+        
         /* Implementation Insights Section */
         .insights-section {
             background: var(--card-bg);
@@ -771,20 +861,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: start;
-        }
-        
-        /* Layout reverse: immagine a sinistra, testo a destra */
-        .insights-grid.reverse {
-            direction: ltr;
-        }
-        
-        .insights-grid.reverse .insight-visual {
-            order: 0;
-            grid-column: 1;
-        }
-        
-        .insights-grid.reverse .insight-text {
-            grid-column: 2;
         }
         
         .insight-text {
@@ -1064,6 +1140,7 @@
             margin-top: 40px;
         }
         
+        /* Animation for smooth loading */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1109,7 +1186,7 @@
                 height: 120px;
             }
             
-            .combat-features {
+            .game-modes {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
@@ -1117,13 +1194,6 @@
         @media (max-width: 992px) {
             .content-grid, .insights-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .insights-grid.reverse .insight-visual,
-            .insights-grid.reverse .insight-text,
-            .insights-grid .insight-visual,
-            .insights-grid .insight-text {
-                grid-column: 1;
             }
             
             .project-title {
@@ -1142,13 +1212,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .combat-features {
+            .game-modes {
                 grid-template-columns: 1fr;
-            }
-            
-            .insight-visual {
-                order: -1;
-                margin-bottom: 30px;
             }
             
             .header-gradient {
@@ -1159,6 +1224,10 @@
                 height: 100px;
             }
             
+            .record-quote {
+                font-size: 1.5rem;
+            }
+            
             .platform-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1167,6 +1236,11 @@
             .platform-button {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .image-label {
+                padding: 6px 15px;
+                font-size: 0.8rem;
             }
         }
         
@@ -1238,9 +1312,8 @@
                 font-size: 1rem;
             }
             
-            .image-label {
-                padding: 6px 15px;
-                font-size: 0.8rem;
+            .comparator-section {
+                padding: 25px;
             }
         }
         
@@ -1293,7 +1366,12 @@
             }
             
             .image-label {
-                display: none;
+                display: none; /* Hide labels on very small screens */
+            }
+            
+            .divider-handle {
+                width: 30px;
+                height: 30px;
             }
         }
         
@@ -1329,6 +1407,18 @@
             .header-overlay {
                 height: 50px;
             }
+            
+            .record-quote {
+                font-size: 1.2rem;
+            }
+            
+            .record-challenge {
+                font-size: 1.1rem;
+            }
+            
+            .comparator-wrapper {
+                padding-bottom: 75%; /* Taller aspect ratio on mobile */
+            }
         }
     </style>
 </head>
@@ -1349,13 +1439,13 @@
     <!-- Project Header with Background Image -->
     <header class="project-header">
         <div class="header-background">
-            <img src="Photos/Thesunvanishedphoto.png" alt="The Sun Vanished Background" class="header-image">
+            <img src="Photos/OneNightInVenicePhoto.png" alt="One Night in Venice Background" class="header-image">
             <div class="header-gradient"></div>
             <div class="header-overlay"></div>
         </div>
-        <h1 class="project-title">The Sun Vanished</h1>
+        <h1 class="project-title">One Night in Venice</h1>
         <p class="project-subtitle">Solo project</p>
-        <div class="project-meta">Objective: <span>Fast Prototyping</span></div>
+        <div class="project-meta">Objective: <span>Shooting mechanic, Enemy spawner & power ups</span></div>
     </header>
     
     <!-- Main Content -->
@@ -1364,25 +1454,42 @@
         <div class="content-grid">
             <!-- About Section -->
             <section class="about-section">
-                <h2 class="section-title">About the Project</h2>
+                <h2 class="section-title">About the Game</h2>
                 <div class="about-content">
-                    <p>In this project, I aimed to replicate some combat mechanics <span class="highlight">inspired by Souls-like games</span>.
-                        It was a nearly three-month-long project where I focused entirely on combat design. I handled <span class="highlight">animations, sound effects, hit feedback, and implemented enemy AI behavior</span> to create responsive and challenging encounters.</p>
-                    <p>Additionally, I worked on Niagara effects to enhance the visual impact of combat interactions.
-                        As a learning resource, I followed a training video on YouTube, which helped guide me through some technical steps while allowing me to adapt and customize the systems to fit my design goals.</p>
+                    <p>A relentless <span class="highlight">PS1-style bullet hell</span> set in a flooded carnival of screaming masks. Every shot you fire fuels a distorted breakcore soundtrack that surges in volume with your aggression. Survive the nightmare. Dance until you drown in the noise.</p>
                     
-                   
+                    <p>In <span class="highlight">One Night in Venice</span>, your only goal is to shoot and survive waves of ruthless enemies who want nothing but your end. Keep your eyes sharp and your reflexes faster—if they catch you, you'll have to start it all over <span class="highlight">AGAIN</span>. Push yourself to beat your personal record with every run. But above all else: <span class="highlight">don't stop running</span>.</p>
                     
-                   
+                  
+                
+                    
+                    <h3 class="controls-title">🕹️ Game Modes</h3>
+                    <div class="game-modes">
+                        <div class="mode-card">
+                            <div class="mode-title">Easy Mode</div>
+                            <div class="mode-time">Best time: <span>490s</span></div>
+                        </div>
+                        <div class="mode-card">
+                            <div class="mode-title">Normal Mode</div>
+                            <div class="mode-time">Best time: <span>280s</span></div>
+                        </div>
+                        <div class="mode-card">
+                            <div class="mode-title">Hard Mode</div>
+                            <div class="mode-time">Best time: <span>175s</span></div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; color: var(--gray-medium); font-style: italic;">
+                        Parry Nightmare mode available - Can you beat the developer?
+                    </div>
                 </div>
             </section>
             
             <!-- Trailer Section -->
             <section class="trailer-section">
-                <h2 class="section-title">Gameplay Trailer</h2>
+                <h2 class="section-title">Gameplay</h2>
                 <div class="trailer-container">
                     <video class="trailer-video" id="gameTrailer" controls style="display: none;">
-                        <source src="Videos/TrailerVanished .mp4" type="video/mp4">
+                        <source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="play-overlay" id="playOverlay">
@@ -1392,216 +1499,234 @@
                     </div>
                 </div>
                 
+                <!-- Action Buttons with 3 options -->
                 <div class="action-buttons">
-                    <a href="#combat-design" class="action-button">
-                        <i class="fa-solid fa-info"></i> Design
+                    <a href="#design-details" class="action-button">
+                        <i class="fa-solid fa-info"></i> Technical breakdown
+                    </a>
+                    <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" rel="noopener noreferrer" class="action-button itch-button">
+                        <i class="fa-brands fa-itch-io"></i> Play on Itch.io
+                    </a>
+                    <a href="https://globalgamejam.org/games/2026/one-night-venice-7" target="_blank" rel="noopener noreferrer" class="action-button ggj-button">
+                        <i class="fa-solid fa-globe"></i> GGJ Page
                     </a>
                 </div>
             </section>
         </div>
         
-        <!-- Platform Call-to-Action Buttons -->
-            <!-- Gallery Section -->
+      
+        
+        <!-- Gallery Section - Game Screenshots -->
         <section class="gallery-section">
             <h2 class="section-title">Game Screenshots</h2>
             <div class="gallery-grid">
                 <div class="gallery-item" data-index="1">
-                    <img src="Photos/image_2024-02-06_15-18-32 (1).jpg" alt="Pummel Gameplay 1 - Character combat animation">
+                    <img src="Photos/OneNightInVenicePhoto1.png" alt="One Night in Venice Gameplay 1 - Combat against screaming masks">
                 </div>
                 <div class="gallery-item" data-index="2">
-                    <img src="Photos/image_2024-02-06_16-11-13.jpg" alt="Pummel Gameplay 2 - Enemy encounter">
+                    <img src="Photos/OneNightInVenicePhoto2.png" alt="One Night in Venice Gameplay 2 - Flooded carnival environment">
                 </div>
                 <div class="gallery-item" data-index="3">
-                    <img src="Photos/image_2024-02-06_16-12-54.jpg" alt="Pummel Gameplay 3 - Environment and lighting">
+                    <img src="Photos/OneNightInVenicePhoto3.png" alt="One Night in Venice Gameplay 3 - Intense bullet hell action">
                 </div>
-            </div>
-        </section>
-      
-            <section class="gallery-section">
-            <h2 class="section-title">Blueprints</h2>
-            <div class="gallery-grid">
                 <div class="gallery-item" data-index="4">
-                    <img src="Photos/PummelBP.png" alt="Blueprint 1 - Animation State Machine">
+                    <img src="Photos/OneNightInVenicePhoto4.png" alt="One Night in Venice Gameplay 4 - Enemy encounter">
                 </div>
                 <div class="gallery-item" data-index="5">
-                    <img src="Photos/PummelBP1.png" alt="Blueprint 2 - Combo System Logic">
+                    <img src="Photos/OneNightInVenicePhoto5.png" alt="One Night in Venice Gameplay 5 - Parry mechanic">
                 </div>
                 <div class="gallery-item" data-index="6">
-                    <img src="Photos/PummelBP2.png" alt="Blueprint 3 - Damage and Health System">
+                    <img src="Photos/OneNightInVenicePhoto.png" alt="One Night in Venice Gameplay 6 - Main menu">
                 </div>
             </div>
         </section>
-       
+
+        <!-- BEFORE/AFTER COMPARATOR SECTION - PS1 Shader Effect -->
+        <section class="comparator-section">
+            <h2 class="section-title">PS1-Style Visual Evolution</h2>
+            <div class="comparator-container">
+                <div class="comparator-wrapper">
+                    <!-- Before Image (Original/Without Shaders) -->
+                    <div class="comparator-image before-image">
+                        <img src="Photos/ComparisonOneNightInVenice.png" alt="Before - Without PS1 shaders">
+                        <div class="image-label before-label">Without Shaders</div>
+                    </div>
+                    
+                    <!-- After Image (With PS1 Shaders) -->
+                    <div class="comparator-image after-image">
+                        <img src="Photos/fotoNightinVeniceComparison.png" alt="After - With PS1 shaders">
+                        <div class="image-label after-label">With PS1 Shaders</div>
+                    </div>
+                    
+                    <!-- Draggable Divider Line -->
+                    <div class="comparator-divider" id="comparatorDivider">
+                        <div class="divider-handle">
+                            <i class="fas fa-arrows-left-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="comparator-caption">
+                    <i class="fas fa-arrows-alt-h"></i> Drag the slider left/right to see the PS1-style shader effect in action. 
+                    Click and drag the line or handle to compare the retro visual transformation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Blueprints Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">Blueprints & Systems</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="7">
+                    <img src="Photos/PummelBP.png" alt="Blueprint 1 - Shooting System Implementation">
+                </div>
+                <div class="gallery-item" data-index="8">
+                    <img src="Photos/PummelBP1.png" alt="Blueprint 2 - Enemy Progressive Spawner">
+                </div>
+                <div class="gallery-item" data-index="9">
+                    <img src="Photos/PummelBP2.png" alt="Blueprint 3 - Parry Mechanic Logic">
+                </div>
+            </div>
+        </section>
+        
         <!-- Contributions Section -->
         <section class="contributions-section">
             <h2 class="section-title">My Contributions</h2>
             <div class="contributions-grid">
                 <div class="contribution-card">
                     <div class="contribution-icon">
-                        <i class="fa-solid fa-crosshairs"></i>
+                        <i class="fa-solid fa-gun"></i>
                     </div>
-                    <h3 class="contribution-title">Combat Design</h3>
-                    <p class="contribution-description">Designed and implemented Souls-like combat mechanics including combo systems, root motion animations, and hit feedback.</p>
+                    <h3 class="contribution-title">Shooting System</h3>
+                    <p class="contribution-description">Implemented a responsive shooting mechanic with hold-to-fire functionality, projectile management, and visual feedback for combat intensity.</p>
                 </div>
                 <div class="contribution-card">
                     <div class="contribution-icon">
-                        <i class="fa-solid fa-robot"></i>
+                        <i class="fa-solid fa-people-arrows"></i>
                     </div>
-                    <h3 class="contribution-title">Enemy AI</h3>
-                    <p class="contribution-description">Created custom enemy AI behaviors with unique attack patterns, health systems, and boss mechanics with ability speed changes.</p>
+                    <h3 class="contribution-title">Enemy Progressive Spawner</h3>
+                    <p class="contribution-description">Developed a dynamic enemy spawn system that scales difficulty over time, creating increasingly challenging waves of ruthless enemies.</p>
                 </div>
                 <div class="contribution-card">
                     <div class="contribution-icon">
-                        <i class="fa-solid fa-film"></i>
+                        <i class="fa-solid fa-shield"></i>
                     </div>
-                    <h3 class="contribution-title">Animation Systems</h3>
-                    <p class="contribution-description">Worked with root motion animations, character rigging in Blender, and implemented separate animations for different states.</p>
+                    <h3 class="contribution-title">Parry Mechanic</h3>
+                    <p class="contribution-description">Created a timing-based parry system that rewards precise player input with defensive capabilities and counter-attack opportunities.</p>
                 </div>
                 <div class="contribution-card">
                     <div class="contribution-icon">
-                        <i class="fa-solid fa-magic"></i>
+                        <i class="fa-solid fa-headphones"></i>
                     </div>
-                    <h3 class="contribution-title">Visual Effects</h3>
-                    <p class="contribution-description">Implemented Niagara effects for combat feedback including blink ability visual effects and hit impact responses.</p>
+                    <h3 class="contribution-title">Sound Design & Audio</h3>
+                    <p class="contribution-description">Integrated dynamic breakcore soundtrack that intensifies with player aggression, creating an immersive audio experience that fuels the nightmare.</p>
                 </div>
                 <div class="contribution-card">
                     <div class="contribution-icon">
-                        <i class="fa-solid fa-camera"></i>
+                        <i class="fa-solid fa-paint-brush"></i>
                     </div>
-                    <h3 class="contribution-title">Camera Systems</h3>
-                    <p class="contribution-description">Developed lock-on camera system inspired by Souls-like games for better combat control and targeting.</p>
+                    <h3 class="contribution-title">Game Shaders</h3>
+                    <p class="contribution-description">Developed custom PS1-style visual shaders to achieve the distinctive retro aesthetic, enhancing the carnival of screaming masks atmosphere.</p>
                 </div>
             </div>
         </section>
         
-        <!-- First Implementation Insights Section - Combat Systems -->
-        <section id="implementation-insights" class="insights-section">
-            <h2 class="section-title">Implementation Insights - Combat Systems</h2>
+        <!-- First Implementation Insights Section - Shooting System -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - Shooting System</h2>
             <div class="insights-grid">
-                <!-- Left side: Text content -->
                 <div class="insight-text">
                     <div class="insight-text-content">
-                        <h3>Key Learnings from Souls-like Combat Implementation</h3>
-                        <p>Developing combat mechanics <span class="highlight">inspired by Souls-like games</span> taught me valuable lessons about <span class="highlight">player feedback</span> and <span class="highlight">animation timing</span>. The precise nature of these games required meticulous attention to detail in every interaction.</p>
+                        <h3>Key Learnings from Shooting System Implementation</h3>
+                        <p>Developing the <span class="highlight">hold-to-fire shooting mechanic</span> taught me valuable lessons about projectile management and performance optimization in high-intensity bullet hell scenarios. The system needed to handle dozens of simultaneous projectiles while maintaining smooth framerates.</p>
                         
-                        <p>The most significant insight was understanding the importance of <span class="highlight">root motion animations</span> for creating weighty and impactful combat. Properly implemented root motion gives attacks a sense of physical presence and momentum that traditional animation blending cannot achieve.</p>
+                        <p>The most significant insight was implementing <span class="highlight">object pooling for projectiles</span>. Instead of spawning and destroying thousands of bullets, I created a reusable pool system that dramatically improved performance during intense combat sequences.</p>
                         
-                        <p>Another crucial learning was the balance between <span class="highlight">player control</span> and <span class="highlight">animation commitment</span>. Souls-like combat requires players to commit to their actions, which creates meaningful decisions about when to attack, dodge, or defend.</p>
-                        
-                        <p>Finally, I discovered the value of <span class="highlight">gradual difficulty scaling</span> through enemy AI. Starting with simple attack patterns and gradually introducing more complex behaviors helped players learn the combat system naturally.</p>
+                        <p>I also learned the importance of <span class="highlight">visual feedback loops</span>—the shooting system is directly tied to the breakcore soundtrack, with fire rate and projectile density affecting audio intensity. This creates a powerful feedback loop where player aggression directly shapes the experience.</p>
                     </div>
                 </div>
                 
-                <!-- Right side: Visual content -->
                 <div class="insight-visual">
-                    <div class="insight-media" data-index="1">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Combat System Implementation">
+                    <div class="insight-media" data-index="7">
+                        <img src="Photos/PummelBP.png" alt="Shooting System Blueprint - Projectile Management">
                     </div>
                     <div class="insight-caption">
-                        Click image to view larger - Combat system showing animation states and hit detection.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Technical Implementation Note</h4>
-                        <p>The combo system was implemented using UE5's Animation Montage system with custom notify states for hit detection and damage application timing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Second Implementation Insights Section - Enemy AI & Animation -->
-        <section class="insights-section reverse">
-            <h2 class="section-title">Implementation Insights - Enemy AI & Animation</h2>
-            <div class="insights-grid">
-                <!-- Left side: Visual content -->
-                <div class="insight-visual">
-                    <div class="insight-media" data-index="2">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Enemy AI Behavior Tree">
-                    </div>
-                    <div class="insight-caption">
-                        Click image to view larger - Enemy AI behavior tree showing attack patterns and state transitions.
+                        Click image to view larger - Shooting system blueprint showing projectile pooling and fire rate management.
                     </div>
                     
                     <div class="insight-text-content">
                         <h4>Technical Challenge</h4>
-                        <p>Implementing root motion animations required careful synchronization between animation timelines and gameplay logic to ensure attacks connected properly with enemy hitboxes.</p>
-                    </div>
-                </div>
-                
-                <!-- Right side: Text content -->
-                <div class="insight-text">
-                    <div class="insight-text-content">
-                        <h3>AI Behavior and Animation Integration Insights</h3>
-                        <p>Developing enemy AI for a Souls-like project taught me valuable lessons about <span class="highlight">behavior tree design</span> and <span class="highlight">animation integration</span>. Enemies needed to feel challenging but fair, with telegraphed attacks that players could learn to recognize and counter.</p>
-                        
-                        <p>One key insight was the importance of <span class="highlight">telegraphing attacks</span> through animation. Each enemy attack needed clear wind-up animations that gave players time to react, creating a rhythm of observation and response.</p>
-                        
-                        <p>I learned that <span class="highlight">boss design</span> required special consideration. The boss enemy with ability speed changes at health thresholds created memorable moments that tested player adaptation skills.</p>
-                        
-                        <p>The integration of <span class="highlight">stealth mechanics</span> added variety to combat encounters. Allowing players to approach situations differently created emergent gameplay possibilities beyond direct confrontation.</p>
+                        <p>The hold-to-fire system required careful input buffering to prevent frame-perfect issues while maintaining responsive feel. I implemented a cooldown system with visual indicators for weapon readiness.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Third Implementation Insights Section - Technical Breakdown -->
-        <section id="technical-breakdown" class="insights-section">
-            <h2 class="section-title">Technical Breakdown - Root Motion & Niagara</h2>
+        <!-- Second Implementation Insights Section - Enemy Progressive Spawner -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - Enemy Progressive Spawner</h2>
             <div class="insights-grid">
-                <!-- Left side: Text content -->
-                <div class="insight-text">
-                    <div class="insight-text-content">
-                        <h3>Root Motion & Visual Effects</h3>
-                        <p>Working with <span class="highlight">root motion animations</span> presented significant technical challenges. The character skeleton required custom rigging in Blender to properly support the imported animations. I used Blender plugins to retarget and adjust the animation sequences.</p>
-                        
-                        <p>For the <span class="highlight">blink ability</span>, I implemented Niagara particle systems that triggered during the dodge animation. The visual effect included motion blur and distortion effects to convey the sense of rapid movement.</p>
-                        
-                        <p>The <span class="highlight">lock-on camera system</span> was designed to maintain target focus while allowing player movement. This required careful balancing of camera rotation speeds and target switching logic.</p>
-                        
-                        <p>I also implemented <span class="highlight">separate animation states</span> for equipped and sheathed weapon modes, each with its own movement speeds and attack capabilities.</p>
-                    </div>
-                </div>
-                
-                <!-- Right side: Visual content -->
                 <div class="insight-visual">
-                    <div class="insight-media" data-index="3">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Niagara Effects">
+                    <div class="insight-media" data-index="8">
+                        <img src="Photos/PummelBP1.png" alt="Enemy Spawner Blueprint - Progressive Difficulty">
                     </div>
                     <div class="insight-caption">
-                        Click image to view larger - Niagara particle effects for blink ability and hit feedback.
+                        Click image to view larger - Progressive spawner system with difficulty scaling based on survival time.
                     </div>
                     
                     <div class="insight-text-content">
-                        <h4>Development Challenge</h4>
-                        <p>Weapon collider synchronization with root motion animations required frame-perfect timing to ensure hit detection aligned with visual attack frames.</p>
+                        <h4>Technical Challenge</h4>
+                        <p>Balancing difficulty progression was crucial. The spawner uses a time-based difficulty curve that increases enemy count, speed, and aggressiveness while ensuring the player always has a fighting chance.</p>
+                    </div>
+                </div>
+                
+                <div class="insight-text">
+                    <div class="insight-text-content">
+                        <h3>Progressive Difficulty Design</h3>
+                        <p>The <span class="highlight">enemy progressive spawner</span> was designed to create escalating tension throughout each run. I implemented a modular system where spawn parameters evolve based on survival time and player performance.</p>
+                        
+                        <p>One key insight was creating <span class="highlight">enemy variety through parameter modification</span> rather than separate enemy types. By adjusting speed, fire rate, and movement patterns over time, the same enemy base feels progressively more threatening.</p>
+                        
+                        <p>The spawner also tracks player position and creates tactical pressure points, forcing the player to constantly move and reposition—reinforcing the core mantra: <span class="highlight">don't stop running</span>.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Technical Breakdown Section -->
-        <section id="technical-breakdown" class="design-section">
-            <h2 class="section-title">Technical Specifications</h2>
-            <div class="design-grid">
-                <!-- Animation Systems -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-film"></i>
-                        </div>
-                        <h3 class="design-title">Animation Systems</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Root motion animation with custom rigging in Blender</li>
-                            <li>State machine for equipped/sheathed weapon states</li>
-                            <li>Combo montages with notify states</li>
-                            <li>Blend spaces for movement transitions</li>
-                            <li>Animation retargeting and skeleton alignment</li>
-                        </ul>
+        <!-- Third Implementation Insights Section - Parry Mechanic & Audio -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - Parry & Audio Integration</h2>
+            <div class="insights-grid">
+                <div class="insight-text">
+                    <div class="insight-text-content">
+                        <h3>Parry Mechanic & Dynamic Audio</h3>
+                        <p>The <span class="highlight">parry mechanic</span> required precise timing windows and clear visual feedback. I implemented a 12-frame parry window with successful parries granting brief invulnerability and pushing back surrounding enemies.</p>
+                        
+                        <p>For the <span class="highlight">breakcore soundtrack integration</span>, I created an audio intensity system that monitors combat metrics: shots fired, enemies near, and time since last parry. This drives real-time DSP effects including bitcrushing, tempo modulation, and volume layering.</p>
+                        
+                        <p>The most rewarding insight was how <span class="highlight">gameplay and audio became inseparable</span>—players learn to read combat intensity through audio cues, and their aggressive play literally shapes the music. The soundtrack isn't just background; it's gameplay feedback.</p>
                     </div>
                 </div>
                 
+                <div class="insight-visual">
+                    <div class="insight-media" data-index="9">
+                        <img src="Photos/PummelBP2.png" alt="Parry System Blueprint - Timing Window Logic">
+                    </div>
+                    <div class="insight-caption">
+                        Click image to view larger - Parry mechanic blueprint showing timing window and successful parry responses.
+                    </div>
+                    
+                    <div class="insight-text-content">
+                        <h4>Developer Challenge</h4>
+                        <p>The "Parry Nightmare" mode was created as a personal challenge—can you beat the developer's best times? Easy: 490s, Normal: 280s, Hard: 175s.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Design Details Section -->
+        <section id="design-details" class="design-section">
+            <h2 class="section-title">Technical Breakdown</h2>
+            <div class="design-grid">
                 <!-- Combat Systems -->
                 <div class="design-card">
                     <div class="design-header">
@@ -1612,97 +1737,67 @@
                     </div>
                     <div class="design-content">
                         <ul>
-                            <li>4-attack combo system with timing windows</li>
-                            <li>Lock-on camera targeting system</li>
-                            <li>Stealth attack detection from behind</li>
-                            <li>Hit feedback and damage calculation</li>
-                            <li>Blink ability with Niagara VFX</li>
+                            <li>Hold-to-fire shooting with projectile pooling</li>
+                            <li>Timing-based parry (12-frame window)</li>
+                            <li>Double jump and dash mobility</li>
+                            <li>Hit detection and invulnerability frames</li>
+                            <li>Visual feedback for successful parries</li>
                         </ul>
+                        <p><strong>Responsive combat with PS1-era feel</strong></p>
                     </div>
                 </div>
                 
-                <!-- AI Systems -->
+                <!-- Enemy & Spawn Systems -->
                 <div class="design-card">
                     <div class="design-header">
                         <div class="design-icon">
                             <i class="fa-solid fa-robot"></i>
                         </div>
-                        <h3 class="design-title">AI Systems</h3>
+                        <h3 class="design-title">Enemy Systems</h3>
                     </div>
                     <div class="design-content">
                         <ul>
-                            <li>Behavior tree with attack pattern selection</li>
-                            <li>Boss AI with health threshold triggers</li>
-                            <li>Custom enemy perception system</li>
-                            <li>Health and damage response systems</li>
-                            <li>Combat navigation and positioning</li>
+                            <li>Progressive spawner with time-based difficulty</li>
+                            <li>Enemy behavior patterns and formations</li>
+                            <li>Health scaling across difficulty modes</li>
+                            <li>Death effects and projectile patterns</li>
+                            <li>Wave management and spawn pooling</li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-         <!-- Combat Design Section -->
-        <section id="combat-design" class="design-section">
-            <h2 class="section-title">Combat System Breakdown</h2>
-            <div class="design-grid">
-                <!-- Project Implementation -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-sitemap"></i>
-                        </div>
-                        <h3 class="design-title">Project Implementation</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Combo system with 4 different attack variations.</li>
-                            <li>Blink ability with Niagara effects.</li>
-                            <li>Root motion animations for precise movement and attack control.</li>
-                            <li>Enemy AI with custom health systems and unique attack behaviors.</li>
-                            <li>Stealth attack mechanic from behind.</li>
-                            <li>Separate run and walk animations depending on whether the sword is equipped or sheathed.</li>
-                            <li>Boss enemy with ability speed changes triggered at specific health thresholds.</li>
-                            <li>Lock-on camera system inspired by Souls-like games.</li>
-                        </ul>
+                        <p><strong>Dynamic difficulty scaling</strong></p>
                     </div>
                 </div>
                 
-                <!-- Obstacles and Difficulties -->
+                <!-- Audio & Visual Systems -->
                 <div class="design-card">
                     <div class="design-header">
                         <div class="design-icon">
-                            <i class="fa-solid fa-exclamation-triangle"></i>
+                            <i class="fa-solid fa-music"></i>
                         </div>
-                        <h3 class="design-title">Obstacles and Difficulties</h3>
-                    </div>
-                    <div class="design-content">
-                        <p>One of the main challenges in this project was working with <strong>root motion animations</strong>, which often conflicted with my character's skeleton. I had to install Blender plugins, import the character, and rig it using a dedicated tool, making sure the animations were properly aligned and functional inside the engine.</p>
-                        <p>Another issue I faced was managing the interaction between <strong>enemy health systems</strong> and the weapon's collider, to ensure the game could reliably detect when an enemy was being hit during combat.</p>
-                    </div>
-                </div>
-                
-                <!-- Lessons Learned -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3 class="design-title">Lessons Learned</h3>
+                        <h3 class="design-title">Audio & Visual</h3>
                     </div>
                     <div class="design-content">
                         <ul>
-                            <li>Working with root motion animations and using Blender plugins for character rigging.</li>
-                            <li>Implementing enemy AI with custom attack behaviors.</li>
-                            <li>Integrate Niagara effects for gameplay feedback.</li>
-                            <li>Exploring different methods to build combo systems.</li>
-                            <li>Gaining deeper knowledge of state machines and animation blueprints in Unreal Engine.</li>
+                            <li>Breakcore soundtrack with aggression-based DSP</li>
+                            <li>PS1-style shader effects and CRT emulation</li>
+                            <li>Dynamic volume layering with combat intensity</li>
+                            <li>Particle effects for hits and parries</li>
+                            <li>Screen shake and hit stop feedback</li>
                         </ul>
+                        <p><strong>Immersive audiovisual experience</strong></p>
                     </div>
                 </div>
             </div>
         </section>
         
-   
+        <!-- Second row of Platform Buttons (bottom) -->
+        <div class="platform-buttons" style="margin-top: 20px;">
+            <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" rel="noopener noreferrer" class="platform-button itch">
+                <i class="fa-brands fa-itch-io"></i> 🎮 Download on Itch.io
+            </a>
+            <a href="https://globalgamejam.org/games/2026/one-night-venice-7" target="_blank" rel="noopener noreferrer" class="platform-button ggj">
+                <i class="fa-solid fa-globe"></i> 🌍 GGJ 2026 Page
+            </a>
+        </div>
     </main>
     
     <!-- Lightbox -->
@@ -1713,7 +1808,7 @@
             <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
             <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <div class="lightbox-counter" id="lightbox-counter">1 / 3</div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 9</div>
     </div>
     
     <!-- Footer -->
@@ -1730,7 +1825,15 @@
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
-        <p class="copyright">© 2025 Federico Del Gaudio. All rights reserved.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; margin: 30px 0;">
+            <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" style="color: var(--itch-color); text-decoration: none; font-weight: 600;">
+                <i class="fa-brands fa-itch-io"></i> Itch.io
+            </a>
+            <a href="https://globalgamejam.org/games/2026/one-night-venice-7" target="_blank" style="color: var(--ggj-color); text-decoration: none; font-weight: 600;">
+                <i class="fa-solid fa-globe"></i> Global Game Jam
+            </a>
+        </div>
+        <p class="copyright">© 2026 Federico Del Gaudio. All rights reserved.</p>
     </footer>
 
     <script>
@@ -1796,26 +1899,36 @@
             let isDragging = false;
             
             if (comparatorWrapper && beforeImage && divider) {
+                // Function to update divider position
                 function updateDividerPosition(x) {
                     const wrapperRect = comparatorWrapper.getBoundingClientRect();
                     let position = ((x - wrapperRect.left) / wrapperRect.width) * 100;
+                    
+                    // Constrain position between 5% and 95%
                     position = Math.max(5, Math.min(95, position));
+                    
+                    // Update before image width
                     beforeImage.style.width = position + '%';
+                    
+                    // Update divider position
                     divider.style.left = position + '%';
                 }
                 
+                // Mouse down event - start dragging
                 divider.addEventListener('mousedown', function(e) {
                     e.preventDefault();
                     isDragging = true;
                     divider.classList.add('active');
                 });
                 
+                // Mouse move event - update position while dragging
                 window.addEventListener('mousemove', function(e) {
                     if (!isDragging) return;
                     e.preventDefault();
                     updateDividerPosition(e.clientX);
                 });
                 
+                // Mouse up event - stop dragging
                 window.addEventListener('mouseup', function() {
                     if (isDragging) {
                         isDragging = false;
@@ -1823,6 +1936,7 @@
                     }
                 });
                 
+                // Touch events for mobile
                 divider.addEventListener('touchstart', function(e) {
                     e.preventDefault();
                     isDragging = true;
@@ -1841,14 +1955,17 @@
                     divider.classList.remove('active');
                 });
                 
+                // Click on wrapper to update position
                 comparatorWrapper.addEventListener('click', function(e) {
                     updateDividerPosition(e.clientX);
                 });
                 
+                // Prevent default drag behavior on images
                 comparatorWrapper.addEventListener('dragstart', function(e) {
                     e.preventDefault();
                 });
                 
+                // Initialize with 50% split
                 beforeImage.style.width = '50%';
                 divider.style.left = '50%';
             }
@@ -1861,11 +1978,14 @@
             const nextBtn = document.getElementById('next-btn');
             const lightboxCounter = document.getElementById('lightbox-counter');
             
+            // Get ALL clickable images (gallery items + insight media)
             const galleryItems = document.querySelectorAll('.gallery-item');
             const insightMedia = document.querySelectorAll('.insight-media');
             
+            // Combine all images
             const allImages = [];
             
+            // Add gallery items
             galleryItems.forEach((item, index) => {
                 const img = item.querySelector('img');
                 allImages.push({
@@ -1875,6 +1995,7 @@
                 });
             });
             
+            // Add insight media
             insightMedia.forEach((media, index) => {
                 const img = media.querySelector('img');
                 allImages.push({
@@ -1886,6 +2007,7 @@
             
             let currentImageIndex = 0;
             
+            // Add click event to ALL images
             galleryItems.forEach((item, index) => {
                 item.addEventListener('click', function() {
                     currentImageIndex = index;
@@ -1895,6 +2017,7 @@
             
             insightMedia.forEach((media, index) => {
                 media.addEventListener('click', function() {
+                    // Find the index in allImages array
                     const imgSrc = media.querySelector('img').src;
                     currentImageIndex = allImages.findIndex(img => img.src === imgSrc);
                     openLightbox();
@@ -1913,42 +2036,37 @@
             }
             
             function updateLightboxImage() {
-                if (allImages.length > 0) {
-                    const image = allImages[currentImageIndex];
-                    lightboxImg.src = image.src;
-                    lightboxImg.alt = image.alt;
-                    lightboxCounter.textContent = `${currentImageIndex + 1} / ${allImages.length}`;
-                }
+                const image = allImages[currentImageIndex];
+                lightboxImg.src = image.src;
+                lightboxImg.alt = image.alt;
+                lightboxCounter.textContent = `${currentImageIndex + 1} / ${allImages.length}`;
             }
             
             function nextImage() {
-                if (allImages.length > 0) {
-                    currentImageIndex = (currentImageIndex + 1) % allImages.length;
-                    updateLightboxImage();
-                }
+                currentImageIndex = (currentImageIndex + 1) % allImages.length;
+                updateLightboxImage();
             }
             
             function prevImage() {
-                if (allImages.length > 0) {
-                    currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-                    updateLightboxImage();
+                currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+                updateLightboxImage();
+            }
+            
+            // Event listeners for lightbox controls
+            closeLightbox.addEventListener('click', closeLightboxFunc);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            
+            // Close lightbox when clicking outside image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightboxFunc();
                 }
-            }
+            });
             
-            if (closeLightbox) closeLightbox.addEventListener('click', closeLightboxFunc);
-            if (prevBtn) prevBtn.addEventListener('click', prevImage);
-            if (nextBtn) nextBtn.addEventListener('click', nextImage);
-            
-            if (lightbox) {
-                lightbox.addEventListener('click', function(e) {
-                    if (e.target === lightbox) {
-                        closeLightboxFunc();
-                    }
-                });
-            }
-            
+            // Keyboard navigation for lightbox
             document.addEventListener('keydown', function(e) {
-                if (lightbox && lightbox.style.display === 'block') {
+                if (lightbox.style.display === 'block') {
                     switch(e.key) {
                         case 'Escape':
                             closeLightboxFunc();
@@ -1963,10 +2081,11 @@
                 }
             });
             
+            // Make sure all images are loaded properly
             window.addEventListener('load', function() {
-                if (lightboxCounter) {
-                    lightboxCounter.textContent = `1 / ${allImages.length}`;
-                }
+                console.log(`Total clickable images: ${allImages.length}`);
+                // Update lightbox counter total
+                lightboxCounter.textContent = `1 / ${allImages.length}`;
             });
         });
     </script>
