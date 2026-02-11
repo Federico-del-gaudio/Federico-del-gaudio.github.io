@@ -25,6 +25,10 @@
             --gray-medium: #95a5a6;
             --gray-dark: #2c3e50;
             --border-color: rgba(255, 255, 255, 0.1);
+            --accent: #fa5c5c;
+            --accent-hover: #ff4444;
+            --accent-gradient: linear-gradient(135deg, #fa5c5c 0%, #ff8a5c 100%);
+            --accent-gradient-hover: linear-gradient(135deg, #ff4444 0%, #ff6b4a 100%);
         }
         
         body {
@@ -81,9 +85,10 @@
         .nav-links {
             display: flex;
             gap: 35px;
+            align-items: center;
         }
         
-        .nav-links a {
+        .nav-links a, .dropdown-trigger {
             text-decoration: none;
             color: var(--gray-light);
             font-size: 1.1rem;
@@ -93,13 +98,14 @@
             padding: 8px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
+            cursor: pointer;
         }
         
-        .nav-links a:hover {
+        .nav-links a:hover, .dropdown-trigger:hover {
             color: var(--light);
         }
         
-        .nav-links a::after {
+        .nav-links a::after, .dropdown-trigger::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -110,16 +116,141 @@
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after, .dropdown-trigger:hover::after {
             width: 100%;
         }
         
-        .nav-links a.active {
+        .nav-links a.active, .dropdown.active .dropdown-trigger {
             color: var(--light);
         }
         
-        .nav-links a.active::after {
+        .nav-links a.active::after, .dropdown.active .dropdown-trigger::after {
             width: 100%;
+        }
+        
+        /* Dropdown Menu - FIXED VERSION */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray-light);
+            padding: 8px 0;
+        }
+        
+        .dropdown-trigger i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 260px;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            z-index: 1001;
+            
+            /* Nascondi di default */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            pointer-events: none;
+        }
+        
+        /* Mostra il dropdown all'hover */
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* Mantieni visibile il dropdown quando il mouse è sopra il contenuto */
+        .dropdown-content:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* Freccia del dropdown */
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 25px;
+            width: 12px;
+            height: 12px;
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            transform: rotate(45deg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-content a {
+            color: var(--gray-light) !important;
+            padding: 12px 24px !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.95rem !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light) !important;
+            padding-left: 30px !important;
+        }
+        
+        .dropdown-content a:hover i {
+            color: var(--light);
+            transform: scale(1.1);
+        }
+        
+        .dropdown-content a::after {
+            display: none !important;
         }
         
         .hamburg {
@@ -127,6 +258,75 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--light);
+            z-index: 1002;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 13, 13, 0.98);
+            z-index: 1001;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1002;
+        }
+        
+        .mobile-dropdown-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .mobile-dropdown-content.show {
+            display: flex;
+        }
+        
+        .mobile-dropdown-content a {
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            width: 100%;
+            text-align: center;
         }
         
         /* Hero Section */
@@ -281,9 +481,10 @@
         /* Right Column - Stats & Actions */
         .stats-actions {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 45px;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
         
         .stats-section {
@@ -318,7 +519,7 @@
         .stat-item {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 25px;
             transition: all 0.3s ease;
             text-align: center;
@@ -345,16 +546,17 @@
             font-weight: 500;
         }
         
-        /* Action Buttons */
+        /* Action Buttons - Enhanced */
         .action-buttons {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
         
         .btn {
             position: relative;
             overflow: hidden;
+            border-radius: 12px;
         }
         
         .btn a {
@@ -366,20 +568,68 @@
             width: 100%;
             padding: 18px 25px;
             font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 4px;
+            font-weight: 600;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--light);
-            background: transparent;
-            color: var(--light);
-            letter-spacing: 1px;
+            border: none;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
         
-        .btn button::before {
+        .btn button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn button:hover i {
+            transform: scale(1.1);
+        }
+        
+        /* Primary Button - VIEW PROJECTS */
+        .btn-primary a button {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 8px 20px rgba(250, 92, 92, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary a button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient-hover);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary a button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(250, 92, 92, 0.6);
+        }
+        
+        .btn-primary a button:hover::before {
+            left: 0;
+        }
+        
+        /* Secondary Buttons */
+        .btn-secondary a button {
+            background: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+            box-shadow: none;
+        }
+        
+        .btn-secondary a button::before {
             content: '';
             position: absolute;
             top: 0;
@@ -387,23 +637,23 @@
             width: 100%;
             height: 100%;
             background: var(--light);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             z-index: -1;
         }
         
-        .btn button:hover {
+        .btn-secondary a button:hover {
             color: var(--dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
         }
         
-        .btn button:hover::before {
+        .btn-secondary a button:hover::before {
             left: 0;
         }
         
         /* Social Links */
         .social-section {
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
         }
         
@@ -421,14 +671,14 @@
         }
         
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--gray-light);
             text-decoration: none;
             border: 1px solid var(--border-color);
@@ -436,21 +686,23 @@
         }
         
         .social-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: var(--accent-gradient);
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(250, 92, 92, 0.4);
         }
         
         /* Footer */
         .footer-main {
-            background: var(--darker);
+            background: rgba(13, 13, 13, 0.95);
             padding: 25px;
             text-align: center;
             color: var(--gray-light);
             font-size: 1rem;
             border-top: 1px solid var(--border-color);
             letter-spacing: 1px;
+            backdrop-filter: blur(10px);
         }
         
         /* Responsive Design */
@@ -515,6 +767,32 @@
                 display: block;
             }
             
+            /* Reset dropdown per mobile */
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                pointer-events: auto;
+                display: none;
+                margin-top: 0;
+                box-shadow: none;
+                width: 100%;
+                min-width: 100%;
+            }
+            
+            .dropdown-content::before {
+                display: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
             .hero-section {
                 padding: 120px 30px 30px;
             }
@@ -542,6 +820,10 @@
             
             .stats-actions {
                 padding: 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -575,6 +857,17 @@
             
             .btn button {
                 padding: 16px 20px;
+                font-size: 1rem;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
             }
         }
         
@@ -603,6 +896,14 @@
             .stats-actions {
                 padding: 25px;
             }
+            
+            .stats-title {
+                font-size: 1.6rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -617,14 +918,56 @@
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" class="active">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="skills.html">SKILLS</a>
+            
+            <!-- Projects Dropdown - FIXED -->
+            <div class="dropdown">
+                <button class="dropdown-trigger">
+                    <a href="projects.html">
+                    PROJECTS <i class="fas fa-chevron-down"></i>
+                    </a>
+                </button>
+                <div class="dropdown-content">
+                    <a href="projects.html">
+                        <i class="fas fa-grid-2"></i> ALL PROJECTS
+                    </a>
+                    <a href="technical-combat-projects.html">
+                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
+                    </a>
+                </div>
+            </div>
+            
+            <a href="contact.html">CONTACT</a>
         </div>
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
+        <a href="index.html" class="active">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="skills.html">SKILLS</a>
+        
+        <!-- Mobile Projects Dropdown -->
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <a href="" id="mobileProjectsTrigger" style="display: flex; align-items: center; gap: 5px;">
+                PROJECTS <i class="fas fa-chevron-down" style="font-size: 1rem;"></i>
+            </a>
+            <div class="mobile-dropdown-content" id="mobileDropdownContent">
+                <a href="projects.html" style="font-size: 1.2rem; padding-left: 40px;">
+                    <i class="fas fa-grid-2"></i> ALL PROJECTS
+                </a>
+                <a href="technical-combat-projects.html" style="font-size: 1.2rem; padding-left: 40px;">
+                    <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT PROJECTS
+                </a>
+            </div>
+        </div>
+        
+        <a href="contact.html">CONTACT</a>
+    </div>
     
     <!-- Hero Section -->
     <section class="hero-section">
@@ -659,19 +1002,19 @@
                         <div class="focus-grid">
                             <div class="focus-item" data-aos="fade-up" data-aos-delay="100">
                                 <i class="fas fa-crosshairs"></i>
-                                <span>Combat Systems</span>
+                                <span>COMBAT SYSTEMS</span>
                             </div>
                             <div class="focus-item" data-aos="fade-up" data-aos-delay="150">
                                 <i class="fas fa-robot"></i>
-                                <span>AI Behavior</span>
+                                <span>AI BEHAVIOR</span>
                             </div>
                             <div class="focus-item" data-aos="fade-up" data-aos-delay="200">
                                 <i class="fas fa-cogs"></i>
-                                <span>Technical Design</span>
+                                <span>TECHNICAL DESIGN</span>
                             </div>
                             <div class="focus-item" data-aos="fade-up" data-aos-delay="250">
                                 <i class="fas fa-gamepad"></i>
-                                <span>Gameplay Mechanics</span>
+                                <span>GAMEPLAY MECHANICS</span>
                             </div>
                         </div>
                     </div>
@@ -684,38 +1027,51 @@
                         <div class="stats-grid">
                             <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
                                 <div class="stat-number">9</div>
-                                <div class="stat-label">Projects</div>
+                                <div class="stat-label">PROJECTS</div>
                             </div>
                             <div class="stat-item" data-aos="fade-up" data-aos-delay="350">
                                 <div class="stat-number">3</div>
-                                <div class="stat-label">Coding Languages </div>
+                                <div class="stat-label">CODING LANGUAGES</div>
                             </div>
                             <div class="stat-item" data-aos="fade-up" data-aos-delay="250">
                                 <div class="stat-number">2</div>
-                                <div class="stat-label">Game Engines</div>
+                                <div class="stat-label">GAME ENGINES</div>
                             </div>
                             <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                                <div class="stat-number">Academy</div>
-                                <div class="stat-label">Training</div>
+                                <div class="stat-number">ACADEMY</div>
+                                <div class="stat-label">TRAINING</div>
                             </div>
-                           
                         </div>
                     </div>
                     
                     <div class="action-buttons">
-                        <div class="btn" data-aos="fade-up" data-aos-delay="400">
-                            <a href="Photos/Federico del gaudio CV combat.pdf" target="_blank">
-                                <button><i class="fas fa-download"></i> DOWNLOAD CV</button>
-                            </a>
-                        </div>
-                        <div class="btn" data-aos="fade-up" data-aos-delay="450">
+                        <!-- Bottone VIEW PROJECTS - Più visibile con gradiente e ombra -->
+                        <div class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">
                             <a href="projects.html">
-                                <button><i class="fas fa-folder-open"></i> VIEW PROJECTS</button>
+                                <button>
+                                    <i class="fas fa-folder-open"></i> 
+                                    VIEW PROJECTS
+                                </button>
                             </a>
                         </div>
-                        <div class="btn" data-aos="fade-up" data-aos-delay="500">
+                        
+                        <!-- Bottone DOWNLOAD CV - Stile secondario -->
+                        <div class="btn btn-secondary" data-aos="fade-up" data-aos-delay="450">
+                            <a href="Photos/Federico del gaudio CV combat.pdf" target="_blank">
+                                <button>
+                                    <i class="fas fa-download"></i> 
+                                    DOWNLOAD CV
+                                </button>
+                            </a>
+                        </div>
+                        
+                        <!-- Bottone GET IN TOUCH - Stile secondario -->
+                        <div class="btn btn-secondary" data-aos="fade-up" data-aos-delay="500">
                             <a href="contact.html">
-                                <button><i class="fas fa-envelope"></i> GET IN TOUCH</button>
+                                <button>
+                                    <i class="fas fa-envelope"></i> 
+                                    GET IN TOUCH
+                                </button>
                             </a>
                         </div>
                     </div>
@@ -740,13 +1096,15 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer-main">
-        <p>Copyright © 2020-2024 Federico Del Gaudio</p>
+        <p>Copyright © 2020-2026 Federico Del Gaudio</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Typewriter effect - versione semplificata e funzionante
+        // Typewriter effect
         class TypeWriter {
             constructor(element, words, wait = 3000) {
                 this.element = element;
@@ -759,41 +1117,29 @@
             }
 
             type() {
-                // Current index of word
                 const current = this.wordIndex % this.words.length;
-                // Get full text of current word
                 const fullTxt = this.words[current];
 
-                // Check if deleting
                 if (this.isDeleting) {
-                    // Remove char
                     this.txt = fullTxt.substring(0, this.txt.length - 1);
                 } else {
-                    // Add char
                     this.txt = fullTxt.substring(0, this.txt.length + 1);
                 }
 
-                // Insert txt into element
                 this.element.innerHTML = `<span class="txt">${this.txt}</span>`;
 
-                // Initial type speed
                 let typeSpeed = 100;
 
                 if (this.isDeleting) {
                     typeSpeed /= 2;
                 }
 
-                // If word is complete
                 if (!this.isDeleting && this.txt === fullTxt) {
-                    // Make pause at end
                     typeSpeed = this.wait;
-                    // Set delete to true
                     this.isDeleting = true;
                 } else if (this.isDeleting && this.txt === '') {
                     this.isDeleting = false;
-                    // Move to next word
                     this.wordIndex++;
-                    // Pause before start typing
                     typeSpeed = 200;
                 }
 
@@ -801,41 +1147,161 @@
             }
         }
 
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
             AOS.init({
                 duration: 1000,
                 once: true,
-                offset: 100
+                offset: 100,
+                disable: 'mobile'
             });
             
             // Add active class to navigation
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a:not([id="mobileProjectsTrigger"])');
             
             navLinks.forEach(link => {
                 const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                if (linkPage === currentPage) {
                     link.classList.add('active');
                 }
             });
             
-            // Video autoplay
+            // Video autoplay with fallback
             const video = document.querySelector('.background-video');
-            video.load();
+            if (video) {
+                video.load();
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        video.muted = true;
+                        video.play();
+                    });
+                }
+            }
             
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    video.muted = true;
-                    video.play();
+            // Initialize TypeWriter
+            const typewriterElement = document.getElementById('typewriter-text');
+            if (typewriterElement) {
+                const words = ['COMBAT DESIGNER', 'TECHNICAL DESIGNER', 'GAME DESIGNER'];
+                new TypeWriter(typewriterElement, words, 2000);
+            }
+            
+            // Mobile menu functionality
+            const hamburg = document.getElementById('hamburg');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileProjectsTrigger = document.getElementById('mobileProjectsTrigger');
+            const mobileDropdownContent = document.getElementById('mobileDropdownContent');
+            
+            // Open mobile menu
+            if (hamburg && mobileMenu) {
+                hamburg.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 });
             }
             
-            // Init TypeWriter
-            const typewriterElement = document.getElementById('typewriter-text');
-            const words = ['COMBAT DESIGNER', 'TECHNICAL DESIGNER', 'GAME DESIGNER'];
-            new TypeWriter(typewriterElement, words, 2000);
+            // Close mobile menu with X button
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Mobile dropdown toggle
+            if (mobileProjectsTrigger && mobileDropdownContent) {
+                mobileProjectsTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    mobileDropdownContent.classList.toggle('show');
+                    
+                    // Rotate arrow
+                    const arrow = this.querySelector('i');
+                    if (arrow) {
+                        if (mobileDropdownContent.classList.contains('show')) {
+                            arrow.style.transform = 'rotate(180deg)';
+                        } else {
+                            arrow.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    if (!mobileMenu.contains(e.target) && !hamburg.contains(e.target)) {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add animation on scroll for stat items
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.stat-item, .focus-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
         });
     </script>
 </body>
