@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Project A - Federico Del Gaudio</title>
+    <!-- Preconnect per performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,14 +20,18 @@
         }
         
         :root {
-            --dark: #1a1a1a;
-            --darker: #0d0d0d;
-            --light: #f5f5f5;
-            --gray-light: #e0e0e0;
-            --gray-medium: #95a5a6;
-            --gray-dark: #2c3e50;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --card-bg: rgba(35, 35, 35, 0.9);
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray-light: #f0f0f0;
+            --gray-medium: #aaaaaa;
+            --gray-dark: #333333;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --card-bg: rgba(20, 20, 20, 0.9);
+            --accent: #ffffff;
+            --accent-hover: #cccccc;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --combat-tag: #ff6b6b;
         }
         
         body {
@@ -31,15 +40,17 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation Bar */
-        .navbar {
+        /* Navigation Bar - STILE IDENTICO ALL'INDEX CON DROPDOWN COMPLETO */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(5, 5, 5, 0.95);
             position: fixed;
             top: 0;
             left: 0;
@@ -47,11 +58,12 @@
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
         
         .logo {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--light);
             letter-spacing: 1px;
@@ -66,15 +78,16 @@
         .nav-links {
             display: flex;
             gap: 35px;
+            align-items: center;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--gray-light);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             position: relative;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
             padding: 8px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -90,20 +103,283 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--light);
-            transition: width 0.3s ease;
+            transition: width 0.2s ease;
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
+        
+        .nav-links a.active {
+            color: var(--light);
+        }
+        
+        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background: transparent;
+            pointer-events: auto;
+            z-index: 1001;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: var(--gray-light);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+        }
+
+        .dropdown-trigger i {
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-trigger:hover,
+        .dropdown:hover .dropdown-trigger {
+            color: var(--light);
+        }
+
+        .dropdown-trigger::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--light);
+            transition: width 0.2s ease;
+        }
+
+        .dropdown-trigger:hover::after,
+        .dropdown:hover .dropdown-trigger::after {
+            width: 100%;
+        }
+
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 280px;
+            border-radius: 4px;
+            padding: 8px 0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 25px;
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 10, 10, 0.98);
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            transform: rotate(45deg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-content a {
+            color: var(--gray-light) !important;
+            padding: 12px 24px !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--gray-medium);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light) !important;
+            padding-left: 30px !important;
+        }
+
+        .dropdown-content a:hover i {
+            color: var(--light);
+        }
+        
+        /* Stile speciale per icona combat */
+        .dropdown-content a i.fa-crosshairs {
+            color: var(--combat-tag);
+        }
+        /* ========== FINE DROPDOWN ========== */
         
         .hamburg {
             display: none;
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--light);
+            z-index: 1002;
+            transition: transform 0.2s ease;
+        }
+        
+        .hamburg:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile Menu - OTTIMIZZATO */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.99);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1001;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.2s ease;
+        }
+        
+        .close-menu:hover {
+            transform: scale(1.2);
+        }
+        
+        .mobile-dropdown-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .mobile-dropdown-content.show {
+            display: flex;
+        }
+        
+        .mobile-dropdown-content a {
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .mobile-dropdown-content a:first-child {
+            border-top: none;
+        }
+        
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .mobile-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
         
         /* Project Header */
@@ -121,6 +397,8 @@
             color: var(--light);
             margin-bottom: 15px;
             letter-spacing: 2px;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
         }
         
         .project-subtitle {
@@ -128,6 +406,8 @@
             color: var(--gray-light);
             margin-bottom: 25px;
             font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
         }
         
         .project-meta {
@@ -138,6 +418,13 @@
             border: 1px solid var(--border-color);
             font-size: 1.2rem;
             color: var(--light);
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .project-meta span {
@@ -164,6 +451,7 @@
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
         
         .section-title {
@@ -205,6 +493,7 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
         }
         
         .trailer-container {
@@ -221,6 +510,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: none;
         }
         
         .play-overlay {
@@ -301,7 +591,7 @@
             width: 100%;
             height: 100%;
             background: var(--light);
-            transition: all 0.3s ease;
+            transition: left 0.3s ease;
             z-index: -1;
         }
         
@@ -320,6 +610,7 @@
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
         }
         
         .gallery-grid {
@@ -362,6 +653,7 @@
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
         }
         
         .contributions-grid {
@@ -403,113 +695,14 @@
             line-height: 1.6;
         }
         
-        /* Implementation Insights Section */
-        .insights-section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 40px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
-        }
-        
-        .insights-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-        
-        /* Layout inverso per seconda sezione */
-        .insights-section.reverse .insights-grid {
-            direction: rtl;
-        }
-        
-        .insights-section.reverse .insight-text,
-        .insights-section.reverse .insight-visual {
-            direction: ltr;
-        }
-        
-        .insight-text {
-            color: var(--gray-light);
-            line-height: 1.8;
-        }
-        
-        .insight-text h3 {
-            color: var(--light);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .insight-text p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        .insight-visual {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .insight-media {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .insight-media:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-            border-color: var(--light);
-        }
-        
-        .insight-media img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .insight-media:hover img {
-            transform: scale(1.05);
-        }
-        
-        .insight-caption {
-            color: var(--gray-light);
-            font-size: 1rem;
-            text-align: center;
-            font-style: italic;
-            padding: 0 20px;
-        }
-        
-        .insight-text-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 25px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .insight-text-content h4 {
-            color: var(--light);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        /* Design Details Section */
+        /* Design Section */
         .design-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            margin-bottom: 60px;
         }
         
         .design-grid {
@@ -560,9 +753,113 @@
             margin-bottom: 10px;
         }
         
+        .design-content p {
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
         .design-content strong {
             color: var(--light);
             font-weight: 600;
+        }
+        
+        /* Insights Section */
+        .insights-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        /* Layout inverso per seconda sezione */
+        .insights-section.reverse .insights-grid {
+            direction: rtl;
+        }
+        
+        .insights-section.reverse .insight-text,
+        .insights-section.reverse .insight-visual {
+            direction: ltr;
+        }
+        
+        .insight-text-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .insight-text-content h3 {
+            color: var(--light);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .insight-text-content h4 {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .insight-text-content p {
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .insight-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .insight-media {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .insight-media:hover {
+            transform: translateY(-5px);
+            border-color: var(--light);
+        }
+        
+        .insight-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .insight-media:hover img {
+            transform: scale(1.05);
+        }
+        
+        .insight-caption {
+            color: var(--gray-light);
+            font-size: 1rem;
+            text-align: center;
+            font-style: italic;
+            padding: 0 20px;
         }
         
         /* Lightbox Styles */
@@ -597,7 +894,6 @@
             right: 30px;
             color: var(--light);
             font-size: 3rem;
-            font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease;
             background: rgba(0, 0, 0, 0.5);
@@ -607,6 +903,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            z-index: 3001;
         }
         
         .close-lightbox:hover {
@@ -622,6 +919,7 @@
             display: flex;
             justify-content: space-between;
             padding: 0 30px;
+            z-index: 3001;
         }
         
         .lightbox-nav button {
@@ -654,6 +952,7 @@
             padding: 10px 20px;
             border-radius: 20px;
             border: 1px solid var(--border-color);
+            z-index: 3001;
         }
         
         /* Footer */
@@ -705,12 +1004,11 @@
             margin-top: 40px;
         }
         
-        /* Responsive Design */
+        /* ===== RESPONSIVE OTTIMIZZATO ===== */
         @media (max-width: 1200px) {
             .project-main, .project-header {
                 padding: 140px 30px 60px;
             }
-            
             .content-grid, .insights-grid {
                 gap: 40px;
             }
@@ -720,25 +1018,19 @@
             .content-grid, .insights-grid {
                 grid-template-columns: 1fr;
             }
-            
             .project-title {
                 font-size: 4rem;
             }
-            
             .gallery-grid, .contributions-grid, .design-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
             .action-buttons {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            /* Reset layout su mobile */
             .insights-section.reverse .insights-grid,
             .insights-section .insights-grid {
                 direction: ltr;
             }
-            
             .insight-visual {
                 order: -1;
                 margin-bottom: 30px;
@@ -746,18 +1038,15 @@
         }
         
         @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 30px;
+            nav {
+                padding: 15px 20px;
             }
-            
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
-            
             .nav-links {
                 display: none;
             }
-            
             .hamburg {
                 display: block;
             }
@@ -765,36 +1054,35 @@
             .project-header {
                 padding: 120px 20px 50px;
             }
-            
             .project-main {
                 padding: 0 20px 50px;
             }
-            
             .project-title {
                 font-size: 3.5rem;
             }
-            
             .project-subtitle {
                 font-size: 1.5rem;
             }
-            
             .section-title {
                 font-size: 2.2rem;
             }
-            
             .about-section, .trailer-section, .gallery-section,
             .contributions-section, .insights-section, .design-section {
                 padding: 30px;
             }
-            
             .action-buttons {
                 grid-template-columns: 1fr;
             }
-            
             .lightbox-nav button {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
+            }
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: flex;
             }
         }
         
@@ -802,27 +1090,21 @@
             .project-title {
                 font-size: 2.8rem;
             }
-            
             .project-subtitle {
                 font-size: 1.3rem;
             }
-            
             .section-title {
                 font-size: 2rem;
             }
-            
             .gallery-grid, .contributions-grid, .design-grid {
                 grid-template-columns: 1fr;
             }
-            
             .project-footer {
                 padding: 50px 20px 30px;
             }
-            
             .footer-title {
                 font-size: 2rem;
             }
-            
             .action-button {
                 padding: 14px 20px;
                 font-size: 0.85rem;
@@ -833,21 +1115,17 @@
             .project-title {
                 font-size: 2.5rem;
             }
-            
             .project-meta {
                 font-size: 1rem;
                 padding: 10px 20px;
             }
-            
             .contribution-card, .design-card, .insight-text-content {
                 padding: 25px;
             }
-            
             .lightbox-content {
                 max-width: 95%;
                 max-height: 70%;
             }
-            
             .lightbox-nav button {
                 width: 40px;
                 height: 40px;
@@ -857,18 +1135,60 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
+    <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">HOME</a>
+            <a href="index.html#about">ABOUT</a>
+            
+            <!-- Projects Dropdown COMPLETO -->
+            <div class="dropdown">
+                <a href="projects.html" class="dropdown-trigger">
+                    PROJECTS <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="projects.html">
+                        <i class="fas fa-grid-2"></i> ALL PROJECTS
+                    </a>
+                    <a href="AcademyProject.html">
+                        <i class="fas fa-graduation-cap"></i> ACADEMY
+                    </a>
+                    <a href="SoloProjects.html">
+                        <i class="fas fa-user"></i> PERSONAL
+                    </a>
+                    <a href="CombatTechProjects.html">
+                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
+                    </a>
+                </div>
+            </div>
+            
+            <a href="contact.html">CONTACT</a>
         </div>
-        <i class="fa-solid fa-bars hamburg"></i>
+        <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
+    
+    <!-- Mobile Menu - COMPLETO OTTIMIZZATO -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
+        <a href="index.html">HOME</a>
+        <a href="index.html#about">ABOUT</a>
+        
+        <!-- Mobile Projects Dropdown COMPLETO -->
+        <div class="mobile-dropdown">
+            <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+                PROJECTS <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="mobile-dropdown-content" id="mobileDropdownContent">
+                <a href="projects.html">ALL PROJECTS</a>
+                <a href="AcademyProject.html">ACADEMY</a>
+                <a href="SoloProjects.html">PERSONAL</a>
+                <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+            </div>
+        </div>
+        
+        <a href="contact.html">CONTACT</a>
+    </div>
     
     <!-- Project Header -->
     <header class="project-header">
@@ -897,7 +1217,7 @@
             <section class="trailer-section">
                 <h2 class="section-title">Alpha footage</h2>
                 <div class="trailer-container">
-                    <video class="trailer-video" id="gameTrailer" controls style="display: none;">
+                    <video class="trailer-video" id="gameTrailer" controls>
                         <source src="Videos/ProgWIP.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1018,20 +1338,18 @@
             <h2 class="section-title">Implementation Insights - Combat Systems</h2>
             <div class="insights-grid">
                 <!-- Left side: Text content -->
-                <div class="insight-text">
-                    <div class="insight-text-content">
-                        <h3>Key Learnings from Souls-like Combat Implementation</h3>
-                        <p>Developing combat mechanics <span class="highlight">inspired by Souls-like games</span> taught me valuable lessons about <span class="highlight">player feedback</span> and <span class="highlight">animation timing</span>. The precise nature of these games required meticulous attention to detail in every interaction.</p>
-                        
-                        <p>The most significant insight was understanding the importance of <span class="highlight">root motion animations</span> for creating weighty and impactful combat. Properly implemented root motion gives attacks a sense of physical presence and momentum that traditional animation blending cannot achieve.</p>
-                        
-                        <p>Another crucial learning was the balance between <span class="highlight">player control</span> and <span class="highlight">animation commitment</span>. Souls-like combat requires players to commit to their actions, which creates meaningful decisions about when to attack, dodge, or defend.</p>
-                        
-                        <p>Finally, I discovered the value of <span class="highlight">gradual difficulty scaling</span> through enemy AI. Starting with simple attack patterns and gradually introducing more complex behaviors helped players learn the combat system naturally.</p>
-                    </div>
+                <div class="insight-text-content">
+                    <h3>Key Learnings from Souls-like Combat Implementation</h3>
+                    <p>Developing combat mechanics <span class="highlight">inspired by Souls-like games</span> taught me valuable lessons about <span class="highlight">player feedback</span> and <span class="highlight">animation timing</span>. The precise nature of these games required meticulous attention to detail in every interaction.</p>
+                    
+                    <p>The most significant insight was understanding the importance of <span class="highlight">root motion animations</span> for creating weighty and impactful combat. Properly implemented root motion gives attacks a sense of physical presence and momentum that traditional animation blending cannot achieve.</p>
+                    
+                    <p>Another crucial learning was the balance between <span class="highlight">player control</span> and <span class="highlight">animation commitment</span>. Souls-like combat requires players to commit to their actions, which creates meaningful decisions about when to attack, dodge, or defend.</p>
+                    
+                    <p>Finally, I discovered the value of <span class="highlight">gradual difficulty scaling</span> through enemy AI. Starting with simple attack patterns and gradually introducing more complex behaviors helped players learn the combat system naturally.</p>
                 </div>
                 
-                <!-- Right side: Visual content (Placeholder - you can add actual images) -->
+                <!-- Right side: Visual content -->
                 <div class="insight-visual">
                     <div class="insight-media">
                         <img src="https://via.placeholder.com/400x300/333/fff?text=Combat+System+Screenshot" alt="Combat System Implementation">
@@ -1052,7 +1370,7 @@
         <section class="insights-section reverse">
             <h2 class="section-title">Implementation Insights - Enemy AI & Animation</h2>
             <div class="insights-grid">
-                <!-- Left side: Visual content (Placeholder - you can add actual images) -->
+                <!-- Left side: Visual content -->
                 <div class="insight-visual">
                     <div class="insight-media">
                         <img src="https://via.placeholder.com/400x300/333/fff?text=Enemy+AI+Blueprint" alt="Enemy AI Behavior Tree">
@@ -1068,17 +1386,15 @@
                 </div>
                 
                 <!-- Right side: Text content -->
-                <div class="insight-text">
-                    <div class="insight-text-content">
-                        <h3>AI Behavior and Animation Integration Insights</h3>
-                        <p>Developing enemy AI for a Souls-like project taught me valuable lessons about <span class="highlight">behavior tree design</span> and <span class="highlight">animation integration</span>. Enemies needed to feel challenging but fair, with telegraphed attacks that players could learn to recognize and counter.</p>
-                        
-                        <p>One key insight was the importance of <span class="highlight">telegraphing attacks</span> through animation. Each enemy attack needed clear wind-up animations that gave players time to react, creating a rhythm of observation and response.</p>
-                        
-                        <p>I learned that <span class="highlight">boss design</span> required special consideration. The boss enemy with ability speed changes at health thresholds created memorable moments that tested player adaptation skills.</p>
-                        
-                        <p>The integration of <span class="highlight">stealth mechanics</span> added variety to combat encounters. Allowing players to approach situations differently created emergent gameplay possibilities beyond direct confrontation.</p>
-                    </div>
+                <div class="insight-text-content">
+                    <h3>AI Behavior and Animation Integration Insights</h3>
+                    <p>Developing enemy AI for a Souls-like project taught me valuable lessons about <span class="highlight">behavior tree design</span> and <span class="highlight">animation integration</span>. Enemies needed to feel challenging but fair, with telegraphed attacks that players could learn to recognize and counter.</p>
+                    
+                    <p>One key insight was the importance of <span class="highlight">telegraphing attacks</span> through animation. Each enemy attack needed clear wind-up animations that gave players time to react, creating a rhythm of observation and response.</p>
+                    
+                    <p>I learned that <span class="highlight">boss design</span> required special consideration. The boss enemy with ability speed changes at health thresholds created memorable moments that tested player adaptation skills.</p>
+                    
+                    <p>The integration of <span class="highlight">stealth mechanics</span> added variety to combat encounters. Allowing players to approach situations differently created emergent gameplay possibilities beyond direct confrontation.</p>
                 </div>
             </div>
         </section>
@@ -1131,23 +1447,6 @@
                 });
             }
             
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
             // Lightbox Functionality
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -1156,53 +1455,31 @@
             const nextBtn = document.getElementById('next-btn');
             const lightboxCounter = document.getElementById('lightbox-counter');
             
-            // Get ALL clickable images
+            // Get all clickable images
             const galleryItems = document.querySelectorAll('.gallery-item');
             const insightMedia = document.querySelectorAll('.insight-media');
             
             // Combine all images
             const allImages = [];
             
-            // Add gallery items (if any in the future)
-            galleryItems.forEach((item, index) => {
+            galleryItems.forEach((item) => {
                 const img = item.querySelector('img');
-                allImages.push({
-                    src: img.src,
-                    alt: img.alt,
-                    element: item
-                });
+                if (img) {
+                    allImages.push({ src: img.src, alt: img.alt, element: item });
+                }
             });
             
-            // Add insight media
-            insightMedia.forEach((media, index) => {
+            insightMedia.forEach((media) => {
                 const img = media.querySelector('img');
-                allImages.push({
-                    src: img.src,
-                    alt: img.alt,
-                    element: media
-                });
+                if (img) {
+                    allImages.push({ src: img.src, alt: img.alt, element: media });
+                }
             });
             
             let currentImageIndex = 0;
             
-            // Add click event to ALL images
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
-                    currentImageIndex = index;
-                    openLightbox();
-                });
-            });
-            
-            insightMedia.forEach((media, index) => {
-                media.addEventListener('click', function() {
-                    // Find the index in allImages array
-                    const imgSrc = media.querySelector('img').src;
-                    currentImageIndex = allImages.findIndex(img => img.src === imgSrc);
-                    openLightbox();
-                });
-            });
-            
-            function openLightbox() {
+            function openLightbox(index) {
+                currentImageIndex = index;
                 lightbox.style.display = 'block';
                 updateLightboxImage();
                 document.body.style.overflow = 'hidden';
@@ -1236,36 +1513,109 @@
                 }
             }
             
-            // Event listeners for lightbox controls
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => openLightbox(index));
+            });
+            
+            insightMedia.forEach((media) => {
+                const imgSrc = media.querySelector('img')?.src;
+                media.addEventListener('click', function() {
+                    const index = allImages.findIndex(img => img.src === imgSrc);
+                    if (index !== -1) openLightbox(index);
+                });
+            });
+            
             if (closeLightbox) closeLightbox.addEventListener('click', closeLightboxFunc);
             if (prevBtn) prevBtn.addEventListener('click', prevImage);
             if (nextBtn) nextBtn.addEventListener('click', nextImage);
             
-            // Close lightbox when clicking outside image
-            if (lightbox) {
-                lightbox.addEventListener('click', function(e) {
-                    if (e.target === lightbox) {
-                        closeLightboxFunc();
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) closeLightboxFunc();
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape': closeLightboxFunc(); break;
+                        case 'ArrowLeft': prevImage(); break;
+                        case 'ArrowRight': nextImage(); break;
+                    }
+                }
+            });
+            
+            // Mobile menu functionality
+            const hamburg = document.getElementById('hamburg');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileProjectsTrigger = document.getElementById('mobileProjectsTrigger');
+            const mobileDropdownContent = document.getElementById('mobileDropdownContent');
+            
+            if (hamburg && mobileMenu) {
+                hamburg.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            if (mobileProjectsTrigger && mobileDropdownContent) {
+                mobileProjectsTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileDropdownContent.classList.toggle('show');
+                    const arrow = this.querySelector('i');
+                    if (arrow) {
+                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
+                            ? 'rotate(180deg)' 
+                            : 'rotate(0deg)';
                     }
                 });
             }
             
-            // Keyboard navigation for lightbox
-            document.addEventListener('keydown', function(e) {
-                if (lightbox && lightbox.style.display === 'block') {
-                    switch(e.key) {
-                        case 'Escape':
-                            closeLightboxFunc();
-                            break;
-                        case 'ArrowLeft':
-                            prevImage();
-                            break;
-                        case 'ArrowRight':
-                            nextImage();
-                            break;
-                    }
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (mobileMenu?.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !hamburg?.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger')) {
+                        return;
+                    }
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Update lightbox counter
+            if (allImages.length === 0) {
+                lightboxCounter.textContent = '0 / 0';
+            } else {
+                lightboxCounter.textContent = `1 / ${allImages.length}`;
+            }
         });
     </script>
 </body>
