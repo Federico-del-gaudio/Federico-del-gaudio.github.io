@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Federico Del Gaudio - Game Designer</title>
+    <!-- Preconnect per performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -30,7 +36,7 @@
             --red-accent: #ff4d4d;
             --red-hover: #ff1a1a;
             --tech-tag: #00a8ff;
-            --combat-tag: #d6cccc;
+            --combat-tag: #ff6b6b;
             --design-tag: #9b59b6;
         }
         
@@ -40,6 +46,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         /* Background video - SOLO per l'hero section */
@@ -96,29 +104,19 @@
         }
         
         @keyframes float-particle {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
-        /* Navigation Bar */
+        /* Navigation Bar - COMPLETA */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(5, 5, 5, 0.95);
             position: fixed;
             top: 0;
             left: 0;
@@ -126,6 +124,7 @@
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -154,7 +153,7 @@
             font-size: 1rem;
             font-weight: 500;
             position: relative;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
             padding: 8px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -172,10 +171,11 @@
             width: 0;
             height: 1px;
             background: var(--light);
-            transition: width 0.3s ease;
+            transition: width 0.2s ease;
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
         
@@ -183,11 +183,7 @@
             color: var(--light);
         }
         
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        /* ========== DROPDOWN PROGETTI ========== */
+        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -216,7 +212,7 @@
             padding: 8px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             cursor: pointer;
             border: none;
             background: transparent;
@@ -224,7 +220,7 @@
 
         .dropdown-trigger i {
             font-size: 0.8rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
         .dropdown:hover .dropdown-trigger i {
@@ -244,7 +240,7 @@
             width: 0;
             height: 1px;
             background: var(--light);
-            transition: width 0.3s ease;
+            transition: width 0.2s ease;
         }
 
         .dropdown-trigger:hover::after,
@@ -257,9 +253,10 @@
             position: absolute;
             top: calc(100% + 8px);
             left: 0;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(10px);
-            min-width: 260px;
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 280px;
             border-radius: 4px;
             padding: 8px 0;
             border: 1px solid var(--border-color);
@@ -268,8 +265,7 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(-8px);
-            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-            transition-delay: 0s;
+            transition: all 0.2s ease;
             pointer-events: none;
         }
 
@@ -280,11 +276,12 @@
             left: 25px;
             width: 12px;
             height: 12px;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             border-top: 1px solid var(--border-color);
             border-left: 1px solid var(--border-color);
             transform: rotate(45deg);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .dropdown:hover .dropdown-content,
@@ -292,12 +289,7 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-            transition-delay: 0s;
             pointer-events: auto;
-        }
-
-        .dropdown:not(:hover) .dropdown-content {
-            transition-delay: 0.2s;
         }
 
         .dropdown-content a {
@@ -310,7 +302,7 @@
             font-size: 0.9rem !important;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border-bottom: 1px solid var(--border-color);
             white-space: nowrap;
         }
@@ -324,7 +316,7 @@
             text-align: center;
             font-size: 1rem;
             color: var(--gray-medium);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .dropdown-content a:hover {
@@ -336,9 +328,10 @@
         .dropdown-content a:hover i {
             color: var(--light);
         }
-
-        .dropdown-content a::after {
-            display: none !important;
+        
+        /* Stile speciale per icona combat */
+        .dropdown-content a i.fa-crosshairs {
+            color: var(--combat-tag);
         }
         /* ========== FINE DROPDOWN ========== */
         
@@ -348,9 +341,14 @@
             cursor: pointer;
             color: var(--light);
             z-index: 1002;
+            transition: transform 0.2s ease;
         }
         
-        /* Mobile Menu */
+        .hamburg:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile Menu - OTTIMIZZATO */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -358,13 +356,14 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(5, 5, 5, 0.98);
+            background: rgba(5, 5, 5, 0.99);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1001;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            backdrop-filter: blur(10px);
+            gap: 25px;
         }
         
         .mobile-menu.active {
@@ -374,11 +373,11 @@
         .mobile-menu a {
             color: var(--light);
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             padding: 10px 20px;
             border-radius: 8px;
         }
@@ -386,16 +385,22 @@
         .mobile-menu a:hover,
         .mobile-menu a.active {
             background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
         
         .close-menu {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 25px;
+            right: 25px;
             font-size: 2rem;
             color: var(--light);
             cursor: pointer;
             z-index: 1002;
+            transition: transform 0.2s ease;
+        }
+        
+        .close-menu:hover {
+            transform: scale(1.2);
         }
         
         .mobile-dropdown-content {
@@ -415,6 +420,32 @@
             padding: 8px 20px;
             width: 100%;
             text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .mobile-dropdown-content a:first-child {
+            border-top: none;
+        }
+        
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .mobile-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
         
         /* ===== HERO SECTION ===== */
@@ -434,10 +465,6 @@
             width: 100%;
             margin: 0 auto;
             text-align: center;
-        }
-        
-        .hero-title {
-            margin-bottom: 30px;
         }
         
         .hero-name {
@@ -499,25 +526,13 @@
         }
         
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* HERO BUTTON - ROSSO IN RISALTO */
@@ -540,7 +555,6 @@
             display: none !important;
         }
         
-        /* Hero Button */
         .hero-buttons {
             margin-top: 40px;
             display: flex;
@@ -574,7 +588,7 @@
             width: 100%;
             height: 100%;
             background: var(--light);
-            transition: all 0.3s ease;
+            transition: left 0.3s ease;
             z-index: -1;
         }
         
@@ -612,15 +626,9 @@
         }
         
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
         }
         
         /* ===== CONTENT SECTIONS ===== */
@@ -639,7 +647,6 @@
             padding: 0 50px;
         }
         
-        /* Section Headers */
         .section-header {
             text-align: center;
             margin-bottom: 60px;
@@ -864,13 +871,8 @@
         }
         
         @keyframes pulse-badge {
-            0%, 100% {
-                opacity: 0.8;
-            }
-            50% {
-                opacity: 1;
-                background: rgba(255, 255, 255, 0.25);
-            }
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; background: rgba(255, 255, 255, 0.25); }
         }
         
         /* Stats Showcase */
@@ -1015,17 +1017,12 @@
         }
         
         .type-tech {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(247, 73, 73, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.9) 0%, rgba(0, 120, 255, 0.9) 100%);
             border-color: rgba(255,255,255,0.3);
         }
         
         .type-combat {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(5, 22, 122, 0.9) 100%);
-            border-color: rgba(255,255,255,0.3);
-        }
-        
-        .type-design {
-            background: linear-gradient(135deg, rgba(155,89,182,0.9) 0%, rgba(142,68,173,0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(255, 77, 77, 0.9) 100%);
             border-color: rgba(255,255,255,0.3);
         }
         
@@ -1082,7 +1079,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             transform: scale(0.8);
         }
         
@@ -1127,11 +1124,7 @@
             width: auto;
             filter: brightness(0) invert(1);
             opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-        
-        .card-engine-logo:hover {
-            opacity: 1;
+            transition: opacity 0.2s ease;
         }
         
         .card-title {
@@ -1192,7 +1185,7 @@
             font-size: 1rem;
         }
         
-        /* CARD BUTTON - STILE ORIGINALE (NON ROSSO) */
+        /* CARD BUTTON - STILE ORIGINALE */
         .card-button {
             display: inline-block;
             padding: 12px 25px;
@@ -1220,7 +1213,7 @@
             width: 100%;
             height: 100%;
             background: var(--light);
-            transition: all 0.3s ease;
+            transition: left 0.3s ease;
             z-index: -1;
         }
         
@@ -1232,7 +1225,7 @@
             left: 0;
         }
         
-        /* Lightbox - per video a schermo intero */
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1273,12 +1266,11 @@
             color: var(--light);
             font-size: 2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease;
         }
         
         .lightbox-close:hover {
             transform: scale(1.2);
-            color: var(--gray-medium);
         }
         
         .lightbox-title {
@@ -1296,8 +1288,6 @@
             background: var(--darker);
             border-top: 1px solid var(--border-color);
             text-align: center;
-            position: relative;
-            z-index: 30;
         }
         
         .more-projects-hero .section-container {
@@ -1341,16 +1331,12 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
             box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
         }
         
         .view-all-btn:hover {
             background: var(--red-hover) !important;
             border-color: var(--red-hover) !important;
-            color: white !important;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(255, 77, 77, 0.6);
         }
@@ -1362,10 +1348,6 @@
         .view-all-btn i {
             font-size: 1.2rem;
             transition: transform 0.3s ease;
-        }
-        
-        .view-all-btn::before {
-            display: none !important;
         }
         
         /* ===== CTA SECTION ===== */
@@ -1464,153 +1446,67 @@
             transform: translateY(-5px);
         }
         
-        /* Responsive */
+        /* ===== RESPONSIVE OTTIMIZZATO ===== */
         @media (max-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .hero-name { font-size: 4rem; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .carousel-main-title { font-size: 2.8rem; }
         }
         
         @media (max-width: 992px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .stats-showcase {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .stats-showcase { grid-template-columns: repeat(2, 1fr); }
+            .project-title { font-size: 3rem; }
+            .carousel-main-title { font-size: 2.5rem; }
         }
         
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
+            nav { padding: 15px 20px; }
+            .logo { font-size: 1.6rem; }
+            .nav-links { display: none; }
+            .hamburg { display: block; }
             
-            .logo {
-                font-size: 1.6rem;
-            }
+            .hero-section { padding: 100px 20px 30px; }
+            .hero-name { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.4rem; }
+            .hero-dynamic-title { font-size: 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; gap: 15px; }
+            .hero-btn { width: 100%; max-width: 280px; }
             
-            .nav-links {
-                display: none;
-            }
+            .section-container { padding: 0 20px; }
+            .section-title { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-showcase { grid-template-columns: 1fr; }
             
-            .hamburg {
-                display: block;
-            }
+            .projects-grid { grid-template-columns: 1fr; gap: 25px; }
+            .projects-grid-container { padding: 0 20px; }
+            .carousel-main-title { font-size: 2rem; }
             
-            .hero-section {
-                padding: 100px 20px 30px;
-            }
+            .more-projects-hero { padding: 80px 0; }
+            .more-projects-hero .section-title { font-size: 2.2rem; }
+            .more-projects-hero .section-subtitle { font-size: 1.1rem; padding: 0 20px; }
+            .view-all-btn { padding: 15px 40px; font-size: 0.9rem; letter-spacing: 3px; }
             
-            .hero-name {
-                font-size: 2.8rem;
-            }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-btn { width: 100%; max-width: 280px; }
+            .cta-title { font-size: 2rem; }
             
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .hero-dynamic-title {
-                font-size: 1.5rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .hero-btn {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            .section-container {
-                padding: 0 20px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-showcase {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .projects-grid-container {
-                padding: 0 20px;
-            }
-            
-            .carousel-main-title {
-                font-size: 2rem;
-            }
-            
-            .more-projects-hero .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-btn {
-                width: 100%;
-                max-width: 280px;
-            }
+            .mobile-menu { display: none; }
+            .mobile-menu.active { display: flex; }
         }
         
         @media (max-width: 480px) {
-            .hero-name {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .hero-dynamic-title {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .about-name {
-                font-size: 1.8rem;
-            }
-            
-            .carousel-main-title {
-                font-size: 1.6rem;
-            }
-            
-            .more-projects-hero .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .card-title {
-                font-size: 1.3rem;
-            }
-            
-            .card-content {
-                padding: 20px;
-            }
-            
-            .project-type-tag {
-                padding: 6px 12px;
-                font-size: 0.7rem;
-            }
+            .hero-name { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-dynamic-title { font-size: 1.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .about-name { font-size: 1.8rem; }
+            .project-title { font-size: 1.8rem; }
+            .card-title { font-size: 1.3rem; }
+            .card-content { padding: 20px; }
+            .carousel-main-title { font-size: 1.6rem; }
+            .more-projects-hero .section-title { font-size: 1.8rem; }
+            .project-type-tag { padding: 6px 12px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -1619,23 +1515,19 @@
     <div class="hero-background-wrapper">
         <video class="background-video" autoplay muted loop playsinline>
             <source src="Videos/VideoHome (2).mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
         <div class="video-overlay"></div>
-        
-        <!-- Particelle sottili - solo hero -->
         <div class="hero-particles" id="particles"></div>
     </div>
     
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html" class="active">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#skills">SKILLS</a>
+            <a href="#About">ABOUT</a>
             
-            <!-- Projects Dropdown -->
+            <!-- Projects Dropdown COMPLETO -->
             <div class="dropdown">
                 <a href="projects.html" class="dropdown-trigger">
                     PROJECTS <i class="fas fa-chevron-down"></i>
@@ -1644,40 +1536,43 @@
                     <a href="projects.html">
                         <i class="fas fa-grid-2"></i> ALL PROJECTS
                     </a>
-                    <a href="technical-combat-projects.html">
+                    <a href="AcademyProject.html">
+                        <i class="fas fa-graduation-cap"></i> ACADEMY
+                    </a>
+                    <a href="SoloProjects.html">
+                        <i class="fas fa-user"></i> PERSONAL
+                    </a>
+                    <a href="CombatTechProjects.html">
                         <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
                     </a>
                 </div>
             </div>
             
-            <a href="#contact">CONTACT</a>
+            <a href="contact.html">CONTACT</a>
         </div>
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu - COMPLETO -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html" class="active">HOME</a>
-        <a href="#about">ABOUT</a>
-        <a href="#skills">SKILLS</a>
+        <a href="#About">ABOUT</a>
         
-        <!-- Mobile Projects Dropdown -->
-        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-            <a href="projects.html" id="mobileProjectsTrigger" style="display: flex; align-items: center; gap: 5px;">
-                PROJECTS <i class="fas fa-chevron-down" style="font-size: 1rem;"></i>
+        <!-- Mobile Projects Dropdown COMPLETO -->
+        <div class="mobile-dropdown">
+            <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+                PROJECTS <i class="fas fa-chevron-down"></i>
             </a>
             <div class="mobile-dropdown-content" id="mobileDropdownContent">
-                <a href="projects.html">
-                    <i class="fas fa-grid-2"></i> ALL PROJECTS
-                </a>
-                <a href="technical-combat-projects.html">
-                    <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
-                </a>
+                <a href="projects.html">ALL PROJECTS</a>
+                <a href="AcademyProject.html">ACADEMY</a>
+                <a href="SoloProjects.html">PERSONAL</a>
+                <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
             </div>
         </div>
         
-        <a href="#contact">CONTACT</a>
+        <a href="contact.html">CONTACT</a>  
     </div>
     
     <!-- HERO SECTION -->
@@ -1697,7 +1592,6 @@
                 </div>
             </div>
             
-            <!-- Hero Button - VIEW PROJECTS (ROSSO) -->
             <div class="hero-buttons">
                 <a href="#TitleProjects" class="hero-btn hero-btn-primary">
                     <i class="fas fa-folder-open"></i> VIEW PROJECTS
@@ -1708,15 +1602,14 @@
             </div>
         </div>
         
-        <!-- Scroll Down Indicator -->
         <a href="#about" class="scroll-indicator">
             <span>SCROLL DOWN</span>
             <i class="fas fa-chevron-down"></i>
         </a>
     </section>
     
-    <!-- CONTENT SECTIONS (About + Skills) -->
-    <div class="content-sections">
+    <!-- CONTENT SECTIONS -->
+    <div id="About" class="content-sections">
         <!-- ABOUT SECTION -->
         <section id="about" class="about-section">
             <div class="section-container">
@@ -1726,7 +1619,6 @@
                 </div>
                 
                 <div class="about-grid">
-                    <!-- COLONNA SINISTRA - Testo principale + Unreal Engine -->
                     <div class="about-content" data-aos="fade-right" data-aos-duration="1200">
                         <div>
                             <h3 class="about-name">Federico Del Gaudio</h3>
@@ -1739,7 +1631,6 @@
                             with creative expression to craft memorable player experiences.
                         </p>
                         
-                        <!-- UNREAL ENGINE SPECIFICATO QUI A SINISTRA -->
                         <p class="about-text">
                             <strong>Self‑directed study in Unreal Engine</strong> with focus on combat systems, Blueprints, and AI behavior trees.
                         </p>
@@ -1752,9 +1643,7 @@
                         </div>
                     </div>
                     
-                    <!-- COLONNA DESTRA - Timeline + Design Focus -->
                     <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
-                        <!-- TIMELINE COMPACT -->
                         <div class="timeline-compact">
                             <div class="timeline-item-compact">
                                 <span class="timeline-year">2019-2024</span>
@@ -1766,7 +1655,6 @@
                             </div>
                         </div>
                         
-                        <!-- DESIGN FOCUS -->
                         <p class="about-text" style="margin-top: 30px;">
                             <strong>Design Focus:</strong>
                         </p>
@@ -1797,43 +1685,15 @@
                             <h3>TECHNICAL</h3>
                         </div>
                         <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fab fa-unity"></i>
-                                <span>Unity</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-unreal-engine"></i>
-                                <span>Unreal Engine 4/5</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>Visual Scripting</span>
-                                <span class="skill-badge">BP</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-code"></i>
-                                <span>C#</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML & CSS</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-database"></i>
-                                <span>SQL</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-video"></i>
-                                <span>Adobe Premiere Pro</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-code-branch"></i>
-                                <span>Fork (Git)</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-cogs"></i>
-                                <span>Visual Studio</span>
-                            </div>
+                            <div class="skill-item"><i class="fab fa-unity"></i><span>Unity</span></div>
+                            <div class="skill-item"><i class="fab fa-unreal-engine"></i><span>Unreal Engine 4/5</span></div>
+                            <div class="skill-item"><i class="fas fa-project-diagram"></i><span>Visual Scripting</span><span class="skill-badge">BP</span></div>
+                            <div class="skill-item"><i class="fas fa-code"></i><span>C#</span></div>
+                            <div class="skill-item"><i class="fab fa-html5"></i><span>HTML & CSS</span></div>
+                            <div class="skill-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                            <div class="skill-item"><i class="fas fa-video"></i><span>Adobe Premiere Pro</span></div>
+                            <div class="skill-item"><i class="fas fa-code-branch"></i><span>Fork (Git)</span></div>
+                            <div class="skill-item"><i class="fas fa-cogs"></i><span>Visual Studio</span></div>
                         </div>
                     </div>
                     
@@ -1844,42 +1704,14 @@
                             <h3>UNREAL ENGINE</h3>
                         </div>
                         <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-cubes"></i>
-                                <span>Blueprints</span>
-                                <span class="skill-badge">Core</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-fist-raised"></i>
-                                <span>Combat Systems</span>
-                                <span class="skill-badge">Advanced</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-robot"></i>
-                                <span>AI & Behavior Trees</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-film"></i>
-                                <span>Animation Montages</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-blender"></i>
-                                <span>Blend Spaces</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-cogs"></i>
-                                <span>State Machines</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-magic"></i>
-                                <span>Niagara Effects</span>
-                                <span class="skill-badge learning">Learning</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-paint-brush"></i>
-                                <span>PaperZD Plugin</span>
-                                <span class="skill-badge learning">Learning</span>
-                            </div>
+                            <div class="skill-item"><i class="fas fa-cubes"></i><span>Blueprints</span><span class="skill-badge">Core</span></div>
+                            <div class="skill-item"><i class="fas fa-fist-raised"></i><span>Combat Systems</span><span class="skill-badge">Advanced</span></div>
+                            <div class="skill-item"><i class="fas fa-robot"></i><span>AI & Behavior Trees</span></div>
+                            <div class="skill-item"><i class="fas fa-film"></i><span>Animation Montages</span></div>
+                            <div class="skill-item"><i class="fas fa-blender"></i><span>Blend Spaces</span></div>
+                            <div class="skill-item"><i class="fas fa-cogs"></i><span>State Machines</span></div>
+                            <div class="skill-item"><i class="fas fa-magic"></i><span>Niagara Effects</span><span class="skill-badge learning">Learning</span></div>
+                            <div class="skill-item"><i class="fas fa-paint-brush"></i><span>PaperZD Plugin</span><span class="skill-badge learning">Learning</span></div>
                         </div>
                     </div>
                     
@@ -1890,72 +1722,26 @@
                             <h3>DESIGN</h3>
                         </div>
                         <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-crosshairs"></i>
-                                <span>Combat Design</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-robot"></i>
-                                <span>AI Behavior</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-cogs"></i>
-                                <span>Technical Design</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-gamepad"></i>
-                                <span>Gameplay Mechanics</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-flask"></i>
-                                <span>Prototyping</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-balance-scale"></i>
-                                <span>Balancing & Tuning</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-file-alt"></i>
-                                <span>Documentation</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>System Design</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-users"></i>
-                                <span>UX Design</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-bug"></i>
-                                <span>QA & Testing</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <span>Pitching</span>
-                            </div>
+                            <div class="skill-item"><i class="fas fa-crosshairs"></i><span>Combat Design</span></div>
+                            <div class="skill-item"><i class="fas fa-robot"></i><span>AI Behavior</span></div>
+                            <div class="skill-item"><i class="fas fa-cogs"></i><span>Technical Design</span></div>
+                            <div class="skill-item"><i class="fas fa-gamepad"></i><span>Gameplay Mechanics</span></div>
+                            <div class="skill-item"><i class="fas fa-flask"></i><span>Prototyping</span></div>
+                            <div class="skill-item"><i class="fas fa-balance-scale"></i><span>Balancing & Tuning</span></div>
+                            <div class="skill-item"><i class="fas fa-file-alt"></i><span>Documentation</span></div>
+                            <div class="skill-item"><i class="fas fa-chart-line"></i><span>System Design</span></div>
+                            <div class="skill-item"><i class="fas fa-users"></i><span>UX Design</span></div>
+                            <div class="skill-item"><i class="fas fa-bug"></i><span>QA & Testing</span></div>
+                            <div class="skill-item"><i class="fas fa-chalkboard-teacher"></i><span>Pitching</span></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Stats Showcase -->
                 <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1200">
-                    <div class="stat-block">
-                        <div class="stat-number">9</div>
-                        <div class="stat-label">PROJECTS</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">CODING LANGUAGES</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">ENGINES</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="stat-number">ACADEMY</div>
-                        <div class="stat-label">TRAINING</div>
-                    </div>
+                    <div class="stat-block"><div class="stat-number">9</div><div class="stat-label">PROJECTS</div></div>
+                    <div class="stat-block"><div class="stat-number">3</div><div class="stat-label">CODING LANGUAGES</div></div>
+                    <div class="stat-block"><div class="stat-number">2</div><div class="stat-label">ENGINES</div></div>
+                    <div class="stat-block"><div class="stat-number">ACADEMY</div><div class="stat-label">TRAINING</div></div>
                 </div>
             </div>
         </section>
@@ -1972,15 +1758,14 @@
         </div>
     </section>
     
-    <!-- PROJECTS GRID - CARD LAYOUT CON VIDEO IN AUTOPLAY -->
+    <!-- PROJECTS GRID -->
     <section id="projects-grid" class="projects-grid-section">
         <div class="projects-grid-container">
             <div class="projects-grid">
-                
-                <!-- Card 1: One Night in Venice - COMBAT -->
+                <!-- Card 1: One Night in Venice -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800">
                     <div class="project-type-tag type-combat">
-                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH DESIGN 
+                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
                     </div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
@@ -2001,9 +1786,7 @@
                         </div>
                         <h3 class="card-title">ONE NIGHT IN VENICE</h3>
                         <div class="card-year">GLOBAL GAME JAM • 2026</div>
-                        <p class="card-description">
-                            A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.
-                        </p>
+                        <p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">OVERVIEW</div>
                             <ul class="card-tasks-list">
@@ -2018,7 +1801,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 2: The Last Coin - TECH DESIGN -->
+                <!-- Card 2: The Last Coin -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                     <div class="project-type-tag type-tech">
                         <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
@@ -2041,17 +1824,15 @@
                             </span>
                         </div>
                         <h3 class="card-title">THE LAST COIN</h3>
-                        <div class="card-year">ACADEMY PROJECT • 2025 1 WEEK</div>
-                        <p class="card-description">
-                           Trapped in a dark gambling nightmare where you have to face your addiction. Walk through a neverending nightmare and confront your Fate at the Slot Machine, but pay attention to your fragile Sanity.
-                        </p>
+                        <div class="card-year">ACADEMY PROJECT • 2025</div>
+                        <p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">Key Contributions</div>
                             <ul class="card-tasks-list">
-                                <li>Technical design and systems integration</li>
+                                <li>Technical design & systems</li>
                                 <li>Character Setup</li>
                                 <li>Puzzle implementation</li>
-                                <li>In-game UI implementation</li>
+                                <li>UI implementation</li>
                                 <li>Team coordination</li>
                             </ul>
                         </div>
@@ -2059,10 +1840,10 @@
                     </div>
                 </div>
                 
-                <!-- Card 3: Pummel - COMBAT -->
+                <!-- Card 3: Pummel -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                     <div class="project-type-tag type-combat">
-                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH DESIGN
+                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
                     </div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
@@ -2082,17 +1863,15 @@
                             </span>
                         </div>
                         <h3 class="card-title">PUMMEL</h3>
-                        <div class="card-year">PROTOTYPE 2024 • 3 MONTHS</div>
-                        <p class="card-description">
-                            PaperZD plugin exploration with flipbook animations and dynamic combat systems.
-                        </p>
+                        <div class="card-year">PROTOTYPE 2024</div>
+                        <p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">OVERVIEW</div>
                             <ul class="card-tasks-list">
                                 <li>PaperZD integration</li>
                                 <li>Combo system</li>
                                 <li>Enemy AI</li>
-                                <li>2D animation state machine</li>
+                                <li>2D animation</li>
                                 <li>Damage system</li>
                             </ul>
                         </div>
@@ -2100,7 +1879,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 5: Project A - COMBAT -->
+                <!-- Card 4: Project A -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="300" data-aos-delay="400">
                     <div class="project-type-tag type-combat">
                         <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN
@@ -2123,17 +1902,15 @@
                             </span>
                         </div>
                         <h3 class="card-title">PROJECT A</h3>
-                        <div class="card-year">PROTOTYPE 2023 • 3 MONTHS</div>
-                        <p class="card-description">
-                            Souls-like combat design with complex animation systems and enemy AI.
-                        </p>
+                        <div class="card-year">PROTOTYPE 2023</div>
+                        <p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">OVERVIEW</div>
                             <ul class="card-tasks-list">
                                 <li>Souls-like combat</li>
-                                <li>Root motion animation</li>
-                                <li>Enemy AI behaviors</li>
-                                <li>Boss fight phases</li>
+                                <li>Root motion</li>
+                                <li>Enemy AI</li>
+                                <li>Boss phases</li>
                                 <li>Niagara effects</li>
                             </ul>
                         </div>
@@ -2141,7 +1918,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 6: The Sun Vanished - TECH DESIGN -->
+                <!-- Card 5: The Sun Vanished -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="300" data-aos-delay="400">
                     <div class="project-type-tag type-tech">
                         <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
@@ -2164,30 +1941,25 @@
                             </span>
                         </div>
                         <h3 class="card-title">THE SUN VANISHED</h3>
-                        <div class="card-year">PROTOTYPE • 2025</div>
-                        <p class="card-description">
-                            Navigation through LiDAR scanning while avoiding creatures with formidable hearing.
-                        </p>
+                        <div class="card-year">PROTOTYPE 2025</div>
+                        <p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">OVERVIEW</div>
                             <ul class="card-tasks-list">
-                                <li>LiDAR scanning system</li>
-                                <li>Sound-based enemy AI</li>
+                                <li>LiDAR scanning</li>
+                                <li>Sound-based AI</li>
                                 <li>Atmospheric horror</li>
-                                <li>Navigation mechanics</li>
+                                <li>Navigation</li>
                             </ul>
                         </div>
                         <a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a>
                     </div>
                 </div>
-                
-                <!-- Nota: Card 4 (The Bubble) è stata rimossa -->
-                
             </div>
         </div>
     </section>
     
-    <!-- LIGHTBOX - per riprodurre video a schermo intero -->
+    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <video class="lightbox-video" controls>
@@ -2200,7 +1972,7 @@
         </div>
     </div>
     
-    <!-- MORE PROJECTS HERO - BOTTONE VIEW ALL PROJECTS ROSSO -->
+    <!-- MORE PROJECTS HERO -->
     <section id="more-projects" class="more-projects-hero">
         <div class="section-container">
             <h2 class="section-title" data-aos="fade-up">MORE PROJECTS</h2>
@@ -2218,9 +1990,7 @@
         <div class="section-container">
             <div class="cta-card" data-aos="zoom-in" data-aos-duration="1500">
                 <h2 class="cta-title">CONTACT ME!</h2>
-                <p class="cta-text">
-                    Let's discuss how I can contribute to your next project!
-                </p>
+                <p class="cta-text">Let's discuss how I can contribute to your next project!</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-btn">
                         <i class="fas fa-envelope"></i> CONTACT ME
@@ -2254,134 +2024,95 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
-        // Create subtle particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            if (!particlesContainer) return;
-            
-            const particleCount = 40;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 2 + 0.5;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const duration = Math.random() * 20 + 15;
-                const delay = Math.random() * 10;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Typewriter effect
-        class TypeWriter {
-            constructor(element, words, wait = 3000) {
-                this.element = element;
-                this.words = words;
-                this.txt = '';
-                this.wordIndex = 0;
-                this.wait = parseInt(wait, 10);
-                this.type();
-                this.isDeleting = false;
-            }
-
-            type() {
-                const current = this.wordIndex % this.words.length;
-                const fullTxt = this.words[current];
-
-                if (this.isDeleting) {
-                    this.txt = fullTxt.substring(0, this.txt.length - 1);
-                } else {
-                    this.txt = fullTxt.substring(0, this.txt.length + 1);
-                }
-
-                this.element.innerHTML = `<span class="txt">${this.txt}</span>`;
-
-                let typeSpeed = 100;
-
-                if (this.isDeleting) {
-                    typeSpeed /= 2;
-                }
-
-                if (!this.isDeleting && this.txt === fullTxt) {
-                    typeSpeed = this.wait;
-                    this.isDeleting = true;
-                } else if (this.isDeleting && this.txt === '') {
-                    this.isDeleting = false;
-                    this.wordIndex++;
-                    typeSpeed = 200;
-                }
-
-                setTimeout(() => this.type(), typeSpeed);
-            }
-        }
-
-        // Initialize everything
+        // Defer non-critical operations
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize AOS
             AOS.init({
                 duration: 1000,
                 once: true,
                 offset: 100,
-                disable: 'mobile'
+                disable: window.innerWidth < 768 ? true : false
             });
             
             // Create particles
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                if (!particlesContainer) return;
+                
+                for (let i = 0; i < 40; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.width = `${Math.random() * 2 + 0.5}px`;
+                    particle.style.height = particle.style.width;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                    particle.style.animationDelay = `${Math.random() * 10}s`;
+                    particlesContainer.appendChild(particle);
+                }
+            }
             createParticles();
             
-            // Initialize TypeWriter
+            // Typewriter effect
             const typewriterElement = document.getElementById('typewriter-text');
             if (typewriterElement) {
                 const words = ['COMBAT DESIGNER', 'TECHNICAL DESIGNER', 'GAME DESIGNER'];
-                new TypeWriter(typewriterElement, words, 2000);
+                let i = 0, txt = '', isDeleting = false;
+                
+                function type() {
+                    const current = i % words.length;
+                    const fullTxt = words[current];
+                    
+                    if (isDeleting) {
+                        txt = fullTxt.substring(0, txt.length - 1);
+                    } else {
+                        txt = fullTxt.substring(0, txt.length + 1);
+                    }
+                    
+                    typewriterElement.innerHTML = `<span class="txt">${txt}</span>`;
+                    
+                    let speed = isDeleting ? 50 : 100;
+                    
+                    if (!isDeleting && txt === fullTxt) {
+                        speed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && txt === '') {
+                        isDeleting = false;
+                        i++;
+                        speed = 200;
+                    }
+                    
+                    setTimeout(type, speed);
+                }
+                type();
             }
             
-            // LIGHTBOX FUNCTIONALITY
+            // Lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxVideo = lightbox.querySelector('.lightbox-video');
-            const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxClose = document.getElementById('lightboxClose');
             
-            // Open lightbox on play button click
-            document.querySelectorAll('.card-play-button').forEach(button => {
-                button.addEventListener('click', function(e) {
+            document.querySelectorAll('.card-play-button').forEach(btn => {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const videoSrc = this.getAttribute('data-video');
-                    const title = this.getAttribute('data-title');
-                    
-                    lightboxVideo.src = videoSrc;
-                    lightboxTitle.textContent = title;
+                    lightboxVideo.src = this.dataset.video;
+                    lightbox.querySelector('.lightbox-title').textContent = this.dataset.title;
                     lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
-                    
-                    // Autoplay
                     lightboxVideo.play();
                 });
             });
             
-            // Close lightbox
-            lightboxClose.addEventListener('click', function() {
+            lightboxClose.addEventListener('click', () => {
                 lightbox.classList.remove('active');
                 lightboxVideo.pause();
                 lightboxVideo.src = '';
                 document.body.style.overflow = '';
             });
             
-            // Close on click outside video
-            lightbox.addEventListener('click', function(e) {
+            lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) {
                     lightbox.classList.remove('active');
                     lightboxVideo.pause();
@@ -2390,8 +2121,7 @@
                 }
             });
             
-            // Close on ESC key
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                     lightbox.classList.remove('active');
                     lightboxVideo.pause();
@@ -2400,7 +2130,7 @@
                 }
             });
             
-            // Mobile menu functionality
+            // Mobile menu
             const hamburg = document.getElementById('hamburg');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMenu = document.getElementById('closeMenu');
@@ -2408,18 +2138,15 @@
             const mobileDropdownContent = document.getElementById('mobileDropdownContent');
             
             if (hamburg && mobileMenu) {
-                hamburg.addEventListener('click', function(e) {
+                hamburg.addEventListener('click', (e) => {
                     e.preventDefault();
-                    e.stopPropagation();
                     mobileMenu.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
             }
             
             if (closeMenu && mobileMenu) {
-                closeMenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+                closeMenu.addEventListener('click', () => {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
                 });
@@ -2428,66 +2155,30 @@
             if (mobileProjectsTrigger && mobileDropdownContent) {
                 mobileProjectsTrigger.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
                     mobileDropdownContent.classList.toggle('show');
-                    
                     const arrow = this.querySelector('i');
                     if (arrow) {
-                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
-                            ? 'rotate(180deg)' 
-                            : 'rotate(0deg)';
+                        arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
                     }
                 });
             }
             
-            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            document.addEventListener('click', function(e) {
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    if (!mobileMenu.contains(e.target) && !hamburg.contains(e.target)) {
-                        mobileMenu.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                }
-            });
-            
-            // Smooth scroll for anchor links
+            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    
-                    if (href === '#' || href === '') {
-                        e.preventDefault();
-                        return;
-                    }
-                    
-                    if (this.classList.contains('dropdown-trigger') || 
-                        this.id === 'mobileProjectsTrigger' ||
-                        this.classList.contains('view-all-btn')) {
-                        return;
-                    }
+                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger') || 
+                        this.id === 'mobileProjectsTrigger' || this.classList.contains('view-all-btn')) return;
                     
                     e.preventDefault();
-                    
-                    const targetId = href;
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                     }
                 });
             });
             
-            // Video autoplay - hero
+            // Hero video autoplay
             const heroVideo = document.querySelector('.background-video');
             if (heroVideo) {
                 heroVideo.play().catch(() => {
@@ -2497,11 +2188,11 @@
             }
         });
         
-        // Handle window resize
+        // Resize handler
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 const mobileMenu = document.getElementById('mobileMenu');
-                if (mobileMenu) {
+                if (mobileMenu?.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
                 }

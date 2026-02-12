@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Contact | Federico Del Gaudio</title>
+    <!-- Preconnect per performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -16,15 +22,20 @@
         }
         
         :root {
-            --primary: #2c3e50;
-            --secondary: #7f8c8d;
-            --dark: #1a1a1a;
-            --darker: #0d0d0d;
-            --light: #f5f5f5;
-            --gray-light: #e0e0e0;
-            --gray-medium: #95a5a6;
-            --gray-dark: #2c3e50;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray-light: #f0f0f0;
+            --gray-medium: #aaaaaa;
+            --gray-dark: #333333;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --card-bg: rgba(20, 20, 20, 0.7);
+            --accent: #ffffff;
+            --accent-hover: #cccccc;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --red-accent: #ff4d4d;
+            --red-hover: #ff1a1a;
+            --combat-tag: #ff6b6b;
         }
         
         body {
@@ -35,15 +46,17 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation Bar */
+        /* Navigation Bar - STILE IDENTICO ALL'INDEX CON DROPDOWN COMPLETO */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(5, 5, 5, 0.95);
             position: fixed;
             top: 0;
             left: 0;
@@ -51,11 +64,12 @@
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
         
         .logo {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--light);
             letter-spacing: 1px;
@@ -70,15 +84,16 @@
         .nav-links {
             display: flex;
             gap: 35px;
+            align-items: center;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--gray-light);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             position: relative;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
             padding: 8px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -94,12 +109,13 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--light);
-            transition: width 0.3s ease;
+            transition: width 0.2s ease;
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
         
@@ -107,15 +123,269 @@
             color: var(--light);
         }
         
-        .nav-links a.active::after {
+        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background: transparent;
+            pointer-events: auto;
+            z-index: 1001;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: var(--gray-light);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+        }
+
+        .dropdown-trigger i {
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-trigger:hover,
+        .dropdown:hover .dropdown-trigger {
+            color: var(--light);
+        }
+
+        .dropdown-trigger::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--light);
+            transition: width 0.2s ease;
+        }
+
+        .dropdown-trigger:hover::after,
+        .dropdown:hover .dropdown-trigger::after {
             width: 100%;
         }
+
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 280px;
+            border-radius: 4px;
+            padding: 8px 0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 25px;
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 10, 10, 0.98);
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            transform: rotate(45deg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-content a {
+            color: var(--gray-light) !important;
+            padding: 12px 24px !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--gray-medium);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light) !important;
+            padding-left: 30px !important;
+        }
+
+        .dropdown-content a:hover i {
+            color: var(--light);
+        }
+        
+        /* Stile speciale per icona combat */
+        .dropdown-content a i.fa-crosshairs {
+            color: var(--combat-tag);
+        }
+        /* ========== FINE DROPDOWN ========== */
         
         .hamburg {
             display: none;
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--light);
+            z-index: 1002;
+            transition: transform 0.2s ease;
+        }
+        
+        .hamburg:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile Menu - OTTIMIZZATO */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.99);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1001;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.2s ease;
+        }
+        
+        .close-menu:hover {
+            transform: scale(1.2);
+        }
+        
+        .mobile-dropdown-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .mobile-dropdown-content.show {
+            display: flex;
+        }
+        
+        .mobile-dropdown-content a {
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .mobile-dropdown-content a:first-child {
+            border-top: none;
+        }
+        
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .mobile-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
         
         /* Main Content Container */
@@ -367,96 +637,115 @@
             letter-spacing: 1px;
         }
         
-        /* Responsive Design */
+        /* ===== RESPONSIVE OTTIMIZZATO ===== */
+        @media (max-width: 1200px) {
+            .contact-title { font-size: 3.2rem; }
+        }
+        
         @media (max-width: 992px) {
             .contact-layout {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
-            
-            .contact-info {
-                padding-right: 0;
-            }
-            
-            .contact-title {
-                font-size: 3rem;
-            }
+            .contact-info { padding-right: 0; }
+            .contact-title { font-size: 3rem; }
         }
         
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
+            nav { padding: 15px 20px; }
+            .logo { font-size: 1.6rem; }
+            .nav-links { display: none; }
+            .hamburg { display: block; }
             
-            .logo {
-                font-size: 1.8rem;
-            }
+            .page-container { padding: 120px 20px 30px; }
+            .contact-title { font-size: 2.5rem; }
+            .contact-subtitle { font-size: 1.1rem; }
+            .contact-methods { padding: 30px; }
+            .method-card { padding: 20px; }
             
-            .nav-links {
-                display: none;
-            }
-            
-            .hamburg {
-                display: block;
-            }
-            
-            .page-container {
-                padding: 120px 20px 30px;
-            }
-            
-            .contact-title {
-                font-size: 2.5rem;
-            }
-            
-            .contact-methods {
-                padding: 30px;
-            }
-            
-            .method-card {
-                padding: 20px;
-            }
+            .mobile-menu { display: none; }
+            .mobile-menu.active { display: flex; }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-title { font-size: 2.2rem; }
+            .contact-subtitle { font-size: 1rem; }
+            .methods-title { font-size: 1.6rem; }
         }
         
         @media (max-width: 480px) {
-            .contact-title {
-                font-size: 2rem;
-            }
-            
-            .contact-subtitle {
-                font-size: 1rem;
-            }
-            
+            .contact-title { font-size: 2rem; }
+            .contact-subtitle { font-size: 0.95rem; }
             .contact-item {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
+            .social-links { justify-content: center; }
             .method-header {
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
             }
+            .footer-main { padding: 20px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="index.html">HOME</a>
+            <a href="index.html#about">ABOUT</a>
+            
+            <!-- Projects Dropdown COMPLETO -->
+            <div class="dropdown">
+                <a href="projects.html" class="dropdown-trigger">
+                    PROJECTS <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="projects.html">
+                        <i class="fas fa-grid-2"></i> ALL PROJECTS
+                    </a>
+                    <a href="AcademyProject.html">
+                        <i class="fas fa-graduation-cap"></i> ACADEMY
+                    </a>
+                    <a href="SoloProjects.html">
+                        <i class="fas fa-user"></i> PERSONAL
+                    </a>
+                    <a href="CombatTechProjects.html">
+                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
+                    </a>
+                </div>
+            </div>
+            
+            <a href="contact.html" class="active">CONTACT</a>
         </div>
-        <i class="fa-solid fa-bars hamburg"></i>
+        <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
+    
+    <!-- Mobile Menu - COMPLETO OTTIMIZZATO -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
+        <a href="index.html">HOME</a>
+        <a href="index.html#about">ABOUT</a>
+        
+        <!-- Mobile Projects Dropdown COMPLETO -->
+        <div class="mobile-dropdown">
+            <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+                PROJECTS <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="mobile-dropdown-content" id="mobileDropdownContent">
+                <a href="projects.html">ALL PROJECTS</a>
+                <a href="AcademyProject.html">ACADEMY</a>
+                <a href="SoloProjects.html">PERSONAL</a>
+                <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+            </div>
+        </div>
+        
+        <a href="contact.html" class="active">CONTACT</a>
+    </div>
     
     <!-- Main Content Container -->
     <div class="page-container">
@@ -553,50 +842,102 @@
                             Open Gmail <i class="fas fa-external-link-alt"></i>
                         </div>
                     </a>
-                    
-                   
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="footer-main">
-        <p>Copyright © 2020-2024 Federico Del Gaudio</p>
+        <p>© 2020-2025 Federico Del Gaudio — Game Designer</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
-        // Initialize AOS
+        // Defer non-critical operations
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
             AOS.init({
                 duration: 1000,
                 once: true,
-                offset: 100
+                offset: 100,
+                disable: window.innerWidth < 768 ? true : false
             });
             
-            // Add active class to current page in navigation
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a');
+            // Mobile menu functionality
+            const hamburg = document.getElementById('hamburg');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileProjectsTrigger = document.getElementById('mobileProjectsTrigger');
+            const mobileDropdownContent = document.getElementById('mobileDropdownContent');
             
-            navLinks.forEach(link => {
-                const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage) {
-                    link.classList.add('active');
+            if (hamburg && mobileMenu) {
+                hamburg.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            if (mobileProjectsTrigger && mobileDropdownContent) {
+                mobileProjectsTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileDropdownContent.classList.toggle('show');
+                    const arrow = this.querySelector('i');
+                    if (arrow) {
+                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
+                            ? 'rotate(180deg)' 
+                            : 'rotate(0deg)';
+                    }
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mobileMenu?.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !hamburg?.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
             
-            // Method card hover effects
+            // Method card hover effects (optimized)
             const methodCards = document.querySelectorAll('.method-card');
             methodCards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
                     card.style.transform = 'translateY(-5px)';
                 });
-                
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = 'translateY(0)';
                 });
             });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu?.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
         });
     </script>
 </body>

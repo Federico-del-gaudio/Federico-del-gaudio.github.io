@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Projects | Federico Del Gaudio</title>
-    <!-- Preconnect per performance -->
+    <!-- Preload per performance -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         * {
@@ -39,9 +38,6 @@
             --tech-tag: #00a8ff;
             --combat-tag: #ff6b6b;
             --design-tag: #9b59b6;
-            --ui-tag: #e67e22;
-            --level-tag: #27ae60;
-            --game-design-tag: #9b59b6;
         }
         
         body {
@@ -49,11 +45,12 @@
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation Bar - STILE IDENTICO ALL'INDEX CON DROPDOWN COMPLETO */
+        /* Navigation Bar - STILE IDENTICO ALL'INDEX con DROPDOWN COMPLETO */
         nav {
             display: flex;
             justify-content: space-between;
@@ -232,6 +229,7 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            transition-delay: 0s;
             pointer-events: auto;
         }
 
@@ -395,7 +393,7 @@
             border-radius: 8px;
         }
         
-        /* Main Swiper Container - LASCIATO IDENTICO */
+        /* Main Swiper Container - LASCIATO ORIGINALE */
         .swiper-container {
             width: 100%;
             height: 100vh;
@@ -409,7 +407,7 @@
             height: 100%;
             padding-top: 80px;
         }
-      
+        
         .swiper-slide {
             position: relative;
             overflow: hidden;
@@ -432,71 +430,38 @@
             opacity: 0.7 !important;
         }
         
-        /* ========== PROJECT TYPE TAGS - A DESTRA E COMPATTI ========== */
-        .skills-tags {
+        /* ========== PROJECT TYPE TAGS ========== */
+        .project-type-tag {
             position: absolute;
             top: 30px;
-            right: 30px;
+            left: 30px;
             z-index: 50;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: flex-end;
-            max-width: 60%;
-            pointer-events: none;
-        }
-        
-        .skill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 14px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            background: rgba(0, 0, 0, 0.7);
+            letter-spacing: 1.5px;
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         
-        .swiper-slide-active .skill-tag {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .skill-tag i {
-            font-size: 0.75rem;
-        }
-        
-        /* Tag colors */
-        .tag-game-design {
-            background: linear-gradient(135deg, rgba(155,89,182,0.95) 0%, rgba(142,68,173,0.95) 100%);
+        .type-tech {
+            background: linear-gradient(135deg, rgba(0,168,255,0.9) 0%, rgba(0,120,255,0.9) 100%);
             border-color: rgba(255,255,255,0.3);
         }
         
-        .tag-ui-ux {
-            background: linear-gradient(135deg, rgba(230,126,34,0.95) 0%, rgba(211,84,0,0.95) 100%);
+        .type-combat {
+            background: linear-gradient(135deg, rgba(255,107,107,0.9) 0%, rgba(255,77,77,0.9) 100%);
             border-color: rgba(255,255,255,0.3);
         }
         
-        .tag-level-design {
-            background: linear-gradient(135deg, rgba(39,174,96,0.95) 0%, rgba(33,138,76,0.95) 100%);
-            border-color: rgba(255,255,255,0.3);
-        }
-        
-        .tag-tech {
-            background: linear-gradient(135deg, rgba(0,168,255,0.95) 0%, rgba(0,120,255,0.95) 100%);
-            border-color: rgba(255,255,255,0.3);
-        }
-        
-        .tag-combat {
-            background: linear-gradient(135deg, rgba(255,107,107,0.95) 0%, rgba(255,77,77,0.95) 100%);
+        .type-combat-tech {
+            background: linear-gradient(135deg, rgba(255,107,107,0.9) 0%, rgba(0,120,255,0.9) 100%);
             border-color: rgba(255,255,255,0.3);
         }
         
@@ -587,11 +552,6 @@
             vertical-align: middle;
             filter: brightness(0) invert(1);
             opacity: 0.9;
-            transition: opacity 0.2s ease;
-        }
-        
-        .engine-logo:hover {
-            opacity: 1;
         }
         
         .unity-logo {
@@ -603,7 +563,7 @@
         }
         
         .project-title {
-            font-size: 3.4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             color: var(--light);
             margin-bottom: 20px;
@@ -698,6 +658,71 @@
             left: 0;
         }
         
+        /* Right Column - Gameplay Preview */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gameplay-preview {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gameplay-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gameplay-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gameplay-preview:hover .gameplay-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: var(--light);
+        }
+        
+        .play-button i {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-left: 5px;
+        }
+        
         /* Adjacent Slide Preview */
         .slide-preview-left,
         .slide-preview-right {
@@ -744,7 +769,7 @@
             transition: all 0.5s ease;
         }
         
-        .preview-image {
+        .preview-video {
             width: 100%;
             height: 200px;
             object-fit: cover;
@@ -775,17 +800,17 @@
             opacity: 0.8;
         }
         
-        .swiper-slide-active .slide-preview-left .preview-image {
+        .swiper-slide-active .slide-preview-left .preview-video {
             opacity: 0.6;
             transform: scale(1);
         }
         
-        .swiper-slide-active .slide-preview-right .preview-image {
+        .swiper-slide-active .slide-preview-right .preview-video {
             opacity: 0.6;
             transform: scale(1);
         }
         
-        /* PAGINATION DOTS - RIMOSSI */
+        /* Pagination Dots - RIMOSSI */
         .swiper-pagination {
             display: none !important;
         }
@@ -841,21 +866,6 @@
             width: 220px;
         }
         
-        .slide-content {
-            position: relative;
-            z-index: 20;
-            pointer-events: auto;
-        }
-
-        .swiper-slide {
-            pointer-events: none;
-        }
-
-        .swiper-slide-active {
-            pointer-events: auto;
-        }
-
-        /* Progress Bar */
         .swiper-progress {
             width: 100%;
             height: 2px;
@@ -872,7 +882,6 @@
             border-radius: 1px;
         }
         
-        /* Project Counter */
         .project-counter {
             color: var(--gray-light);
             font-size: 0.9rem;
@@ -1014,16 +1023,6 @@
             .scroll-hint {
                 bottom: 130px;
             }
-            .skills-tags {
-                top: 20px;
-                right: 20px;
-                gap: 6px;
-                max-width: 70%;
-            }
-            .skill-tag {
-                padding: 5px 12px;
-                font-size: 0.65rem;
-            }
         }
         
         @media (max-width: 992px) {
@@ -1041,6 +1040,12 @@
             }
             .unreal-logo {
                 height: 24px;
+            }
+            .project-type-tag {
+                top: 20px;
+                left: 20px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
             }
         }
         
@@ -1070,6 +1075,9 @@
             .scroll-hint {
                 display: none;
             }
+            .gameplay-preview {
+                max-width: 100%;
+            }
             .carousel-indicators {
                 bottom: 75px;
                 width: 180px;
@@ -1090,6 +1098,13 @@
                 width: 100%;
                 justify-content: center;
             }
+            .play-button {
+                width: 55px;
+                height: 55px;
+            }
+            .play-button i {
+                font-size: 1.8rem;
+            }
             .task-list li {
                 margin-bottom: 12px;
                 padding-left: 25px;
@@ -1107,18 +1122,11 @@
             .unreal-logo {
                 height: 22px;
             }
-            .skills-tags {
+            .project-type-tag {
                 top: 15px;
-                right: 15px;
-                gap: 5px;
-                max-width: 80%;
-            }
-            .skill-tag {
-                padding: 4px 10px;
-                font-size: 0.6rem;
-            }
-            .skill-tag i {
-                font-size: 0.65rem;
+                left: 15px;
+                padding: 6px 14px;
+                font-size: 0.75rem;
             }
             .mobile-nav-arrows {
                 display: flex;
@@ -1203,6 +1211,12 @@
                 max-height: 100vh;
                 padding-bottom: 100px;
             }
+            .project-type-tag {
+                top: 12px;
+                left: 12px;
+                padding: 5px 12px;
+                font-size: 0.7rem;
+            }
             .mobile-nav-arrows {
                 bottom: 110px;
                 padding: 0 12px;
@@ -1222,19 +1236,6 @@
             .footer-main {
                 padding: 14px 10px;
                 font-size: 0.75rem;
-            }
-            .skills-tags {
-                top: 12px;
-                right: 12px;
-                gap: 4px;
-                max-width: 85%;
-            }
-            .skill-tag {
-                padding: 3px 8px;
-                font-size: 0.55rem;
-            }
-            .skill-tag i {
-                font-size: 0.6rem;
             }
         }
     </style>
@@ -1307,133 +1308,67 @@
     <div class="swiper-container">
         <div class="swiper">
             <div class="swiper-wrapper">
-                <!-- Slide 1: Patch me if you can - UI & GAME DESIGN -->
+              
+                <!-- Slide 1: One Night in Venice - COMBAT & TECH -->
                 <div class="swiper-slide">
-                    <!-- Targhette progetto - A DESTRA -->
-                    <div class="skills-tags">
-                        <span class="skill-tag tag-ui-ux">
-                            <i class="fas fa-mouse-pointer"></i> UI/UX
-                        </span>
-                        <span class="skill-tag tag-game-design">
-                            <i class="fas fa-pencil-ruler"></i> GAME DESIGN
-                        </span>
+                    <div class="project-type-tag type-combat-tech">
+                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
                     </div>
                     
                     <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/TrailerPMIC.mp4" type="video/mp4">
+                        <source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4">
                     </video>
                     <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
-                    <!-- Left Preview -->
                     <div class="slide-preview-left">
                         <div class="preview-content">
-                            <div class="preview-title">The Last Coin</div>
-                            <img src="Photos/LastCoin.png" alt="The Last Coin" class="preview-image">
+                            <div class="preview-title">The Sun Vanished</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/TrailerVanished .mp4" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                     
-                    <!-- Right Preview -->
                     <div class="slide-preview-right">
                         <div class="preview-content">
-                            <div class="preview-title">Ragnaraft</div>
-                            <img src="Photos/RagnaraftLogo.png" alt="Ragnaraft" class="preview-image">
+                            <div class="preview-title">The Last Coin</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/TheLastCoinTrailerSite.mp4" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Academic Project • FPS Game 
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/2560px-Unity_Technologies_logo.svg.png" alt="Unity" class="engine-logo unity-logo">
+                            <div class="project-category">
+                                FPS BULLET HELL
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
                             </div>
-                            <h1 class="project-title">PATCH ME IF YOU CAN</h1>
-                            <div class="project-year">2025 • 2 Months</div>
+                            <h1 class="project-title">ONE NIGHT IN VENICE</h1>
+                            <div class="project-year">Global Game Jam • 2026</div>
                             <p class="project-description">
-                                A fast-paced FPS where players use a magical needle-shooting rifle to purify possessed dolls. Features dynamic combat, enemy AI, and an eerie atmospheric setting developed as a team project.
+                               A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.
                             </p>
                             <div class="task-section">
-                                <h3 class="section-title">Key Contributions</h3>
+                                <h3 class="section-title">Overview</h3>
                                 <ul class="task-list">
-                                    <li>Game and combat system design</li>
-                                    <li>Enemy AI design</li>
-                                    <li>Shooting mechanics design</li>            
-                                    <li>Team work</li>
+                                    <li>Shooting system</li>
+                                    <li>Enemy progressive spawner</li>
+                                    <li>Parry mechanic</li>
+                                    <li>Sound design and audio integration</li>
+                                    <li>Game power ups</li>
                                 </ul>
                             </div>
-                            <a href="Patchmeifyoucan.html" class="cta-button">My Contributions</a>
+                            <a href="OneNightInVenice.html" class="cta-button">View Project</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Slide 2: Ragnaraft - LEVEL DESIGN -->
+              
+                <!-- Slide 2: The Last Coin - TECH DESIGN -->
                 <div class="swiper-slide">
-                    <!-- Targhetta progetto - A DESTRA -->
-                    <div class="skills-tags">
-                        <span class="skill-tag tag-level-design">
-                            <i class="fas fa-map"></i> LEVEL DESIGN
-                        </span>
-                    </div>
-                    
-                    <video class="slide-bg-video" autoplay muted loop playsinline>
-                        <source src="Videos/VideoRagnaraft.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-shadow"></div>
-                    <div class="slide-overlay"></div>
-                    
-                    <!-- Left Preview -->
-                    <div class="slide-preview-left">
-                        <div class="preview-content">
-                            <div class="preview-title">Patch me if you can</div>
-                            <img src="Photos/patch me if you can.png" alt="Patch me if you can" class="preview-image">
-                        </div>
-                    </div>
-                    
-                    <!-- Right Preview -->
-                    <div class="slide-preview-right">
-                        <div class="preview-content">
-                            <div class="preview-title">The Last Coin</div>
-                            <img src="Photos/LastCoin.png" alt="The Last Coin" class="preview-image">
-                        </div>
-                    </div>
-                    
-                    <div class="slide-content">
-                        <div class="left-column">
-                            <div class="project-category">Academic Project • Puzzle Game 
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/2560px-Unity_Technologies_logo.svg.png" alt="Unity" class="engine-logo unity-logo">
-                            </div>
-                            <h1 class="project-title">RAGNARAFT</h1>
-                            <div class="project-year">2024 • 2 Months</div>
-                            <p class="project-description">
-                                A humorous story-driven game about two Viking friends navigating a river full of obstacles. Focuses on puzzle-solving mechanics, character interactions, and narrative-driven gameplay.
-                            </p>
-                            <div class="task-section">
-                                <h3 class="section-title">Key Contributions</h3>
-                                <ul class="task-list">
-                                    <li>Level design</li>
-                                    <li>Character interaction systems</li>
-                                    <li>Story-driven gameplay implementation</li>
-                                    <li>Mobile optimization and controls</li>
-                                    <li>Team collaboration and asset integration</li>
-                                </ul>
-                            </div>
-                            <a href="Ragnaraft.html" class="cta-button">My Contributions</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3: The Last Coin - GAME DESIGN, TECHNICAL & UI -->
-                <div class="swiper-slide">
-                    <!-- Targhette progetto - A DESTRA -->
-                    <div class="skills-tags">
-                        <span class="skill-tag tag-game-design">
-                            <i class="fas fa-pencil-ruler"></i> GAME DESIGN
-                        </span>
-                        <span class="skill-tag tag-tech">
-                            <i class="fas fa-cogs"></i> TECHNICAL
-                        </span>
-                        <span class="skill-tag tag-ui-ux">
-                            <i class="fas fa-mouse-pointer"></i> UI/UX
-                        </span>
+                    <div class="project-type-tag type-tech">
+                        <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
                     </div>
                     
                     <video class="slide-bg-video" autoplay muted loop playsinline>
@@ -1442,14 +1377,12 @@
                     <div class="video-shadow"></div>
                     <div class="slide-overlay"></div>
                     
-                    <!-- Left Preview -->
                     <div class="slide-preview-left">
                         <div class="preview-content">
                             <div class="preview-title">Ragnaraft</div>
                         </div>
                     </div>
                     
-                    <!-- Right Preview -->
                     <div class="slide-preview-right">
                         <div class="preview-content">
                             <div class="preview-title">Patch me if you can</div>
@@ -1458,25 +1391,203 @@
                     
                     <div class="slide-content">
                         <div class="left-column">
-                            <div class="project-category">Game Jam • Horror Experience 
+                            <div class="project-category">
+                                HORROR • GAME JAM
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
                             </div>
                             <h1 class="project-title">THE LAST COIN</h1>
                             <div class="project-year">2025 • 1 Week</div>
                             <p class="project-description">
-                                Trapped in a dark gambling nightmare where you have to face your addiction. Walk through a neverending nightmare and confront your Fate at the Slot Machine, but pay attention to your fragile Sanity.
+                                Trapped in a dark gambling nightmare where you have to face your addiction. Walk through a neverending nightmare and confront your Fate at the Slot Machine.
                             </p>
                             <div class="task-section">
                                 <h3 class="section-title">Key Contributions</h3>
                                 <ul class="task-list">
-                                    <li>Game design and systems integration</li>
-                                    <li>Technical design and implementation</li>
-                                    <li>UI/UX design and implementation</li>
+                                    <li>Atmospheric horror environment design</li>
                                     <li>Gambling mechanics implementation</li>
                                     <li>Sanity system and psychological horror elements</li>
+                                    <li>Technical design and systems integration</li>
+                                    <li>Rapid prototyping for game jam</li>
                                 </ul>
                             </div>
                             <a href="TheLastCoin.html" class="cta-button">My Contributions</a>
+                        </div>
+                    </div>
+                </div>
+           
+                <!-- Slide 3: Pummel - COMBAT & TECH -->
+                <div class="swiper-slide">
+                    <div class="project-type-tag type-combat-tech">
+                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
+                    </div>
+                    
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/VideoPummel.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-shadow"></div> 
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">Tears of Ash</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">The Bubble</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/BubbleTrailer.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">
+                                2D ACTION PROTOTYPE
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
+                            <h1 class="project-title">PUMMEL</h1>
+                            <div class="project-year">Prototype 2024 • 3 Months</div>
+                            <p class="project-description">
+                                Exploration of PaperZD plugin for UE5 with focus on flipbook animations, dynamic combat systems, and comprehensive gameplay mechanics.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Overview</h3>
+                                <ul class="task-list">
+                                    <li>PaperZD plugin integration</li>
+                                    <li>Combo system design</li>
+                                    <li>Enemy AI behavior</li>
+                                    <li>2D animation state machine</li>
+                                    <li>Damage and health system</li>
+                                </ul>
+                            </div>
+                            <a href="Pummel.html" class="cta-button">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Project A - COMBAT DESIGN -->
+                <div class="swiper-slide">
+                    <div class="project-type-tag type-combat">
+                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN
+                    </div>
+                    
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/project-a-bg.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-shadow"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">The Bubble</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/BubbleTrailer.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">The Sun Vanished</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/TrailerVanished .mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">
+                                COMBAT DESIGN
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
+                            <h1 class="project-title">PROJECT A</h1>
+                            <div class="project-year">Prototype 2023 • 3 Months</div>
+                            <p class="project-description">
+                                Three-month intensive focus on Souls-like combat design, featuring complex animation systems, enemy AI, and responsive gameplay mechanics.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Overview</h3>
+                                <ul class="task-list">
+                                    <li>Souls-like combat system</li>
+                                    <li>Root motion animation</li>
+                                    <li>Enemy AI behaviors</li>
+                                    <li>Boss fight phases</li>
+                                    <li>Niagara effects</li>
+                                </ul>
+                            </div>
+                            <a href="Project A.html" class="cta-button">View Project</a>
+                        </div>
+                        <div class="right-column">
+                            <div class="gameplay-preview">
+                                <video class="gameplay-video" poster="Photos/Projecta photy.png" loop muted playsinline>
+                                    <source src="Videos/ProgWIP.mp4" type="video/mp4">
+                                </video>
+                                <div class="gameplay-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: The Sun Vanished - TECH DESIGN -->
+                <div class="swiper-slide">
+                    <div class="project-type-tag type-tech">
+                        <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
+                    </div>
+                    
+                    <video class="slide-bg-video" autoplay muted loop playsinline>
+                        <source src="Videos/TrailerVanished .mp4" type="video/mp4">
+                    </video>
+                    <div class="video-shadow"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="slide-preview-left">
+                        <div class="preview-content">
+                            <div class="preview-title">Project A</div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-preview-right">
+                        <div class="preview-content">
+                            <div class="preview-title">Tears of Ash</div>
+                            <video class="preview-video" muted loop playsinline>
+                                <source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="left-column">
+                            <div class="project-category">
+                                HORROR PROTOTYPE
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="Unreal Engine" class="engine-logo unreal-logo">
+                            </div>
+                            <h1 class="project-title">THE SUN VANISHED</h1>
+                            <div class="project-year">Prototype • 2025</div>
+                            <p class="project-description">
+                                A horror prototype where the sun has vanished, forcing navigation through LiDAR scanning while avoiding creatures with formidable hearing.
+                            </p>
+                            <div class="task-section">
+                                <h3 class="section-title">Overview</h3>
+                                <ul class="task-list">
+                                    <li>LiDAR scanning system</li>
+                                    <li>Sound-based enemy AI</li>
+                                    <li>Atmospheric horror</li>
+                                    <li>Navigation mechanics</li>
+                                    <li>Prototype development</li>
+                                </ul>
+                            </div>
+                            <a href="TheSunVanished.html" class="cta-button">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -1488,7 +1599,7 @@
         </div>
     </div>
     
-    <!-- Mobile navigation arrows for touch devices -->
+    <!-- Mobile navigation arrows -->
     <div class="mobile-nav-arrows">
         <div class="mobile-nav-arrow mobile-prev">
             <i class="fas fa-chevron-left"></i>
@@ -1509,7 +1620,7 @@
             <div class="swiper-progress-bar"></div>
         </div>
         <div class="project-counter">
-            <span class="current-slide">01</span> / <span class="total-slides">03</span>
+            <span class="current-slide">01</span> / <span class="total-slides">05</span>
         </div>
     </div>
     
@@ -1530,7 +1641,6 @@
         const wrapper = document.querySelector('.swiper-wrapper');
         const slides = Array.from(wrapper.children);
 
-        // Duplica le slide per il loop
         while (wrapper.children.length < slides.length * 3) {
             slides.forEach(slide => {
                 wrapper.appendChild(slide.cloneNode(true));
@@ -1538,7 +1648,11 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Swiper - CONFIGURAZIONE ORIGINALE CON ROTELLINA
+            const realSlideCount = document.querySelectorAll(
+                '.swiper-slide:not(.swiper-slide-duplicate)'
+            ).length;
+            
+            // Swiper - LASCIATO IDENTICO
             const swiper = new Swiper('.swiper', {
                 slidesPerView: 'auto',
                 centeredSlides: true,
@@ -1546,30 +1660,23 @@
                 loopAdditionalSlides: 0,
                 speed: 600,
                 mousewheel: false,
-                
                 freeMode: {
                     enabled: true,
                     momentum: false
                 },
-
                 simulateTouch: true,
                 allowTouchMove: true,
                 touchStartPreventDefault: false,
-
                 keyboard: {
                     enabled: true,
                 },
-
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-
                 pagination: false,
-
                 resistanceRatio: 0.85,
                 grabCursor: true,
-
                 breakpoints: {
                     0: {
                         freeMode: false,
@@ -1588,12 +1695,9 @@
             let targetTranslate = currentTranslate;
             let isAnimating = false;
 
-            // Smooth animation loop - ROTELLINA
             function animate() {
                 if (!isAnimating) return;
-
                 currentTranslate += (targetTranslate - currentTranslate) * 0.08;
-
                 swiper.setTranslate(currentTranslate);
                 swiper.updateProgress();
                 swiper.updateActiveIndex();
@@ -1607,24 +1711,19 @@
                     currentTranslate = swiper.getTranslate();
                     targetTranslate = currentTranslate;
                 }
-
                 requestAnimationFrame(animate);
             }
 
-            // Wheel control - ROTELLINA (desktop only)
             window.addEventListener('wheel', (e) => {
                 if (window.innerWidth < 1024) return;
-
                 e.preventDefault();
                 targetTranslate -= e.deltaY * 0.8;
-
                 if (!isAnimating) {
                     isAnimating = true;
                     animate();
                 }
             }, { passive: false });
 
-            // Stop smooth animation when scrolling stops
             let wheelTimeout;
             window.addEventListener('wheel', () => {
                 clearTimeout(wheelTimeout);
@@ -1633,63 +1732,75 @@
                 }, 120);
             });
 
-            // Aggiorna progress bar
             const progressBar = document.querySelector('.swiper-progress-bar');
             const updateProgressBar = () => {
-                const totalSlides = 3;
-                const realIndex = ((swiper.realIndex % 3) + 3) % 3;
-                const progress = (realIndex / (totalSlides - 1)) * 100;
-                progressBar.style.width = `${progress}%`;
+                const totalSlides = 5;
+                const realIndex = ((swiper.realIndex % 5) + 5) % 5;
+                progressBar.style.width = `${(realIndex / (totalSlides - 1)) * 100}%`;
             };
             
-            // Update project counter
             const currentSlideEl = document.querySelector('.current-slide');
             const totalSlidesEl = document.querySelector('.total-slides');
             
             const updateCounter = () => {
-                const realIndex = ((swiper.realIndex % 3) + 3) % 3;
+                const realIndex = ((swiper.realIndex % 5) + 5) % 5;
                 currentSlideEl.textContent = (realIndex + 1).toString().padStart(2, '0');
-                totalSlidesEl.textContent = '03';
+                totalSlidesEl.textContent = '05';
             };
             
-            // Initialize
             updateProgressBar();
             updateCounter();
             
-            // Update on slide change
             swiper.on('slideChange', () => {
                 updateProgressBar();
                 updateCounter();
                 
                 document.querySelectorAll('.swiper-slide').forEach(slide => {
                     const content = slide.querySelector('.slide-content');
-                    if (content) {
-                        content.style.opacity = '';
-                    }
+                    if (content) content.style.opacity = '';
                 });
                 
                 const activeSlide = swiper.slides[swiper.activeIndex];
                 if (activeSlide) {
                     const activeContent = activeSlide.querySelector('.slide-content');
-                    if (activeContent) {
-                        activeContent.style.opacity = '1';
-                    }
+                    if (activeContent) activeContent.style.opacity = '1';
                 }
             });
             
-            // Mobile navigation arrows
+            // Play button
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const video = this.closest('.gameplay-preview').querySelector('.gameplay-video');
+                    const overlay = this.closest('.gameplay-overlay');
+                    
+                    if (video.paused) {
+                        video.play();
+                        overlay.style.opacity = '0';
+                    } else {
+                        video.pause();
+                        overlay.style.opacity = '1';
+                    }
+                });
+            });
+            
+            swiper.on('slideChangeTransitionStart', () => {
+                document.querySelectorAll('.gameplay-video').forEach(video => {
+                    video.pause();
+                    const overlay = video.closest('.gameplay-preview')?.querySelector('.gameplay-overlay');
+                    if (overlay) overlay.style.opacity = '1';
+                });
+            });
+            
+            // Mobile navigation
             const mobilePrev = document.querySelector('.mobile-prev');
             const mobileNext = document.querySelector('.mobile-next');
             const mobileNavArrows = document.querySelector('.mobile-nav-arrows');
             
             if (mobilePrev && mobileNext) {
-                mobilePrev.addEventListener('click', () => {
-                    swiper.slidePrev();
-                });
-                
-                mobileNext.addEventListener('click', () => {
-                    swiper.slideNext();
-                });
+                mobilePrev.addEventListener('click', () => swiper.slidePrev());
+                mobileNext.addEventListener('click', () => swiper.slideNext());
                 
                 const updateMobileNav = () => {
                     mobileNavArrows.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
@@ -1698,7 +1809,7 @@
                 window.addEventListener('resize', updateMobileNav);
             }
             
-            // Mobile menu toggle
+            // Mobile menu
             const hamburg = document.getElementById('hamburg');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMenu = document.getElementById('closeMenu');
@@ -1724,12 +1835,9 @@
                 mobileProjectsTrigger.addEventListener('click', function(e) {
                     e.preventDefault();
                     mobileDropdownContent.classList.toggle('show');
-                    
                     const arrow = this.querySelector('i');
                     if (arrow) {
-                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
-                            ? 'rotate(180deg)' 
-                            : 'rotate(0deg)';
+                        arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
                     }
                 });
             }
@@ -1751,14 +1859,11 @@
                 }
             });
             
-            // Active slide opacity
             setTimeout(() => {
                 const activeSlide = document.querySelector('.swiper-slide-active');
                 if (activeSlide) {
                     const content = activeSlide.querySelector('.slide-content');
-                    if (content) {
-                        content.style.opacity = '1';
-                    }
+                    if (content) content.style.opacity = '1';
                 }
             }, 100);
             
