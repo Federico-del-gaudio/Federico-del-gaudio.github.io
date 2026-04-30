@@ -50,6 +50,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
+        /* Body overflow hidden quando popup è aperto */
+        body.popup-open {
+            overflow: hidden;
+        }
+        
         /* Background video - SOLO per l'hero section */
         .hero-background-wrapper {
             position: fixed;
@@ -108,6 +113,132 @@
             10% { opacity: 0.8; }
             90% { opacity: 0.8; }
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* ===== POPUP WIP ===== */
+        .wip-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .wip-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .wip-popup {
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 35px;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .wip-overlay.active .wip-popup {
+            transform: scale(1);
+        }
+        
+        .wip-icon {
+            font-size: 4rem;
+            color: var(--red-accent);
+            margin-bottom: 20px;
+            animation: pulse-icon 2s infinite;
+        }
+        
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+        }
+        
+        .wip-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .wip-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--red-accent);
+            margin: 15px auto;
+        }
+        
+        .wip-message {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--gray-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .wip-message strong {
+            color: var(--red-accent);
+            font-weight: 600;
+        }
+        
+        .wip-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .wip-btn {
+            padding: 12px 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--light);
+            background: transparent;
+            color: var(--light);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .wip-btn-primary {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            color: white;
+        }
+        
+        .wip-btn-primary:hover {
+            background: var(--red-hover);
+            border-color: var(--red-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+        }
+        
+        .wip-btn-secondary:hover {
+            background: var(--light);
+            color: var(--dark);
+            transform: translateY(-3px);
         }
         
         /* Navigation Bar - COMPLETA */
@@ -1456,7 +1587,6 @@
         @media (max-width: 992px) {
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .stats-showcase { grid-template-columns: repeat(2, 1fr); }
-            .project-title { font-size: 3rem; }
             .carousel-main-title { font-size: 2.5rem; }
         }
         
@@ -1493,6 +1623,11 @@
             
             .mobile-menu { display: none; }
             .mobile-menu.active { display: flex; }
+            
+            .wip-popup { padding: 30px 25px; }
+            .wip-title { font-size: 1.6rem; }
+            .wip-buttons { gap: 15px; }
+            .wip-btn { padding: 10px 22px; font-size: 0.75rem; }
         }
         
         @media (max-width: 480px) {
@@ -1501,12 +1636,10 @@
             .hero-dynamic-title { font-size: 1.2rem; }
             .section-title { font-size: 1.8rem; }
             .about-name { font-size: 1.8rem; }
-            .project-title { font-size: 1.8rem; }
             .card-title { font-size: 1.3rem; }
             .card-content { padding: 20px; }
             .carousel-main-title { font-size: 1.6rem; }
             .more-projects-hero .section-title { font-size: 1.8rem; }
-            .project-type-tag { padding: 6px 12px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -1520,46 +1653,56 @@
         <div class="hero-particles" id="particles"></div>
     </div>
     
-    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
+    <!-- POPUP WORK IN PROGRESS - si apre sempre ad ogni refresh -->
+    <div class="wip-overlay" id="wipPopup">
+        <div class="wip-popup">
+            <div class="wip-icon">
+                <i class="fas fa-hammer"></i>
+            </div>
+            <h2 class="wip-title">WORK IN PROGRESS</h2>
+            <div class="wip-divider"></div>
+            <p class="wip-message">
+                Some projects may have incorrect or placeholder content as they are still being updated.<br><br>
+                If you need information about any project, please feel free to <strong>contact me</strong>.
+            </p>
+            <div class="wip-buttons">
+                <button class="wip-btn wip-btn-primary" id="wipOkBtn">
+                    <i class="fas fa-check"></i> OK
+                </button>
+                <a href="contact.html" class="wip-btn wip-btn-secondary" id="wipContactBtn">
+                    <i class="fas fa-envelope"></i> CONTACT ME
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html" class="active">HOME</a>
             <a href="#About">ABOUT</a>
-            
-            <!-- Projects Dropdown COMPLETO -->
             <div class="dropdown">
                 <a href="projects.html" class="dropdown-trigger">
                     PROJECTS <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="projects.html">
-                        <i class="fas fa-grid-2"></i> ALL PROJECTS
-                    </a>
-                    <a href="AcademyProject.html">
-                        <i class="fas fa-graduation-cap"></i> ACADEMY
-                    </a>
-                    <a href="SoloProjects.html">
-                        <i class="fas fa-user"></i> PERSONAL
-                    </a>
-                    <a href="CombatTechProjects.html">
-                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
-                    </a>
+                    <a href="projects.html"><i class="fas fa-grid-2"></i> ALL PROJECTS</a>
+                    <a href="AcademyProject.html"><i class="fas fa-graduation-cap"></i> ACADEMY</a>
+                    <a href="SoloProjects.html"><i class="fas fa-user"></i> PERSONAL</a>
+                    <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
                 </div>
             </div>
-            
             <a href="contact.html">CONTACT</a>
         </div>
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Mobile Menu - COMPLETO -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html" class="active">HOME</a>
         <a href="#About">ABOUT</a>
-        
-        <!-- Mobile Projects Dropdown COMPLETO -->
         <div class="mobile-dropdown">
             <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
                 PROJECTS <i class="fas fa-chevron-down"></i>
@@ -1571,7 +1714,6 @@
                 <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
             </div>
         </div>
-        
         <a href="contact.html">CONTACT</a>  
     </div>
     
@@ -1591,7 +1733,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="hero-buttons">
                 <a href="#TitleProjects" class="hero-btn hero-btn-primary">
                     <i class="fas fa-folder-open"></i> VIEW PROJECTS
@@ -1601,7 +1742,6 @@
                 </a>
             </div>
         </div>
-        
         <a href="#about" class="scroll-indicator">
             <span>SCROLL DOWN</span>
             <i class="fas fa-chevron-down"></i>
@@ -1610,39 +1750,30 @@
     
     <!-- CONTENT SECTIONS -->
     <div id="About" class="content-sections">
-        <!-- ABOUT SECTION -->
         <section id="about" class="about-section">
             <div class="section-container">
                 <div class="section-header" data-aos="fade-up">
                     <h2 class="section-title">ABOUT ME</h2>
                     <p class="section-subtitle">My journey from programming to game design</p>
                 </div>
-                
                 <div class="about-grid">
                     <div class="about-content" data-aos="fade-right" data-aos-duration="1200">
                         <div>
                             <h3 class="about-name">Federico Del Gaudio</h3>
                             <div class="about-role">JUNIOR GAME DESIGNER</div>
                         </div>
-                        
                         <p class="about-text">
                             Game design student passionate about creating engaging combat systems and interactive gameplay experiences. 
                             My path evolved from a strong technical background in programming to game design, combining analytical thinking 
                             with creative expression to craft memorable player experiences.
                         </p>
-                        
                         <p class="about-text">
                             <strong>Self‑directed study in Unreal Engine</strong> with focus on combat systems, Blueprints, and AI behavior trees.
                         </p>
-                        
                         <div class="about-highlight">
-                            <p>
-                                "Every project is an opportunity to learn, experiment, and create something meaningful. 
-                                My goal is to design experiences that leave a lasting impression."
-                            </p>
+                            <p>"Every project is an opportunity to learn, experiment, and create something meaningful. My goal is to design experiences that leave a lasting impression."</p>
                         </div>
                     </div>
-                    
                     <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
                         <div class="timeline-compact">
                             <div class="timeline-item-compact">
@@ -1654,10 +1785,7 @@
                                 <span class="timeline-desc"><strong>Digital Bros Academy</strong> - Game Design (Current)</span>
                             </div>
                         </div>
-                        
-                        <p class="about-text" style="margin-top: 30px;">
-                            <strong>Design Focus:</strong>
-                        </p>
+                        <p class="about-text" style="margin-top: 30px;"><strong>Design Focus:</strong></p>
                         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
                             <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">COMBAT SYSTEMS</span>
                             <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">AI BEHAVIOR</span>
@@ -1669,21 +1797,15 @@
             </div>
         </section>
         
-        <!-- SKILLS SECTION -->
         <section id="skills" class="skills-section">
             <div class="section-container">
                 <div class="section-header" data-aos="fade-up">
                     <h2 class="section-title">SKILLS</h2>
                     <p class="section-subtitle">Technologies, tools, and specializations</p>
                 </div>
-                
                 <div class="skills-categories">
-                    <!-- Technical Skills -->
                     <div class="skill-category" data-aos="fade-up" data-aos-duration="1000">
-                        <div class="category-header">
-                            <i class="fas fa-code"></i>
-                            <h3>TECHNICAL</h3>
-                        </div>
+                        <div class="category-header"><i class="fas fa-code"></i><h3>TECHNICAL</h3></div>
                         <div class="skills-grid">
                             <div class="skill-item"><i class="fab fa-unity"></i><span>Unity</span></div>
                             <div class="skill-item"><i class="fab fa-unreal-engine"></i><span>Unreal Engine 4/5</span></div>
@@ -1696,13 +1818,8 @@
                             <div class="skill-item"><i class="fas fa-cogs"></i><span>Visual Studio</span></div>
                         </div>
                     </div>
-                    
-                    <!-- Unreal Engine Specialization -->
                     <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                        <div class="category-header">
-                            <i class="fab fa-unreal-engine"></i>
-                            <h3>UNREAL ENGINE</h3>
-                        </div>
+                        <div class="category-header"><i class="fab fa-unreal-engine"></i><h3>UNREAL ENGINE</h3></div>
                         <div class="skills-grid">
                             <div class="skill-item"><i class="fas fa-cubes"></i><span>Blueprints</span><span class="skill-badge">Core</span></div>
                             <div class="skill-item"><i class="fas fa-fist-raised"></i><span>Combat Systems</span><span class="skill-badge">Advanced</span></div>
@@ -1714,13 +1831,8 @@
                             <div class="skill-item"><i class="fas fa-paint-brush"></i><span>PaperZD Plugin</span><span class="skill-badge learning">Learning</span></div>
                         </div>
                     </div>
-                    
-                    <!-- Design Skills -->
                     <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="category-header">
-                            <i class="fas fa-pencil-ruler"></i>
-                            <h3>DESIGN</h3>
-                        </div>
+                        <div class="category-header"><i class="fas fa-pencil-ruler"></i><h3>DESIGN</h3></div>
                         <div class="skills-grid">
                             <div class="skill-item"><i class="fas fa-crosshairs"></i><span>Combat Design</span></div>
                             <div class="skill-item"><i class="fas fa-robot"></i><span>AI Behavior</span></div>
@@ -1736,7 +1848,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1200">
                     <div class="stat-block"><div class="stat-number">9</div><div class="stat-label">PROJECTS</div></div>
                     <div class="stat-block"><div class="stat-number">3</div><div class="stat-label">CODING LANGUAGES</div></div>
@@ -1752,9 +1863,7 @@
         <div class="carousel-intro-container" data-aos="fade-up" data-aos-duration="1200">
             <div class="carousel-pre-title">TECH & COMBAT DESIGN</div>
             <h2 class="carousel-main-title">PROJECT <span>SHOWCASE</span></h2>
-            <p class="carousel-description">
-                A collection of technical combat systems, AI behaviors, and gameplay prototypes developed through academic projects and game jams.
-            </p>
+            <p class="carousel-description">A collection of technical combat systems, AI behaviors, and gameplay prototypes developed through academic projects and game jams.</p>
         </div>
     </section>
     
@@ -1764,9 +1873,7 @@
             <div class="projects-grid">
                 <!-- Card 1: One Night in Venice -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800">
-                    <div class="project-type-tag type-combat">
-                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
-                    </div>
+                    <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
                             <source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4">
@@ -1778,24 +1885,12 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-category">
-                                FPS BULLET HELL
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo">
-                            </span>
-                        </div>
+                        <div class="card-header"><span class="card-category">FPS BULLET HELL <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo"></span></div>
                         <h3 class="card-title">ONE NIGHT IN VENICE</h3>
                         <div class="card-year">GLOBAL GAME JAM • 2026</div>
                         <p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p>
-                        <div class="card-tasks">
-                            <div class="card-tasks-title">OVERVIEW</div>
-                            <ul class="card-tasks-list">
-                                <li>Shooting system</li>
-                                <li>Enemy progressive spawner</li>
-                                <li>Parry mechanic</li>
-                                <li>Sound design</li>
-                                <li>Power ups</li>
-                            </ul>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div>
+                            <ul class="card-tasks-list"><li>Shooting system</li><li>Enemy progressive spawner</li><li>Parry mechanic</li><li>Sound design</li><li>Power ups</li></ul>
                         </div>
                         <a href="OneNightInVenice.html" class="card-button">VIEW PROJECT</a>
                     </div>
@@ -1803,9 +1898,7 @@
                 
                 <!-- Card 2: The Last Coin -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="project-type-tag type-tech">
-                        <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
-                    </div>
+                    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
                             <source src="Videos/TheLastCoinTrailerSite.mp4" type="video/mp4">
@@ -1817,24 +1910,12 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-category">
-                                HORROR GAME
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo">
-                            </span>
-                        </div>
+                        <div class="card-header"><span class="card-category">HORROR GAME <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo"></span></div>
                         <h3 class="card-title">THE LAST COIN</h3>
                         <div class="card-year">ACADEMY PROJECT • 2025</div>
                         <p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p>
-                        <div class="card-tasks">
-                            <div class="card-tasks-title">Key Contributions</div>
-                            <ul class="card-tasks-list">
-                                <li>Technical design & systems</li>
-                                <li>Character Setup</li>
-                                <li>Puzzle implementation</li>
-                                <li>UI implementation</li>
-                                <li>Team coordination</li>
-                            </ul>
+                        <div class="card-tasks"><div class="card-tasks-title">Key Contributions</div>
+                            <ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul>
                         </div>
                         <a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a>
                     </div>
@@ -1842,9 +1923,7 @@
                 
                 <!-- Card 3: Pummel -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="project-type-tag type-combat">
-                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH
-                    </div>
+                    <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
                             <source src="Videos/VideoPummel.mp4" type="video/mp4">
@@ -1856,24 +1935,12 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-category">
-                                2D ACTION
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo">
-                            </span>
-                        </div>
+                        <div class="card-header"><span class="card-category">2D ACTION <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo"></span></div>
                         <h3 class="card-title">PUMMEL</h3>
                         <div class="card-year">PROTOTYPE 2024</div>
                         <p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p>
-                        <div class="card-tasks">
-                            <div class="card-tasks-title">OVERVIEW</div>
-                            <ul class="card-tasks-list">
-                                <li>PaperZD integration</li>
-                                <li>Combo system</li>
-                                <li>Enemy AI</li>
-                                <li>2D animation</li>
-                                <li>Damage system</li>
-                            </ul>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div>
+                            <ul class="card-tasks-list"><li>PaperZD integration</li><li>Combo system</li><li>Enemy AI</li><li>2D animation</li><li>Damage system</li></ul>
                         </div>
                         <a href="Pummel.html" class="card-button">VIEW PROJECT</a>
                     </div>
@@ -1881,9 +1948,7 @@
                 
                 <!-- Card 4: Project A -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="300" data-aos-delay="400">
-                    <div class="project-type-tag type-combat">
-                        <i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN
-                    </div>
+                    <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN</div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
                             <source src="Videos/project-a-bg.mp4" type="video/mp4">
@@ -1895,24 +1960,12 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-category">
-                                COMBAT DESIGN
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo">
-                            </span>
-                        </div>
+                        <div class="card-header"><span class="card-category">COMBAT DESIGN <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo"></span></div>
                         <h3 class="card-title">PROJECT A</h3>
                         <div class="card-year">PROTOTYPE 2023</div>
                         <p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p>
-                        <div class="card-tasks">
-                            <div class="card-tasks-title">OVERVIEW</div>
-                            <ul class="card-tasks-list">
-                                <li>Souls-like combat</li>
-                                <li>Root motion</li>
-                                <li>Enemy AI</li>
-                                <li>Boss phases</li>
-                                <li>Niagara effects</li>
-                            </ul>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div>
+                            <ul class="card-tasks-list"><li>Souls-like combat</li><li>Root motion</li><li>Enemy AI</li><li>Boss phases</li><li>Niagara effects</li></ul>
                         </div>
                         <a href="Project A.html" class="card-button">VIEW PROJECT</a>
                     </div>
@@ -1920,9 +1973,7 @@
                 
                 <!-- Card 5: The Sun Vanished -->
                 <div class="project-card" data-aos="fade-up" data-aos-duration="300" data-aos-delay="400">
-                    <div class="project-type-tag type-tech">
-                        <i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN
-                    </div>
+                    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container">
                         <video class="card-video" autoplay muted loop playsinline>
                             <source src="Videos/TrailerVanished .mp4" type="video/mp4">
@@ -1934,23 +1985,12 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-category">
-                                HORROR PROTOTYPE
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo">
-                            </span>
-                        </div>
+                        <div class="card-header"><span class="card-category">HORROR PROTOTYPE <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/UE_Logo_Black_Centered.svg/2560px-UE_Logo_Black_Centered.svg.png" alt="UE" class="card-engine-logo"></span></div>
                         <h3 class="card-title">THE SUN VANISHED</h3>
                         <div class="card-year">PROTOTYPE 2025</div>
                         <p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p>
-                        <div class="card-tasks">
-                            <div class="card-tasks-title">OVERVIEW</div>
-                            <ul class="card-tasks-list">
-                                <li>LiDAR scanning</li>
-                                <li>Sound-based AI</li>
-                                <li>Atmospheric horror</li>
-                                <li>Navigation</li>
-                            </ul>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div>
+                            <ul class="card-tasks-list"><li>LiDAR scanning</li><li>Sound-based AI</li><li>Atmospheric horror</li><li>Navigation</li></ul>
                         </div>
                         <a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a>
                     </div>
@@ -1962,12 +2002,8 @@
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
-            <video class="lightbox-video" controls>
-                <source src="" type="video/mp4">
-            </video>
-            <div class="lightbox-close" id="lightboxClose">
-                <i class="fas fa-times"></i>
-            </div>
+            <video class="lightbox-video" controls><source src="" type="video/mp4"></video>
+            <div class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></div>
             <div class="lightbox-title" id="lightboxTitle"></div>
         </div>
     </div>
@@ -1976,12 +2012,8 @@
     <section id="more-projects" class="more-projects-hero">
         <div class="section-container">
             <h2 class="section-title" data-aos="fade-up">MORE PROJECTS</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Explore additional work, collaborations, and prototypes
-            </p>
-            <a href="projects.html" class="view-all-btn" data-aos="fade-up" data-aos-delay="200">
-                VIEW ALL PROJECTS <i class="fas fa-arrow-right"></i>
-            </a>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Explore additional work, collaborations, and prototypes</p>
+            <a href="projects.html" class="view-all-btn" data-aos="fade-up" data-aos-delay="200">VIEW ALL PROJECTS <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
     
@@ -1992,12 +2024,8 @@
                 <h2 class="cta-title">CONTACT ME!</h2>
                 <p class="cta-text">Let's discuss how I can contribute to your next project!</p>
                 <div class="cta-buttons">
-                    <a href="contact.html" class="cta-btn">
-                        <i class="fas fa-envelope"></i> CONTACT ME
-                    </a>
-                    <a href="Photos/Federico del gaudio CV combat.pdf" target="_blank" class="cta-btn">
-                        <i class="fas fa-download"></i> DOWNLOAD CV
-                    </a>
+                    <a href="contact.html" class="cta-btn"><i class="fas fa-envelope"></i> CONTACT ME</a>
+                    <a href="Photos/Federico del gaudio CV combat.pdf" target="_blank" class="cta-btn"><i class="fas fa-download"></i> DOWNLOAD CV</a>
                 </div>
             </div>
         </div>
@@ -2006,15 +2034,9 @@
     <!-- Social Links -->
     <div class="section-container">
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" target="_blank" class="social-link">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/Federico-del-gaudio" target="_blank" class="social-link">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.instagram.com/emyportfolio/" target="_blank" class="social-link">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
+            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Federico-del-gaudio" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/emyportfolio/" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
         </div>
     </div>
 
@@ -2026,21 +2048,52 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
-        // Defer non-critical operations
         document.addEventListener('DOMContentLoaded', function() {
+            // POPUP WORK IN PROGRESS - sempre visibile ad ogni refresh
+            const popup = document.getElementById('wipPopup');
+            setTimeout(() => {
+                if (popup) {
+                    popup.classList.add('active');
+                    document.body.classList.add('popup-open');
+                }
+            }, 800);
+            
+            // Bottone OK - chiude il popup
+            const okBtn = document.getElementById('wipOkBtn');
+            if (okBtn) {
+                okBtn.addEventListener('click', function() {
+                    const popupEl = document.getElementById('wipPopup');
+                    popupEl.classList.remove('active');
+                    document.body.classList.remove('popup-open');
+                });
+            }
+            
+            // Bottone CONTACT ME - chiude il popup e scrolla alla sezione contatti
+            const contactBtn = document.getElementById('wipContactBtn');
+            if (contactBtn) {
+                contactBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const popupEl = document.getElementById('wipPopup');
+                    popupEl.classList.remove('active');
+                    document.body.classList.remove('popup-open');
+                    const contactSection = document.querySelector('#contact');
+                    if (contactSection) {
+                        setTimeout(() => {
+                            window.scrollTo({ top: contactSection.offsetTop - 80, behavior: 'smooth' });
+                        }, 100);
+                    } else {
+                        window.location.href = '#contact';
+                    }
+                });
+            }
+            
             // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100,
-                disable: window.innerWidth < 768 ? true : false
-            });
+            AOS.init({ duration: 1000, once: true, offset: 100, disable: window.innerWidth < 768 ? true : false });
             
             // Create particles
             function createParticles() {
                 const particlesContainer = document.getElementById('particles');
                 if (!particlesContainer) return;
-                
                 for (let i = 0; i < 40; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
@@ -2060,30 +2113,15 @@
             if (typewriterElement) {
                 const words = ['COMBAT DESIGNER', 'TECHNICAL DESIGNER', 'GAME DESIGNER'];
                 let i = 0, txt = '', isDeleting = false;
-                
                 function type() {
                     const current = i % words.length;
                     const fullTxt = words[current];
-                    
-                    if (isDeleting) {
-                        txt = fullTxt.substring(0, txt.length - 1);
-                    } else {
-                        txt = fullTxt.substring(0, txt.length + 1);
-                    }
-                    
+                    if (isDeleting) txt = fullTxt.substring(0, txt.length - 1);
+                    else txt = fullTxt.substring(0, txt.length + 1);
                     typewriterElement.innerHTML = `<span class="txt">${txt}</span>`;
-                    
                     let speed = isDeleting ? 50 : 100;
-                    
-                    if (!isDeleting && txt === fullTxt) {
-                        speed = 2000;
-                        isDeleting = true;
-                    } else if (isDeleting && txt === '') {
-                        isDeleting = false;
-                        i++;
-                        speed = 200;
-                    }
-                    
+                    if (!isDeleting && txt === fullTxt) { speed = 2000; isDeleting = true; }
+                    else if (isDeleting && txt === '') { isDeleting = false; i++; speed = 200; }
                     setTimeout(type, speed);
                 }
                 type();
@@ -2093,7 +2131,6 @@
             const lightbox = document.getElementById('lightbox');
             const lightboxVideo = lightbox.querySelector('.lightbox-video');
             const lightboxClose = document.getElementById('lightboxClose');
-            
             document.querySelectorAll('.card-play-button').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2104,14 +2141,12 @@
                     lightboxVideo.play();
                 });
             });
-            
             lightboxClose.addEventListener('click', () => {
                 lightbox.classList.remove('active');
                 lightboxVideo.pause();
                 lightboxVideo.src = '';
                 document.body.style.overflow = '';
             });
-            
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) {
                     lightbox.classList.remove('active');
@@ -2120,7 +2155,6 @@
                     document.body.style.overflow = '';
                 }
             });
-            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                     lightbox.classList.remove('active');
@@ -2136,7 +2170,6 @@
             const closeMenu = document.getElementById('closeMenu');
             const mobileProjectsTrigger = document.getElementById('mobileProjectsTrigger');
             const mobileDropdownContent = document.getElementById('mobileDropdownContent');
-            
             if (hamburg && mobileMenu) {
                 hamburg.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -2144,22 +2177,18 @@
                     document.body.style.overflow = 'hidden';
                 });
             }
-            
             if (closeMenu && mobileMenu) {
                 closeMenu.addEventListener('click', () => {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
                 });
             }
-            
             if (mobileProjectsTrigger && mobileDropdownContent) {
                 mobileProjectsTrigger.addEventListener('click', function(e) {
                     e.preventDefault();
                     mobileDropdownContent.classList.toggle('show');
                     const arrow = this.querySelector('i');
-                    if (arrow) {
-                        arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-                    }
+                    if (arrow) arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
                 });
             }
             
@@ -2169,23 +2198,15 @@
                     const href = this.getAttribute('href');
                     if (href === '#' || href === '' || this.classList.contains('dropdown-trigger') || 
                         this.id === 'mobileProjectsTrigger' || this.classList.contains('view-all-btn')) return;
-                    
                     e.preventDefault();
                     const target = document.querySelector(href);
-                    if (target) {
-                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-                    }
+                    if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                 });
             });
             
             // Hero video autoplay
             const heroVideo = document.querySelector('.background-video');
-            if (heroVideo) {
-                heroVideo.play().catch(() => {
-                    heroVideo.muted = true;
-                    heroVideo.play();
-                });
-            }
+            if (heroVideo) heroVideo.play().catch(() => { heroVideo.muted = true; heroVideo.play(); });
         });
         
         // Resize handler
