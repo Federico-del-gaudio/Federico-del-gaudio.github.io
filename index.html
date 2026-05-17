@@ -826,6 +826,26 @@
             align-items: start;
         }
         
+        /* Foto Rotonda */
+        .about-photo {
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--light);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        
         .about-content {
             display: flex;
             flex-direction: column;
@@ -971,9 +991,10 @@
         }
         
         .skill-item i {
-            width: 18px;
+            width: 22px;
             color: var(--light);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            text-align: center;
         }
         
         .skill-item span {
@@ -1585,9 +1606,11 @@
         }
         
         @media (max-width: 992px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .about-photo { order: -1; }
             .stats-showcase { grid-template-columns: repeat(2, 1fr); }
             .carousel-main-title { font-size: 2.5rem; }
+            .timeline-item-compact { justify-content: center; }
         }
         
         @media (max-width: 768px) {
@@ -1628,6 +1651,8 @@
             .wip-title { font-size: 1.6rem; }
             .wip-buttons { gap: 15px; }
             .wip-btn { padding: 10px 22px; font-size: 0.75rem; }
+            
+            .profile-image { width: 200px; height: 200px; }
         }
         
         @media (max-width: 480px) {
@@ -1757,15 +1782,20 @@
                     <p class="section-subtitle">My journey from programming to game design</p>
                 </div>
                 <div class="about-grid">
-                    <div class="about-content" data-aos="fade-right" data-aos-duration="1200">
+                    <!-- Foto Rotonda -->
+                    <div class="about-photo" data-aos="fade-right" data-aos-duration="1200">
+                        <img src="Photos/FotoMia.jpg" alt="Federico Del Gaudio" class="profile-image" onerror="this.src='https://via.placeholder.com/280x280?text=F.D.G'">
+                    </div>
+                    <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
                         <div>
                             <h3 class="about-name">Federico Del Gaudio</h3>
                             <div class="about-role">JUNIOR GAME DESIGNER</div>
                         </div>
                         <p class="about-text">
-                            Game design student passionate about creating engaging combat systems and interactive gameplay experiences. 
-                            My path evolved from a strong technical background in programming to game design, combining analytical thinking 
-                            with creative expression to craft memorable player experiences.
+                            My name is Federico del Gaudio. Since I was a child, I've always been fascinated by video games, and I always wondered, "How do they keep me so entertained?"
+                            Driven by curiosity and the desire to create something that could entertain as many people as possible, I embarked on my journey—first attending a computer science high school,
+                            and then an academy where I learned the fundamentals of game design, which I am now ready to expand upon.<br> <br> Thanks to my technical skills, I can bridge the gap between design and direct engine implementation, supporting both designers and programmers.
+                            I love both single-player and multiplayer games, competitive and casual alike, and I am deeply passionate about medieval history.
                         </p>
                         <p class="about-text">
                             <strong>Self‑directed study in Unreal Engine</strong> with focus on combat systems, Blueprints, and AI behavior trees.
@@ -1774,7 +1804,7 @@
                             <p>"Every project is an opportunity to learn, experiment, and create something meaningful. My goal is to design experiences that leave a lasting impression."</p>
                         </div>
                     </div>
-                    <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="about-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                         <div class="timeline-compact">
                             <div class="timeline-item-compact">
                                 <span class="timeline-year">2019-2024</span>
@@ -1791,6 +1821,7 @@
                             <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">AI BEHAVIOR</span>
                             <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">TECHNICAL DESIGN</span>
                             <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">GAMEPLAY MECHANICS</span>
+                            <span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border: 1px solid var(--border-color); font-size: 0.9rem;">GAMEPLAY DESIGN</span>
                         </div>
                     </div>
                 </div>

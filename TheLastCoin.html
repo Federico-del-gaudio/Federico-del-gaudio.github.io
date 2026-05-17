@@ -44,7 +44,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation Bar - STILE IDENTICO ALL'INDEX CON DROPDOWN COMPLETO */
+        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -117,7 +117,7 @@
             color: var(--light);
         }
         
-        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
+        /* Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -263,11 +263,9 @@
             color: var(--light);
         }
         
-        /* Stile speciale per icona combat */
         .dropdown-content a i.fa-crosshairs {
             color: var(--combat-tag);
         }
-        /* ========== FINE DROPDOWN ========== */
         
         .hamburg {
             display: none;
@@ -282,7 +280,7 @@
             transform: scale(1.1);
         }
         
-        /* Mobile Menu - OTTIMIZZATO */
+        /* Mobile Menu */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -382,7 +380,7 @@
             border-radius: 8px;
         }
         
-        /* Project Header with Background Image */
+        /* Project Header */
         .project-header {
             padding: 180px 50px 120px;
             position: relative;
@@ -615,64 +613,6 @@
             margin-left: 5px;
         }
         
-        /* Action Buttons */
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .action-button {
-            padding: 16px 25px;
-            background: transparent;
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--light);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .action-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--light);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .action-button:hover {
-            color: var(--dark);
-        }
-        
-        .action-button:hover::before {
-            left: 0;
-        }
-        
-        .action-button.download {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .action-button.download:hover {
-            background: var(--light);
-        }
-        
         /* Gallery Section */
         .gallery-section {
             background: var(--card-bg);
@@ -722,7 +662,7 @@
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-top: 60px;
             backdrop-filter: blur(10px);
         }
         
@@ -782,15 +722,6 @@
             align-items: start;
         }
         
-        .insights-section.reverse .insights-grid {
-            direction: rtl;
-        }
-        
-        .insights-section.reverse .insight-text,
-        .insights-section.reverse .insight-visual {
-            direction: ltr;
-        }
-        
         .insight-text-content {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
@@ -835,6 +766,13 @@
             border: 1px solid var(--border-color);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .insight-media:hover {
+            transform: scale(1.02);
+            border-color: var(--light);
         }
         
         .insight-media img,
@@ -842,51 +780,6 @@
             width: 100%;
             height: auto;
             display: block;
-        }
-        
-        .insight-media.gif {
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .gif-play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        
-        .gif-play-overlay:hover {
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .gif-play-button {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .gif-play-button:hover {
-            transform: scale(1.1);
-            background: var(--light);
-        }
-        
-        .gif-play-button i {
-            font-size: 2rem;
-            color: var(--dark);
-            margin-left: 5px;
         }
         
         .insight-caption {
@@ -1039,7 +932,7 @@
             margin-top: 40px;
         }
         
-        /* ===== RESPONSIVE OTTIMIZZATO ===== */
+        /* Responsive */
         @media (max-width: 1200px) {
             .project-main, .project-header {
                 padding: 180px 30px 120px;
@@ -1064,17 +957,6 @@
             }
             .gallery-grid, .contributions-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            .action-buttons {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .insights-section.reverse .insights-grid,
-            .insights-section .insights-grid {
-                direction: ltr;
-            }
-            .insight-visual {
-                order: -1;
-                margin-bottom: 30px;
             }
             .header-gradient {
                 height: 200px;
@@ -1118,14 +1000,6 @@
             .contributions-section, .insights-section {
                 padding: 30px;
             }
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-            .lightbox-nav button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
             .header-gradient {
                 height: 180px;
             }
@@ -1158,10 +1032,6 @@
             }
             .footer-title {
                 font-size: 2rem;
-            }
-            .action-button {
-                padding: 14px 20px;
-                font-size: 0.85rem;
             }
             .project-header {
                 padding: 140px 20px 80px;
@@ -1201,31 +1071,22 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="index.html#about">ABOUT</a>
             
-            <!-- Projects Dropdown COMPLETO -->
             <div class="dropdown">
                 <a href="projects.html" class="dropdown-trigger">
                     PROJECTS <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="projects.html">
-                        <i class="fas fa-grid-2"></i> ALL PROJECTS
-                    </a>
-                    <a href="AcademyProject.html">
-                        <i class="fas fa-graduation-cap"></i> ACADEMY
-                    </a>
-                    <a href="SoloProjects.html">
-                        <i class="fas fa-user"></i> PERSONAL
-                    </a>
-                    <a href="CombatTechProjects.html">
-                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
-                    </a>
+                    <a href="projects.html"><i class="fas fa-grid-2"></i> ALL PROJECTS</a>
+                    <a href="AcademyProject.html"><i class="fas fa-graduation-cap"></i> ACADEMY</a>
+                    <a href="SoloProjects.html"><i class="fas fa-user"></i> PERSONAL</a>
+                    <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
                 </div>
             </div>
             
@@ -1234,13 +1095,12 @@
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Mobile Menu - COMPLETO OTTIMIZZATO -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html">HOME</a>
         <a href="index.html#about">ABOUT</a>
         
-        <!-- Mobile Projects Dropdown COMPLETO -->
         <div class="mobile-dropdown">
             <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
                 PROJECTS <i class="fas fa-chevron-down"></i>
@@ -1256,7 +1116,7 @@
         <a href="contact.html">CONTACT</a>
     </div>
     
-    <!-- Project Header with Background Image -->
+    <!-- Project Header -->
     <header class="project-header">
         <div class="header-background">
             <img src="Photos/LastCoin.png" alt="The Last Coin Background" class="header-image">
@@ -1272,18 +1132,16 @@
     <main class="project-main">
         <!-- About & Trailer Grid -->
         <div class="content-grid">
-            <!-- About Section -->
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
                     <p>In the suffocating dark of a <span class="highlight">gambling nightmare</span>, you are forced to face your addiction.
-                        Wander an endless corridor of despair and challenge your <span class="highlight"> Destiny </span> at the cursed Slot Machine.
+                        Wander an endless corridor of despair and challenge your <span class="highlight">Destiny</span> at the cursed Slot Machine.
                         Ransack the Panic Room in a desperate hunt for coins, but beware the slow fraying of your Sanity.</p>
-                        <p>For this project, my primary focus was <span class="highlight">engine-side implementation</span>. I was responsible for <span class="highlight">integrating UI/UX systems, gameplay mechanics, and providing audio support to programmers throughout the in-engine development process</span>.</p>
+                    <p>For this project, my primary focus was <span class="highlight">engine-side implementation</span>. I was responsible for <span class="highlight">integrating UI/UX systems, gameplay mechanics, and providing audio support to programmers throughout the in-engine development process</span>.</p>
                 </div>
             </section>
             
-            <!-- Trailer Section -->
             <section class="trailer-section">
                 <h2 class="section-title">Game Trailer</h2>
                 <div class="trailer-container">
@@ -1305,64 +1163,16 @@
             <h2 class="section-title">Game Screenshots</h2>
             <div class="gallery-grid">
                 <div class="gallery-item" data-index="1">
-                    <img src="Photos/FotoAndrei1.png" alt="Game Environment 1">
+                    <img src="Photos/Slot1.png" alt="Game Environment 1">
                 </div>
                 <div class="gallery-item" data-index="2">
-                    <img src="Photos/ImageSteam.png" alt="Game Environment 2">
+                    <img src="Photos/Slot2.png" alt="Game Environment 2">
                 </div>
                 <div class="gallery-item" data-index="3">
-                    <img src="Photos/ImageSteam3.png" alt="Game Environment 3">
+                    <img src="Photos/Slot3.png" alt="Game Environment 3">
                 </div>
                 <div class="gallery-item" data-index="4">
-                    <img src="Photos/ImageSteam4.png" alt="Game Environment 4">
-                </div>
-                <div class="gallery-item" data-index="5">
-                    <img src="Photos/ImageSteam6.png" alt="Game Environment 5">
-                </div>
-                <div class="gallery-item" data-index="6">
-                    <img src="Photos/ImageSteam14.png" alt="Game Environment 6">
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contributions Section -->
-        <section class="contributions-section">
-            <h2 class="section-title">My Contributions</h2>
-            <div class="contributions-grid">
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="contribution-title">Concept & Game Design</h3>
-                    <p class="contribution-description">Collaborated with the team to develop concepts and ideas for the game during the early stages of development.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-gun"></i>
-                    </div>
-                    <h3 class="contribution-title">Combat Feedback</h3>
-                    <p class="contribution-description">Documented weapon functionality, enemy feedback, and UI feedback systems in the GDD.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-table"></i>
-                    </div>
-                    <h3 class="contribution-title">Economy Design</h3>
-                    <p class="contribution-description">Handled testing and fine-tuning of weapon mechanics, enemy economy, and UI feedback.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="contribution-title">Design Documentation</h3>
-                    <p class="contribution-description">Responsible for writing and maintaining the comprehensive Game Design Document (GDD).</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-music"></i>
-                    </div>
-                    <h3 class="contribution-title">Sound Design</h3>
-                    <p class="contribution-description">Handled sound assets sourcing and audio mixing directly within the game engine.</p>
+                    <img src="Photos/slot4.png" alt="Game Environment 4">
                 </div>
             </div>
         </section>
@@ -1371,6 +1181,15 @@
         <section class="insights-section">
             <h2 class="section-title">Implementation Insights - Horror Systems</h2>
             <div class="insights-grid">
+                <div class="insight-visual">
+                    <div class="insight-media insight-img" data-img-src="Photos/Sanity.png">
+                        <img src="Photos/Sanity.png" alt="Sanity System Effects">
+                    </div>
+                    <div class="insight-caption">
+                        Sanity system showing visual distortion effects as player sanity decreases.
+                    </div>
+                </div>
+                
                 <div class="insight-text-content">
                     <h3>Key Learnings from Horror Implementation</h3>
                     <p>During the development of The Last Coin, I learned that <span class="highlight">psychological horror</span> requires careful pacing and environmental storytelling. The atmosphere needed to build tension gradually while maintaining player engagement.</p>
@@ -1381,62 +1200,73 @@
                     
                     <p>Finally, I learned the importance of <span class="highlight">audio layering</span> in horror. Subtle ambient sounds, carefully timed musical cues, and spatial audio effects created a much more immersive and terrifying experience than visual effects alone.</p>
                 </div>
-                
-                <div class="insight-visual">
-                    <div class="insight-media gif" style="position: relative;">
-                        <img src="Photos/SanitySystemGIF.gif" alt="Sanity System Animation" style="display: none;" id="gif1">
-                        <div class="gif-play-overlay" id="playGif1">
-                            <div class="gif-play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <img src="Photos/ImageSteam3.png" alt="Sanity System Effects" id="fallbackImage1" style="width: 100%; height: auto;">
-                    </div>
-                    <div class="insight-caption">
-                        GIF: Sanity system showing visual and audio distortion effects as player sanity decreases.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Technical Implementation Note</h4>
-                        <p>The sanity system was implemented using post-processing effects that gradually intensify based on player actions and environmental factors. This required careful balancing to maintain gameplay readability while creating psychological tension.</p>
-                    </div>
-                </div>
             </div>
         </section>
         
         <!-- Second Implementation Insights Section -->
-        <section class="insights-section reverse">
-            <h2 class="section-title">Implementation Insights - Gambling Mechanics</h2>
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - QTE's</h2>
             <div class="insights-grid">
                 <div class="insight-visual">
-                    <div class="insight-media gif" style="position: relative;">
-                        <img src="Photos/GamblingMechanicsGIF.gif" alt="Gambling Mechanics Animation" style="display: none;" id="gif2">
-                        <div class="gif-play-overlay" id="playGif2">
-                            <div class="gif-play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <img src="Photos/ImageSteam6.png" alt="Gambling Mechanics" id="fallbackImage2" style="width: 100%; height: auto;">
+                    <div class="insight-media insight-img" data-img-src="Photos/QTE_Fate.png">
+                        <img src="Photos/QTE_Fate.png" alt="QTE System">
                     </div>
                     <div class="insight-caption">
-                        GIF: Slot machine mechanics showing reward system and sanity consequences.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Technical Challenge</h4>
-                        <p>Implementing the gambling system required creating weighted probability tables that balance risk and reward while maintaining narrative coherence. The system needed to feel random while guiding players toward specific story beats.</p>
+                        QTE System for in-game events - Flashlight failure mechanics.
                     </div>
                 </div>
                 
                 <div class="insight-text-content">
-                    <h3>Gambling System Implementation Insights</h3>
-                    <p>Developing the gambling mechanics for The Last Coin taught me valuable lessons about <span class="highlight">risk-reward psychology</span> and <span class="highlight">narrative-driven gameplay</span>. The slot machine needed to feel like a genuine gambling experience while serving the game's horror narrative.</p>
+                    <h3>QTE System Implementation Insights</h3>
+                    <p>The implementation of <span class="highlight">QTEs</span> was essential to trigger intense moments of anxiety for the player. In this Blueprint, the system forces the player's flashlight to suddenly fail; the player must then repeatedly mash the "E" key to turn it back on.</p>
                     
-                    <p>One key insight was the importance of <span class="highlight">visual feedback</span> in gambling systems. Each spin needed to build tension through visual effects and sound design, with clear but unsettling reward presentations.</p>
+                    <p>The <span class="highlight">design philosophy</span> of this game doesn't rely on cheap jump scares; instead, it focuses on building psychological tension and making the player feel deeply vulnerable through environmental sounds and unpredictable systemic events.</p>
                     
-                    <p>I learned that <span class="highlight">variable ratio reinforcement</span> creates the most addictive gameplay. Players needed to experience both winning and losing streaks that felt random but were carefully balanced to maintain engagement and tension.</p>
+                    <p>I implemented the QTE system using Unreal Engine's <span class="highlight">Blueprint scripting</span>, creating a reusable component that could be attached to various interactive objects. The system tracks button press frequency, success thresholds, and provides visual/audio feedback based on player performance.</p>
                     
-                    <p>The integration of <span class="highlight">sanity mechanics</span> with gambling outcomes was particularly challenging. Losses needed to feel punishing but not frustrating, while wins needed to provide relief without removing the underlying horror tension.</p>
+                    <p>A key technical challenge was ensuring the QTE timing felt fair while maintaining tension. After multiple playtests, I adjusted the timing windows and input buffering to create a <span class="highlight">sweet spot</span> between challenge and frustration.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contributions Section - INGLESE, posizionata DOPO gli insights -->
+        <section class="contributions-section">
+            <h2 class="section-title">My Contributions</h2>
+            <div class="contributions-grid">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3 class="contribution-title">Game Design</h3>
+                    <p class="contribution-description">Actively contributed to the project's design from the early stages, supporting the team with ideas and creative solutions for gameplay mechanics.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="contribution-title">Technical Implementation</h3>
+                    <p class="contribution-description">Collaborated closely with programmers to implement gameplay mechanics in-engine, translating design specifications into functional features.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="contribution-title">UI & Audio Integration</h3>
+                    <p class="contribution-description">Managed UI and audio implementation both at design and practical engine level, handling sound integration, visual feedback, and user interfaces.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fas fa-dice-d6"></i>
+                    </div>
+                    <h3 class="contribution-title">Testing & Tuning</h3>
+                    <p class="contribution-description">Performed extensive testing and tuning of the Slot Machine mechanics, balancing probabilities, risk, and reward to ensure a fair and engaging experience.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="contribution-title">Art Asset Integration</h3>
+                    <p class="contribution-description">Supported artists in importing and integrating visual assets into the game, optimizing textures, materials, and models to maintain performance.</p>
                 </div>
             </div>
         </section>
@@ -1489,37 +1319,6 @@
                 });
             }
             
-            // GIF Play Functionality
-            const gif1Play = document.getElementById('playGif1');
-            const gif2Play = document.getElementById('playGif2');
-            
-            function setupGif(playButton, gifId, fallbackId) {
-                if (playButton) {
-                    playButton.addEventListener('click', function() {
-                        const gif = document.getElementById(gifId);
-                        const fallback = document.getElementById(fallbackId);
-                        if (gif) {
-                            fallback.style.display = 'none';
-                            gif.style.display = 'block';
-                            this.style.display = 'none';
-                        }
-                    });
-                    
-                    // Error handling
-                    const gif = document.getElementById(gifId);
-                    if (gif) {
-                        gif.onerror = function() {
-                            playButton.style.display = 'none';
-                            const fallback = document.getElementById(fallbackId);
-                            if (fallback) fallback.style.display = 'block';
-                        };
-                    }
-                }
-            }
-            
-            setupGif(gif1Play, 'gif1', 'fallbackImage1');
-            setupGif(gif2Play, 'gif2', 'fallbackImage2');
-            
             // Parallax effect for header image
             const headerImage = document.querySelector('.header-image');
             if (headerImage) {
@@ -1529,7 +1328,7 @@
                 });
             }
             
-            // Lightbox Functionality
+            // Lightbox for Gallery and Insight Images
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeLightbox = document.querySelector('.close-lightbox');
@@ -1537,15 +1336,28 @@
             const nextBtn = document.getElementById('next-btn');
             const lightboxCounter = document.getElementById('lightbox-counter');
             
+            // Gallery images
             const galleryItems = document.querySelectorAll('.gallery-item');
-            const images = Array.from(galleryItems).map(item => {
+            const galleryImages = Array.from(galleryItems).map(item => {
                 const img = item.querySelector('img');
-                return { src: img.src, alt: img.alt };
+                return { src: img.src, alt: img.alt, type: 'gallery' };
             });
             
-            let currentImageIndex = 0;
+            // Insight images (for zoom)
+            const insightImages = document.querySelectorAll('.insight-img');
+            const insightImageList = Array.from(insightImages).map(img => {
+                const src = img.getAttribute('data-img-src');
+                const alt = img.querySelector('img')?.alt || 'Insight image';
+                return { src: src, alt: alt, type: 'insight' };
+            });
             
-            function openLightbox(index) {
+            // Combine all images
+            const allImages = [...galleryImages, ...insightImageList];
+            let currentImageIndex = 0;
+            let currentImageSet = null;
+            
+            function openLightbox(images, index) {
+                currentImageSet = images;
                 currentImageIndex = index;
                 lightbox.style.display = 'block';
                 updateLightboxImage();
@@ -1558,26 +1370,35 @@
             }
             
             function updateLightboxImage() {
-                const image = images[currentImageIndex];
-                if (image) {
-                    lightboxImg.src = image.src;
-                    lightboxImg.alt = image.alt;
-                    lightboxCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+                if (currentImageSet && currentImageSet[currentImageIndex]) {
+                    lightboxImg.src = currentImageSet[currentImageIndex].src;
+                    lightboxImg.alt = currentImageSet[currentImageIndex].alt;
+                    lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentImageSet.length}`;
                 }
             }
             
             function nextImage() {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                updateLightboxImage();
+                if (currentImageSet) {
+                    currentImageIndex = (currentImageIndex + 1) % currentImageSet.length;
+                    updateLightboxImage();
+                }
             }
             
             function prevImage() {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                updateLightboxImage();
+                if (currentImageSet) {
+                    currentImageIndex = (currentImageIndex - 1 + currentImageSet.length) % currentImageSet.length;
+                    updateLightboxImage();
+                }
             }
             
+            // Gallery click handlers
             galleryItems.forEach((item, index) => {
-                item.addEventListener('click', () => openLightbox(index));
+                item.addEventListener('click', () => openLightbox(galleryImages, index));
+            });
+            
+            // Insight images click handlers (for zoom)
+            insightImages.forEach((imgElement, index) => {
+                imgElement.addEventListener('click', () => openLightbox(insightImageList, index));
             });
             
             if (closeLightbox) closeLightbox.addEventListener('click', closeLightboxFunc);
@@ -1665,8 +1486,9 @@
                 });
             });
             
-            // Update lightbox counter
-            lightboxCounter.textContent = `1 / ${images.length}`;
+            if (lightboxCounter && allImages.length > 0) {
+                lightboxCounter.textContent = `1 / ${allImages.length}`;
+            }
         });
     </script>
 </body>

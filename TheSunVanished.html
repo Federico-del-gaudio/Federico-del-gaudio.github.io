@@ -44,7 +44,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation Bar - STILE IDENTICO ALL'INDEX CON DROPDOWN COMPLETO */
+        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -117,7 +117,7 @@
             color: var(--light);
         }
         
-        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
+        /* Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -263,11 +263,9 @@
             color: var(--light);
         }
         
-        /* Stile speciale per icona combat */
         .dropdown-content a i.fa-crosshairs {
             color: var(--combat-tag);
         }
-        /* ========== FINE DROPDOWN ========== */
         
         .hamburg {
             display: none;
@@ -282,7 +280,7 @@
             transform: scale(1.1);
         }
         
-        /* Mobile Menu - OTTIMIZZATO */
+        /* Mobile Menu */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -382,7 +380,7 @@
             border-radius: 8px;
         }
         
-        /* Project Header with Background Image */
+        /* Project Header */
         .project-header {
             padding: 180px 50px 120px;
             position: relative;
@@ -411,7 +409,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4) contrast(1.1);
+            filter: brightness(0.35) contrast(1.2);
             z-index: -1;
             will-change: transform;
         }
@@ -491,7 +489,7 @@
             color: var(--gray-light);
         }
         
-        /* Main Content Layout */
+        /* Main Content */
         .project-main {
             max-width: 1400px;
             margin: 0 auto;
@@ -545,87 +543,6 @@
         .highlight {
             color: var(--light);
             font-weight: 600;
-        }
-        
-        /* Controls Section */
-        .controls-section {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 30px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .controls-title {
-            font-size: 1.3rem;
-            color: var(--light);
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        
-        .control-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--gray-light);
-        }
-        
-        .control-key {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-weight: 600;
-            color: var(--light);
-            min-width: 70px;
-            text-align: center;
-        }
-        
-        .control-desc {
-            font-size: 0.95rem;
-        }
-        
-        /* Combat Features */
-        .combat-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            border-color: var(--light);
-        }
-        
-        .feature-title {
-            color: var(--light);
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .feature-desc {
-            color: var(--gray-medium);
-            font-size: 0.9rem;
         }
         
         /* Trailer Section */
@@ -694,91 +611,6 @@
             font-size: 2.5rem;
             color: var(--dark);
             margin-left: 5px;
-        }
-        
-        /* Action Buttons */
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .action-button {
-            padding: 16px 25px;
-            background: transparent;
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--light);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .action-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--light);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .action-button:hover {
-            color: var(--dark);
-        }
-        
-        .action-button:hover::before {
-            left: 0;
-        }
-        
-        /* Platform Buttons */
-        .platform-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .platform-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 35px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-        }
-        
-        .platform-button i {
-            font-size: 1.3rem;
-        }
-        
-        .platform-button:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            border-color: var(--light);
         }
         
         /* Gallery Section */
@@ -890,15 +722,6 @@
             align-items: start;
         }
         
-        .insights-section.reverse .insights-grid {
-            direction: rtl;
-        }
-        
-        .insights-section.reverse .insight-text,
-        .insights-section.reverse .insight-visual {
-            direction: ltr;
-        }
-        
         .insight-text-content {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
@@ -910,13 +733,6 @@
             color: var(--light);
             font-size: 1.5rem;
             margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .insight-text-content h4 {
-            color: var(--light);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
             font-weight: 600;
         }
         
@@ -955,11 +771,6 @@
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .insight-media:hover img {
-            transform: scale(1.05);
         }
         
         .insight-caption {
@@ -970,76 +781,55 @@
             padding: 0 20px;
         }
         
-        /* Design Section */
-        .design-section {
+        /* Design Features Section */
+        .design-features {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
         }
         
-        .design-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
         
-        .design-card {
+        .feature-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 30px;
+            padding: 25px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
         
-        .design-card:hover {
+        .feature-card:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
             border-color: var(--light);
         }
         
-        .design-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--light);
             margin-bottom: 20px;
         }
         
-        .design-icon {
-            font-size: 2rem;
+        .feature-title {
+            font-size: 1.4rem;
             color: var(--light);
-        }
-        
-        .design-title {
-            font-size: 1.6rem;
-            color: var(--light);
-            font-weight: 600;
-        }
-        
-        .design-content ul {
-            padding-left: 20px;
-            color: var(--gray-light);
-            line-height: 1.8;
-        }
-        
-        .design-content li {
-            margin-bottom: 10px;
-        }
-        
-        .design-content p {
-            color: var(--gray-light);
-            line-height: 1.8;
             margin-bottom: 15px;
-        }
-        
-        .design-content strong {
-            color: var(--light);
             font-weight: 600;
         }
         
-        /* Lightbox Styles */
+        .feature-description {
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+        
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1181,245 +971,87 @@
             margin-top: 40px;
         }
         
-        /* ===== RESPONSIVE OTTIMIZZATO ===== */
+        /* Responsive */
         @media (max-width: 1200px) {
-            .project-main, .project-header {
-                padding: 180px 30px 120px;
-            }
-            .content-grid, .insights-grid {
-                gap: 40px;
-            }
-            .header-gradient {
-                height: 250px;
-            }
-            .header-overlay {
-                height: 120px;
-            }
-            .combat-features {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .project-main, .project-header { padding: 180px 30px 120px; }
+            .content-grid, .insights-grid { gap: 40px; }
+            .header-gradient { height: 250px; }
+            .header-overlay { height: 120px; }
         }
         
         @media (max-width: 992px) {
-            .content-grid, .insights-grid {
-                grid-template-columns: 1fr;
-            }
-            .insights-grid.reverse .insights-grid,
-            .insights-grid .insights-grid {
-                direction: ltr;
-            }
-            .project-title {
-                font-size: 4rem;
-            }
-            .gallery-grid, .contributions-grid, .design-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            .action-buttons {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .controls-grid {
-                grid-template-columns: 1fr;
-            }
-            .combat-features {
-                grid-template-columns: 1fr;
-            }
-            .insight-visual {
-                order: -1;
-                margin-bottom: 30px;
-            }
-            .header-gradient {
-                height: 200px;
-            }
-            .header-overlay {
-                height: 100px;
-            }
-            .platform-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .platform-button {
-                width: 100%;
-                justify-content: center;
-            }
+            .content-grid, .insights-grid { grid-template-columns: 1fr; }
+            .project-title { font-size: 4rem; }
+            .gallery-grid, .contributions-grid, .features-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .header-gradient { height: 200px; }
+            .header-overlay { height: 100px; }
+            .insight-visual { order: -1; margin-bottom: 30px; }
         }
         
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-            .logo {
-                font-size: 1.6rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .hamburg {
-                display: block;
-            }
-            
-            .project-header {
-                padding: 160px 20px 100px;
-                min-height: 70vh;
-            }
-            .project-main {
-                padding: 0 20px 50px;
-            }
-            .project-title {
-                font-size: 3.5rem;
-            }
-            .project-subtitle {
-                font-size: 1.5rem;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
+            nav { padding: 15px 20px; }
+            .logo { font-size: 1.6rem; }
+            .nav-links { display: none; }
+            .hamburg { display: block; }
+            .project-header { padding: 160px 20px 100px; min-height: 70vh; }
+            .project-main { padding: 0 20px 50px; }
+            .project-title { font-size: 3.5rem; }
+            .project-subtitle { font-size: 1.5rem; }
+            .section-title { font-size: 2.2rem; }
             .about-section, .trailer-section, .gallery-section,
-            .contributions-section, .insights-section, .design-section {
-                padding: 30px;
-            }
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-            .lightbox-nav button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            .header-gradient {
-                height: 180px;
-            }
-            .header-overlay {
-                height: 80px;
-            }
-            .divider-handle {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-            .image-label {
-                padding: 6px 15px;
-                font-size: 0.8rem;
-            }
-            .mobile-menu {
-                display: none;
-            }
-            .mobile-menu.active {
-                display: flex;
-            }
+            .contributions-section, .insights-section, .design-features { padding: 30px; }
+            .header-gradient { height: 180px; }
+            .header-overlay { height: 80px; }
+            .mobile-menu { display: none; }
+            .mobile-menu.active { display: flex; }
         }
         
         @media (max-width: 576px) {
-            .project-title {
-                font-size: 2.8rem;
-            }
-            .project-subtitle {
-                font-size: 1.3rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .gallery-grid, .contributions-grid, .design-grid {
-                grid-template-columns: 1fr;
-            }
-            .project-footer {
-                padding: 50px 20px 30px;
-            }
-            .footer-title {
-                font-size: 2rem;
-            }
-            .action-button {
-                padding: 14px 20px;
-                font-size: 0.85rem;
-            }
-            .project-header {
-                padding: 140px 20px 80px;
-                min-height: 60vh;
-            }
-            .header-gradient {
-                height: 150px;
-            }
-            .header-overlay {
-                height: 60px;
-            }
-            .control-key {
-                min-width: 60px;
-                padding: 6px 10px;
-            }
-            .image-label {
-                display: none;
-            }
+            .project-title { font-size: 2.8rem; }
+            .project-subtitle { font-size: 1.3rem; }
+            .section-title { font-size: 2rem; }
+            .project-header { padding: 140px 20px 80px; min-height: 60vh; }
+            .header-gradient { height: 150px; }
+            .header-overlay { height: 60px; }
         }
         
         @media (max-width: 480px) {
-            .project-title {
-                font-size: 2.5rem;
-            }
-            .project-meta {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-            .contribution-card, .design-card, .insight-text-content {
-                padding: 25px;
-            }
-            .lightbox-content {
-                max-width: 95%;
-                max-height: 70%;
-            }
-            .lightbox-nav button {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            .header-gradient {
-                height: 120px;
-            }
-            .header-overlay {
-                height: 50px;
-            }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { font-size: 1rem; padding: 10px 20px; }
+            .contribution-card, .feature-card, .insight-text-content { padding: 25px; }
+            .header-gradient { height: 120px; }
+            .header-overlay { height: 50px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="index.html#about">ABOUT</a>
-            
-            <!-- Projects Dropdown COMPLETO -->
             <div class="dropdown">
                 <a href="projects.html" class="dropdown-trigger">
                     PROJECTS <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="projects.html">
-                        <i class="fas fa-grid-2"></i> ALL PROJECTS
-                    </a>
-                    <a href="AcademyProject.html">
-                        <i class="fas fa-graduation-cap"></i> ACADEMY
-                    </a>
-                    <a href="SoloProjects.html">
-                        <i class="fas fa-user"></i> PERSONAL
-                    </a>
-                    <a href="CombatTechProjects.html">
-                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
-                    </a>
+                    <a href="projects.html"><i class="fas fa-grid-2"></i> ALL PROJECTS</a>
+                    <a href="AcademyProject.html"><i class="fas fa-graduation-cap"></i> ACADEMY</a>
+                    <a href="SoloProjects.html"><i class="fas fa-user"></i> PERSONAL</a>
+                    <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
                 </div>
             </div>
-            
             <a href="contact.html">CONTACT</a>
         </div>
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Mobile Menu - COMPLETO OTTIMIZZATO -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html">HOME</a>
         <a href="index.html#about">ABOUT</a>
-        
-        <!-- Mobile Projects Dropdown COMPLETO -->
         <div class="mobile-dropdown">
             <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
                 PROJECTS <i class="fas fa-chevron-down"></i>
@@ -1431,11 +1063,10 @@
                 <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
             </div>
         </div>
-        
         <a href="contact.html">CONTACT</a>
     </div>
     
-    <!-- Project Header with Background Image -->
+    <!-- Project Header -->
     <header class="project-header">
         <div class="header-background">
             <img src="Photos/Thesunvanishedphoto.png" alt="The Sun Vanished Background" class="header-image">
@@ -1443,26 +1074,23 @@
             <div class="header-overlay"></div>
         </div>
         <h1 class="project-title">The Sun Vanished</h1>
-        <p class="project-subtitle">Solo project</p>
-        <div class="project-meta">Objective: <span>Fast Prototyping</span></div>
+        <p class="project-subtitle">Survival Horror - LiDAR Navigation</p>
+        <div class="project-meta">Role: <span>Solo Developer (Design, Tech, Level Design)</span></div>
     </header>
     
     <!-- Main Content -->
     <main class="project-main">
         <!-- About & Trailer Grid -->
         <div class="content-grid">
-            <!-- About Section -->
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
-                    <p>In this project, I aimed to replicate some combat mechanics <span class="highlight">inspired by Souls-like games</span>.
-                        It was a nearly three-month-long project where I focused entirely on combat design. I handled <span class="highlight">animations, sound effects, hit feedback, and implemented enemy AI behavior</span> to create responsive and challenging encounters.</p>
-                    <p>Additionally, I worked on Niagara effects to enhance the visual impact of combat interactions.
-                        As a learning resource, I followed a training video on YouTube, which helped guide me through some technical steps while allowing me to adapt and customize the systems to fit my design goals.</p>
+                    <p>In <span class="highlight">"The Sun Vanished"</span> you play as an investigator trapped in complete darkness after a surreal event. The world around you has become an impenetrable void, and your only way to navigate is through a <span class="highlight">LiDAR scanner</span> that shoots particles, revealing the shapes of walls, objects, and the environment around you.</p>
+                    <p>This was a <span class="highlight">solo project developed in about 2 weeks</span>. I handled everything from concept to implementation: the LiDAR navigation mechanic, the sensory AI of the invisible monster, the UI system, and the level design.</p>
+                    <p>The goal is simple but tense: <span class="highlight">find the code to open a locked door</span> and escape. But be careful — an invisible creature roams the darkness, and it can <span class="highlight">hear your every move</span>.</p>
                 </div>
             </section>
             
-            <!-- Trailer Section -->
             <section class="trailer-section">
                 <h2 class="section-title">Gameplay Trailer</h2>
                 <div class="trailer-container">
@@ -1476,302 +1104,152 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="action-buttons">
-                    <a href="#combat-design" class="action-button">
-                        <i class="fa-solid fa-info"></i> Design
-                    </a>
-                </div>
             </section>
         </div>
         
-        <!-- Gallery Section - Game Screenshots -->
-        <section class="gallery-section">
-            <h2 class="section-title">Game Screenshots</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-index="1">
-                    <img src="Photos/image_2024-02-06_15-18-32 (1).jpg" alt="The Sun Vanished Gameplay 1">
+        <!-- Game Features -->
+        <section class="design-features">
+            <h2 class="section-title">Core Mechanics</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-radar"></i></div>
+                    <h3 class="feature-title">LiDAR Scanner</h3>
+                    <p class="feature-description">The LiDAR scanner shoots particles into the darkness, revealing the shapes of walls, furniture, and environmental obstacles. This is your ONLY way to navigate and understand your surroundings.</p>
                 </div>
-                <div class="gallery-item" data-index="2">
-                    <img src="Photos/image_2024-02-06_16-11-13.jpg" alt="The Sun Vanished Gameplay 2">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                    <h3 class="feature-title">Sensory AI</h3>
+                    <p class="feature-description">The invisible monster doesn't see — it HEARS. Every footstep, every interaction, every LiDAR shot creates noise. The creature uses a sound-based perception system to hunt you.</p>
                 </div>
-                <div class="gallery-item" data-index="3">
-                    <img src="Photos/image_2024-02-06_16-12-54.jpg" alt="The Sun Vanished Gameplay 3">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-door-open"></i></div>
+                    <h3 class="feature-title">Investigation Goal</h3>
+                    <p class="feature-description">Your objective is to explore the environment, find clues, and discover a numeric code that unlocks the exit door. The code is procedurally placed to encourage exploration.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Blueprints Gallery Section -->
+        <!-- Gallery Section -->
         <section class="gallery-section">
-            <h2 class="section-title">Blueprints</h2>
+            <h2 class="section-title">Screenshots</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" data-index="4">
-                    <img src="Photos/PummelBP.png" alt="Blueprint 1 - Animation State Machine">
+                <div class="gallery-item" data-index="1">
+                    <img src="Photos/image_2024-02-06_15-18-32 (1).jpg" alt="LiDAR Scanner Visualization">
                 </div>
-                <div class="gallery-item" data-index="5">
-                    <img src="Photos/PummelBP1.png" alt="Blueprint 2 - Combo System Logic">
+                <div class="gallery-item" data-index="2">
+                    <img src="Photos/image_2024-02-06_16-11-13.jpg" alt="Dark Environment">
                 </div>
-                <div class="gallery-item" data-index="6">
-                    <img src="Photos/PummelBP2.png" alt="Blueprint 3 - Damage and Health System">
+                <div class="gallery-item" data-index="3">
+                    <img src="Photos/image_2024-02-06_16-12-54.jpg" alt="Code Discovery">
                 </div>
             </div>
         </section>
         
         <!-- Contributions Section -->
         <section class="contributions-section">
-            <h2 class="section-title">My Contributions</h2>
+            <h2 class="section-title">My Contributions (Solo Project)</h2>
             <div class="contributions-grid">
                 <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-crosshairs"></i>
-                    </div>
-                    <h3 class="contribution-title">Combat Design</h3>
-                    <p class="contribution-description">Designed and implemented Souls-like combat mechanics including combo systems, root motion animations, and hit feedback.</p>
+                    <div class="contribution-icon"><i class="fa-solid fa-radar"></i></div>
+                    <h3 class="contribution-title">LiDAR Mechanic</h3>
+                    <p class="contribution-description">Designed and implemented the particle-based LiDAR scanner system that reveals environment geometry, creating the core navigation loop.</p>
                 </div>
                 <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <h3 class="contribution-title">Enemy AI</h3>
-                    <p class="contribution-description">Created custom enemy AI behaviors with unique attack patterns, health systems, and boss mechanics with ability speed changes.</p>
+                    <div class="contribution-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="contribution-title">Sensory AI</h3>
+                    <p class="contribution-description">Developed the invisible monster's AI using a hearing-based perception system. The creature tracks player sounds and moves accordingly.</p>
                 </div>
                 <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-film"></i>
-                    </div>
-                    <h3 class="contribution-title">Animation Systems</h3>
-                    <p class="contribution-description">Worked with root motion animations, character rigging in Blender, and implemented separate animations for different states.</p>
+                    <div class="contribution-icon"><i class="fa-solid fa-paintbrush"></i></div>
+                    <h3 class="contribution-title">UI System</h3>
+                    <p class="contribution-description">Created all user interface elements including the LiDAR visualization feedback, code input system, and environmental interactions.</p>
                 </div>
                 <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-magic"></i>
-                    </div>
-                    <h3 class="contribution-title">Visual Effects</h3>
-                    <p class="contribution-description">Implemented Niagara effects for combat feedback including blink ability visual effects and hit impact responses.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-camera"></i>
-                    </div>
-                    <h3 class="contribution-title">Camera Systems</h3>
-                    <p class="contribution-description">Developed lock-on camera system inspired by Souls-like games for better combat control and targeting.</p>
+                    <div class="contribution-icon"><i class="fa-solid fa-draw-polygon"></i></div>
+                    <h3 class="contribution-title">Level Design</h3>
+                    <p class="contribution-description">Designed the level layout, placed environmental clues, and balanced the pacing between exploration and tension.</p>
                 </div>
             </div>
         </section>
         
-        <!-- First Implementation Insights Section - Combat Systems -->
-        <section id="implementation-insights" class="insights-section">
-            <h2 class="section-title">Implementation Insights - Combat Systems</h2>
+        <!-- Insight 1: LiDAR Mechanic -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - LiDAR Scanner</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
-                    <h3>Key Learnings from Souls-like Combat Implementation</h3>
-                    <p>Developing combat mechanics <span class="highlight">inspired by Souls-like games</span> taught me valuable lessons about <span class="highlight">player feedback</span> and <span class="highlight">animation timing</span>. The precise nature of these games required meticulous attention to detail in every interaction.</p>
-                    
-                    <p>The most significant insight was understanding the importance of <span class="highlight">root motion animations</span> for creating weighty and impactful combat. Properly implemented root motion gives attacks a sense of physical presence and momentum that traditional animation blending cannot achieve.</p>
-                    
-                    <p>Another crucial learning was the balance between <span class="highlight">player control</span> and <span class="highlight">animation commitment</span>. Souls-like combat requires players to commit to their actions, which creates meaningful decisions about when to attack, dodge, or defend.</p>
-                    
-                    <p>Finally, I discovered the value of <span class="highlight">gradual difficulty scaling</span> through enemy AI. Starting with simple attack patterns and gradually introducing more complex behaviors helped players learn the combat system naturally.</p>
+                    <h3>Designing the LiDAR Navigation</h3>
+                    <p>The core challenge was creating a navigation system that works in <span class="highlight">complete darkness</span>. I didn't want to use a simple flashlight — I wanted something more unique that fits the "investigator" theme.</p>
+                    <p>The LiDAR scanner uses <span class="highlight">particle rays</span> that bounce off surfaces and return visual feedback to the player. Each shot reveals a portion of the environment, forcing players to <span class="highlight">scan strategically</span> rather than holding a button.</p>
+                    <p>I learned that <span class="highlight">sound design</span> is critical for this mechanic. The ping of the scanner, the echo of particles hitting walls, and the ambient silence between scans all contribute to the tension.</p>
+                    <p>The system was implemented using Unreal Engine's <span class="highlight">line traces and Niagara particles</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
                 </div>
-                
                 <div class="insight-visual">
-                    <div class="insight-media" data-index="1">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Combat System Implementation">
+                    <div class="insight-media" data-img-src="Photos/Thesunvanishedphoto.png">
+                        <img src="Photos/Thesunvanishedphoto.png" alt="LiDAR Scanner Visualization">
                     </div>
-                    <div class="insight-caption">
-                        Click image to view larger - Combat system showing animation states and hit detection.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Technical Implementation Note</h4>
-                        <p>The combo system was implemented using UE5's Animation Montage system with custom notify states for hit detection and damage application timing.</p>
-                    </div>
+                    <div class="insight-caption">Click to zoom - LiDAR particle visualization showing environment shapes.</div>
                 </div>
             </div>
         </section>
         
-        <!-- Second Implementation Insights Section - Enemy AI & Animation -->
-        <section class="insights-section reverse">
-            <h2 class="section-title">Implementation Insights - Enemy AI & Animation</h2>
+        <!-- Insight 2: Sensory AI -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - Sensory AI (Sound-Based)</h2>
             <div class="insights-grid">
                 <div class="insight-visual">
-                    <div class="insight-media" data-index="2">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Enemy AI Behavior Tree">
+                    <div class="insight-media" data-img-src="Photos/PummelBP.png">
+                        <img src="Photos/PummelBP.png" alt="Sensory AI Blueprint">
                     </div>
-                    <div class="insight-caption">
-                        Click image to view larger - Enemy AI behavior tree showing attack patterns and state transitions.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Technical Challenge</h4>
-                        <p>Implementing root motion animations required careful synchronization between animation timelines and gameplay logic to ensure attacks connected properly with enemy hitboxes.</p>
-                    </div>
+                    <div class="insight-caption">Click to zoom - AI hearing system and behavior tree.</div>
                 </div>
-                
                 <div class="insight-text-content">
-                    <h3>AI Behavior and Animation Integration Insights</h3>
-                    <p>Developing enemy AI for a Souls-like project taught me valuable lessons about <span class="highlight">behavior tree design</span> and <span class="highlight">animation integration</span>. Enemies needed to feel challenging but fair, with telegraphed attacks that players could learn to recognize and counter.</p>
-                    
-                    <p>One key insight was the importance of <span class="highlight">telegraphing attacks</span> through animation. Each enemy attack needed clear wind-up animations that gave players time to react, creating a rhythm of observation and response.</p>
-                    
-                    <p>I learned that <span class="highlight">boss design</span> required special consideration. The boss enemy with ability speed changes at health thresholds created memorable moments that tested player adaptation skills.</p>
-                    
-                    <p>The integration of <span class="highlight">stealth mechanics</span> added variety to combat encounters. Allowing players to approach situations differently created emergent gameplay possibilities beyond direct confrontation.</p>
+                    <h3>Building an Invisible Hunter</h3>
+                    <p>One of the most interesting challenges was creating an <span class="highlight">invisible enemy</span> that feels fair yet terrifying. Since players can't see the monster, they need other ways to sense its presence.</p>
+                    <p>The AI uses a <span class="highlight">sound-based perception system</span> — it "hears" player actions: footsteps, LiDAR scans, door interactions, and object pickups. Each action generates a sound radius that attracts the creature.</p>
+                    <p>I implemented <span class="highlight">distance-based audio cues</span> for the monster's movement. When it's far, you hear distant growls. When it's close, you hear footsteps and breathing. This gives players feedback without breaking the invisibility concept.</p>
+                    <p>The behavior tree includes <span class="highlight">patrol, investigation, and chase states</span>, with the monster searching the last known sound location before returning to patrol.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Third Implementation Insights Section - Technical Breakdown -->
-        <section id="technical-breakdown" class="insights-section">
-            <h2 class="section-title">Technical Breakdown - Root Motion & Niagara</h2>
+        <!-- Insight 3: Level Design & Pacing -->
+        <section class="insights-section">
+            <h2 class="section-title">Implementation Insights - Level Design & Pacing</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
-                    <h3>Root Motion & Visual Effects</h3>
-                    <p>Working with <span class="highlight">root motion animations</span> presented significant technical challenges. The character skeleton required custom rigging in Blender to properly support the imported animations. I used Blender plugins to retarget and adjust the animation sequences.</p>
-                    
-                    <p>For the <span class="highlight">blink ability</span>, I implemented Niagara particle systems that triggered during the dodge animation. The visual effect included motion blur and distortion effects to convey the sense of rapid movement.</p>
-                    
-                    <p>The <span class="highlight">lock-on camera system</span> was designed to maintain target focus while allowing player movement. This required careful balancing of camera rotation speeds and target switching logic.</p>
-                    
-                    <p>I also implemented <span class="highlight">separate animation states</span> for equipped and sheathed weapon modes, each with its own movement speeds and attack capabilities.</p>
+                    <h3>Designing Tension Through Environment</h3>
+                    <p>With only 2 weeks of development, I had to focus on <span class="highlight">smart level design</span> rather than large environments. The level is relatively small but uses <span class="highlight">non-linear exploration</span> to create replayability.</p>
+                    <p>The code required to open the exit door is <span class="highlight">hidden across multiple environmental clues</span>. Players need to explore, use the LiDAR, and piece together information while avoiding the monster.</p>
+                    <p>I placed <span class="highlight">safe zones</span> and <span class="highlight">danger corridors</span> to control the pacing. Some areas are safer for LiDAR scanning, others force players to move quickly and risk making noise.</p>
+                    <p>The final game loop: <span class="highlight">Scan → Navigate → Find Clue → Avoid Monster → Input Code → Escape</span>. This created a tight, tense experience despite the short development time.</p>
                 </div>
-                
                 <div class="insight-visual">
-                    <div class="insight-media" data-index="3">
-                        <img src="Photos/Thesunvanishedphoto.png" alt="Niagara Effects">
+                    <div class="insight-media" data-img-src="Photos/PummelBP2.png">
+                        <img src="Photos/PummelBP2.png" alt="Level Design Layout">
                     </div>
-                    <div class="insight-caption">
-                        Click image to view larger - Niagara particle effects for blink ability and hit feedback.
-                    </div>
-                    
-                    <div class="insight-text-content">
-                        <h4>Development Challenge</h4>
-                        <p>Weapon collider synchronization with root motion animations required frame-perfect timing to ensure hit detection aligned with visual attack frames.</p>
-                    </div>
+                    <div class="insight-caption">Click to zoom - Level layout showing safe zones and danger areas.</div>
                 </div>
             </div>
         </section>
         
-        <!-- Technical Specifications Section -->
-        <section class="design-section">
+        <!-- Tech Specs -->
+        <section class="design-features">
             <h2 class="section-title">Technical Specifications</h2>
-            <div class="design-grid">
-                <!-- Animation Systems -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-film"></i>
-                        </div>
-                        <h3 class="design-title">Animation Systems</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Root motion animation with custom rigging in Blender</li>
-                            <li>State machine for equipped/sheathed weapon states</li>
-                            <li>Combo montages with notify states</li>
-                            <li>Blend spaces for movement transitions</li>
-                            <li>Animation retargeting and skeleton alignment</li>
-                        </ul>
-                    </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3 class="feature-title">LiDAR System</h3>
+                    <p class="feature-description">Multi-line trace with Niagara particle effects. Optimized to run 60fps on mid-range hardware.</p>
                 </div>
-                
-                <!-- Combat Systems -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-crosshairs"></i>
-                        </div>
-                        <h3 class="design-title">Combat Systems</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>4-attack combo system with timing windows</li>
-                            <li>Lock-on camera targeting system</li>
-                            <li>Stealth attack detection from behind</li>
-                            <li>Hit feedback and damage calculation</li>
-                            <li>Blink ability with Niagara VFX</li>
-                        </ul>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3 class="feature-title">AI Behavior</h3>
+                    <p class="feature-description">Behavior Tree with hearing perception, state machine (Patrol → Investigate → Chase).</p>
                 </div>
-                
-                <!-- AI Systems -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <h3 class="design-title">AI Systems</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Behavior tree with attack pattern selection</li>
-                            <li>Boss AI with health threshold triggers</li>
-                            <li>Custom enemy perception system</li>
-                            <li>Health and damage response systems</li>
-                            <li>Combat navigation and positioning</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Combat Design Section -->
-        <section id="combat-design" class="design-section">
-            <h2 class="section-title">Combat System Breakdown</h2>
-            <div class="design-grid">
-                <!-- Project Implementation -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-sitemap"></i>
-                        </div>
-                        <h3 class="design-title">Project Implementation</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Combo system with 4 different attack variations.</li>
-                            <li>Blink ability with Niagara effects.</li>
-                            <li>Root motion animations for precise movement and attack control.</li>
-                            <li>Enemy AI with custom health systems and unique attack behaviors.</li>
-                            <li>Stealth attack mechanic from behind.</li>
-                            <li>Separate run and walk animations depending on whether the sword is equipped or sheathed.</li>
-                            <li>Boss enemy with ability speed changes triggered at specific health thresholds.</li>
-                            <li>Lock-on camera system inspired by Souls-like games.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Obstacles and Difficulties -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fa-solid fa-exclamation-triangle"></i>
-                        </div>
-                        <h3 class="design-title">Obstacles and Difficulties</h3>
-                    </div>
-                    <div class="design-content">
-                        <p>One of the main challenges in this project was working with <strong>root motion animations</strong>, which often conflicted with my character's skeleton. I had to install Blender plugins, import the character, and rig it using a dedicated tool, making sure the animations were properly aligned and functional inside the engine.</p>
-                        <p>Another issue I faced was managing the interaction between <strong>enemy health systems</strong> and the weapon's collider, to ensure the game could reliably detect when an enemy was being hit during combat.</p>
-                    </div>
-                </div>
-                
-                <!-- Lessons Learned -->
-                <div class="design-card">
-                    <div class="design-header">
-                        <div class="design-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3 class="design-title">Lessons Learned</h3>
-                    </div>
-                    <div class="design-content">
-                        <ul>
-                            <li>Working with root motion animations and using Blender plugins for character rigging.</li>
-                            <li>Implementing enemy AI with custom attack behaviors.</li>
-                            <li>Integrate Niagara effects for gameplay feedback.</li>
-                            <li>Exploring different methods to build combo systems.</li>
-                            <li>Gaining deeper knowledge of state machines and animation blueprints in Unreal Engine.</li>
-                        </ul>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-window-maximize"></i></div>
+                    <h3 class="feature-title">UI System</h3>
+                    <p class="feature-description">Widget-based UI for code input, LiDAR feedback, and interaction prompts.</p>
                 </div>
             </div>
         </section>
@@ -1792,22 +1270,16 @@
     <footer class="project-footer">
         <h3 class="footer-title">Federico Del Gaudio | Game Designer</h3>
         <div class="social-links">
-            <a href="https://github.com/Federico-del-gaudio" class="social-link">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" class="social-link">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.instagram.com/emyportfolio/" class="social-link">
-                <i class="fab fa-instagram"></i>
-            </a>
+            <a href="https://github.com/Federico-del-gaudio" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/emyportfolio/" class="social-link"><i class="fab fa-instagram"></i></a>
         </div>
         <p class="copyright">© 2025 Federico Del Gaudio. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Video Trailer Functionality
+            // Video Trailer
             const trailer = document.getElementById('gameTrailer');
             const playOverlay = document.getElementById('playOverlay');
             
@@ -1816,7 +1288,6 @@
                     this.style.display = 'none';
                     trailer.style.display = 'block';
                     trailer.play().catch(e => console.error("Error playing video:", e));
-                    
                     trailer.addEventListener('ended', function() {
                         playOverlay.style.display = 'flex';
                         trailer.style.display = 'none';
@@ -1824,7 +1295,7 @@
                 });
             }
             
-            // Parallax effect for header image
+            // Parallax header
             const headerImage = document.querySelector('.header-image');
             if (headerImage) {
                 window.addEventListener('scroll', function() {
@@ -1833,7 +1304,7 @@
                 });
             }
             
-            // Lightbox Functionality
+            // Lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeLightbox = document.querySelector('.close-lightbox');
@@ -1848,16 +1319,12 @@
             
             galleryItems.forEach((item) => {
                 const img = item.querySelector('img');
-                if (img) {
-                    allImages.push({ src: img.src, alt: img.alt, element: item });
-                }
+                if (img) allImages.push({ src: img.src, alt: img.alt });
             });
             
             insightMedia.forEach((media) => {
                 const img = media.querySelector('img');
-                if (img) {
-                    allImages.push({ src: img.src, alt: img.alt, element: media });
-                }
+                if (img) allImages.push({ src: img.src, alt: img.alt });
             });
             
             let currentImageIndex = 0;
@@ -1913,23 +1380,19 @@
             if (prevBtn) prevBtn.addEventListener('click', prevImage);
             if (nextBtn) nextBtn.addEventListener('click', nextImage);
             
-            if (lightbox) {
-                lightbox.addEventListener('click', function(e) {
-                    if (e.target === lightbox) closeLightboxFunc();
-                });
-            }
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) closeLightboxFunc();
+            });
             
             document.addEventListener('keydown', function(e) {
-                if (lightbox && lightbox.style.display === 'block') {
-                    switch(e.key) {
-                        case 'Escape': closeLightboxFunc(); break;
-                        case 'ArrowLeft': prevImage(); break;
-                        case 'ArrowRight': nextImage(); break;
-                    }
+                if (lightbox.style.display === 'block') {
+                    if (e.key === 'Escape') closeLightboxFunc();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
                 }
             });
             
-            // Mobile menu functionality
+            // Mobile menu
             const hamburg = document.getElementById('hamburg');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMenu = document.getElementById('closeMenu');
@@ -1956,50 +1419,21 @@
                     e.preventDefault();
                     mobileDropdownContent.classList.toggle('show');
                     const arrow = this.querySelector('i');
-                    if (arrow) {
-                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
-                            ? 'rotate(180deg)' 
-                            : 'rotate(0deg)';
-                    }
+                    if (arrow) arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
                 });
             }
             
-            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (mobileMenu?.classList.contains('active') && 
-                    !mobileMenu.contains(e.target) && 
-                    !hamburg?.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger')) {
-                        return;
-                    }
+                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger')) return;
                     e.preventDefault();
                     const target = document.querySelector(href);
-                    if (target) {
-                        window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-                    }
+                    if (target) window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
                 });
             });
             
-            // Update lightbox counter
-            if (lightboxCounter && allImages.length > 0) {
-                lightboxCounter.textContent = `1 / ${allImages.length}`;
-            }
+            if (lightboxCounter && allImages.length > 0) lightboxCounter.textContent = `1 / ${allImages.length}`;
         });
     </script>
 </body>

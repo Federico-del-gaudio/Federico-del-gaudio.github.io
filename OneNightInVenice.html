@@ -1615,88 +1615,34 @@
             </div>
         </section>
 
-        <!-- Blueprints Gallery Section -->
-        <section class="gallery-section">
-            <h2 class="section-title">Blueprints & Systems</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-index="7">
-                    <img src="Photos/PummelBP.png" alt="Blueprint 1 - Shooting System Implementation">
-                </div>
-                <div class="gallery-item" data-index="8">
-                    <img src="Photos/PummelBP1.png" alt="Blueprint 2 - Enemy Progressive Spawner">
-                </div>
-                <div class="gallery-item" data-index="9">
-                    <img src="Photos/PummelBP2.png" alt="Blueprint 3 - Parry Mechanic Logic">
-                </div>
-            </div>
-        </section>
+     
         
         <!-- Contributions Section -->
-        <section class="contributions-section">
-            <h2 class="section-title">What I did & Learn</h2>
-            <div class="contributions-grid">
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-gun"></i>
-                    </div>
-                    <h3 class="contribution-title">Shooting System</h3>
-                    <p class="contribution-description">Implemented a responsive shooting mechanic with hold-to-fire functionality, projectile management, and visual feedback for combat intensity.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-people-arrows"></i>
-                    </div>
-                    <h3 class="contribution-title">Enemy Progressive Spawner</h3>
-                    <p class="contribution-description">Developed a dynamic enemy spawn system that scales difficulty over time, creating increasingly challenging waves of ruthless enemies.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-shield"></i>
-                    </div>
-                    <h3 class="contribution-title">Parry Mechanic</h3>
-                    <p class="contribution-description">Created a timing-based parry system that rewards precise player input with defensive capabilities and counter-attack opportunities.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-headphones"></i>
-                    </div>
-                    <h3 class="contribution-title">Sound Design & Audio</h3>
-                    <p class="contribution-description">Integrated dynamic breakcore soundtrack that intensifies with player aggression, creating an immersive audio experience that fuels the nightmare.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-paint-brush"></i>
-                    </div>
-                    <h3 class="contribution-title">Game Shaders</h3>
-                    <p class="contribution-description">Developed custom PS1-style visual shaders to achieve the distinctive retro aesthetic, enhancing the carnival of screaming masks atmosphere.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- First Implementation Insights Section -->
+     
         <section class="insights-section">
-            <h2 class="section-title">Implementation Insights - Shooting System</h2>
+            <h2 class="section-title">Implementation Insights - Enemy</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
-                    <h3>Key Learnings from Shooting System Implementation</h3>
-                    <p>Developing the <span class="highlight">hold-to-fire shooting mechanic</span> taught me valuable lessons about projectile management and performance optimization in high-intensity bullet hell scenarios. The system needed to handle dozens of simultaneous projectiles while maintaining smooth framerates.</p>
+                    <h3>Key Learnings from Enemy movement Implementation</h3>
+                    <p>In One Night in Venice <span class="highlight">enemies kill you in a single hit</span>The main challenge was creating enemies that posed a real threat without being frustrating.</p>
                     
-                    <p>The most significant insight was implementing <span class="highlight">object pooling for projectiles</span>. Instead of spawning and destroying thousands of bullets, I created a reusable pool system that dramatically improved performance during intense combat sequences.</p>
+                    <p>Having them simply rush the player in a straight line felt cheap<span class="highlight">After brainstorming, I decided to make the enemies orbit around the player, gradually closing the distance</span>.This dynamic allows players to "tame" the horde through smart movement.</p>
                     
-                    <p>I also learned the importance of <span class="highlight">visual feedback loops</span>—the shooting system is directly tied to the breakcore soundtrack, with fire rate and projectile density affecting audio intensity. This creates a powerful feedback loop where player aggression directly shapes the experience.</p>
+                    <p>implemented this behavior using<span class="highlight">mathematical calculations</span>playing with sine waves (sin) to achieve that smooth orbiting and "blob-like" crowd behavior.</p>
+                    <p>Additionally, I ensured that enemies always dynamically <span class="highlight">look at the player based on their relative position.</span></p>
                 </div>
                 
                 <div class="insight-visual">
                     <div class="insight-media" data-index="7">
-                        <img src="Photos/PummelBP.png" alt="Shooting System Blueprint - Projectile Management">
+                        <img src="Photos/EnemyOneNightInVenice.png" alt="Shooting System Blueprint - Projectile Management">
                     </div>
                     <div class="insight-caption">
-                        Click image to view larger - Shooting system blueprint showing projectile pooling and fire rate management.
+                        Click image to view larger - Enemy movement system blueprint showing how enemies move on the map
                     </div>
                     
                     <div class="insight-text-content">
                         <h4>Technical Challenge</h4>
-                        <p>The hold-to-fire system required careful input buffering to prevent frame-perfect issues while maintaining responsive feel. I implemented a cooldown system with visual indicators for weapon readiness.</p>
+                        <p>The goal was to create challenging enemies without making the experience frustrating for the player..</p>
                     </div>
                 </div>
             </div>
@@ -1704,57 +1650,58 @@
         
         <!-- Second Implementation Insights Section -->
         <section class="insights-section">
-            <h2 class="section-title">Implementation Insights - Enemy Progressive Spawner</h2>
+            <h2 class="section-title">Implementation Insights - Power ups</h2>
             <div class="insights-grid">
                 <div class="insight-visual">
                     <div class="insight-media" data-index="8">
-                        <img src="Photos/PummelBP1.png" alt="Enemy Spawner Blueprint - Progressive Difficulty">
+                        <img src="Photos/PotenziamentiOneNightIn venice.png" alt="Enemy Spawner Blueprint - Progressive Difficulty">
                     </div>
                     <div class="insight-caption">
-                        Click image to view larger - Progressive spawner system with difficulty scaling based on survival time.
+                        Click image to view larger - Player's Power ups.
                     </div>
                     
                     <div class="insight-text-content">
                         <h4>Technical Challenge</h4>
-                        <p>Balancing difficulty progression was crucial. The spawner uses a time-based difficulty curve that increases enemy count, speed, and aggressiveness while ensuring the player always has a fighting chance.</p>
+                        <p>The key was to have a game that could be replayed. Adding unique elements to each playthrough enhances the player experience.</p>
                     </div>
                 </div>
                 
                 <div class="insight-text-content">
                     <h3>Progressive Difficulty Design</h3>
-                    <p>The <span class="highlight">enemy progressive spawner</span> was designed to create escalating tension throughout each run. I implemented a modular system where spawn parameters evolve based on survival time and player performance.</p>
+                    <p>One of the <span class="highlight">key features</span>of One Night in Venice was the roguelike power-up card system. Throughout each run, after collecting a certain number of gems, players could choose to boost stats like damage, bullet speed, or movement speed.</p>
                     
-                    <p>One key insight was creating <span class="highlight">enemy variety through parameter modification</span> rather than separate enemy types. By adjusting speed, fire rate, and movement patterns over time, the same enemy base feels progressively more threatening.</p>
+                    <p>This <span class="highlight">progression was crucial</span> because the game became scaled in difficulty—not by making enemies stronger, but by drastically increasing spawn quantities.</p>
                     
-                    <p>The spawner also tracks player position and creates tactical pressure points, forcing the player to constantly move and reposition—reinforcing the core mantra: <span class="highlight">don't stop running</span>.</p>
+                    <p>Structurally, I created a system using Data Tables to link the card data directly to the corresponding gameplay variables and connected them to the UI.</p>
+                    <p>I then implemented a shuffle algorithm to ensure that the card selection was completely randomized upon each level-up.</p>
                 </div>
             </div>
         </section>
         
         <!-- Third Implementation Insights Section -->
         <section class="insights-section">
-            <h2 class="section-title">Implementation Insights - Parry & Audio Integration</h2>
+            <h2 class="section-title">Implementation Insights - Enemy feedbacks</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
-                    <h3>Parry Mechanic & Dynamic Audio</h3>
-                    <p>The <span class="highlight">parry mechanic</span> required precise timing windows and clear visual feedback. I implemented a 12-frame parry window with successful parries granting brief invulnerability and pushing back surrounding enemies.</p>
+                    <h3>Hit stop and flash hit effect</h3>
+                    <p>Game<span class="highlight">feedback</span>is absolutely vital; elements like<span class="highlight">audio cues, screen shake, and haptics</span>drastically increase the richness of the player experience. My goal was to maximize this impact.</p>
                     
-                    <p>For the <span class="highlight">breakcore soundtrack integration</span>, I created an audio intensity system that monitors combat metrics: shots fired, enemies near, and time since last parry. This drives real-time DSP effects including bitcrushing, tempo modulation, and volume layering.</p>
+                    <p>Beyond adding heavy hit sounds and enemy audio, I focused on implementing the classic<span class="highlight">retro "white flash" hit effect</span>,inspired by games like Metal Slug and Cuphead. Technically, I achieved this in Unreal Engine by creating a custom white material flash that triggers dynamically.</p>
                     
-                    <p>The most rewarding insight was how <span class="highlight">gameplay and audio became inseparable</span>—players learn to read combat intensity through audio cues, and their aggressive play literally shapes the music. The soundtrack isn't just background; it's gameplay feedback.</p>
+                    <p>Using Blueprints, I utilized a Timeline to handle the jitter and duration, swapping the enemy's material instantly whenever a bullet registers a hit.</p>
                 </div>
                 
                 <div class="insight-visual">
                     <div class="insight-media" data-index="9">
-                        <img src="Photos/PummelBP2.png" alt="Parry System Blueprint - Timing Window Logic">
+                        <img src="Photos/EnemyHitFlahOneNightInVenicwe.png" alt="Parry System Blueprint - Timing Window Logic">
                     </div>
                     <div class="insight-caption">
-                        Click image to view larger - Parry mechanic blueprint showing timing window and successful parry responses.
+                        Click image to view larger - Flash material change.
                     </div>
                     
                     <div class="insight-text-content">
                         <h4>Developer Challenge</h4>
-                        <p>The "Parry Nightmare" mode was created as a personal challenge—can you beat the developer's best times? Easy: 490s, Normal: 280s, Hard: 175s.</p>
+                        <p>The goal was to give the player clear feedback when he hit an enemy.</p>
                     </div>
                 </div>
             </div>
@@ -1822,7 +1769,47 @@
                 </div>
             </div>
         </section>
-        
+         <!-- Contributions Section -->
+         <section class="contributions-section">
+            <h2 class="section-title">What I did & Learn</h2>
+            <div class="contributions-grid">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-gun"></i>
+                    </div>
+                    <h3 class="contribution-title">Shooting System</h3>
+                    <p class="contribution-description">Implemented a responsive shooting mechanic with hold-to-fire functionality, projectile management, and visual feedback for combat intensity.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-people-arrows"></i>
+                    </div>
+                    <h3 class="contribution-title">Enemy Progressive Spawner</h3>
+                    <p class="contribution-description">Developed a dynamic enemy spawn system that scales difficulty over time, creating increasingly challenging waves of ruthless enemies.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="contribution-title">Parry Mechanic</h3>
+                    <p class="contribution-description">Created a timing-based parry system that rewards precise player input with defensive capabilities and counter-attack opportunities.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+                    <h3 class="contribution-title">Sound Design & Audio</h3>
+                    <p class="contribution-description">Integrated dynamic breakcore soundtrack that intensifies with player aggression, creating an immersive audio experience that fuels the nightmare.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-paint-brush"></i>
+                    </div>
+                    <h3 class="contribution-title">Game Shaders</h3>
+                    <p class="contribution-description">Developed custom PS1-style visual shaders to achieve the distinctive retro aesthetic, enhancing the carnival of screaming masks atmosphere.</p>
+                </div>
+            </div>
+        </section>
         <div class="platform-buttons">
             <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" rel="noopener noreferrer" class="platform-button itch">
                 <i class="fa-brands fa-itch-io"></i> 🎮 Download on Itch.io
@@ -1832,6 +1819,7 @@
             </a>
         </div>
     </main>
+    
     
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
@@ -1843,6 +1831,7 @@
         </div>
         <div class="lightbox-counter" id="lightbox-counter">1 / 9</div>
     </div>
+    
     
     <!-- Footer -->
     <footer class="project-footer">
