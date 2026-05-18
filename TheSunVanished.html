@@ -1179,9 +1179,9 @@
                 <div class="insight-text-content">
                     <h3>Designing the LiDAR Navigation</h3>
                     <p>The core challenge was creating a navigation system that works in <span class="highlight">complete darkness</span>. I didn't want to use a simple flashlight — I wanted something more unique that fits the "investigator" theme.</p>
-                    <p>The LiDAR scanner uses <span class="highlight">particle rays</span> that bounce off surfaces and return visual feedback to the player. Each shot reveals a portion of the environment, forcing players to <span class="highlight">scan strategically</span> rather than holding a button.</p>
+                    <p>The LiDAR scanner uses <span class="highlight"> rays</span> that bounce off surfaces and return visual feedback to the player. Each shot reveals a portion of the environment, forcing players to <span class="highlight">scan strategically</span> rather than holding a button.</p>
                     <p>I learned that <span class="highlight">sound design</span> is critical for this mechanic. The ping of the scanner, the echo of particles hitting walls, and the ambient silence between scans all contribute to the tension.</p>
-                    <p>The system was implemented using Unreal Engine's <span class="highlight">line traces and Niagara particles</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
+                    <p>The system was implemented using Unreal Engine's <span class="highlight">line traces and small sprites</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
                 </div>
                 <div class="insight-visual">
                     <div class="insight-media" data-img-src="Photos/Thesunvanishedphoto.png">
@@ -1198,16 +1198,16 @@
             <div class="insights-grid">
                 <div class="insight-visual">
                     <div class="insight-media" data-img-src="Photos/PummelBP.png">
-                        <img src="Photos/PummelBP.png" alt="Sensory AI Blueprint">
+                        <img src="Photos/TheSunVanished AI.png" alt="Sensory AI Blueprint">
                     </div>
-                    <div class="insight-caption">Click to zoom - AI hearing system and behavior tree.</div>
+                    <div class="insight-caption">Click to zoom - AI hearing system move to sound.</div>
                 </div>
                 <div class="insight-text-content">
                     <h3>Building an Invisible Hunter</h3>
                     <p>One of the most interesting challenges was creating an <span class="highlight">invisible enemy</span> that feels fair yet terrifying. Since players can't see the monster, they need other ways to sense its presence.</p>
                     <p>The AI uses a <span class="highlight">sound-based perception system</span> — it "hears" player actions: footsteps, LiDAR scans, door interactions, and object pickups. Each action generates a sound radius that attracts the creature.</p>
                     <p>I implemented <span class="highlight">distance-based audio cues</span> for the monster's movement. When it's far, you hear distant growls. When it's close, you hear footsteps and breathing. This gives players feedback without breaking the invisibility concept.</p>
-                    <p>The behavior tree includes <span class="highlight">patrol, investigation, and chase states</span>, with the monster searching the last known sound location before returning to patrol.</p>
+                    <p>The AI includes <span class="highlight">patrol, investigation, and chase states</span>, with the monster searching the last known sound location before returning to patrol.</p>
                 </div>
             </div>
         </section>
@@ -1225,9 +1225,9 @@
                 </div>
                 <div class="insight-visual">
                     <div class="insight-media" data-img-src="Photos/PummelBP2.png">
-                        <img src="Photos/PummelBP2.png" alt="Level Design Layout">
+                        <img src="Photos/LevelThe Sun Vanished.png" alt="Level Design Layout">
                     </div>
-                    <div class="insight-caption">Click to zoom - Level layout showing safe zones and danger areas.</div>
+                    <div class="insight-caption">Click to zoom - Level raw layout.</div>
                 </div>
             </div>
         </section>
@@ -1239,7 +1239,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-code-branch"></i></div>
                     <h3 class="feature-title">LiDAR System</h3>
-                    <p class="feature-description">Multi-line trace with Niagara particle effects. Optimized to run 60fps on mid-range hardware.</p>
+                    <p class="feature-description">Multi-line trace Optimized to run 60fps on mid-range hardware.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
