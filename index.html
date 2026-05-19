@@ -2183,44 +2183,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // POPUP WORK IN PROGRESS - appare solo la prima volta (usa localStorage)
-            const popup = document.getElementById('wipPopup');
-            const hasSeenPopup = localStorage.getItem('wipPopupSeen');
-            
-            if (!hasSeenPopup && popup) {
-                setTimeout(() => {
-                    popup.classList.add('active');
-                    document.body.classList.add('popup-open');
-                }, 800);
-            }
-            
-            // Bottone OK - chiude il popup e salva in localStorage
-            const okBtn = document.getElementById('wipOkBtn');
-            if (okBtn) {
-                okBtn.addEventListener('click', function() {
-                    const popupEl = document.getElementById('wipPopup');
-                    popupEl.classList.remove('active');
-                    document.body.classList.remove('popup-open');
-                    localStorage.setItem('wipPopupSeen', 'true');
-                });
-            }
-            
-            // Bottone CONTACT ME - chiude il popup, salva e scrolla
-            const contactBtn = document.getElementById('wipContactBtn');
-            if (contactBtn) {
-                contactBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const popupEl = document.getElementById('wipPopup');
-                    popupEl.classList.remove('active');
-                    document.body.classList.remove('popup-open');
-                    localStorage.setItem('wipPopupSeen', 'true');
-                    const contactSection = document.querySelector('#contact');
-                    if (contactSection) {
-                        setTimeout(() => {
-                            window.scrollTo({ top: contactSection.offsetTop - 80, behavior: 'smooth' });
-                        }, 100);
-                    }
-                });
-            }
+           
             
             // Initialize AOS
             AOS.init({ duration: 1000, once: true, offset: 100, disable: window.innerWidth < 768 ? true : false });
