@@ -1087,7 +1087,7 @@
                 <div class="about-content">
                     <p>In <span class="highlight">"The Sun Vanished"</span> you play as an investigator trapped in complete darkness after a surreal event. The world around you has become an impenetrable void, and your only way to navigate is through a <span class="highlight">LiDAR scanner</span> that shoots particles, revealing the shapes of walls, objects, and the environment around you.</p>
                     <p>This was a <span class="highlight">solo project developed in about 2 weeks</span>. I handled everything from concept to implementation: the LiDAR navigation mechanic, the sensory AI of the invisible monster, the UI system, and the level design.</p>
-                    <p>The goal is simple but tense: <span class="highlight">find the code to open a locked door</span> and escape. But be careful — an invisible creature roams the darkness, and it can <span class="highlight">hear your every move</span>.</p>
+                    <p>The goal is simple but tense: <span class="highlight">find the code to open a locked door</span> and escape. But be careful, an invisible creature roams the darkness, and it can <span class="highlight">hear your every move</span>.</p>
                 </div>
             </section>
             
@@ -1178,7 +1178,7 @@
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Designing the LiDAR Navigation</h3>
-                    <p>The core challenge was creating a navigation system that works in <span class="highlight">complete darkness</span>. I didn't want to use a simple flashlight — I wanted something more unique that fits the "investigator" theme.</p>
+                    <p>The core challenge was creating a navigation system that works in <span class="highlight">complete darkness</span>. I didn't want to use a simple flashlight, I wanted something more unique that fits the "investigator" theme.</p>
                     <p>The LiDAR scanner uses <span class="highlight"> rays</span> that bounce off surfaces and return visual feedback to the player. Each shot reveals a portion of the environment, forcing players to <span class="highlight">scan strategically</span> rather than holding a button.</p>
                     <p>I learned that <span class="highlight">sound design</span> is critical for this mechanic. The ping of the scanner, the echo of particles hitting walls, and the ambient silence between scans all contribute to the tension.</p>
                     <p>The system was implemented using Unreal Engine's <span class="highlight">line traces and small sprites</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
@@ -1205,7 +1205,7 @@
                 <div class="insight-text-content">
                     <h3>Building an Invisible Hunter</h3>
                     <p>One of the most interesting challenges was creating an <span class="highlight">invisible enemy</span> that feels fair yet terrifying. Since players can't see the monster, they need other ways to sense its presence.</p>
-                    <p>The AI uses a <span class="highlight">sound-based perception system</span> — it "hears" player actions: footsteps, LiDAR scans, door interactions, and object pickups. Each action generates a sound radius that attracts the creature.</p>
+                    <p>The AI uses a <span class="highlight">sound-based perception system</span>, it "hears" player actions: footsteps, LiDAR scans, door interactions, and object pickups. Each action generates a sound radius that attracts the creature.</p>
                     <p>I implemented <span class="highlight">distance-based audio cues</span> for the monster's movement. When it's far, you hear distant growls. When it's close, you hear footsteps and breathing. This gives players feedback without breaking the invisibility concept.</p>
                     <p>The AI includes <span class="highlight">patrol, investigation, and chase states</span>, with the monster searching the last known sound location before returning to patrol.</p>
                 </div>
