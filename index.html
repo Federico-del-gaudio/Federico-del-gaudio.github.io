@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Federico Del Gaudio - Game Designer</title>
-    <!-- Preconnect per performance -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,15 +47,8 @@
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Body overflow hidden quando popup è aperto */
-        body.popup-open {
-            overflow: hidden;
-        }
-        
-        /* Background video - SOLO per l'hero section */
         .hero-background-wrapper {
             position: fixed;
             top: 0;
@@ -89,7 +81,6 @@
             pointer-events: none;
         }
         
-        /* Particelle sottili - solo hero */
         .hero-particles {
             position: absolute;
             top: 0;
@@ -116,133 +107,6 @@
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
-        /* ===== POPUP WIP ===== */
-        .wip-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .wip-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .wip-popup {
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            max-width: 500px;
-            width: 90%;
-            padding: 40px 35px;
-            text-align: center;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-        
-        .wip-overlay.active .wip-popup {
-            transform: scale(1);
-        }
-        
-        .wip-icon {
-            font-size: 4rem;
-            color: var(--red-accent);
-            margin-bottom: 20px;
-            animation: pulse-icon 2s infinite;
-        }
-        
-        @keyframes pulse-icon {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.9; }
-        }
-        
-        .wip-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-        
-        .wip-divider {
-            width: 60px;
-            height: 2px;
-            background: var(--red-accent);
-            margin: 15px auto;
-        }
-        
-        .wip-message {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--gray-light);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        
-        .wip-message strong {
-            color: var(--red-accent);
-            font-weight: 600;
-        }
-        
-        .wip-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .wip-btn {
-            padding: 12px 28px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1.5px solid var(--light);
-            background: transparent;
-            color: var(--light);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .wip-btn-primary {
-            background: var(--red-accent);
-            border-color: var(--red-accent);
-            color: white;
-        }
-        
-        .wip-btn-primary:hover {
-            background: var(--red-hover);
-            border-color: var(--red-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
-        }
-        
-        .wip-btn-secondary:hover {
-            background: var(--light);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-        
-        /* Navigation Bar - COMPLETA */
         nav {
             display: flex;
             justify-content: space-between;
@@ -256,7 +120,6 @@
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -315,7 +178,6 @@
             color: var(--light);
         }
         
-        /* ========== DROPDOWN PROGETTI COMPLETO ========== */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -387,8 +249,7 @@
             left: 0;
             background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            min-width: 280px;
+            min-width: 260px;
             border-radius: 4px;
             padding: 8px 0;
             border: 1px solid var(--border-color);
@@ -413,7 +274,6 @@
             border-left: 1px solid var(--border-color);
             transform: rotate(45deg);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .dropdown:hover .dropdown-content,
@@ -461,12 +321,6 @@
             color: var(--light);
         }
         
-        /* Stile speciale per icona combat */
-        .dropdown-content a i.fa-crosshairs {
-            color: var(--combat-tag);
-        }
-        /* ========== FINE DROPDOWN ========== */
-        
         .hamburg {
             display: none;
             font-size: 1.8rem;
@@ -480,7 +334,6 @@
             transform: scale(1.1);
         }
         
-        /* Mobile Menu - OTTIMIZZATO */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -490,7 +343,6 @@
             height: 100vh;
             background: rgba(5, 5, 5, 0.99);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             z-index: 1001;
             flex-direction: column;
             align-items: center;
@@ -580,7 +432,6 @@
             border-radius: 8px;
         }
         
-        /* ===== HERO SECTION ===== */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -667,7 +518,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* HERO BUTTON - ROSSO IN RISALTO */
         .hero-btn-primary {
             background: var(--red-accent) !important;
             color: white !important;
@@ -749,7 +599,6 @@
             background: var(--gold);
         }
         
-        /* Scroll Down Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -780,7 +629,6 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
         
-        /* ===== CONTENT SECTIONS ===== */
         .content-sections {
             position: relative;
             z-index: 15;
@@ -832,7 +680,6 @@
             font-weight: 300;
         }
         
-        /* ===== ABOUT SECTION ===== */
         .about-section {
             padding: 40px 0 80px;
         }
@@ -844,7 +691,6 @@
             align-items: start;
         }
         
-        /* Foto Rotonda */
         .about-photo {
             text-align: center;
         }
@@ -1017,7 +863,6 @@
             font-size: 0.95rem;
         }
         
-        /* ===== SKILLS SECTION - COMPATTA ===== */
         .skills-section {
             padding: 40px 0 60px;
         }
@@ -1092,7 +937,7 @@
         
         .stats-showcase {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 50px;
             padding: 25px;
@@ -1107,11 +952,47 @@
         }
         
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--light);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-family: 'Raleway', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-number i {
+            font-size: 1.8rem;
+        }
+        
+        .projects-stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .project-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            padding: 6px 14px;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .project-stat-item i {
+            font-size: 1.3rem;
+        }
+        
+        .project-stat-item span {
+            font-size: 1rem;
+            font-weight: 600;
         }
         
         .stat-label {
@@ -1121,7 +1002,6 @@
             letter-spacing: 2px;
         }
         
-        /* ===== PROJECTS SECTION ===== */
         .carousel-intro-section {
             padding: 80px 0 40px;
             background: var(--darker);
@@ -1167,7 +1047,6 @@
             margin: 0 auto;
         }
         
-        /* Projects Grid */
         .projects-grid-section {
             position: relative;
             width: 100%;
@@ -1188,7 +1067,6 @@
             gap: 30px;
         }
         
-        /* Project Card - Ora completamente cliccabile */
         .project-card {
             background: rgba(15, 15, 15, 0.7);
             backdrop-filter: blur(10px);
@@ -1438,7 +1316,6 @@
             left: 0;
         }
         
-        /* More Project Card speciale */
         .more-projects-card {
             background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 15, 0.95) 100%);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -1510,7 +1387,6 @@
             transform: translateX(8px);
         }
         
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1567,7 +1443,6 @@
             font-weight: 600;
         }
         
-        /* CTA Section */
         .cta-section {
             padding: 80px 0;
             text-align: center;
@@ -1624,7 +1499,6 @@
             transform: translateY(-3px);
         }
         
-        /* Footer */
         .footer-main {
             background: rgba(5, 5, 5, 0.9);
             padding: 30px;
@@ -1662,7 +1536,6 @@
             transform: translateY(-5px);
         }
         
-        /* Responsive */
         @media (max-width: 1200px) {
             .hero-name { font-size: 4rem; }
             .projects-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1679,33 +1552,23 @@
             .logo { font-size: 1.4rem; }
             .nav-links { display: none; }
             .hamburg { display: block; }
-            
             .hero-section { padding: 100px 20px 30px; }
             .hero-name { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .hero-dynamic-title { font-size: 1.2rem; }
             .hero-buttons { flex-direction: column; align-items: center; gap: 12px; }
             .hero-btn { width: 100%; max-width: 260px; padding: 12px 25px; font-size: 0.8rem; }
-            
             .section-container { padding: 0 20px; }
             .section-title { font-size: 2rem; }
-            
             .projects-grid { grid-template-columns: 1fr; gap: 20px; }
             .projects-grid-container { padding: 0 20px; }
-            
             .skills-compact { grid-template-columns: 1fr; gap: 20px; }
             .stats-showcase { grid-template-columns: 1fr; gap: 15px; }
-            
             .cta-buttons { flex-direction: column; align-items: center; }
             .cta-btn { width: 100%; max-width: 260px; padding: 12px 25px; }
             .cta-title { font-size: 1.8rem; }
-            
             .mobile-menu { display: none; }
             .mobile-menu.active { display: flex; }
-            
-            .wip-popup { padding: 25px 20px; }
-            .wip-title { font-size: 1.4rem; }
-            
             .profile-image { width: 200px; height: 200px; }
         }
         
@@ -1719,7 +1582,6 @@
     </style>
 </head>
 <body>
-    <!-- Background video -->
     <div class="hero-background-wrapper">
         <video class="background-video" autoplay muted loop playsinline>
             <source src="Videos/VideoHome.mp4" type="video/mp4">
@@ -1728,21 +1590,18 @@
         <div class="hero-particles" id="particles"></div>
     </div>
     
-    <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
             <a href="index.html" class="active">HOME</a>
             <a href="#About">ABOUT</a>
             <div class="dropdown">
-                <a href="projects.html" class="dropdown-trigger">
+                <a href="SoloProjects.html" class="dropdown-trigger">
                     PROJECTS <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="projects.html"><i class="fas fa-grid-2"></i> ALL PROJECTS</a>
-                    <a href="AcademyProject.html"><i class="fas fa-graduation-cap"></i> ACADEMY</a>
-                    <a href="SoloProjects.html"><i class="fas fa-user"></i> PERSONAL</a>
                     <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
+                    <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY</a>
                 </div>
             </div>
             <a href="contact.html">CONTACT</a>
@@ -1750,26 +1609,22 @@
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
     
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html" class="active">HOME</a>
         <a href="#About">ABOUT</a>
         <div class="mobile-dropdown">
-            <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+            <a href="SoloProjects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
                 PROJECTS <i class="fas fa-chevron-down"></i>
             </a>
             <div class="mobile-dropdown-content" id="mobileDropdownContent">
-                <a href="projects.html">ALL PROJECTS</a>
-                <a href="AcademyProject.html">ACADEMY</a>
-                <a href="SoloProjects.html">PERSONAL</a>
                 <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+                <a href="SoloProjects.html">GAMEPLAY</a>
             </div>
         </div>
         <a href="contact.html">CONTACT</a>  
     </div>
     
-    <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-title">
@@ -1777,7 +1632,7 @@
                     FEDERICO <span>DEL GAUDIO</span>
                 </h1>
                 <div class="hero-subtitle" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                    Game Design Portfolio
+                     Portfolio
                 </div>
                 <div class="hero-dynamic-title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
                     <div class="typewriter-wrapper">
@@ -1792,7 +1647,7 @@
                 <a href="#contact" class="hero-btn">
                     <i class="fas fa-envelope"></i> CONTACT
                 </a>
-                <a href="Photos/Federico_del_Gaudio_Tech&Combat_CV.pdf" target="_blank" class="hero-btn hero-btn-download">
+                <a href="Photos/Federico_del_Gaudio_Tech&Combat_Portfolio_CV.pdf" target="_blank" class="hero-btn hero-btn-download">
                     <i class="fas fa-download"></i> DOWNLOAD CV
                 </a>
             </div>
@@ -1803,7 +1658,6 @@
         </a>
     </section>
     
-    <!-- CONTENT SECTIONS -->
     <div id="About" class="content-sections">
         <section id="about" class="about-section">
             <div class="section-container">
@@ -1813,7 +1667,7 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-photo" data-aos="fade-right" data-aos-duration="1200">
-                        <img src="Photos/FotoMia.jpg" alt="Federico Del Gaudio" class="profile-image" onerror="this.src='https://via.placeholder.com/280x280?text=F.D.G'">
+                        <img src="Photos/FotoProfilo.jpg" alt="Federico Del Gaudio" class="profile-image" onerror="this.src='https://via.placeholder.com/280x280?text=F.D.G'">
                         <div class="info-card">
                             <h4><i class="fas fa-graduation-cap"></i> EDUCATION</h4>
                             <div class="timeline-compact">
@@ -1827,7 +1681,7 @@
                         </div>
                     </div>
                     <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
-                        <div><h3 class="about-name">Federico Del Gaudio</h3><div class="about-role">JUNIOR GAME DESIGNER</div></div>
+                        <div><h3 class="about-name">Federico Del Gaudio</h3><div class="about-role">Technical & Combat Designer</div></div>
                         <p class="about-text">My name is Federico del Gaudio. Since I was a child, I've always been fascinated by video games, and I always wondered, "How do they keep me so entertained?" Driven by curiosity and the desire to create something that could entertain as many people as possible, I embarked on my journey—first attending a computer science high school, and then an academy where I learned the fundamentals of game design, which I am now ready to expand upon.</p>
                         <p class="about-text">Thanks to my technical skills, I can bridge the gap between design and direct engine implementation, supporting both designers and programmers. I love both single-player and multiplayer games, competitive and casual alike, and I am deeply passionate about medieval history.</p>
                         <p class="about-text"><strong>Self‑directed study in Unreal Engine</strong> with focus on combat systems, Blueprints, and AI behavior trees.</p>
@@ -1838,7 +1692,6 @@
             </div>
         </section>
         
-        <!-- SKILLS SECTION -->
         <section id="skills" class="skills-section">
             <div class="section-container">
                 <div class="section-header" data-aos="fade-up"><h2 class="section-title">SKILLS</h2><p class="section-subtitle">Technologies, tools, and specializations</p></div>
@@ -1847,74 +1700,75 @@
                     <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><div class="skill-card-header"><i class="fab fa-unreal-engine"></i><h3>UNREAL ENGINE</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-fist-raised"></i> Combat Systems</span><span class="skill-tag"><i class="fas fa-robot"></i> AI & BT</span><span class="skill-tag"><i class="fas fa-film"></i> Animation Montages</span><span class="skill-tag"><i class="fas fa-blender"></i> Blend Spaces</span><span class="skill-tag"><i class="fas fa-cogs"></i> State Machines</span><span class="skill-tag"><i class="fas fa-magic"></i> Niagara <span style="font-size:0.7rem;">(Learning)</span></span></div></div>
                     <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"><div class="skill-card-header"><i class="fas fa-pencil-ruler"></i><h3>DESIGN</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-crosshairs"></i> Combat Design</span><span class="skill-tag"><i class="fas fa-robot"></i> AI Behavior</span><span class="skill-tag"><i class="fas fa-cogs"></i> Technical Design</span><span class="skill-tag"><i class="fas fa-gamepad"></i> Gameplay Mechanics</span><span class="skill-tag"><i class="fas fa-balance-scale"></i> Balancing</span><span class="skill-tag"><i class="fas fa-file-alt"></i> Documentation</span><span class="skill-tag"><i class="fas fa-users"></i> UX Design</span><span class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Pitching</span></div></div>
                 </div>
-                <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1000"><div class="stat-block"><div class="stat-number">9</div><div class="stat-label">PROJECTS</div></div><div class="stat-block"><div class="stat-number">3</div><div class="stat-label">LANGUAGES</div></div><div class="stat-block"><div class="stat-number">2</div><div class="stat-label">ENGINES</div></div><div class="stat-block"><div class="stat-number">ACADEMY</div><div class="stat-label">TRAINING</div></div></div>
+                <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="stat-block"><div class="stat-number"><div class="projects-stats"><div class="project-stat-item"><i class="fab fa-unity"></i><span>3</span></div><div class="project-stat-item"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></i><span>6</span></div></div></div><div class="stat-label">PROJECTS</div></div>
+                    <div class="stat-block"><div class="stat-number">2</div><div class="stat-label">ENGINES</div></div>
+                    <div class="stat-block"><div class="stat-number"><i class="fas fa-users"></i> 3</div><div class="stat-label">TEAM PROJECTS</div></div>
+                </div>
             </div>
         </section>
     </div>
     
-    <!-- PROJECTS INTRODUCTION -->
     <section id="TitleProjects" class="carousel-intro-section">
         <div class="carousel-intro-container" data-aos="fade-up" data-aos-duration="1200">
             <div class="carousel-pre-title">TECH & COMBAT DESIGN</div>
             <h2 class="carousel-main-title">PROJECT <span>SHOWCASE</span></h2>
-            <p class="carousel-description">A collection of technical combat systems, AI behaviors, and gameplay prototypes developed through academic projects and game jams.</p>
+            <p class="carousel-description">A collection of technical combat systems, AI behaviors, and gameplay prototypes developed through my journey.</p>
         </div>
     </section>
     
-    <!-- PROJECTS GRID -->
     <section id="projects-grid" class="projects-grid-section">
         <div class="projects-grid-container">
             <div class="projects-grid">
                 <!-- Card 1: One Night in Venice -->
-                <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-project-url="OneNightInVenice.html" data-video-src="Videos/One Night in Venice Trailer for GGJ2026.mp4" data-video-title="One Night in Venice">
+                <div class="project-card" data-project-url="OneNightInVenice.html" data-video-src="Videos/One Night in Venice Trailer for GGJ2026.mp4" data-video-title="One Night in Venice">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">FPS BULLET HELL <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">ONE NIGHT IN VENICE</h3><div class="card-year">GLOBAL GAME JAM • 2026</div><p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Shooting system</li><li>Enemy progressive spawner</li><li>Parry mechanic</li><li>Sound design</li><li>Power ups</li></ul></div><a href="OneNightInVenice.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
                 <!-- Card 2: The Last Coin -->
-                <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-project-url="TheLastCoin.html" data-video-src="Videos/TheLastCoinTrailerSite.mp4" data-video-title="The Last Coin">
+                <div class="project-card" data-project-url="TheLastCoin.html" data-video-src="Videos/TheLastCoinTrailerSite.mp4" data-video-title="The Last Coin">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TheLastCoinTrailerSite.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">HORROR GAME<img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE LAST COIN</h3><div class="card-year">ACADEMY PROJECT • 2025</div><p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p><div class="card-tasks"><div class="card-tasks-title">Key Contributions</div><ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul></div><a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a></div>
+                    <div class="card-content"><div class="card-header"><span class="card-category">HORROR GAME<img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE LAST COIN</h3><div class="card-year">TEAM PROJECT • 2025</div><p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p><div class="card-tasks"><div class="card-tasks-title">Key Contributions</div><ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul></div><a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a></div>
                 </div>
                 
                 <!-- Card 3: Pummel -->
-                <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" data-project-url="Pummel.html" data-video-src="Videos/VideoPummel.mp4" data-video-title="Pummel">
+                <div class="project-card" data-project-url="Pummel.html" data-video-src="Videos/VideoPummel.mp4" data-video-title="Pummel">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/VideoPummel.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">2D ACTION <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PUMMEL</h3><div class="card-year">PROTOTYPE 2024</div><p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>PaperZD integration</li><li>Combo system</li><li>Enemy AI</li><li>2D animation</li><li>Damage system</li></ul></div><a href="Pummel.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
                 <!-- Card 4: Project A -->
-                <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" data-project-url="Project A.html" data-video-src="Videos/ProgWIP.mp4" data-video-title="Project A">
+                <div class="project-card" data-project-url="Project A.html" data-video-src="Videos/ProgWIP.mp4" data-video-title="Project A">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/project-a-bg.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">COMBAT DESIGN <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PROJECT A</h3><div class="card-year">PROTOTYPE 2023</div><p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Souls-like combat</li><li>Root motion</li><li>Enemy AI</li><li>Boss phases</li><li>Niagara effects</li></ul></div><a href="Project A.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
                 <!-- Card 5: The Sun Vanished -->
-                <div class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" data-project-url="TheSunVanished.html" data-video-src="Videos/TrailerVanished .mp4" data-video-title="The Sun Vanished">
+                <div class="project-card" data-project-url="TheSunVanished.html" data-video-src="Videos/TrailerVanished .mp4" data-video-title="The Sun Vanished">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TrailerVanished .mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">HORROR PROTOTYPE <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE SUN VANISHED</h3><div class="card-year">PROTOTYPE 2025</div><p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>LiDAR scanning</li><li>Sound-based AI</li><li>Atmospheric horror</li><li>Navigation</li></ul></div><a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
-                <!-- Card 6: MORE PROJECTS - Card speciale -->
-                <div class="project-card more-projects-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" id="moreProjectsCard">
+                <!-- Card 6: MORE PROJECTS -->
+                <div class="project-card more-projects-card" id="moreProjectsCard">
                     <div class="project-type-tag type-more"><i class="fas fa-star"></i> EXPLORE</div>
                     <div class="card-content">
                         <div class="more-icon"><i class="fas fa-compass"></i></div>
                         <h3 class="more-title">MORE PROJECTS</h3>
                         <p class="more-subtitle">Discover additional work, collaborations, and prototypes</p>
-                        <a href="projects.html" class="more-btn">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+                        <a href="SoloProjects.html" class="more-btn">VIEW ALL <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <video class="lightbox-video" controls><source src="" type="video/mp4"></video>
@@ -1923,7 +1777,6 @@
         </div>
     </div>
     
-    <!-- CTA SECTION -->
     <section id="contact" class="cta-section">
         <div class="section-container">
             <div class="cta-card" data-aos="zoom-in" data-aos-duration="1500">
@@ -1931,13 +1784,12 @@
                 <p class="cta-text">Let's discuss how I can contribute to your next project!</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-btn"><i class="fas fa-envelope"></i> CONTACT ME</a>
-                    <a href="Photos/Federico_del_Gaudio_Tech&Combat_CV.pdf" target="_blank" class="cta-btn"><i class="fas fa-download"></i> DOWNLOAD CV</a>
+                    <a href="Photos/Federico_del_Gaudio_Tech&Combat_Portfolio_CV.pdf" target="_blank" class="cta-btn"><i class="fas fa-download"></i> DOWNLOAD CV</a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Social Links -->
     <div class="section-container">
         <div class="social-links">
             <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -1946,18 +1798,15 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer-main">
         <p>© 2020-2026 Federico Del Gaudio — Game Designer</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({ duration: 1000, once: true, offset: 100 });
             
-            // Particles
             function createParticles() {
                 const particlesContainer = document.getElementById('particles');
                 if (!particlesContainer) return;
@@ -1975,7 +1824,6 @@
             }
             createParticles();
             
-            // Typewriter
             const typewriterElement = document.getElementById('typewriter-text');
             if (typewriterElement) {
                 const words = ['COMBAT DESIGNER', 'TECHNICAL DESIGNER', 'GAME DESIGNER'];
@@ -1994,7 +1842,6 @@
                 type();
             }
             
-            // Lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxVideo = lightbox.querySelector('.lightbox-video');
             const lightboxClose = document.getElementById('lightboxClose');
@@ -2019,10 +1866,8 @@
                 });
             });
             
-            // Card cliccabili - reindirizzamento alla pagina del progetto
             document.querySelectorAll('.project-card:not(.more-projects-card)').forEach(card => {
                 card.addEventListener('click', function(e) {
-                    // Se il click è sul bottone o sul play, non reindirizzare (già gestito)
                     if (e.target.closest('.card-button')) return;
                     if (e.target.closest('.card-play-button')) return;
                     const projectUrl = this.getAttribute('data-project-url');
@@ -2030,7 +1875,6 @@
                 });
             });
             
-            // More Projects Card - reindirizzamento
             const moreCard = document.getElementById('moreProjectsCard');
             if (moreCard) {
                 moreCard.addEventListener('click', function(e) {
@@ -2062,7 +1906,6 @@
                 }
             });
             
-            // Mobile menu
             const hamburg = document.getElementById('hamburg');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMenu = document.getElementById('closeMenu');
@@ -2090,7 +1933,6 @@
                 });
             }
             
-            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -2102,7 +1944,6 @@
                 });
             });
             
-            // Hero video autoplay
             const heroVideo = document.querySelector('.background-video');
             if (heroVideo) heroVideo.play().catch(() => { heroVideo.muted = true; heroVideo.play(); });
         });

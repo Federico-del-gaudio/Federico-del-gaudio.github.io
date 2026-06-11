@@ -692,60 +692,42 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - COMPLETA CON TUTTI I BOTTONI -->
-    <nav>
-        <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="index.html#about">ABOUT</a>
-            
-            <!-- Projects Dropdown COMPLETO -->
-            <div class="dropdown">
-                <a href="projects.html" class="dropdown-trigger">
-                    PROJECTS <i class="fas fa-chevron-down"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="projects.html">
-                        <i class="fas fa-grid-2"></i> ALL PROJECTS
-                    </a>
-                    <a href="AcademyProject.html">
-                        <i class="fas fa-graduation-cap"></i> ACADEMY
-                    </a>
-                    <a href="SoloProjects.html">
-                        <i class="fas fa-user"></i> PERSONAL
-                    </a>
-                    <a href="CombatTechProjects.html">
-                        <i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT
-                    </a>
-                </div>
-            </div>
-            
-            <a href="contact.html" class="active">CONTACT</a>
-        </div>
-        <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
-    </nav>
-    
-    <!-- Mobile Menu - COMPLETO OTTIMIZZATO -->
-    <div class="mobile-menu" id="mobileMenu">
-        <i class="fas fa-times close-menu" id="closeMenu"></i>
+   <!-- Navigation Bar -->
+   <nav>
+    <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
+    <div class="nav-links">
         <a href="index.html">HOME</a>
-        <a href="index.html#about">ABOUT</a>
-        
-        <!-- Mobile Projects Dropdown COMPLETO -->
-        <div class="mobile-dropdown">
-            <a href="projects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+        <a href="index.html#About">ABOUT</a>
+        <div class="dropdown">
+            <a href="SoloProjects.html" class="dropdown-trigger active">
                 PROJECTS <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="mobile-dropdown-content" id="mobileDropdownContent">
-                <a href="projects.html">ALL PROJECTS</a>
-                <a href="AcademyProject.html">ACADEMY</a>
-                <a href="SoloProjects.html">PERSONAL</a>
-                <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+            <div class="dropdown-content">
+              <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
+              <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY PROJECTS</a>
             </div>
         </div>
-        
-        <a href="contact.html" class="active">CONTACT</a>
+        <a href="contact.html">CONTACT</a>
     </div>
+    <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <i class="fas fa-times close-menu" id="closeMenu"></i>
+    <a href="index.html">HOME</a>
+    <a href="index.html#About">ABOUT</a>
+    <div class="mobile-dropdown">
+        <a href="SoloProjects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
+            PROJECTS <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="mobile-dropdown-content" id="mobileDropdownContent">
+            <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+           <a href="SoloProjects.html">GAMEPLAY PROJECTS</a>
+        </div>
+    </div>
+    <a href="contact.html">CONTACT</a>
+</div>
     
     <!-- Main Content Container -->
     <div class="page-container">
