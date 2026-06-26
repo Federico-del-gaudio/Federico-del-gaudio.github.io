@@ -1535,6 +1535,22 @@
             color: var(--dark);
             transform: translateY(-5px);
         }
+
+        .latest-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background: var(--gold);
+            color: #1a1a1a;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
         
         @media (max-width: 1200px) {
             .hero-name { font-size: 4rem; }
@@ -1696,9 +1712,9 @@
             <div class="section-container">
                 <div class="section-header" data-aos="fade-up"><h2 class="section-title">SKILLS</h2><p class="section-subtitle">Technologies, tools, and specializations</p></div>
                 <div class="skills-compact">
-                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800"><div class="skill-card-header"><i class="fas fa-code"></i><h3>TECHNICAL</h3></div><div class="skill-items"><span class="skill-tag"><i class="fab fa-unity"></i> Unity</span><span class="skill-tag"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" style="width:14px;height:14px;vertical-align:middle;margin-right:6px;"> Unreal 4/5</span><span class="skill-tag"><i class="fas fa-project-diagram"></i> Blueprints</span><span class="skill-tag"><i class="fas fa-code"></i> C#</span><span class="skill-tag"><i class="fab fa-html5"></i> HTML/CSS</span><span class="skill-tag"><i class="fas fa-database"></i> SQL</span><span class="skill-tag"><i class="fas fa-code-branch"></i> Git/Fork</span></div></div>
-                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><div class="skill-card-header"><i class="fab fa-unreal-engine"></i><h3>UNREAL ENGINE</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-fist-raised"></i> Combat Systems</span><span class="skill-tag"><i class="fas fa-robot"></i> AI & BT</span><span class="skill-tag"><i class="fas fa-film"></i> Animation Montages</span><span class="skill-tag"><i class="fas fa-blender"></i> Blend Spaces</span><span class="skill-tag"><i class="fas fa-cogs"></i> State Machines</span><span class="skill-tag"><i class="fas fa-magic"></i> Niagara <span style="font-size:0.7rem;">(Learning)</span></span></div></div>
-                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"><div class="skill-card-header"><i class="fas fa-pencil-ruler"></i><h3>DESIGN</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-crosshairs"></i> Combat Design</span><span class="skill-tag"><i class="fas fa-robot"></i> AI Behavior</span><span class="skill-tag"><i class="fas fa-cogs"></i> Technical Design</span><span class="skill-tag"><i class="fas fa-gamepad"></i> Gameplay Mechanics</span><span class="skill-tag"><i class="fas fa-balance-scale"></i> Balancing</span><span class="skill-tag"><i class="fas fa-file-alt"></i> Documentation</span><span class="skill-tag"><i class="fas fa-users"></i> UX Design</span><span class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Pitching</span></div></div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800"><div class="skill-card-header"><i class="fas fa-code"></i><h3>TECHNICAL</h3></div><div class="skill-items"><span class="skill-tag"><i class="fab fa-unity"></i> Unity</span><span class="skill-tag"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" style="width:14px;height:14px;vertical-align:middle;margin-right:6px;"> Unreal 4/5</span><span class="skill-tag"><i class="fas fa-project-diagram"></i> Blueprints</span><span class="skill-tag"><i class="fas fa-code"></i> C#</span><span class="skill-tag"><i class="fab fa-html5"></i> HTML/CSS</span><span class="skill-tag"><i class="fas fa-database"></i> SQL</span><span class="skill-tag"><i class="fas fa-code-branch"></i> Git/Fork</span><span class="skill-tag"><i class="fas fa-cubes"></i> 3D Math</span></div></div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><div class="skill-card-header"><i class="fab fa-unreal-engine"></i><h3>UNREAL ENGINE</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-fist-raised"></i> Combat Systems</span><span class="skill-tag"><i class="fas fa-robot"></i> AI & BT</span><span class="skill-tag"><i class="fas fa-film"></i> Animation Montages</span><span class="skill-tag"><i class="fas fa-blender"></i> Blend Spaces</span><span class="skill-tag"><i class="fas fa-cogs"></i> State Machines</span><span class="skill-tag"><i class="fas fa-magic"></i> Niagara</span><span class="skill-tag"><i class="fas fa-paint-brush"></i> UI in Engine</span></div></div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"><div class="skill-card-header"><i class="fas fa-pencil-ruler"></i><h3>DESIGN</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-crosshairs"></i> Combat Design</span><span class="skill-tag"><i class="fas fa-robot"></i> AI Behavior</span><span class="skill-tag"><i class="fas fa-cogs"></i> Technical Design</span><span class="skill-tag"><i class="fas fa-gamepad"></i> Gameplay Mechanics</span><span class="skill-tag"><i class="fas fa-balance-scale"></i> Balancing</span><span class="skill-tag"><i class="fas fa-file-alt"></i> Documentation</span><span class="skill-tag"><i class="fas fa-users"></i> UX Design</span><span class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Pitching</span><span class="skill-tag"><i class="fas fa-flask"></i> Prototyping</span></div></div>
                 </div>
                 <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1000">
                     <div class="stat-block"><div class="stat-number"><div class="projects-stats"><div class="project-stat-item"><i class="fab fa-unity"></i><span>3</span></div><div class="project-stat-item"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></i><span>7</span></div></div></div><div class="stat-label">PROJECTS</div></div>
@@ -1720,74 +1736,74 @@
     <section id="projects-grid" class="projects-grid-section">
         <div class="projects-grid-container">
             <div class="projects-grid">
-                <!-- Card 1: One Night in Venice -->
+                <!-- Card 1: Still Hear - LATEST PROJECT (moved to first position) -->
+                <div class="project-card" data-locked="true" style="cursor: default;">
+                    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH & COMBAT DESIGN</div>
+                    <div class="latest-badge"><i class="fas fa-clock" style="margin-right: 4px;"></i> LATEST PROJECT</div>
+                    <div class="card-video-container">
+                        <video class="card-video" autoplay muted loop playsinline>
+                            <source src="Videos/stillhear-bg.mp4" type="video/mp4">
+                        </video>
+                        <div class="card-play-overlay" style="opacity: 0 !important; pointer-events: none;"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="card-category">Puzzle stealth <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span>
+                        </div>
+                        <h3 class="card-title">STILL HEAR</h3>
+                        <div class="card-year">TEAM PROJECT • 16 PEOPLE • 2026</div>
+                        <p class="card-description">A puzzle stealth story driven game. </p>
+                        <div class="card-tasks">
+                            <div class="card-tasks-title">KEY CONTRIBUTIONS</div>
+                            <ul class="card-tasks-list">
+                                <li>Players feedback on combat & enemies</li>
+                                <li>Player ability tuning & enemy tuning</li>
+                                <li>Levels puzzle systems set up</li>
+                                <li>Environmental, sound & player/enemy feedback</li>
+                            </ul>
+                        </div>
+                        <button class="card-button" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(255,255,255,0.05);">
+                            <i class="fas fa-lock"></i> WORK IN PROGRESS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: One Night in Venice -->
                 <div class="project-card" data-project-url="OneNightInVenice.html" data-video-src="Videos/One Night in Venice Trailer for GGJ2026.mp4" data-video-title="One Night in Venice">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">FPS BULLET HELL <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">ONE NIGHT IN VENICE</h3><div class="card-year">GLOBAL GAME JAM • 2026</div><p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Shooting system</li><li>Enemy progressive spawner</li><li>Parry mechanic</li><li>Sound design</li><li>Power ups</li></ul></div><a href="OneNightInVenice.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
-                <!-- Card 2: The Last Coin -->
+                <!-- Card 3: The Last Coin -->
                 <div class="project-card" data-project-url="TheLastCoin.html" data-video-src="Videos/TheLastCoinTrailerSite.mp4" data-video-title="The Last Coin">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TheLastCoinTrailerSite.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">HORROR GAME<img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE LAST COIN</h3><div class="card-year">TEAM PROJECT • 2025</div><p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p><div class="card-tasks"><div class="card-tasks-title">Key Contributions</div><ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul></div><a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a></div>
                 </div>
                 
-                <!-- Card 3: Pummel -->
+                <!-- Card 4: Pummel -->
                 <div class="project-card" data-project-url="Pummel.html" data-video-src="Videos/VideoPummel.mp4" data-video-title="Pummel">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/VideoPummel.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">2D ACTION <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PUMMEL</h3><div class="card-year">PROTOTYPE 2024</div><p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>PaperZD integration</li><li>Combo system</li><li>Enemy AI</li><li>2D animation</li><li>Damage system</li></ul></div><a href="Pummel.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
-                <!-- Card 4: Project A -->
+                <!-- Card 5: Project A -->
                 <div class="project-card" data-project-url="Project A.html" data-video-src="Videos/ProgWIP.mp4" data-video-title="Project A">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/project-a-bg.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">COMBAT DESIGN <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PROJECT A</h3><div class="card-year">PROTOTYPE 2023</div><p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Souls-like combat</li><li>Root motion</li><li>Enemy AI</li><li>Boss phases</li><li>Niagara effects</li></ul></div><a href="Project A.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
                 
-                <!-- Card 5: The Sun Vanished -->
+                <!-- Card 6: The Sun Vanished -->
                 <div class="project-card" data-project-url="TheSunVanished.html" data-video-src="Videos/TrailerVanished .mp4" data-video-title="The Sun Vanished">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TrailerVanished .mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
                     <div class="card-content"><div class="card-header"><span class="card-category">HORROR PROTOTYPE <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE SUN VANISHED</h3><div class="card-year">PROTOTYPE 2025</div><p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>LiDAR scanning</li><li>Sound-based AI</li><li>Atmospheric horror</li><li>Navigation</li></ul></div><a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a></div>
                 </div>
-                
- <!-- Card 7: Still Hear -->
- <div class="project-card" data-locked="true" style="cursor: default;">
-    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH & COMBAT DESIGN</div>
-    <div class="card-video-container">
-        <video class="card-video" autoplay muted loop playsinline>
-            <source src="Videos/stillhear-bg.mp4" type="video/mp4">
-        </video>
-        <div class="card-play-overlay" style="opacity: 0 !important; pointer-events: none;"></div>
-    </div>
-    <div class="card-content">
-        <div class="card-header">
-            <span class="card-category">Puzzle stealth <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span>
-        </div>
-        <h3 class="card-title">STILL HEAR</h3>
-        <div class="card-year">TEAM PROJECT • 16 PEOPLE • 2026</div>
-        <p class="card-description">A puzzle stealth story driven game. </p>
-        <div class="card-tasks">
-            <div class="card-tasks-title">KEY CONTRIBUTIONS</div>
-            <ul class="card-tasks-list">
-                <li>Players feedback on combat & enemies</li>
-                <li>Player ability tuning & enemy tuning</li>
-                <li>Levels puzzle systems set up</li>
-                <li>Environmental, sound & player/enemy feedback</li>
-            </ul>
-        </div>
-        <button class="card-button" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(255,255,255,0.05);">
-            <i class="fas fa-lock"></i> WORK IN PROGRESS
-        </button>
-    </div>
-</div>
 
-
-                <!-- Card 6: MORE PROJECTS -->
+                <!-- Card 7: MORE PROJECTS -->
                 <div class="project-card more-projects-card" id="moreProjectsCard">
                     <div class="project-type-tag type-more"><i class="fas fa-star"></i> EXPLORE</div>
                     <div class="card-content">
