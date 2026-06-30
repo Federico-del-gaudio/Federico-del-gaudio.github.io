@@ -32,6 +32,7 @@
             --accent-hover: #cccccc;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             --combat-tag: #ff6b6b;
+            --highlight-yellow: #ffd700;
         }
         
         body {
@@ -478,10 +479,11 @@
             line-height: 1.8;
             color: var(--gray-light);
             margin-bottom: 25px;
+            text-align: left;
         }
         
-        .highlight {
-            color: var(--light);
+        .highlight-yellow {
+            color: var(--highlight-yellow);
             font-weight: 600;
         }
         
@@ -757,10 +759,11 @@
             color: var(--gray-light);
             line-height: 1.8;
             margin-bottom: 15px;
+            text-align: left;
         }
         
         .design-content strong {
-            color: var(--light);
+            color: var(--highlight-yellow);
             font-weight: 600;
         }
         
@@ -1187,8 +1190,8 @@
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
-                    <p>In this project, I aimed to replicate some combat mechanics <span class="highlight">inspired by Souls-like games</span>.
-                        It was a nearly three-month-long project where I focused entirely on combat design. I handled <span class="highlight"> animations, sound effects, hit feedback, and implemented enemy AI behavior</span> to create responsive and challenging encounters.</p>
+                    <p>In this project, I aimed to replicate some combat mechanics <span class="highlight-yellow">inspired by Souls-like games</span>.
+                        It was a nearly three-month-long project where I focused entirely on combat design. I handled <span class="highlight-yellow"> animations, sound effects, hit feedback, and implemented enemy AI behavior</span> to create responsive and challenging encounters.</p>
                     <p>Additionally, I worked on Niagara effects to enhance the visual impact of combat interactions.
                         As a learning resource, I followed a training video on YouTube, which helped guide me through some technical steps while allowing me to adapt and customize the systems to fit my design goals.</p>
                     <p><i><u>UE5 project files have been lost due to HDD problems</u></i></p>
@@ -1247,8 +1250,8 @@
                         <h3 class="design-title">Obstacles and Difficulties</h3>
                     </div>
                     <div class="design-content">
-                        <p>One of the main challenges in this project was working with <strong>root motion animations</strong>, which often conflicted with my character's skeleton. I had to install Blender plugins, import the character, and rig it using a dedicated tool, making sure the animations were properly aligned and functional inside the engine.</p>
-                        <p>Another issue I faced was managing the interaction between <strong>enemy health systems</strong> and the weapon's collider, to ensure the game could reliably detect when an enemy was being hit during combat.</p>
+                        <p>One of the main challenges in this project was working with <span class="highlight-yellow">root motion animations</span>, which often conflicted with my character's skeleton. I had to install Blender plugins, import the character, and rig it using a dedicated tool, making sure the animations were properly aligned and functional inside the engine.</p>
+                        <p>Another issue I faced was managing the interaction between <span class="highlight-yellow">enemy health systems</span> and the weapon's collider, to ensure the game could reliably detect when an enemy was being hit during combat.</p>
                     </div>
                 </div>
                 

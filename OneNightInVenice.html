@@ -34,6 +34,7 @@
             --itch-color: #fa5c5c;
             --ggj-color: #ff6b4a;
             --combat-tag: #ff6b6b;
+            --highlight-yellow: #ffd700;
         }
         
         body {
@@ -537,10 +538,11 @@
             line-height: 1.8;
             color: var(--gray-light);
             margin-bottom: 25px;
+            text-align: left;
         }
         
-        .highlight {
-            color: var(--light);
+        .highlight-yellow {
+            color: var(--highlight-yellow);
             font-weight: 600;
         }
         
@@ -1011,6 +1013,7 @@
             color: var(--gray-light);
             line-height: 1.8;
             margin-bottom: 15px;
+            text-align: left;
         }
         
         .insight-visual {
@@ -1112,8 +1115,12 @@
             margin-bottom: 10px;
         }
         
+        .design-content p {
+            text-align: left;
+        }
+        
         .design-content strong {
-            color: var(--light);
+            color: var(--highlight-yellow);
             font-weight: 600;
         }
         
@@ -1492,9 +1499,9 @@
             <section class="about-section">
                 <h2 class="section-title">About the Game</h2>
                 <div class="about-content">
-                    <p>A relentless <span class="highlight">PS1-style bullet hell</span> set in a flooded carnival of screaming masks. Every shot you fire fuels a distorted breakcore soundtrack that surges in volume with your aggression. Survive the nightmare. Dance until you drown in the noise.</p>
+                    <p>A relentless <span class="highlight-yellow">PS1-style bullet hell</span> set in a flooded carnival of screaming masks. Every shot you fire fuels a distorted breakcore soundtrack that surges in volume with your aggression. Survive the nightmare. Dance until you drown in the noise.</p>
                     
-                    <p>In <span class="highlight">One Night in Venice</span>, your only goal is to shoot and survive waves of ruthless enemies who want nothing but your end. Keep your eyes sharp and your reflexes faster if they catch you, you'll have to start it all over <span class="highlight">AGAIN</span>. Push yourself to beat your personal record with every run. But above all else: <span class="highlight">don't stop running</span>.</p>
+                    <p>In <span class="highlight-yellow">One Night in Venice</span>, your only goal is to shoot and survive waves of ruthless enemies who want nothing but your end. Keep your eyes sharp and your reflexes faster if they catch you, you'll have to start it all over <span class="highlight-yellow">AGAIN</span>. Push yourself to beat your personal record with every run. But above all else: <span class="highlight-yellow">don't stop running</span>.</p>
                     
                     <h3 class="controls-title">🕹️ Game Modes</h3>
                     <div class="game-modes">
@@ -1606,12 +1613,12 @@
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Key Learnings from Enemy movement Implementation</h3>
-                    <p>In One Night in Venice <span class="highlight">enemies kill you in a single hit </span> The main challenge was creating enemies that posed a real threat without being frustrating.</p>
+                    <p>In One Night in Venice <span class="highlight-yellow">enemies kill you in a single hit </span> The main challenge was creating enemies that posed a real threat without being frustrating.</p>
                     
-                    <p>Having them simply rush the player in a straight line felt cheap <span class="highlight"> After brainstorming, I decided to make the enemies orbit around the player, gradually closing the distance</span>. This dynamic allows players to "tame" the horde through smart movement.</p>
+                    <p>Having them simply rush the player in a straight line felt cheap <span class="highlight-yellow"> After brainstorming, I decided to make the enemies orbit around the player, gradually closing the distance</span>. This dynamic allows players to "tame" the horde through smart movement.</p>
                     
-                    <p>implemented this behavior using <span class="highlight">mathematical calculations </span> playing with sine waves (sin) to achieve that smooth orbiting and "blob-like" crowd behavior.</p>
-                    <p>Additionally, I ensured that enemies always dynamically <span class="highlight"> look at the player based on their relative position.</span></p>
+                    <p>implemented this behavior using <span class="highlight-yellow">mathematical calculations </span> playing with sine waves (sin) to achieve that smooth orbiting and "blob-like" crowd behavior.</p>
+                    <p>Additionally, I ensured that enemies always dynamically <span class="highlight-yellow"> look at the player based on their relative position.</span></p>
                 </div>
                 
                 <div class="insight-visual">
@@ -1650,9 +1657,9 @@
                 
                 <div class="insight-text-content">
                     <h3>Progressive Difficulty Design</h3>
-                    <p>One of the <span class="highlight">key features </span> of One Night in Venice was the roguelike power-up card system. Throughout each run, after collecting a certain number of gems, players could choose to boost stats like damage, bullet speed, or movement speed.</p>
+                    <p>One of the <span class="highlight-yellow">key features </span> of One Night in Venice was the roguelike power-up card system. Throughout each run, after collecting a certain number of gems, players could choose to boost stats like damage, bullet speed, or movement speed.</p>
                     
-                    <p>This <span class="highlight">progression was crucial </span> because the game became scaled in difficulty not by making enemies stronger, but by drastically increasing spawn quantities.</p>
+                    <p>This <span class="highlight-yellow">progression was crucial </span> because the game became scaled in difficulty not by making enemies stronger, but by drastically increasing spawn quantities.</p>
                     
                     <p>Structurally, I created a system using Data Tables to link the card data directly to the corresponding gameplay variables and connected them to the UI.</p>
                     <p>I then implemented a shuffle algorithm to ensure that the card selection was completely randomized upon each level-up.</p>
@@ -1666,9 +1673,9 @@
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Hit stop and flash hit effect</h3>
-                    <p>Game <span class="highlight">feedback</span> is absolutely vital; elements like <span class="highlight">audio cues, screen shake, and haptics </span>drastically increase the richness of the player experience. My goal was to maximize this impact.</p>
+                    <p>Game <span class="highlight-yellow">feedback</span> is absolutely vital; elements like <span class="highlight-yellow">audio cues, screen shake, and haptics </span>drastically increase the richness of the player experience. My goal was to maximize this impact.</p>
                     
-                    <p>Beyond adding heavy hit sounds and enemy audio, I focused on implementing the classic<span class="highlight"> retro "white flash" hit effect</span>, inspired by games like Metal Slug and Cuphead. Technically, I achieved this in Unreal Engine by creating a custom white material flash that triggers dynamically.</p>
+                    <p>Beyond adding heavy hit sounds and enemy audio, I focused on implementing the classic<span class="highlight-yellow"> retro "white flash" hit effect</span>, inspired by games like Metal Slug and Cuphead. Technically, I achieved this in Unreal Engine by creating a custom white material flash that triggers dynamically.</p>
                     
                     <p>Using Blueprints, I utilized a Timeline to handle the jitter and duration, swapping the enemy's material instantly whenever a bullet registers a hit.</p>
                 </div>
@@ -1708,7 +1715,7 @@
                             <li>Hit detection and invulnerability frames</li>
                             <li>Visual feedback for successful parries</li>
                         </ul>
-                        <p><strong>Responsive combat with PS1-era feel</strong></p>
+                        <p><span class="highlight-yellow">Responsive combat with PS1-era feel</span></p>
                     </div>
                 </div>
                 
@@ -1727,7 +1734,7 @@
                             <li>Death effects and projectile patterns</li>
                             <li>Wave management and spawn pooling</li>
                         </ul>
-                        <p><strong>Dynamic difficulty scaling</strong></p>
+                        <p><span class="highlight-yellow">Dynamic difficulty scaling</span></p>
                     </div>
                 </div>
                 
@@ -1746,7 +1753,7 @@
                             <li>Particle effects for hits and parries</li>
                             <li>Screen shake and hit stop feedback</li>
                         </ul>
-                        <p><strong>Immersive audiovisual experience</strong></p>
+                        <p><span class="highlight-yellow">Immersive audiovisual experience</span></p>
                     </div>
                 </div>
             </div>

@@ -34,6 +34,7 @@
             --combat-tag: #ff6b6b;
             --itch-color: #fa5c5c;
             --ggj-color: #ff6b4a;
+            --highlight-yellow: #ffd700; /* Nuovo colore per le evidenziazioni */
         }
         
         body {
@@ -542,11 +543,18 @@
             line-height: 1.8;
             color: var(--gray-light);
             margin-bottom: 25px;
+            text-align: left; /* Allineamento a sinistra */
         }
         
         .highlight {
             color: var(--light);
             font-weight: 600;
+        }
+        
+        /* Nuova classe per le parole evidenziate in giallo */
+        .highlight-yellow {
+            color: var(--highlight-yellow);
+            font-weight: 600; /* Mantiene il grassetto ma con colore giallo */
         }
         
         /* Trailer Section */
@@ -811,6 +819,7 @@
             line-height: 1.8;
             margin-bottom: 15px;
             font-size: 1.1rem;
+            text-align: left; /* Allineamento a sinistra */
         }
         
         .insight-visual {
@@ -914,8 +923,12 @@
             margin-bottom: 10px;
         }
         
+        .design-content p {
+            text-align: left; /* Allineamento a sinistra */
+        }
+        
         .design-content strong {
-            color: var(--light);
+            color: var(--highlight-yellow); /* Colore giallo per il grassetto */
             font-weight: 600;
         }
         
@@ -1322,9 +1335,9 @@
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
-                    <p>This is one of my most complete and in-depth projects developed in <span class="highlight">Unreal Engine 5</span>.
-                        For this project, I aimed to explore and experiment with <span class="highlight">PaperZD</span>, a 2D animation plugin for UE5. My main focus was on integrating flipbook animations, which I sourced online, and using them to bring characters to life in a fluid and responsive way.</p>
-                    <p>I implemented a combo system that reacts to player input timing, allowing for a more dynamic combat experience. I also worked extensively with the <span class="highlight">Animation Controller</span>, setting up states and transitions to ensure smooth and responsive character behavior based on movement and attack actions.</p>
+                    <p>This is one of my most complete and in-depth projects developed in <span class="highlight-yellow">Unreal Engine 5</span>.
+                        For this project, I aimed to explore and experiment with <span class="highlight-yellow">PaperZD</span>, a 2D animation plugin for UE5. My main focus was on integrating flipbook animations, which I sourced online, and using them to bring characters to life in a fluid and responsive way.</p>
+                    <p>I implemented a combo system that reacts to player input timing, allowing for a more dynamic combat experience. I also worked extensively with the <span class="highlight-yellow">Animation Controller</span>, setting up states and transitions to ensure smooth and responsive character behavior based on movement and attack actions.</p>
                     <p>Additionally, I developed core gameplay systems such as damage handling and health management, laying the foundation for combat interactions and player-enemy feedback. This project gave me the opportunity to deepen my knowledge of UE5's 2D tools while also strengthening my ability to structure gameplay logic and animation flow in a cohesive and scalable way.</p>
                 </div>
             </section>
@@ -1432,11 +1445,11 @@
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Key Learnings from PaperZD Implementation</h3>
-                    <p>Working with <span class="highlight">PaperZD</span> for 2D animation in Unreal Engine 5 taught me valuable lessons about <span class="highlight">animation workflow</span> and <span class="highlight">performance optimization</span>. The plugin bridges the gap between traditional 2D animation and modern game engines.</p>
+                    <p>Working with <span class="highlight-yellow">PaperZD</span> for 2D animation in Unreal Engine 5 taught me valuable lessons about <span class="highlight-yellow">animation workflow</span> and <span class="highlight-yellow">performance optimization</span>. The plugin bridges the gap between traditional 2D animation and modern game engines.</p>
                     
-                    <p>The most significant insight was understanding how <span class="highlight">flipbook animations</span> work within a 3D engine context. I learned to optimize sprite sheets and manage animation states efficiently to maintain smooth performance.</p>
+                    <p>The most significant insight was understanding how <span class="highlight-yellow">flipbook animations</span> work within a 3D engine context. I learned to optimize sprite sheets and manage animation states efficiently to maintain smooth performance.</p>
                     
-                    <p>Another crucial learning was the integration of <span class="highlight">2D assets into a 3D pipeline</span>. This required careful planning of coordinate systems, depth sorting, and camera management to create a cohesive visual experience.</p>
+                    <p>Another crucial learning was the integration of <span class="highlight-yellow">2D assets into a 3D pipeline</span>. This required careful planning of coordinate systems, depth sorting, and camera management to create a cohesive visual experience.</p>
                 </div>
                 
                 <div class="insight-visual">
@@ -1475,11 +1488,11 @@
                 
                 <div class="insight-text-content">
                     <h3>Combo System Design Insights</h3>
-                    <p>Developing the combo system for Pummel taught me valuable lessons about <span class="highlight">player input timing</span> and <span class="highlight">animation blending</span>. The system needed to feel responsive while maintaining visual coherence.</p>
+                    <p>Developing the combo system for Pummel taught me valuable lessons about <span class="highlight-yellow">player input timing</span> and <span class="highlight-yellow">animation blending</span>. The system needed to feel responsive while maintaining visual coherence.</p>
                     
-                    <p>One key insight was the importance of <span class="highlight">input buffering</span>. Creating a window where player inputs could be queued for execution made the combat feel more forgiving and accessible without sacrificing depth.</p>
+                    <p>One key insight was the importance of <span class="highlight-yellow">input buffering</span>. Creating a window where player inputs could be queued for execution made the combat feel more forgiving and accessible without sacrificing depth.</p>
                     
-                    <p>The integration of <span class="highlight">hit stop effects</span> and <span class="highlight">screen shake</span> was particularly important for creating satisfying impact feedback. Small visual and auditory cues dramatically improved the perceived weight of attacks.</p>
+                    <p>The integration of <span class="highlight-yellow">hit stop effects</span> and <span class="highlight-yellow">screen shake</span> was particularly important for creating satisfying impact feedback. Small visual and auditory cues dramatically improved the perceived weight of attacks.</p>
                 </div>
             </div>
         </section>
@@ -1504,7 +1517,7 @@
                             <li>Custom animation blueprints for character behavior</li>
                             <li>Sprite sheet management and texture atlasing</li>
                         </ul>
-                        <p><strong>Complete 2D animation pipeline in UE5</strong></p>
+                        <p><span class="highlight-yellow">Complete 2D animation pipeline in UE5</span></p>
                     </div>
                 </div>
                 
@@ -1524,7 +1537,7 @@
                             <li>Air combo: Space bar + Right click</li>
                             <li>Hit stop effects and impact feedback</li>
                         </ul>
-                        <p><strong>Responsive combat mechanics with visual feedback</strong></p>
+                        <p><span class="highlight-yellow">Responsive combat mechanics with visual feedback</span></p>
                     </div>
                 </div>
                 
@@ -1544,7 +1557,7 @@
                             <li>Game state management and progression</li>
                             <li>Blueprint-based logic implementation</li>
                         </ul>
-                        <p><strong>Comprehensive gameplay foundation</strong></p>
+                        <p><span class="highlight-yellow">Comprehensive gameplay foundation</span></p>
                     </div>
                 </div>
             </div>

@@ -32,6 +32,7 @@
             --accent-hover: #cccccc;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             --combat-tag: #ff6b6b;
+            --highlight-yellow: #ffd700;
         }
         
         body {
@@ -538,10 +539,11 @@
             line-height: 1.8;
             color: var(--gray-light);
             margin-bottom: 25px;
+            text-align: left;
         }
         
-        .highlight {
-            color: var(--light);
+        .highlight-yellow {
+            color: var(--highlight-yellow);
             font-weight: 600;
         }
         
@@ -748,6 +750,7 @@
             line-height: 1.8;
             margin-bottom: 15px;
             font-size: 1.1rem;
+            text-align: left;
         }
         
         .insight-visual {
@@ -1128,10 +1131,10 @@
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
-                    <p>In the suffocating dark of a <span class="highlight">gambling nightmare</span>, you are forced to face your addiction.
-                        Wander an endless corridor of despair and challenge your <span class="highlight">Destiny</span> at the cursed Slot Machine.
+                    <p>In the suffocating dark of a <span class="highlight-yellow">gambling nightmare</span>, you are forced to face your addiction.
+                        Wander an endless corridor of despair and challenge your <span class="highlight-yellow">Destiny</span> at the cursed Slot Machine.
                         Ransack the Panic Room in a desperate hunt for coins, but beware the slow fraying of your Sanity.</p>
-                    <p>For this project, my primary focus was <span class="highlight">engine-side implementation</span>. I was responsible for <span class="highlight">integrating UI/UX systems, gameplay mechanics, and providing audio support to programmers throughout the in-engine development process</span>.</p>
+                    <p>For this project, my primary focus was <span class="highlight-yellow">engine-side implementation</span>. I was responsible for <span class="highlight-yellow">integrating UI/UX systems, gameplay mechanics, and providing audio support to programmers throughout the in-engine development process</span>.</p>
                 </div>
             </section>
             
@@ -1185,13 +1188,13 @@
                 
                 <div class="insight-text-content">
                     <h3>Key Learnings from Horror Implementation</h3>
-                    <p>During the development of The Last Coin, I learned that <span class="highlight">psychological horror</span> requires careful pacing and environmental storytelling. The atmosphere needed to build tension gradually while maintaining player engagement.</p>
+                    <p>During the development of The Last Coin, I learned that <span class="highlight-yellow">psychological horror</span> requires careful pacing and environmental storytelling. The atmosphere needed to build tension gradually while maintaining player engagement.</p>
                     
-                    <p>The most significant insight came from implementing the <span class="highlight">Sanity system</span>. I discovered that subtle audio and visual distortions were more effective than overt scary moments. Players responded better to psychological unease than jump scares.</p>
+                    <p>The most significant insight came from implementing the <span class="highlight-yellow">Sanity system</span>. I discovered that subtle audio and visual distortions were more effective than overt scary moments. Players responded better to psychological unease than jump scares.</p>
                     
-                    <p>Another crucial learning was the balance between <span class="highlight">player agency</span> and <span class="highlight">narrative control</span>. The gambling mechanics needed to feel random enough to create tension, but controlled enough to maintain game balance and narrative progression.</p>
+                    <p>Another crucial learning was the balance between <span class="highlight-yellow">player agency</span> and <span class="highlight-yellow">narrative control</span>. The gambling mechanics needed to feel random enough to create tension, but controlled enough to maintain game balance and narrative progression.</p>
                     
-                    <p>Finally, I learned the importance of <span class="highlight">audio layering</span> in horror. Subtle ambient sounds, carefully timed musical cues, and spatial audio effects created a much more immersive and terrifying experience than visual effects alone.</p>
+                    <p>Finally, I learned the importance of <span class="highlight-yellow">audio layering</span> in horror. Subtle ambient sounds, carefully timed musical cues, and spatial audio effects created a much more immersive and terrifying experience than visual effects alone.</p>
                 </div>
             </div>
         </section>
@@ -1211,13 +1214,13 @@
                 
                 <div class="insight-text-content">
                     <h3>QTE System Implementation Insights</h3>
-                    <p>The implementation of <span class="highlight">QTEs</span> was essential to trigger intense moments of anxiety for the player. In this Blueprint, the system forces the player's flashlight to suddenly fail; the player must then repeatedly mash the "E" key to turn it back on.</p>
+                    <p>The implementation of <span class="highlight-yellow">QTEs</span> was essential to trigger intense moments of anxiety for the player. In this Blueprint, the system forces the player's flashlight to suddenly fail; the player must then repeatedly mash the "E" key to turn it back on.</p>
                     
-                    <p>The <span class="highlight">design philosophy</span> of this game doesn't rely on cheap jump scares; instead, it focuses on building psychological tension and making the player feel deeply vulnerable through environmental sounds and unpredictable systemic events.</p>
+                    <p>The <span class="highlight-yellow">design philosophy</span> of this game doesn't rely on cheap jump scares; instead, it focuses on building psychological tension and making the player feel deeply vulnerable through environmental sounds and unpredictable systemic events.</p>
                     
-                    <p>I implemented the QTE system using Unreal Engine's <span class="highlight">Blueprint scripting</span>, creating a reusable component that could be attached to various interactive objects. The system tracks button press frequency, success thresholds, and provides visual/audio feedback based on player performance.</p>
+                    <p>I implemented the QTE system using Unreal Engine's <span class="highlight-yellow">Blueprint scripting</span>, creating a reusable component that could be attached to various interactive objects. The system tracks button press frequency, success thresholds, and provides visual/audio feedback based on player performance.</p>
                     
-                    <p>A key technical challenge was ensuring the QTE timing felt fair while maintaining tension. After multiple playtests, I adjusted the timing windows and input buffering to create a <span class="highlight">sweet spot</span> between challenge and frustration.</p>
+                    <p>A key technical challenge was ensuring the QTE timing felt fair while maintaining tension. After multiple playtests, I adjusted the timing windows and input buffering to create a <span class="highlight-yellow">sweet spot</span> between challenge and frustration.</p>
                 </div>
             </div>
         </section>
