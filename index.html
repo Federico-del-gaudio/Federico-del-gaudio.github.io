@@ -104,6 +104,11 @@
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
         nav {
             display: flex;
             justify-content: space-between;
@@ -1850,24 +1855,67 @@
         <div class="projects-grid-container">
             <!-- Griglia principale -->
             <div class="projects-grid" id="mainProjectsGrid">
-                <!-- Card 1: Still Hear - LATEST PROJECT -->
+               
+                <!-- Card: Project-F (WIP) -->
                 <div class="project-card" data-locked="true" style="cursor: default;">
-                    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH & COMBAT DESIGN</div>
-                    <div class="latest-badge"><i class="fas fa-clock" style="margin-right: 4px;"></i> LATEST</div>
+                    <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
+                    <div class="latest-badge" style="background: var(--gold); color: #1a1a1a; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);">
+                        <i class="fas fa-hammer" style="margin-right: 4px;"></i> WORK IN PROGRESS
+                    </div>
                     <div class="card-video-container">
-                        <video class="card-video" autoplay muted loop playsinline poster="Photos/CoverArt4.png">
-                            <source src="Videos/stillhear-bg.mp4" type="video/mp4">
-                            Il tuo browser non supporta i video HTML5.
-                        </video>
+                        <div class="card-video" style="background: linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 50%, #0a0a0a 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; filter: none;">
+                            <div style="position: relative; text-align: center; padding: 20px;">
+                                <div style="font-size: 5rem; margin-bottom: 15px; opacity: 0.8; animation: pulse-glow 2s ease-in-out infinite;">⚡</div>
+                                <div style="font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; color: var(--gold); text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);">
+                                    PROJECT-F
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--gray-medium); margin-top: 8px; letter-spacing: 2px; text-transform: uppercase;">
+                                    <i class="fas fa-code"></i> In Development
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-play-overlay" style="opacity: 0 !important; pointer-events: none;"></div>
                     </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <span class="card-category">Puzzle Stealth <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span>
+                            <span class="card-category">BOOMER SHOOTER ROGUE <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span>
+                        </div>
+                        <h3 class="card-title">PROJECT-F</h3>
+                        <div class="card-year">COMMERCIAL PROJECT • 2026</div>
+                        <p class="card-description">A fast-paced boomer shooter rogue-lite with stylish mechanics and fluid combat.</p>
+                        <div class="card-tasks">
+                            <div class="card-tasks-title">CURRENT WORK</div>
+                            <ul class="card-tasks-list">
+                                <li>Weapon system with modular attachments</li>
+                                <li>Roguelike card system for run customization</li>
+                                <li>Enemy spawner system with wave management</li>
+                                <li>Sound design & audio feedback</li>
+                            </ul>
+                        </div>
+                        <button class="card-button" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(255,215,0,0.1); border-color: var(--gold); color: var(--gold);">
+                            <i class="fas fa-hammer"></i> WORK IN PROGRESS
+                        </button>
+                    </div>
+                </div>
+               
+                <!-- Card 1: Still Hear -->
+                <div class="project-card" data-project-url="Still Hear.html" data-video-src="Videos/StillHearTrailerPortfolio.mp4" data-video-title="Still Hear">
+                    <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
+                    <div class="latest-badge"><i class="fas fa-clock" style="margin-right: 4px;"></i> LATEST</div>
+                    <div class="card-video-container">
+                        <video class="card-video" autoplay muted loop playsinline poster="Photos/CoverArt4.png">
+                            <source src="Videos/StillHearTrailerPortfolio.mp4" type="video/mp4">
+                            Il tuo browser non supporta i video HTML5.
+                        </video>
+                        <div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="card-category">PUZZLE STEALTH <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span>
                         </div>
                         <h3 class="card-title">STILL HEAR</h3>
                         <div class="card-year">TEAM PROJECT • 16 PEOPLE • 2026</div>
-                        <p class="card-description">A puzzle stealth story driven game.</p>
+                        <p class="card-description">A puzzle stealth story driven game where sound is your only tool and your greatest threat.</p>
                         <div class="card-tasks">
                             <div class="card-tasks-title">KEY CONTRIBUTIONS</div>
                             <ul class="card-tasks-list">
@@ -1877,7 +1925,7 @@
                                 <li>Environmental, sound & player/enemy feedback</li>
                             </ul>
                         </div>
-                        <button class="card-button" disabled><i class="fas fa-lock"></i> WORK IN PROGRESS</button>
+                        <a href="Still Hear.html" class="card-button">VIEW PROJECT</a>
                     </div>
                 </div>
 
@@ -1930,7 +1978,7 @@
                 </div>
             </div>
 
-            <!-- SEZIONE PROGETTI NASCOSTI -->
+            <!-- SEZIONE PROGETTI NASCOSTI - 3 per riga -->
             <div class="hidden-projects-wrapper" id="hiddenProjectsWrapper">
                 <div class="hidden-projects-grid" id="hiddenProjectsGrid">
                     
@@ -2083,86 +2131,87 @@
                 });
             });
             
-            // ===== TOGGLE PROGETTI NASCOSTI CON TRASFORMAZIONE =====
-            const toggleBtn = document.getElementById('toggleHiddenProjects');
-            const hiddenWrapper = document.getElementById('hiddenProjectsWrapper');
-            const hiddenCards = document.querySelectorAll('.hidden-project-card');
-            const closeBtnWrapper = document.getElementById('closeBtnWrapper');
-            const closeBtn = document.getElementById('closeHiddenProjects');
-            const moreCard = document.getElementById('moreProjectsCard');
-            const moreCardContent = document.getElementById('moreCardContent');
-            let isOpen = false;
+       // ===== TOGGLE PROGETTI NASCOSTI CON SCROLL AUTOMATICO =====
+const toggleBtn = document.getElementById('toggleHiddenProjects');
+const hiddenWrapper = document.getElementById('hiddenProjectsWrapper');
+const hiddenCards = document.querySelectorAll('.hidden-project-card');
+const closeBtnWrapper = document.getElementById('closeBtnWrapper');
+const closeBtn = document.getElementById('closeHiddenProjects');
+const moreCard = document.getElementById('moreProjectsCard');
+const moreCardContent = document.getElementById('moreCardContent');
+const projectsGridSection = document.getElementById('projects-grid');
+let isOpen = false;
 
-            // Salva il contenuto originale della card MORE PROJECTS
-            const originalContent = moreCardContent.innerHTML;
+// Salva il contenuto originale della card MORE PROJECTS
+const originalContent = moreCardContent.innerHTML;
 
-            if (toggleBtn && hiddenWrapper) {
-                toggleBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    isOpen = !isOpen;
-                    
-                    if (isOpen) {
-                        // APERTURA: la card MORE PROJECTS si trasforma
-                        moreCard.style.borderColor = 'rgba(255, 215, 0, 0.1)';
-                        moreCardContent.innerHTML = `
-                            <div style="text-align: center; padding: 20px 0; opacity: 0.6;">
-                                <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--gold);"></i>
-                                <p style="margin-top: 15px; color: var(--gray-medium); font-size: 0.9rem;">Loading more projects...</p>
-                            </div>
-                        `;
-                        
-                        // Piccolo delay prima di mostrare le card
-                        setTimeout(() => {
-                            // Nascondi la card MORE PROJECTS
-                            moreCard.style.display = 'none';
-                            
-                            // Mostra le card nascoste
-                            hiddenWrapper.classList.add('open');
-                            
-                            hiddenCards.forEach((card, index) => {
-                                setTimeout(() => {
-                                    card.classList.add('visible');
-                                }, 100 + (index * 80));
-                            });
-                            
-                            // Mostra il pulsante CLOSE
-                            setTimeout(() => {
-                                closeBtnWrapper.classList.add('visible');
-                            }, 500);
-                            
-                        }, 400);
-                        
-                    } else {
-                        // CHIUSURA
-                        closeBtnWrapper.classList.remove('visible');
-                        
-                        hiddenCards.forEach(card => {
-                            card.classList.remove('visible');
-                        });
-                        
-                        setTimeout(() => {
-                            hiddenWrapper.classList.remove('open');
-                            // Ripristina la card MORE PROJECTS
-                            moreCard.style.display = 'flex';
-                            moreCard.style.borderColor = 'rgba(255, 215, 0, 0.3)';
-                            moreCardContent.innerHTML = originalContent;
-                            
-                            // Ricollega l'evento al nuovo bottone
-                            const newToggleBtn = document.getElementById('toggleHiddenProjects');
-                            if (newToggleBtn) {
-                                newToggleBtn.addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    toggleBtn.click();
-                                });
-                            }
-                        }, 400);
-                    }
+if (toggleBtn && hiddenWrapper) {
+    toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+            // APERTURA
+            moreCard.style.borderColor = 'rgba(255, 215, 0, 0.1)';
+            moreCardContent.innerHTML = `
+                <div style="text-align: center; padding: 20px 0; opacity: 0.6;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--gold);"></i>
+                    <p style="margin-top: 15px; color: var(--gray-medium); font-size: 0.9rem;">Loading more projects...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                moreCard.style.display = 'none';
+                hiddenWrapper.classList.add('open');
+                
+                hiddenCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 100 + (index * 80));
                 });
-            }
-
+                
+                setTimeout(() => {
+                    closeBtnWrapper.classList.add('visible');
+                }, 500);
+                
+               // ALTERNATIVA: scroll con offset fisso
+setTimeout(() => {
+    const currentPosition = window.pageYOffset;
+    window.scrollTo({
+        top: currentPosition + 650, // Scende di 500px dalla posizione attuale
+        behavior: 'smooth'
+    });
+}, 700);
+            }, 400);
+            
+        } else {
+            // CHIUSURA
+            closeBtnWrapper.classList.remove('visible');
+            
+            hiddenCards.forEach(card => {
+                card.classList.remove('visible');
+            });
+            
+            setTimeout(() => {
+                hiddenWrapper.classList.remove('open');
+                moreCard.style.display = 'flex';
+                moreCard.style.borderColor = 'rgba(255, 215, 0, 0.3)';
+                moreCardContent.innerHTML = originalContent;
+                
+                const newToggleBtn = document.getElementById('toggleHiddenProjects');
+                if (newToggleBtn) {
+                    newToggleBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleBtn.click();
+                    });
+                }
+            }, 400);
+        }
+    });
+}
             // Pulsante CLOSE
             if (closeBtn) {
                 closeBtn.addEventListener('click', function(e) {
