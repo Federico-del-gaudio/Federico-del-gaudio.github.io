@@ -924,7 +924,7 @@
             border: 1px solid var(--border-color);
         }
         
-        /* Contributions Section */
+        /* Contributions Section - SPOSTATO IN CIMA */
         .contributions-section {
             background: var(--card-bg);
             border-radius: 15px;
@@ -1553,62 +1553,49 @@
             </section>
         </div>
         
-        <!-- Gallery Section - Game Screenshots -->
-        <section class="gallery-section">
-            <h2 class="section-title">Game Screenshots</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-index="1">
-                    <img src="Photos/OneNightInVenicePhoto1.png" alt="One Night in Venice Gameplay 1 - Combat against screaming masks">
+        <!-- ===== CONTRIBUTIONS SECTION - SPOSTATO IN CIMA ===== -->
+        <section class="contributions-section">
+            <h2 class="section-title">What I did & Learn</h2>
+            <div class="contributions-grid">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-gun"></i>
+                    </div>
+                    <h3 class="contribution-title">Shooting System</h3>
+                    <p class="contribution-description">Implemented a responsive shooting mechanic with hold-to-fire functionality, projectile management, and visual feedback for combat intensity.</p>
                 </div>
-                <div class="gallery-item" data-index="2">
-                    <img src="Photos/OneNightInVenicePhoto2.png" alt="One Night in Venice Gameplay 2 - Flooded carnival environment">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-people-arrows"></i>
+                    </div>
+                    <h3 class="contribution-title">Enemy Progressive Spawner</h3>
+                    <p class="contribution-description">Developed a dynamic enemy spawn system that scales difficulty over time, creating increasingly challenging waves of ruthless enemies.</p>
                 </div>
-                <div class="gallery-item" data-index="3">
-                    <img src="Photos/OneNightInVenicePhoto3.png" alt="One Night in Venice Gameplay 3 - Intense bullet hell action">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="contribution-title">Parry Mechanic</h3>
+                    <p class="contribution-description">Created a timing-based parry system that rewards precise player input with defensive capabilities and counter-attack opportunities.</p>
                 </div>
-                <div class="gallery-item" data-index="4">
-                    <img src="Photos/OneNightInVenicePhoto4.png" alt="One Night in Venice Gameplay 4 - Enemy encounter">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+                    <h3 class="contribution-title">Sound Design & Audio</h3>
+                    <p class="contribution-description">Integrated dynamic breakcore soundtrack that intensifies with player aggression, creating an immersive audio experience that fuels the nightmare.</p>
                 </div>
-                <div class="gallery-item" data-index="5">
-                    <img src="Photos/OneNightInVenicePhoto5.png" alt="One Night in Venice Gameplay 5 - Parry mechanic">
-                </div>
-                <div class="gallery-item" data-index="6">
-                    <img src="Photos/OneNightInVenicePhoto.png" alt="One Night in Venice Gameplay 6 - Main menu">
+                <div class="contribution-card">
+                    <div class="contribution-icon">
+                        <i class="fa-solid fa-paint-brush"></i>
+                    </div>
+                    <h3 class="contribution-title">Game Shaders</h3>
+                    <p class="contribution-description">Developed custom PS1-style visual shaders to achieve the distinctive retro aesthetic, enhancing the carnival of screaming masks atmosphere.</p>
                 </div>
             </div>
         </section>
-
-        <!-- BEFORE/AFTER COMPARATOR SECTION -->
-        <section class="comparator-section">
-            <h2 class="section-title">PS1-Style Visual Evolution</h2>
-            <div class="comparator-container">
-                <div class="comparator-wrapper">
-                    <div class="comparator-image before-image">
-                        <img src="Photos/ComparisonOneNightInVenice.png" alt="Before - Without PS1 shaders">
-                        <div class="image-label before-label">Without Shaders</div>
-                    </div>
-                    <div class="comparator-image after-image">
-                        <img src="Photos/fotoNightinVeniceComparison.png" alt="After - With PS1 shaders">
-                        <div class="image-label after-label">With PS1 Shaders</div>
-                    </div>
-                    <div class="comparator-divider" id="comparatorDivider">
-                        <div class="divider-handle">
-                            <i class="fas fa-arrows-left-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="comparator-caption">
-                    <i class="fas fa-arrows-alt-h"></i> Drag the slider left/right to see the PS1-style shader effect in action. 
-                    Click and drag the line or handle to compare the retro visual transformation.
-                </p>
-            </div>
-        </section>
-
-     
-        
-        <!-- Contributions Section -->
-     
-        <section class="insights-section">
+           <!-- Insights Section 1 - Enemy -->
+           <section class="insights-section">
             <h2 class="section-title">Implementation Insights - Enemy</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
@@ -1637,7 +1624,7 @@
             </div>
         </section>
         
-        <!-- Second Implementation Insights Section -->
+        <!-- Insights Section 2 - Power Ups -->
         <section class="insights-section">
             <h2 class="section-title">Implementation Insights - Power ups</h2>
             <div class="insights-grid">
@@ -1667,7 +1654,7 @@
             </div>
         </section>
         
-        <!-- Third Implementation Insights Section -->
+        <!-- Insights Section 3 - Enemy Feedback -->
         <section class="insights-section">
             <h2 class="section-title">Implementation Insights - Enemy feedbacks</h2>
             <div class="insights-grid">
@@ -1696,7 +1683,32 @@
             </div>
         </section>
         
-        <!-- Design Details Section -->
+        <!-- Gallery Section - Game Screenshots -->
+        <section class="gallery-section">
+            <h2 class="section-title">Game Screenshots</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="1">
+                    <img src="Photos/OneNightInVenicePhoto1.png" alt="One Night in Venice Gameplay 1 - Combat against screaming masks">
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="Photos/OneNightInVenicePhoto2.png" alt="One Night in Venice Gameplay 2 - Flooded carnival environment">
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="Photos/OneNightInVenicePhoto3.png" alt="One Night in Venice Gameplay 3 - Intense bullet hell action">
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="Photos/OneNightInVenicePhoto4.png" alt="One Night in Venice Gameplay 4 - Enemy encounter">
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="Photos/OneNightInVenicePhoto5.png" alt="One Night in Venice Gameplay 5 - Parry mechanic">
+                </div>
+                <div class="gallery-item" data-index="6">
+                    <img src="Photos/OneNightInVenicePhoto.png" alt="One Night in Venice Gameplay 6 - Main menu">
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Details Section - Technical Breakdown SPOSTATO PRIMA DEL COMPARATOR -->
         <section id="design-details" class="design-section">
             <h2 class="section-title">Technical Breakdown</h2>
             <div class="design-grid">
@@ -1758,47 +1770,34 @@
                 </div>
             </div>
         </section>
-         <!-- Contributions Section -->
-         <section class="contributions-section">
-            <h2 class="section-title">What I did & Learn</h2>
-            <div class="contributions-grid">
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-gun"></i>
+
+        <!-- BEFORE/AFTER COMPARATOR SECTION - SPOSTATO SOTTO TECHNICAL BREAKDOWN -->
+        <section class="comparator-section">
+            <h2 class="section-title">PS1-Style Visual Evolution</h2>
+            <div class="comparator-container">
+                <div class="comparator-wrapper">
+                    <div class="comparator-image before-image">
+                        <img src="Photos/ComparisonOneNightInVenice.png" alt="Before - Without PS1 shaders">
+                        <div class="image-label before-label">Without Shaders</div>
                     </div>
-                    <h3 class="contribution-title">Shooting System</h3>
-                    <p class="contribution-description">Implemented a responsive shooting mechanic with hold-to-fire functionality, projectile management, and visual feedback for combat intensity.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-people-arrows"></i>
+                    <div class="comparator-image after-image">
+                        <img src="Photos/fotoNightinVeniceComparison.png" alt="After - With PS1 shaders">
+                        <div class="image-label after-label">With PS1 Shaders</div>
                     </div>
-                    <h3 class="contribution-title">Enemy Progressive Spawner</h3>
-                    <p class="contribution-description">Developed a dynamic enemy spawn system that scales difficulty over time, creating increasingly challenging waves of ruthless enemies.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-shield"></i>
+                    <div class="comparator-divider" id="comparatorDivider">
+                        <div class="divider-handle">
+                            <i class="fas fa-arrows-left-right"></i>
+                        </div>
                     </div>
-                    <h3 class="contribution-title">Parry Mechanic</h3>
-                    <p class="contribution-description">Created a timing-based parry system that rewards precise player input with defensive capabilities and counter-attack opportunities.</p>
                 </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-headphones"></i>
-                    </div>
-                    <h3 class="contribution-title">Sound Design & Audio</h3>
-                    <p class="contribution-description">Integrated dynamic breakcore soundtrack that intensifies with player aggression, creating an immersive audio experience that fuels the nightmare.</p>
-                </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-paint-brush"></i>
-                    </div>
-                    <h3 class="contribution-title">Game Shaders</h3>
-                    <p class="contribution-description">Developed custom PS1-style visual shaders to achieve the distinctive retro aesthetic, enhancing the carnival of screaming masks atmosphere.</p>
-                </div>
+                <p class="comparator-caption">
+                    <i class="fas fa-arrows-alt-h"></i> Drag the slider left/right to see the PS1-style shader effect in action. 
+                    Click and drag the line or handle to compare the retro visual transformation.
+                </p>
             </div>
         </section>
+        
+     
         <div class="platform-buttons">
             <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" rel="noopener noreferrer" class="platform-button itch">
                 <i class="fa-brands fa-itch-io"></i> 🎮 Download on Itch.io
