@@ -1256,7 +1256,7 @@
         }
         
         .card-tasks {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .card-tasks-title {
@@ -1289,6 +1289,13 @@
             font-size: 0.8rem;
         }
         
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
         .card-button {
             display: inline-block;
             padding: 10px 20px;
@@ -1305,7 +1312,6 @@
             overflow: hidden;
             z-index: 1;
             text-align: center;
-            margin-top: auto;
             cursor: pointer;
             pointer-events: auto;
         }
@@ -1342,6 +1348,34 @@
         
         .card-button:disabled:hover::before {
             left: -100%;
+        }
+        
+        .card-button-play {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .card-button-play::before {
+            background: var(--gold);
+        }
+        
+        .card-button-play:hover {
+            color: var(--dark);
+        }
+        
+        .card-button-contact {
+            border-color: var(--red-accent);
+            color: var(--red-accent);
+            background: rgba(255, 77, 77, 0.05);
+        }
+        
+        .card-button-contact::before {
+            background: var(--red-accent);
+        }
+        
+        .card-button-contact:hover {
+            color: var(--dark);
         }
         
         .more-projects-card {
@@ -1835,7 +1869,7 @@
                     <div class="skill-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"><div class="skill-card-header"><i class="fas fa-pencil-ruler"></i><h3>DESIGN</h3></div><div class="skill-items"><span class="skill-tag"><i class="fas fa-crosshairs"></i> Combat Design</span><span class="skill-tag"><i class="fas fa-robot"></i> AI Behavior</span><span class="skill-tag"><i class="fas fa-cogs"></i> Technical Design</span><span class="skill-tag"><i class="fas fa-gamepad"></i> Gameplay Mechanics</span><span class="skill-tag"><i class="fas fa-balance-scale"></i> Balancing</span><span class="skill-tag"><i class="fas fa-file-alt"></i> Documentation</span><span class="skill-tag"><i class="fas fa-users"></i> UX Design</span><span class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Pitching</span><span class="skill-tag"><i class="fas fa-flask"></i> Prototyping</span></div></div>
                 </div>
                 <div class="stats-showcase" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="stat-block"><div class="stat-number"><div class="projects-stats"><div class="project-stat-item"><i class="fab fa-unity"></i><span>3</span></div><div class="project-stat-item"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"><span>7</span></div></div></div><div class="stat-label">PROJECTS</div></div>
+                    <div class="stat-block"><div class="stat-number"><div class="projects-stats"><div class="project-stat-item"><i class="fab fa-unity"></i><span>3</span></div><div class="project-stat-item"><img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"><span>8</span></div></div></div><div class="stat-label">PROJECTS</div></div>
                     <div class="stat-block"><div class="stat-number">2</div><div class="stat-label">ENGINES</div></div>
                     <div class="stat-block"><div class="stat-number"><i class="fas fa-users"></i> 4</div><div class="stat-label">TEAM PROJECTS</div></div>
                 </div>
@@ -1892,9 +1926,11 @@
                                 <li>Sound design & audio feedback</li>
                             </ul>
                         </div>
-                        <button class="card-button" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(255,215,0,0.1); border-color: var(--gold); color: var(--gold);">
-                            <i class="fas fa-hammer"></i> WORK IN PROGRESS
-                        </button>
+                        <div class="card-buttons">
+                            <button class="card-button" disabled style="opacity: 0.6; cursor: not-allowed; background: rgba(255,215,0,0.1); border-color: var(--gold); color: var(--gold);">
+                                <i class="fas fa-hammer"></i> WORK IN PROGRESS
+                            </button>
+                        </div>
                     </div>
                 </div>
                
@@ -1925,7 +1961,12 @@
                                 <li>Environmental, sound & player/enemy feedback</li>
                             </ul>
                         </div>
-                        <a href="Still-Hear.html" class="card-button">VIEW PROJECT</a>
+                        <div class="card-buttons">
+                            <a href="Still-Hear.html" class="card-button">VIEW PROJECT</a>
+                            <a href="contact.html" class="card-button card-button-contact">
+                                <i class="fas fa-envelope"></i> CONTACT ME TO PLAY THE BUILD
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -1933,35 +1974,89 @@
                 <div class="project-card" data-project-url="OneNightInVenice.html" data-video-src="Videos/One Night in Venice Trailer for GGJ2026.mp4" data-video-title="One Night in Venice">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/One Night in Venice Trailer for GGJ2026.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">FPS BULLET HELL <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">ONE NIGHT IN VENICE</h3><div class="card-year">GLOBAL GAME JAM • 2026</div><p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Shooting system</li><li>Enemy progressive spawner</li><li>Parry mechanic</li><li>Sound design</li><li>Power ups</li></ul></div><a href="OneNightInVenice.html" class="card-button">VIEW PROJECT</a></div>
+                    <div class="card-content">
+                        <div class="card-header"><span class="card-category">FPS BULLET HELL <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                        <h3 class="card-title">ONE NIGHT IN VENICE</h3>
+                        <div class="card-year">GLOBAL GAME JAM • 2026</div>
+                        <p class="card-description">A relentless PS1-style bullet hell set in a flooded carnival of screaming masks.</p>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Shooting system</li><li>Enemy progressive spawner</li><li>Parry mechanic</li><li>Sound design</li><li>Power ups</li></ul></div>
+                        <div class="card-buttons">
+                            <a href="OneNightInVenice.html" class="card-button">VIEW PROJECT</a>
+                            <a href="https://emy37.itch.io/one-night-in-venice" target="_blank" rel="noopener noreferrer" class="card-button card-button-play">
+                                <i class="fas fa-play"></i> PLAY THE BUILD
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Card 3: The Last Coin -->
                 <div class="project-card" data-project-url="TheLastCoin.html" data-video-src="Videos/TheLastCoinTrailerSite.mp4" data-video-title="The Last Coin">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TheLastCoinTrailerSite.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">HORROR GAME<img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE LAST COIN</h3><div class="card-year">TEAM PROJECT • 2025</div><p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p><div class="card-tasks"><div class="card-tasks-title">Key Contributions</div><ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul></div><a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a></div>
+                    <div class="card-content">
+                        <div class="card-header"><span class="card-category">HORROR GAME<img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                        <h3 class="card-title">THE LAST COIN</h3>
+                        <div class="card-year">TEAM PROJECT • 2025</div>
+                        <p class="card-description">Trapped in a dark gambling nightmare where you have to face your addiction.</p>
+                        <div class="card-tasks"><div class="card-tasks-title">Key Contributions</div><ul class="card-tasks-list"><li>Technical design & systems</li><li>Character Setup</li><li>Puzzle implementation</li><li>UI implementation</li><li>Team coordination</li></ul></div>
+                        <div class="card-buttons">
+                            <a href="TheLastCoin.html" class="card-button">MY CONTRIBUTIONS</a>
+                            <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" class="card-button card-button-play" target="_blank" rel="noopener noreferrer" >
+                                <i class="fas fa-play"></i> PLAY THE BUILD
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Card 4: Pummel -->
                 <div class="project-card" data-project-url="Pummel.html" data-video-src="Videos/VideoPummel.mp4" data-video-title="Pummel">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT & TECH</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/VideoPummel.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">2D ACTION <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PUMMEL</h3><div class="card-year">PROTOTYPE 2024</div><p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>PaperZD integration</li><li>Combo system</li><li>Enemy AI</li><li>2D animation</li><li>Damage system</li></ul></div><a href="Pummel.html" class="card-button">VIEW PROJECT</a></div>
+                    <div class="card-content">
+                        <div class="card-header"><span class="card-category">2D ACTION <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                        <h3 class="card-title">PUMMEL</h3>
+                        <div class="card-year">PROTOTYPE 2024</div>
+                        <p class="card-description">PaperZD plugin exploration with flipbook animations and dynamic combat systems.</p>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>PaperZD integration</li><li>Combo system</li><li>Enemy AI</li><li>2D animation</li><li>Damage system</li></ul></div>
+                        <div class="card-buttons">
+                            <a href="Pummel.html" class="card-button">VIEW PROJECT</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Card 5: Project A -->
                 <div class="project-card" data-project-url="Project A.html" data-video-src="Videos/ProgWIP.mp4" data-video-title="Project A">
                     <div class="project-type-tag type-combat"><i class="fas fa-crosshairs" style="margin-right: 5px;"></i> COMBAT DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/project-a-bg.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">COMBAT DESIGN <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">PROJECT A</h3><div class="card-year">PROTOTYPE 2023</div><p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Souls-like combat</li><li>Root motion</li><li>Enemy AI</li><li>Boss phases</li><li>Niagara effects</li></ul></div><a href="Project A.html" class="card-button">VIEW PROJECT</a></div>
+                    <div class="card-content">
+                        <div class="card-header"><span class="card-category">COMBAT DESIGN <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                        <h3 class="card-title">PROJECT A</h3>
+                        <div class="card-year">PROTOTYPE 2023</div>
+                        <p class="card-description">Souls-like combat design with complex animation systems and enemy AI.</p>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>Souls-like combat</li><li>Root motion</li><li>Enemy AI</li><li>Boss phases</li><li>Niagara effects</li></ul></div>
+                        <div class="card-buttons">
+                            <a href="Project A.html" class="card-button">VIEW PROJECT</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Card 6: The Sun Vanished -->
                 <div class="project-card" data-project-url="TheSunVanished.html" data-video-src="Videos/TrailerVanished .mp4" data-video-title="The Sun Vanished">
                     <div class="project-type-tag type-tech"><i class="fas fa-cogs" style="margin-right: 5px;"></i> TECH DESIGN</div>
                     <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TrailerVanished .mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                    <div class="card-content"><div class="card-header"><span class="card-category">HORROR PROTOTYPE <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">THE SUN VANISHED</h3><div class="card-year">PROTOTYPE 2025</div><p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p><div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>LiDAR scanning</li><li>Sound-based AI</li><li>Atmospheric horror</li><li>Navigation</li></ul></div><a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a></div>
+                    <div class="card-content">
+                        <div class="card-header"><span class="card-category">HORROR PROTOTYPE <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                        <h3 class="card-title">THE SUN VANISHED</h3>
+                        <div class="card-year">PROTOTYPE 2025</div>
+                        <p class="card-description">Navigation through LiDAR scanning while avoiding creatures with formidable hearing.</p>
+                        <div class="card-tasks"><div class="card-tasks-title">OVERVIEW</div><ul class="card-tasks-list"><li>LiDAR scanning</li><li>Sound-based AI</li><li>Atmospheric horror</li><li>Navigation</li></ul></div>
+                        <div class="card-buttons">
+                            <a href="TheSunVanished.html" class="card-button">VIEW PROJECT</a>
+                            <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" class="card-button card-button-play"  target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-play"></i> PLAY THE BUILD
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card 7: MORE PROJECTS (si trasforma) -->
@@ -1986,28 +2081,76 @@
                     <div class="project-card hidden-project-card" data-project-url="Patchmeifyoucan.html" data-video-src="Videos/TrailerPMIC.mp4" data-video-title="Patch Me If You Can">
                         <div class="project-type-tag type-game"><i class="fas fa-pencil-ruler" style="margin-right: 5px;"></i> LEAD GAME DESIGNER</div>
                         <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/TrailerPMIC.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                        <div class="card-content"><div class="card-header"><span class="card-category">FPS GAME <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div><h3 class="card-title">PATCH ME IF YOU CAN</h3><div class="card-year">TEAM PROJECT • 2025</div><p class="card-description">A fast-paced FPS where players use a magical needle-shooting rifle to purify possessed dolls.</p><div class="card-tasks"><div class="card-tasks-title">KEY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Game and combat system design</li><li>Enemy AI design</li><li>Shooting mechanics design</li><li>Team work</li></ul></div><a href="Patchmeifyoucan.html" class="card-button">MY CONTRIBUTIONS</a></div>
+                        <div class="card-content">
+                            <div class="card-header"><span class="card-category">FPS GAME <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div>
+                            <h3 class="card-title">PATCH ME IF YOU CAN</h3>
+                            <div class="card-year">TEAM PROJECT • 2025</div>
+                            <p class="card-description">A fast-paced FPS where players use a magical needle-shooting rifle to purify possessed dolls.</p>
+                            <div class="card-tasks"><div class="card-tasks-title">KEY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Game and combat system design</li><li>Enemy AI design</li><li>Shooting mechanics design</li><li>Team work</li></ul></div>
+                            <div class="card-buttons">
+                                <a href="Patchmeifyoucan.html" class="card-button">MY CONTRIBUTIONS</a>
+                                <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" class="card-button card-button-play"  target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-play"></i> PLAY THE BUILD
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Card H2: Ragnaraft -->
                     <div class="project-card hidden-project-card" data-project-url="Ragnaraft.html" data-video-src="Videos/VideoRagnaraft.mp4" data-video-title="Ragnaraft">
                         <div class="project-type-tag type-level"><i class="fas fa-map" style="margin-right: 5px;"></i> LEVEL DESIGN</div>
                         <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/VideoRagnaraft.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                        <div class="card-content"><div class="card-header"><span class="card-category">PUZZLE GAME <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div><h3 class="card-title">RAGNARAFT</h3><div class="card-year">TEAM PROJECT • 2024</div><p class="card-description">A humorous story-driven game about two Viking friends navigating a river full of obstacles.</p><div class="card-tasks"><div class="card-tasks-title">KEY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Level design</li><li>Character interaction systems</li><li>Story-driven gameplay implementation</li><li>Mobile optimization</li></ul></div><a href="Ragnaraft.html" class="card-button">MY CONTRIBUTIONS</a></div>
+                        <div class="card-content">
+                            <div class="card-header"><span class="card-category">PUZZLE GAME <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div>
+                            <h3 class="card-title">RAGNARAFT</h3>
+                            <div class="card-year">TEAM PROJECT • 2024</div>
+                            <p class="card-description">A humorous story-driven game about two Viking friends navigating a river full of obstacles.</p>
+                            <div class="card-tasks"><div class="card-tasks-title">KEY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Level design</li><li>Character interaction systems</li><li>Story-driven gameplay implementation</li><li>Mobile optimization</li></ul></div>
+                            <div class="card-buttons">
+                                <a href="Ragnaraft.html" class="card-button">MY CONTRIBUTIONS</a>
+                                <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" class="card-button card-button-play" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-play"></i> PLAY THE BUILD
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Card H3: Tears of Ash -->
                     <div class="project-card hidden-project-card" data-project-url="TearsOfAsh.html" data-video-src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" data-video-title="Tears of Ash">
                         <div class="project-type-tag type-level"><i class="fas fa-map" style="margin-right: 5px;"></i> LEVEL DESIGN</div>
                         <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/Tears of Ash (Scream Jam 24 entry) - TRAILER - ETP Studios (1080p, h264).mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                        <div class="card-content"><div class="card-header"><span class="card-category">HORROR GAME <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div><h3 class="card-title">TEARS OF ASH</h3><div class="card-year">SCREAM JAM • 2024</div><p class="card-description">A chilling horror experience inspired by P.T., where memories and guilt blend into a nightmare.</p><div class="card-tasks"><div class="card-tasks-title">MY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Level design</li><li>Environmental storytelling</li><li>Atmosphere & lighting</li><li>Team coordination</li></ul></div><a href="TearsOfAsh.html" class="card-button">VIEW PROJECT</a></div>
+                        <div class="card-content">
+                            <div class="card-header"><span class="card-category">HORROR GAME <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="UE" class="card-engine-logo"></span></div>
+                            <h3 class="card-title">TEARS OF ASH</h3>
+                            <div class="card-year">SCREAM JAM • 2024</div>
+                            <p class="card-description">A chilling horror experience inspired by P.T., where memories and guilt blend into a nightmare.</p>
+                            <div class="card-tasks"><div class="card-tasks-title">MY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Level design</li><li>Environmental storytelling</li><li>Atmosphere & lighting</li><li>Team coordination</li></ul></div>
+                            <div class="card-buttons">
+                                <a href="TearsOfAsh.html" class="card-button">VIEW PROJECT</a>
+                                <a href="https://brrbrr9.itch.io/tearsofash" class="card-button card-button-play" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-play"></i> PLAY THE BUILD
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Card H4: The Bubble -->
                     <div class="project-card hidden-project-card" data-project-url="Thebubble.html" data-video-src="Videos/BubbleTrailer.mp4" data-video-title="The Bubble">
                         <div class="project-type-tag type-ui"><i class="fas fa-mouse-pointer" style="margin-right: 5px;"></i> UI/UX & LEVEL</div>
                         <div class="card-video-container"><video class="card-video" autoplay muted loop playsinline><source src="Videos/BubbleTrailer.mp4" type="video/mp4"></video><div class="card-play-overlay"><div class="card-play-button"><i class="fas fa-play"></i></div></div></div>
-                        <div class="card-content"><div class="card-header"><span class="card-category">SCI-FI HORROR <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div><h3 class="card-title">THE BUBBLE</h3><div class="card-year">GLOBAL GAME JAM • 2024</div><p class="card-description">A sci-fi horror experience aboard a spaceship trapped by an alien force field.</p><div class="card-tasks"><div class="card-tasks-title">MY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Environmental storytelling</li><li>Atmospheric lighting</li><li>Survival mechanics</li><li>Puzzle design</li></ul></div><a href="Thebubble.html" class="card-button">VIEW PROJECT</a></div>
+                        <div class="card-content">
+                            <div class="card-header"><span class="card-category">SCI-FI HORROR <img src="https://cdn.simpleicons.org/unity/ffffff" alt="Unity" class="card-engine-logo"></span></div>
+                            <h3 class="card-title">THE BUBBLE</h3>
+                            <div class="card-year">GLOBAL GAME JAM • 2024</div>
+                            <p class="card-description">A sci-fi horror experience aboard a spaceship trapped by an alien force field.</p>
+                            <div class="card-tasks"><div class="card-tasks-title">MY CONTRIBUTIONS</div><ul class="card-tasks-list"><li>Environmental storytelling</li><li>Atmospheric lighting</li><li>Survival mechanics</li><li>Puzzle design</li></ul></div>
+                            <div class="card-buttons">
+                                <a href="Thebubble.html" class="card-button">VIEW PROJECT</a>
+                                <a href="https://globalgamejam.org/games/2025/bubble-2-4" class="card-button card-button-play" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-play"></i> PLAY THE BUILD
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -2127,91 +2270,90 @@
                     if (e.target.closest('.card-button')) return;
                     if (e.target.closest('.card-play-button')) return;
                     const projectUrl = this.getAttribute('data-project-url');
-                    if (projectUrl) window.location.href = projectUrl;
+                    if (projectUrl && projectUrl !== '#') window.location.href = projectUrl;
                 });
             });
             
-       // ===== TOGGLE PROGETTI NASCOSTI CON SCROLL AUTOMATICO =====
-const toggleBtn = document.getElementById('toggleHiddenProjects');
-const hiddenWrapper = document.getElementById('hiddenProjectsWrapper');
-const hiddenCards = document.querySelectorAll('.hidden-project-card');
-const closeBtnWrapper = document.getElementById('closeBtnWrapper');
-const closeBtn = document.getElementById('closeHiddenProjects');
-const moreCard = document.getElementById('moreProjectsCard');
-const moreCardContent = document.getElementById('moreCardContent');
-const projectsGridSection = document.getElementById('projects-grid');
-let isOpen = false;
+            // ===== TOGGLE PROGETTI NASCOSTI CON SCROLL AUTOMATICO =====
+            const toggleBtn = document.getElementById('toggleHiddenProjects');
+            const hiddenWrapper = document.getElementById('hiddenProjectsWrapper');
+            const hiddenCards = document.querySelectorAll('.hidden-project-card');
+            const closeBtnWrapper = document.getElementById('closeBtnWrapper');
+            const closeBtn = document.getElementById('closeHiddenProjects');
+            const moreCard = document.getElementById('moreProjectsCard');
+            const moreCardContent = document.getElementById('moreCardContent');
+            let isOpen = false;
 
-// Salva il contenuto originale della card MORE PROJECTS
-const originalContent = moreCardContent.innerHTML;
+            // Salva il contenuto originale della card MORE PROJECTS
+            const originalContent = moreCardContent.innerHTML;
 
-if (toggleBtn && hiddenWrapper) {
-    toggleBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        isOpen = !isOpen;
-        
-        if (isOpen) {
-            // APERTURA
-            moreCard.style.borderColor = 'rgba(255, 215, 0, 0.1)';
-            moreCardContent.innerHTML = `
-                <div style="text-align: center; padding: 20px 0; opacity: 0.6;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--gold);"></i>
-                    <p style="margin-top: 15px; color: var(--gray-medium); font-size: 0.9rem;">Loading more projects...</p>
-                </div>
-            `;
-            
-            setTimeout(() => {
-                moreCard.style.display = 'none';
-                hiddenWrapper.classList.add('open');
-                
-                hiddenCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, 100 + (index * 80));
+            if (toggleBtn && hiddenWrapper) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        // APERTURA
+                        moreCard.style.borderColor = 'rgba(255, 215, 0, 0.1)';
+                        moreCardContent.innerHTML = `
+                            <div style="text-align: center; padding: 20px 0; opacity: 0.6;">
+                                <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--gold);"></i>
+                                <p style="margin-top: 15px; color: var(--gray-medium); font-size: 0.9rem;">Loading more projects...</p>
+                            </div>
+                        `;
+                        
+                        setTimeout(() => {
+                            moreCard.style.display = 'none';
+                            hiddenWrapper.classList.add('open');
+                            
+                            hiddenCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, 100 + (index * 80));
+                            });
+                            
+                            setTimeout(() => {
+                                closeBtnWrapper.classList.add('visible');
+                            }, 500);
+                            
+                            setTimeout(() => {
+                                const currentPosition = window.pageYOffset;
+                                window.scrollTo({
+                                    top: currentPosition + 650,
+                                    behavior: 'smooth'
+                                });
+                            }, 700);
+                        }, 400);
+                        
+                    } else {
+                        // CHIUSURA
+                        closeBtnWrapper.classList.remove('visible');
+                        
+                        hiddenCards.forEach(card => {
+                            card.classList.remove('visible');
+                        });
+                        
+                        setTimeout(() => {
+                            hiddenWrapper.classList.remove('open');
+                            moreCard.style.display = 'flex';
+                            moreCard.style.borderColor = 'rgba(255, 215, 0, 0.3)';
+                            moreCardContent.innerHTML = originalContent;
+                            
+                            const newToggleBtn = document.getElementById('toggleHiddenProjects');
+                            if (newToggleBtn) {
+                                newToggleBtn.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    toggleBtn.click();
+                                });
+                            }
+                        }, 400);
+                    }
                 });
-                
-                setTimeout(() => {
-                    closeBtnWrapper.classList.add('visible');
-                }, 500);
-                
-               // ALTERNATIVA: scroll con offset fisso
-setTimeout(() => {
-    const currentPosition = window.pageYOffset;
-    window.scrollTo({
-        top: currentPosition + 650, // Scende di 500px dalla posizione attuale
-        behavior: 'smooth'
-    });
-}, 700);
-            }, 400);
+            }
             
-        } else {
-            // CHIUSURA
-            closeBtnWrapper.classList.remove('visible');
-            
-            hiddenCards.forEach(card => {
-                card.classList.remove('visible');
-            });
-            
-            setTimeout(() => {
-                hiddenWrapper.classList.remove('open');
-                moreCard.style.display = 'flex';
-                moreCard.style.borderColor = 'rgba(255, 215, 0, 0.3)';
-                moreCardContent.innerHTML = originalContent;
-                
-                const newToggleBtn = document.getElementById('toggleHiddenProjects');
-                if (newToggleBtn) {
-                    newToggleBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        toggleBtn.click();
-                    });
-                }
-            }, 400);
-        }
-    });
-}
             // Pulsante CLOSE
             if (closeBtn) {
                 closeBtn.addEventListener('click', function(e) {

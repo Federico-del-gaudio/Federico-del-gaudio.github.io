@@ -33,6 +33,7 @@
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             --combat-tag: #ff6b6b;
             --highlight-yellow: #ffd700;
+            --gold: #ffd700;
         }
         
         body {
@@ -1074,43 +1075,42 @@
     </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="index.html#About">ABOUT</a>
+            <div class="dropdown">
+                <a href="SoloProjects.html" class="dropdown-trigger active">
+                    PROJECTS <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
+                    <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY PROJECTS</a>
+                </div>
+            </div>
+            <a href="contact.html">CONTACT</a>
+        </div>
+        <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
+    </nav>
 
-  <nav>
-    <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
-    <div class="nav-links">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
         <a href="index.html">HOME</a>
         <a href="index.html#About">ABOUT</a>
-        <div class="dropdown">
-            <a href="SoloProjects.html" class="dropdown-trigger active">
+        <div class="mobile-dropdown">
+            <a href="SoloProjects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
                 PROJECTS <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-content">
-              <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
-              <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY PROJECTS</a>
+            <div class="mobile-dropdown-content" id="mobileDropdownContent">
+                <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
+                <a href="SoloProjects.html">GAMEPLAY PROJECTS</a>
             </div>
         </div>
         <a href="contact.html">CONTACT</a>
     </div>
-    <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
-</nav>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-    <i class="fas fa-times close-menu" id="closeMenu"></i>
-    <a href="index.html">HOME</a>
-    <a href="index.html#About">ABOUT</a>
-    <div class="mobile-dropdown">
-        <a href="SoloProjects.html" id="mobileProjectsTrigger" class="mobile-dropdown-trigger">
-            PROJECTS <i class="fas fa-chevron-down"></i>
-        </a>
-        <div class="mobile-dropdown-content" id="mobileDropdownContent">
-            <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
-           <a href="SoloProjects.html">GAMEPLAY PROJECTS</a>
-        </div>
-    </div>
-    <a href="contact.html">CONTACT</a>
-</div>
     
     <!-- Project Header -->
     <header class="project-header">
@@ -1150,6 +1150,18 @@
                             <i class="fas fa-play"></i>
                         </div>
                     </div>
+                </div>
+                <!-- Pulsante DOWNLOAD BUILD sotto il trailer -->
+                <div style="margin-top: 25px; text-align: center;">
+                    <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       style="display: inline-flex; align-items: center; gap: 12px; padding: 14px 35px; 
+                              background: rgba(255, 215, 0, 0.1); color: var(--gold); text-decoration: none; 
+                              font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
+                              border: 2px solid var(--gold); border-radius: 4px; transition: all 0.3s ease;">
+                        <i class="fas fa-download"></i> DOWNLOAD BUILD
+                    </a>
                 </div>
             </section>
         </div>
