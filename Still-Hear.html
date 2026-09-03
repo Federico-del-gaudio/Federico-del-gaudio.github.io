@@ -747,52 +747,58 @@
             transform: scale(1.05);
         }
         
-        /* Contributions Section */
-        .contributions-section {
+        /* ===== CONTRIBUTIONS COMPACT ===== */
+        .contributions-compact {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 40px;
+            padding: 30px 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
         }
         
-        .contributions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .contribution-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-        
-        .contribution-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: var(--light);
-        }
-        
-        .contribution-icon {
-            font-size: 3rem;
-            color: var(--light);
+        .contributions-compact .section-title {
+            font-size: 2rem;
             margin-bottom: 20px;
         }
         
-        .contribution-title {
-            font-size: 1.3rem;
-            color: var(--light);
-            margin-bottom: 15px;
-            font-weight: 600;
+        .contributions-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
         }
         
-        .contribution-description {
+        .contribution-compact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .contribution-compact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--light);
+        }
+        
+        .contribution-compact-card .contribution-icon {
+            font-size: 2rem;
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+        
+        .contribution-compact-card .contribution-title {
+            font-size: 0.85rem;
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .contribution-compact-card .contribution-description {
+            font-size: 0.75rem;
             color: var(--gray-light);
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
         /* Insights Section */
@@ -1144,6 +1150,9 @@
             .content-grid, .insights-grid {
                 gap: 40px;
             }
+            .contributions-compact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
         @media (max-width: 992px) {
@@ -1153,7 +1162,7 @@
             .project-title {
                 font-size: 4rem;
             }
-            .gallery-grid, .contributions-grid, .design-grid {
+            .gallery-grid, .design-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             .action-buttons {
@@ -1166,6 +1175,9 @@
             .platform-button {
                 width: 100%;
                 justify-content: center;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -1200,7 +1212,7 @@
                 font-size: 2.2rem;
             }
             .about-section, .trailer-section, .gallery-section,
-            .contributions-section, .insights-section, .design-section {
+            .contributions-compact, .insights-section, .design-section {
                 padding: 30px;
             }
             .action-buttons {
@@ -1214,6 +1226,9 @@
             }
             .mobile-menu.active {
                 display: flex;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
         
@@ -1233,6 +1248,9 @@
             .action-button {
                 padding: 14px 20px;
                 font-size: 0.85rem;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1346,44 +1364,34 @@
             </section>
         </div>
         
-        <!-- Contributions Section -->
-        <section class="contributions-section">
+        <!-- ===== MY CONTRIBUTIONS (COMPATTO) ===== -->
+        <section class="contributions-compact">
             <h2 class="section-title">My Contributions</h2>
-            <div class="contributions-grid">
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                    </div>
-                    <h3 class="contribution-title">Puzzle Prototyping & Tuning</h3>
-                    <p class="contribution-description">Prototyped several core puzzles collaborating closely with programmers. Used internal designer tools to fine-tune puzzle logic, timing, and difficulty.</p>
+            <div class="contributions-compact-grid">
+                <div class="contribution-compact-card">
+                    <div class="contribution-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                    <div class="contribution-title">Puzzle Prototyping</div>
+                    <div class="contribution-description">Core puzzles with programmer collaboration & internal tools</div>
                 </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-sliders-h"></i>
-                    </div>
-                    <h3 class="contribution-title">Character & Monster Tuning</h3>
-                    <p class="contribution-description">Worked on tuning player abilities and enemy behaviors, ensuring a balanced and engaging experience throughout the game.</p>
+                <div class="contribution-compact-card">
+                    <div class="contribution-icon"><i class="fa-solid fa-sliders-h"></i></div>
+                    <div class="contribution-title">Character Tuning</div>
+                    <div class="contribution-description">Player abilities & enemy behaviors balancing</div>
                 </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-handshake"></i>
-                    </div>
-                    <h3 class="contribution-title">Close Collaboration with Programmers</h3>
-                    <p class="contribution-description">Worked side-by-side with programmers to define how mechanics, feedback systems, and VFX should be implemented and tuned.</p>
+                <div class="contribution-compact-card">
+                    <div class="contribution-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <div class="contribution-title">Programmer Collaboration</div>
+                    <div class="contribution-description">Defining mechanics, feedback & VFX implementation</div>
                 </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-file-alt"></i>
-                    </div>
-                    <h3 class="contribution-title">GDD & Audio Implementation</h3>
-                    <p class="contribution-description">Contributed to the Game Design Document and collaborated on audio implementation using programmer-provided tools to enrich the soundscape.</p>
+                <div class="contribution-compact-card">
+                    <div class="contribution-icon"><i class="fa-solid fa-file-alt"></i></div>
+                    <div class="contribution-title">GDD & Audio</div>
+                    <div class="contribution-description">Game Design Document & audio implementation</div>
                 </div>
-                <div class="contribution-card">
-                    <div class="contribution-icon">
-                        <i class="fa-solid fa-headphones"></i>
-                    </div>
-                    <h3 class="contribution-title">Feedback & VFX Tuning</h3>
-                    <p class="contribution-description">Refined player and enemy feedback systems including visual effects, audio cues, and interface responses to create a polished experience.</p>
+                <div class="contribution-compact-card">
+                    <div class="contribution-icon"><i class="fa-solid fa-headphones"></i></div>
+                    <div class="contribution-title">Feedback & VFX</div>
+                    <div class="contribution-description">Refined visual & audio feedback systems</div>
                 </div>
             </div>
         </section>
@@ -1456,7 +1464,7 @@
                     <h3>Polishing Player & Enemy Feedback</h3>
                     <p>Game <span class="highlight-yellow">feedback</span> is vital for immersion. I focused on refining <span class="highlight-blue">visual, audio, and interface feedback</span> for both player actions and enemy interactions.</p>
                     
-                    <p>I worked with programmers to define and tune <span class="highlight-yellow">VFX parameters</span>  from hit effects to stealth indicators  ensuring each interaction felt responsive and satisfying.</p>
+                    <p>I worked with programmers to define and tune <span class="highlight-yellow">VFX parameters</span> from hit effects to stealth indicators ensuring each interaction felt responsive and satisfying.</p>
                     
                     <p>For audio implementation, I used <span class="highlight-yellow">programmer-provided tools</span> to set up and tune sound cues that reinforce the game's <span class="highlight-yellow">atmospheric</span> and stealth mechanics, making every step and whisper matter.</p>
                 </div>
@@ -1534,6 +1542,16 @@
             </div>
         </section>
         
+        <!-- ===== CLOSING THOUGHTS ===== -->
+        <section class="about-section" style="margin-bottom: 60px;">
+            <h2 class="section-title">Closing Thoughts</h2>
+            <div class="about-content">
+                <p>This was one of my first group projects reviewed and presented to publishers, and I grew a lot from it, not only technically, but also in soft skills.</p>
+                <p>Working alongside a programmer and building a GDD clear enough for the rest of the team to follow was not an easy challenge, but I'm satisfied with the final result.</p>
+                <p>During this project I truly understood the importance of playtesting. We ran four playtests, and each time we either iterated on mechanics, reworked them completely, or removed them entirely.</p>
+            </div>
+        </section>
+        
         <div class="platform-buttons">
             <a href="contact.html" class="platform-button contact">
                 <i class="fa-solid fa-envelope"></i> 📧 CONTACT ME TO PLAY THE BUILD
@@ -1550,12 +1568,12 @@
             <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
             <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <div class="lightbox-counter" id="lightbox-counter">1 / 9</div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
     </div>
     
     <!-- Footer -->
     <footer class="project-footer">
-        <h3 class="footer-title">Federico Del Gaudio | Game Designer</h3>
+        <h3 class="footer-title">Federico del Gaudio | Game Designer</h3>
         <div class="social-links">
             <a href="https://github.com/Federico-del-gaudio" class="social-link">
                 <i class="fab fa-github"></i>
@@ -1606,17 +1624,9 @@
             const nextBtn = document.getElementById('next-btn');
             const lightboxCounter = document.getElementById('lightbox-counter');
             
-            const galleryItems = document.querySelectorAll('.gallery-item');
             const insightMedia = document.querySelectorAll('.insight-media');
             
             const allImages = [];
-            
-            galleryItems.forEach((item) => {
-                const img = item.querySelector('img');
-                if (img) {
-                    allImages.push({ src: img.src, alt: img.alt, element: item });
-                }
-            });
             
             insightMedia.forEach((media) => {
                 const img = media.querySelector('img');
@@ -1658,15 +1668,11 @@
                 updateLightboxImage();
             }
             
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', () => openLightbox(index));
-            });
-            
-            insightMedia.forEach((media) => {
-                const imgSrc = media.querySelector('img')?.src;
+            insightMedia.forEach((media, index) => {
                 media.addEventListener('click', function() {
-                    const index = allImages.findIndex(img => img.src === imgSrc);
-                    if (index !== -1) openLightbox(index);
+                    const imgSrc = media.querySelector('img')?.src;
+                    const idx = allImages.findIndex(img => img.src === imgSrc);
+                    if (idx !== -1) openLightbox(idx);
                 });
             });
             

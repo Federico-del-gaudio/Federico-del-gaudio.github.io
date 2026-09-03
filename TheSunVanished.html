@@ -31,6 +31,8 @@
             --accent: #ffffff;
             --accent-hover: #cccccc;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --itch-color: #fa5c5c;
+            --ggj-color: #ff6b4a;
             --combat-tag: #ff6b6b;
             --highlight-yellow: #ffd700;
             --gold: #ffd700;
@@ -411,7 +413,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.35) contrast(1.2);
+            filter: brightness(0.4) contrast(1.1);
             z-index: -1;
             will-change: transform;
         }
@@ -487,10 +489,6 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
         
-        .project-meta span {
-            color: var(--gray-light);
-        }
-        
         /* Main Content */
         .project-main {
             max-width: 1400px;
@@ -507,13 +505,12 @@
             margin-bottom: 60px;
         }
         
-        /* About Section */
+        /* Sections */
         .about-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
         }
         
         .section-title {
@@ -556,7 +553,6 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
         }
         
         .trailer-container {
@@ -616,14 +612,198 @@
             margin-left: 5px;
         }
         
-        /* Gallery Section */
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .action-button {
+            padding: 16px 25px;
+            background: transparent;
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .action-button:hover {
+            color: var(--dark);
+        }
+        
+        .action-button:hover::before {
+            left: 0;
+        }
+        
+        .download-button {
+            border-color: var(--gold) !important;
+            color: var(--gold) !important;
+        }
+        
+        .download-button::before {
+            background: var(--gold) !important;
+        }
+        
+        .download-button:hover {
+            color: var(--dark) !important;
+        }
+        
+        /* ===== PROCESS SECTION (ITERATIVE PROCESS) ===== */
+        .process-section {
+            background: transparent;
+            border: none;
+            padding: 0 0 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .process-block {
+            margin-bottom: 60px;
+        }
+        
+        .process-block:last-child {
+            margin-bottom: 0;
+        }
+        
+        .process-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--light);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .process-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gray-light);
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .process-image-large {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .process-image-large:hover {
+            transform: translateY(-5px);
+            border-color: var(--light);
+        }
+        
+        .process-image-large img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .process-text {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .process-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        /* ===== WHAT I DID & LEARN (COMPATTO) ===== */
+        .contributions-compact {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px 40px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .contributions-compact .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .contributions-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .contribution-compact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .contribution-compact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--light);
+        }
+        
+        .contribution-compact-card .contribution-icon {
+            font-size: 2rem;
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+        
+        .contribution-compact-card .contribution-title {
+            font-size: 0.85rem;
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .contribution-compact-card .contribution-description {
+            font-size: 0.75rem;
+            color: var(--gray-light);
+            line-height: 1.4;
+        }
+        
+        /* Gallery */
         .gallery-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
-            backdrop-filter: blur(10px);
         }
         
         .gallery-grid {
@@ -659,63 +839,13 @@
             transform: scale(1.05);
         }
         
-        /* Contributions Section */
-        .contributions-section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 40px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .contributions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .contribution-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-        
-        .contribution-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: var(--light);
-        }
-        
-        .contribution-icon {
-            font-size: 3rem;
-            color: var(--light);
-            margin-bottom: 20px;
-        }
-        
-        .contribution-title {
-            font-size: 1.5rem;
-            color: var(--light);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .contribution-description {
-            color: var(--gray-light);
-            line-height: 1.6;
-        }
-        
-        /* Insights Section */
+        /* Insights Sections */
         .insights-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
-            backdrop-filter: blur(10px);
         }
         
         .insights-grid {
@@ -735,16 +865,23 @@
         .insight-text-content h3 {
             color: var(--light);
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .insight-text-content h4 {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             font-weight: 600;
         }
         
         .insight-text-content p {
             color: var(--gray-light);
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
             text-align: left;
+            font-size: 0.95rem;
         }
         
         .insight-visual {
@@ -757,7 +894,7 @@
         
         .insight-media {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -775,63 +912,126 @@
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .insight-media:hover img {
+            transform: scale(1.05);
         }
         
         .insight-caption {
             color: var(--gray-light);
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-align: center;
             font-style: italic;
-            padding: 0 20px;
         }
         
-        /* Design Features Section */
-        .design-features {
+        /* Design Section */
+        .design-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 40px;
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
-            backdrop-filter: blur(10px);
         }
         
-        .features-grid {
+        .design-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
         
-        .feature-card {
+        .design-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 25px;
+            padding: 30px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
         
-        .feature-card:hover {
+        .design-card:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
             border-color: var(--light);
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--light);
+        .design-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 20px;
         }
         
-        .feature-title {
-            font-size: 1.4rem;
+        .design-icon {
+            font-size: 2rem;
             color: var(--light);
-            margin-bottom: 15px;
+        }
+        
+        .design-title {
+            font-size: 1.6rem;
+            color: var(--light);
             font-weight: 600;
         }
         
-        .feature-description {
+        .design-content ul {
+            padding-left: 20px;
             color: var(--gray-light);
-            line-height: 1.6;
+            line-height: 1.8;
+        }
+        
+        .design-content li {
+            margin-bottom: 8px;
+            list-style: disc;
+            font-size: 0.95rem;
+        }
+        
+        .design-content p {
             text-align: left;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+        
+        .design-content strong {
+            color: var(--highlight-yellow);
+            font-weight: 600;
+        }
+        
+        /* Platform Buttons */
+        .platform-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .platform-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 35px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .platform-button.download {
+            background: var(--gold);
+            border-color: transparent;
+            color: var(--dark);
+        }
+        
+        .platform-button.download:hover {
+            background: #e6c300;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
         
         /* Lightbox */
@@ -879,7 +1079,6 @@
         }
         
         .close-lightbox:hover {
-            color: var(--gray-light);
             background: rgba(0, 0, 0, 0.7);
         }
         
@@ -978,58 +1177,141 @@
         
         /* Responsive */
         @media (max-width: 1200px) {
-            .project-main, .project-header { padding: 180px 30px 120px; }
-            .content-grid, .insights-grid { gap: 40px; }
-            .header-gradient { height: 250px; }
-            .header-overlay { height: 120px; }
+            .project-main, .project-header {
+                padding: 180px 30px 120px;
+            }
+            .content-grid, .insights-grid {
+                gap: 40px;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 992px) {
-            .content-grid, .insights-grid { grid-template-columns: 1fr; }
-            .project-title { font-size: 4rem; }
-            .gallery-grid, .contributions-grid, .features-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .header-gradient { height: 200px; }
-            .header-overlay { height: 100px; }
-            .insight-visual { order: -1; margin-bottom: 30px; }
+            .content-grid, .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-title {
+                font-size: 4rem;
+            }
+            .gallery-grid, .design-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            .platform-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .platform-button {
+                width: 100%;
+                justify-content: center;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
-            .logo { font-size: 1.6rem; }
-            .nav-links { display: none; }
-            .hamburg { display: block; }
-            .project-header { padding: 160px 20px 100px; min-height: 70vh; }
-            .project-main { padding: 0 20px 50px; }
-            .project-title { font-size: 3.5rem; }
-            .project-subtitle { font-size: 1.5rem; }
-            .section-title { font-size: 2.2rem; }
+            nav {
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hamburg {
+                display: block;
+            }
+            
+            .project-header {
+                padding: 160px 20px 100px;
+                min-height: 70vh;
+            }
+            .project-main {
+                padding: 0 20px 50px;
+            }
+            .project-title {
+                font-size: 3.5rem;
+            }
+            .project-subtitle {
+                font-size: 1.5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
             .about-section, .trailer-section, .gallery-section,
-            .contributions-section, .insights-section, .design-features { padding: 30px; }
-            .header-gradient { height: 180px; }
-            .header-overlay { height: 80px; }
-            .mobile-menu { display: none; }
-            .mobile-menu.active { display: flex; }
+            .contributions-compact, .insights-section, .design-section,
+            .process-section {
+                padding: 30px;
+            }
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: flex;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .process-title {
+                font-size: 1.8rem;
+            }
+            .process-subtitle {
+                font-size: 1.2rem;
+            }
         }
         
         @media (max-width: 576px) {
-            .project-title { font-size: 2.8rem; }
-            .project-subtitle { font-size: 1.3rem; }
-            .section-title { font-size: 2rem; }
-            .project-header { padding: 140px 20px 80px; min-height: 60vh; }
-            .header-gradient { height: 150px; }
-            .header-overlay { height: 60px; }
+            .project-title {
+                font-size: 2.8rem;
+            }
+            .project-subtitle {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .footer-title {
+                font-size: 2rem;
+            }
+            .action-button {
+                padding: 14px 20px;
+                font-size: 0.85rem;
+            }
+            .contributions-compact-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
-            .project-title { font-size: 2.5rem; }
-            .project-meta { font-size: 1rem; padding: 10px 20px; }
-            .contribution-card, .feature-card, .insight-text-content { padding: 25px; }
-            .header-gradient { height: 120px; }
-            .header-overlay { height: 50px; }
+            .project-title {
+                font-size: 2.5rem;
+            }
+            .project-meta {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            .lightbox-nav button {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <div class="logo">FEDERICO<span> DEL GAUDIO</span></div>
         <div class="nav-links">
@@ -1040,15 +1322,15 @@
                     PROJECTS <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
-                  <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
-                  <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY PROJECTS</a>
+                    <a href="CombatTechProjects.html"><i class="fas fa-crosshairs"></i> TECHNICAL & COMBAT</a>
+                    <a href="SoloProjects.html"><i class="fas fa-gamepad"></i> GAMEPLAY PROJECTS</a>
                 </div>
             </div>
             <a href="contact.html">CONTACT</a>
         </div>
         <i class="fa-solid fa-bars hamburg" id="hamburg"></i>
     </nav>
-    
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <i class="fas fa-times close-menu" id="closeMenu"></i>
@@ -1060,7 +1342,7 @@
             </a>
             <div class="mobile-dropdown-content" id="mobileDropdownContent">
                 <a href="CombatTechProjects.html">TECHNICAL & COMBAT</a>
-               <a href="SoloProjects.html">GAMEPLAY PROJECTS</a>
+                <a href="SoloProjects.html">GAMEPLAY PROJECTS</a>
             </div>
         </div>
         <a href="contact.html">CONTACT</a>
@@ -1085,9 +1367,9 @@
             <section class="about-section">
                 <h2 class="section-title">About the Project</h2>
                 <div class="about-content">
-                    <p>In <span class="highlight-yellow">"The Sun Vanished"</span> you play as an investigator trapped in complete darkness after a surreal event. The world around you has become an impenetrable void, and your only way to navigate is through a <span class="highlight-yellow">LiDAR scanner</span> that shoots particles, revealing the shapes of walls, objects, and the environment around you.</p>
-                    <p>This was a <span class="highlight-yellow">solo project developed in about 2 weeks</span>. I handled everything from concept to implementation: the LiDAR navigation mechanic, the sensory AI of the invisible monster, the UI system, and the level design.</p>
-                    <p>The goal is simple but tense: <span class="highlight-yellow">find the code to open a locked door</span> and escape. But be careful, an invisible creature roams the darkness, and it can <span class="highlight-yellow">hear your every move</span>.</p>
+                    <p>In <span class="highlight-yellow">"The Sun Vanished"</span> you play as an investigator trapped in complete darkness after a surreal event. Your only way to navigate is through a <span class="highlight-yellow">LiDAR scanner</span> that reveals the shapes of walls, objects, and the environment around you.</p>
+                    <p>A <span class="highlight-yellow">solo project developed in about 2 weeks</span>. I handled everything: the LiDAR navigation mechanic, the sensory AI of the invisible monster, the UI system, and the level design.</p>
+                    <p>Your goal: <span class="highlight-yellow">find the code to open a locked door</span> and escape. But an invisible creature roams the darkness, and it can <span class="highlight-yellow">hear your every move</span>.</p>
                 </div>
             </section>
             
@@ -1104,151 +1386,199 @@
                         </div>
                     </div>
                 </div>
-                <!-- Pulsante DOWNLOAD BUILD sotto il trailer -->
-                <div style="margin-top: 25px; text-align: center;">
-                    <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       style="display: inline-flex; align-items: center; gap: 12px; padding: 14px 35px; 
-                              background: rgba(255, 215, 0, 0.1); color: var(--gold); text-decoration: none; 
-                              font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
-                              border: 2px solid var(--gold); border-radius: 4px; transition: all 0.3s ease;">
-                        <i class="fas fa-download"></i> DOWNLOAD BUILD
+                
+                <div class="action-buttons">
+                    <a href="#design-details" class="action-button">
+                        <i class="fa-solid fa-info"></i> Technical breakdown
+                    </a>
+                    <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" target="_blank" rel="noopener noreferrer" class="action-button download-button">
+                        <i class="fa-solid fa-download"></i> Download Build
                     </a>
                 </div>
             </section>
         </div>
         
-        <!-- Game Features -->
-        <section class="design-features">
-            <h2 class="section-title">Core Mechanics</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-radar"></i></div>
-                    <h3 class="feature-title">LiDAR Scanner</h3>
-                    <p class="feature-description">The LiDAR scanner shoots particles into the darkness, revealing the shapes of walls, furniture, and environmental obstacles. This is your ONLY way to navigate and understand your surroundings.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
-                    <h3 class="feature-title">Sensory AI</h3>
-                    <p class="feature-description">The invisible monster doesn't see — it HEARS. Every footstep, every interaction, every LiDAR shot creates noise. The creature uses a sound-based perception system to hunt you.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-door-open"></i></div>
-                    <h3 class="feature-title">Investigation Goal</h3>
-                    <p class="feature-description">Your objective is to explore the environment, find clues, and discover a numeric code that unlocks the exit door. The code is procedurally placed to encourage exploration.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contributions Section -->
-        <section class="contributions-section">
-            <h2 class="section-title">My Contributions (Solo Project)</h2>
-            <div class="contributions-grid">
-                <div class="contribution-card">
+        <!-- ===== WHAT I DID & LEARN (COMPATTO) ===== -->
+        <section class="contributions-compact">
+            <h2 class="section-title">What I did & Learn</h2>
+            <div class="contributions-compact-grid">
+                <div class="contribution-compact-card">
                     <div class="contribution-icon"><i class="fa-solid fa-radar"></i></div>
-                    <h3 class="contribution-title">LiDAR Mechanic</h3>
-                    <p class="contribution-description">Designed and implemented the particle-based LiDAR scanner system that reveals environment geometry, creating the core navigation loop.</p>
+                    <div class="contribution-title">LiDAR Mechanic</div>
+                    <div class="contribution-description">Particle-based scanner revealing environment geometry</div>
                 </div>
-                <div class="contribution-card">
+                <div class="contribution-compact-card">
                     <div class="contribution-icon"><i class="fa-solid fa-brain"></i></div>
-                    <h3 class="contribution-title">Sensory AI</h3>
-                    <p class="contribution-description">Developed the invisible monster's AI using a hearing-based perception system. The creature tracks player sounds and moves accordingly.</p>
+                    <div class="contribution-title">Sensory AI</div>
+                    <div class="contribution-description">Invisible monster with hearing-based perception</div>
                 </div>
-                <div class="contribution-card">
+                <div class="contribution-compact-card">
                     <div class="contribution-icon"><i class="fa-solid fa-paintbrush"></i></div>
-                    <h3 class="contribution-title">UI System</h3>
-                    <p class="contribution-description">Created all user interface elements including the LiDAR visualization feedback, code input system, and environmental interactions.</p>
+                    <div class="contribution-title">UI System</div>
+                    <div class="contribution-description">LiDAR feedback, code input & interactions</div>
                 </div>
-                <div class="contribution-card">
+                <div class="contribution-compact-card">
                     <div class="contribution-icon"><i class="fa-solid fa-draw-polygon"></i></div>
-                    <h3 class="contribution-title">Level Design</h3>
-                    <p class="contribution-description">Designed the level layout, placed environmental clues, and balanced the pacing between exploration and tension.</p>
+                    <div class="contribution-title">Level Design</div>
+                    <div class="contribution-description">Layout, environmental clues & pacing balance</div>
                 </div>
             </div>
         </section>
         
-        <!-- Insight 1: LiDAR Mechanic -->
+        <!-- ===== THE ITERATIVE PROCESS SECTION ===== -->
+        <section class="process-section">
+            <h2 class="section-title">The Iterative Process</h2>
+            
+            <!-- Block 1: The First Prototype -->
+            <div class="process-block" style="margin-bottom: 60px;">
+                <h3 class="process-title">"The First Prototype"</h3>
+                <p class="process-subtitle">LiDAR · Darkness · Sensory AI</p>
+                
+                <div class="process-image-large">
+                    <img src="Photos/FirstProtResizedTSV.gif" alt="First prototype of The Sun Vanished">
+                </div>
+                
+                <div class="process-text">
+                    <p>With only <span class="highlight-yellow">2 weeks</span> to develop a complete horror experience, I had to make quick decisions. The initial concept was a <span class="highlight-yellow">standard flashlight horror game</span>, but I wanted something more unique and fitting for an "investigator" theme.</p>
+                    
+                    <p>After researching, I landed on <span class="highlight-yellow">LiDAR technology</span>, a scanning system that reveals environment geometry through particle traces. The core idea was simple: <span class="highlight-yellow">you can't see anything, but you can scan to understand your surroundings</span>.</p>
+                </div>
+            </div>
+            
+            <!-- Block 2: Fail and Learn -->
+            <div class="process-block" style="margin-bottom: 60px;">
+                <h3 class="process-title">"The Challenge"</h3>
+                <p class="process-subtitle"></p>
+                
+                <div class="process-image-large">
+                    <img src="Photos/CheckSoundResized.gif" alt="Evolution of The Sun Vanished design">
+                </div>
+                
+                <div class="process-text">
+                    <p>The initial version had no enemy, so I created an AI, keeping in mind the<span class="highlight-yellow"> main challenge</span>: the player couldn't see it, and the map was completely black. As a result, I gave the AI sound-based <span class="highlight-yellow">perception only</span>.</p>
+                                        
+                    <p>The monster's behavior evolved through playtesting. Initially it was too aggressive, then too passive. I found the <span class="highlight-yellow">sweet spot</span> when the creature patrols, investigates sounds, and gives audio warnings before attacking.</p>
+                </div>
+            </div>
+            
+<!-- ===== NUOVA SEZIONE: "Speaking to the player" ===== -->
+<div class="process-block" style="margin-bottom: 0; margin-top: 60px; border-top: 1px solid var(--border-color); padding-top: 60px;">
+    <h3 class="process-title" style="font-size: 2rem;">"Speaking to the player"</h3>
+    
+    <!-- Testo centrato sotto il titolo -->
+    <div class="process-text" style="max-width: 900px; margin: 0 auto 50px; text-align: center;">
+        <p style="text-align: center;">The <span class="highlight-yellow">problem</span> was that a single-color lidar combined with a black map <span class="highlight-yellow">failed</span> to make key gameplay objects stand out.</p>
+        <p style="text-align: center;">The player needed to pick up or spot objects essential for <span class="highlight-yellow">progressing</span> through the level, but relying on shape alone to make them stand out wasn't enough.</p>
+        <p style="text-align: center;">I <span class="highlight-yellow">changed</span> the color of the lidar beam whenever it passed over a key object, letting the player know that it is an important object.</p>
+    </div>
+    
+    <!-- 2 GIF affiancate -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto;">
+        <!-- GIF Sinistra - BEFORE -->
+        <div style="width: 100%;">
+            <div style="text-align: center; font-size: 1.1rem; color: var(--light); font-weight: 600; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;">
+                BEFORE
+            </div>
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); background: rgba(0,0,0,0.3);">
+                <img src="Photos/BeforeResized.gif" alt="Before - Single color LiDAR" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+        
+        <!-- GIF Destra - AFTER -->
+        <div style="width: 100%;">
+            <div style="text-align: center; font-size: 1.1rem; color: var(--light); font-weight: 600; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;">
+                AFTER
+            </div>
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); background: rgba(0,0,0,0.3);">
+                <img src="Photos/AfterResized.gif" alt="After - Color-coded LiDAR highlighting key objects" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+    </div>
+</div>
+        </section>
+        
+        <!-- ===== INSIGHTS SECTION 1 - LiDAR Mechanic ===== -->
         <section class="insights-section">
             <h2 class="section-title">Implementation Insights - LiDAR Scanner</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Designing the LiDAR Navigation</h3>
-                    <p>The core challenge was creating a navigation system that works in <span class="highlight-yellow">complete darkness</span>. I didn't want to use a simple flashlight, I wanted something more unique that fits the "investigator" theme.</p>
-                    <p>The LiDAR scanner uses <span class="highlight-yellow">rays</span> that bounce off surfaces and return visual feedback to the player. Each shot reveals a portion of the environment, forcing players to <span class="highlight-yellow">scan strategically</span> rather than holding a button.</p>
-                    <p>I learned that <span class="highlight-yellow">sound design</span> is critical for this mechanic. The ping of the scanner, the echo of particles hitting walls, and the ambient silence between scans all contribute to the tension.</p>
-                    <p>The system was implemented using Unreal Engine's <span class="highlight-yellow">line traces and small sprites</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
+                    <p>The core challenge was creating a navigation system in <span class="highlight-yellow">complete darkness</span>. I didn't want a simple flashlight, I wanted something unique that fits the "investigator" theme.</p>
+                    <p>The LiDAR scanner uses <span class="highlight-yellow">rays</span> that bounce off surfaces and return visual feedback. Each shot reveals a portion of the environment, forcing players to <span class="highlight-yellow">scan strategically</span> rather than holding a button.</p>
+                    <p><span class="highlight-yellow">Sound design</span> is critical for this mechanic. The ping of the scanner, the echo of particles hitting walls, and the ambient silence between scans all contribute to the tension.</p>
+                    <p>Implemented using Unreal Engine's <span class="highlight-yellow">line traces and small sprites</span>, optimized to run smoothly while providing enough visual information for navigation.</p>
                 </div>
                 <div class="insight-visual">
-                    <div class="insight-media" data-img-src="Photos/Thesunvanishedphoto.png">
+                    <div class="insight-media" data-index="1">
                         <img src="Photos/Thesunvanishedphoto.png" alt="LiDAR Scanner Visualization">
                     </div>
-                    <div class="insight-caption">Click to zoom - LiDAR particle visualization showing environment shapes.</div>
+                    <div class="insight-caption">LiDAR particle visualization showing environment shapes</div>
                 </div>
             </div>
         </section>
         
-        <!-- Insight 2: Sensory AI -->
+        <!-- ===== INSIGHTS SECTION 2 - Sensory AI ===== -->
         <section class="insights-section">
-            <h2 class="section-title">Implementation Insights - Sensory AI (Sound-Based)</h2>
+            <h2 class="section-title">Implementation Insights - Sensory AI</h2>
             <div class="insights-grid">
                 <div class="insight-visual">
-                    <div class="insight-media" data-img-src="Photos/PummelBP.png">
-                        <img src="Photos/TheSunVanished AI.png" alt="Sensory AI Blueprint">
+                    <div class="insight-media" data-index="2">
+                        <img src="Photos/Patrol.png" alt="Sensory AI Blueprint">
                     </div>
-                    <div class="insight-caption">Click to zoom - AI hearing system move to sound.</div>
+                    <div class="insight-caption">AI hearing system - move to sound source</div>
                 </div>
+                
                 <div class="insight-text-content">
                     <h3>Building an Invisible Hunter</h3>
                     <p>One of the most interesting challenges was creating an <span class="highlight-yellow">invisible enemy</span> that feels fair yet terrifying. Since players can't see the monster, they need other ways to sense its presence.</p>
                     <p>The AI uses a <span class="highlight-yellow">sound-based perception system</span>, it "hears" player actions: footsteps, LiDAR scans, door interactions, and object pickups. Each action generates a sound radius that attracts the creature.</p>
-                    <p>I implemented <span class="highlight-yellow">distance-based audio cues</span> for the monster's movement. When it's far, you hear distant growls. When it's close, you hear footsteps and breathing. This gives players feedback without breaking the invisibility concept.</p>
+                    <p><span class="highlight-yellow">Distance-based audio cues</span> for the monster's movement. Far = distant growls. Close = footsteps and breathing. This gives players feedback without breaking invisibility.</p>
                     <p>The AI includes <span class="highlight-yellow">patrol, investigation, and chase states</span>, with the monster searching the last known sound location before returning to patrol.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Insight 3: Level Design & Pacing -->
+        <!-- ===== INSIGHTS SECTION 3 - Level Design ===== -->
         <section class="insights-section">
-            <h2 class="section-title">Implementation Insights - Level Design & Pacing</h2>
+            <h2 class="section-title">Implementation Insights - Level Design</h2>
             <div class="insights-grid">
                 <div class="insight-text-content">
                     <h3>Designing Tension Through Environment</h3>
-                    <p>With only 2 weeks of development, I had to focus on <span class="highlight-yellow">smart level design</span> rather than large environments. The level is relatively small but uses <span class="highlight-yellow">non-linear exploration</span> to create replayability.</p>
+                    <p>With only 2 weeks, I focused on <span class="highlight-yellow">smart level design</span> rather than large environments. The level is relatively small but uses <span class="highlight-yellow">non-linear exploration</span> to create replayability.</p>
                     <p>The code required to open the exit door is <span class="highlight-yellow">hidden across multiple environmental clues</span>. Players need to explore, use the LiDAR, and piece together information while avoiding the monster.</p>
-                    <p>I placed <span class="highlight-yellow">safe zones</span> and <span class="highlight-yellow">danger corridors</span> to control the pacing. Some areas are safer for LiDAR scanning, others force players to move quickly and risk making noise.</p>
-                    <p>The final game loop: <span class="highlight-yellow">Scan → Navigate → Find Clue → Avoid Monster → Input Code → Escape</span>. This created a tight, tense experience despite the short development time.</p>
+                    <p><span class="highlight-yellow">Safe zones</span> and <span class="highlight-yellow">danger corridors</span> control the pacing. Some areas are safer for LiDAR scanning, others force players to move quickly and risk making noise.</p>
+                    <p>Final game loop: <span class="highlight-yellow">Scan → Navigate → Find Clue → Avoid Monster → Input Code → Escape</span>.</p>
                 </div>
                 <div class="insight-visual">
-                    <div class="insight-media" data-img-src="Photos/PummelBP2.png">
+                    <div class="insight-media" data-index="3">
                         <img src="Photos/LevelThe Sun Vanished.png" alt="Level Design Layout">
                     </div>
-                    <div class="insight-caption">Click to zoom - Level raw layout.</div>
+                    <div class="insight-caption">Level raw layout - non-linear exploration</div>
                 </div>
             </div>
         </section>
         
-        <!-- Tech Specs -->
-        <section class="design-features">
-            <h2 class="section-title">Technical Specifications</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-code-branch"></i></div>
-                    <h3 class="feature-title">LiDAR System</h3>
-                    <p class="feature-description">Multi-line trace Optimized to run 60fps on mid-range hardware.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
-                    <h3 class="feature-title">AI Behavior</h3>
-                    <p class="feature-description">Behavior Tree with hearing perception, state machine (Patrol → Investigate → Chase).</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-window-maximize"></i></div>
-                    <h3 class="feature-title">UI System</h3>
-                    <p class="feature-description">Widget-based UI for code input, LiDAR feedback, and interaction prompts.</p>
-                </div>
+      
+
+      
+        <!-- ===== CLOSING THOUGHTS ===== -->
+        <section class="about-section" style="margin-bottom: 60px;">
+            <h2 class="section-title">Closing Thoughts</h2>
+            <div class="about-content">
+                <p>The Sun Vanished was a <span class="highlight-yellow">solo development sprint</span> that taught me the value of focused scope and smart systems design. In just 2 weeks, I had to prioritize what mattered most: the <span class="highlight-yellow">core navigation loop</span> and the <span class="highlight-yellow">invisible threat</span>.</p>
+                <p>The LiDAR mechanic was the biggest technical challenge. Creating a system that reveals environment geometry in darkness while maintaining performance required careful optimization. I'm proud of the result, it creates a <span class="highlight-yellow">unique tension</span> that standard flashlights can't match.</p>
+                <p>This project also reinforced the importance of <span class="highlight-yellow">sound design in horror</span>. With an invisible enemy, audio becomes the primary feedback system. Every footstep, every scan ping, every distant growl matters.</p>
+                <p>For future occasions, I will give more serious consideration to the idea of ​​managing the LiDAR via the<span class="highlight-yellow"> Niagara system</span>.
+                </p>
             </div>
         </section>
+        
+        <!-- ===== PLATFORM BUTTONS ===== -->
+        <div class="platform-buttons">
+            <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" target="_blank" rel="noopener noreferrer" class="platform-button download">
+                <i class="fa-solid fa-download"></i> 🎮 DOWNLOAD BUILD
+            </a>
+        </div>
     </main>
     
     <!-- Lightbox -->
@@ -1264,18 +1594,29 @@
     
     <!-- Footer -->
     <footer class="project-footer">
-        <h3 class="footer-title">Federico Del Gaudio | Game Designer</h3>
+        <h3 class="footer-title">Federico del Gaudio | Game Designer</h3>
         <div class="social-links">
-            <a href="https://github.com/Federico-del-gaudio" class="social-link"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/emyportfolio/" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/Federico-del-gaudio" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/federico-del-gaudio-856314333/" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/emyportfolio/" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
-        <p class="copyright">© 2025 Federico Del Gaudio. All rights reserved.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; margin: 30px 0;">
+            <a href="https://drive.google.com/drive/u/1/folders/1T_bQtnXq1bu9xAChfLs20vFkFA6JGqn6" target="_blank" style="color: var(--gold); text-decoration: none; font-weight: 600;">
+                <i class="fa-solid fa-download"></i> Download Build
+            </a>
+        </div>
+        <p class="copyright">© 2026 Federico del Gaudio. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Video Trailer
+            // Video Trailer Functionality
             const trailer = document.getElementById('gameTrailer');
             const playOverlay = document.getElementById('playOverlay');
             
@@ -1284,6 +1625,7 @@
                     this.style.display = 'none';
                     trailer.style.display = 'block';
                     trailer.play().catch(e => console.error("Error playing video:", e));
+                    
                     trailer.addEventListener('ended', function() {
                         playOverlay.style.display = 'flex';
                         trailer.style.display = 'none';
@@ -1291,7 +1633,7 @@
                 });
             }
             
-            // Parallax header
+            // Parallax effect for header image
             const headerImage = document.querySelector('.header-image');
             if (headerImage) {
                 window.addEventListener('scroll', function() {
@@ -1300,7 +1642,7 @@
                 });
             }
             
-            // Lightbox
+            // Lightbox Functionality
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeLightbox = document.querySelector('.close-lightbox');
@@ -1315,12 +1657,16 @@
             
             galleryItems.forEach((item) => {
                 const img = item.querySelector('img');
-                if (img) allImages.push({ src: img.src, alt: img.alt });
+                if (img) {
+                    allImages.push({ src: img.src, alt: img.alt, element: item });
+                }
             });
             
             insightMedia.forEach((media) => {
                 const img = media.querySelector('img');
-                if (img) allImages.push({ src: img.src, alt: img.alt });
+                if (img) {
+                    allImages.push({ src: img.src, alt: img.alt, element: media });
+                }
             });
             
             let currentImageIndex = 0;
@@ -1338,8 +1684,8 @@
             }
             
             function updateLightboxImage() {
-                if (allImages.length > 0) {
-                    const image = allImages[currentImageIndex];
+                const image = allImages[currentImageIndex];
+                if (image) {
                     lightboxImg.src = image.src;
                     lightboxImg.alt = image.alt;
                     lightboxCounter.textContent = `${currentImageIndex + 1} / ${allImages.length}`;
@@ -1347,17 +1693,13 @@
             }
             
             function nextImage() {
-                if (allImages.length > 0) {
-                    currentImageIndex = (currentImageIndex + 1) % allImages.length;
-                    updateLightboxImage();
-                }
+                currentImageIndex = (currentImageIndex + 1) % allImages.length;
+                updateLightboxImage();
             }
             
             function prevImage() {
-                if (allImages.length > 0) {
-                    currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-                    updateLightboxImage();
-                }
+                currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+                updateLightboxImage();
             }
             
             galleryItems.forEach((item, index) => {
@@ -1372,23 +1714,30 @@
                 });
             });
             
-            if (closeLightbox) closeLightbox.addEventListener('click', closeLightboxFunc);
+            if (closeLightbox) {
+                closeLightbox.addEventListener('click', closeLightboxFunc);
+            }
+            
             if (prevBtn) prevBtn.addEventListener('click', prevImage);
             if (nextBtn) nextBtn.addEventListener('click', nextImage);
             
             lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) closeLightboxFunc();
+                if (e.target === lightbox) {
+                    closeLightboxFunc();
+                }
             });
             
             document.addEventListener('keydown', function(e) {
                 if (lightbox.style.display === 'block') {
-                    if (e.key === 'Escape') closeLightboxFunc();
-                    if (e.key === 'ArrowLeft') prevImage();
-                    if (e.key === 'ArrowRight') nextImage();
+                    switch(e.key) {
+                        case 'Escape': closeLightboxFunc(); break;
+                        case 'ArrowLeft': prevImage(); break;
+                        case 'ArrowRight': nextImage(); break;
+                    }
                 }
             });
             
-            // Mobile menu
+            // Mobile menu functionality
             const hamburg = document.getElementById('hamburg');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMenu = document.getElementById('closeMenu');
@@ -1415,21 +1764,47 @@
                     e.preventDefault();
                     mobileDropdownContent.classList.toggle('show');
                     const arrow = this.querySelector('i');
-                    if (arrow) arrow.style.transform = mobileDropdownContent.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (arrow) {
+                        arrow.style.transform = mobileDropdownContent.classList.contains('show') 
+                            ? 'rotate(180deg)' 
+                            : 'rotate(0deg)';
+                    }
                 });
             }
             
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger')) return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a:not([id="mobileProjectsTrigger"])') : [];
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 });
             });
             
-            if (lightboxCounter && allImages.length > 0) lightboxCounter.textContent = `1 / ${allImages.length}`;
+            document.addEventListener('click', (e) => {
+                if (mobileMenu?.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !hamburg?.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#' || href === '' || this.classList.contains('dropdown-trigger')) {
+                        return;
+                    }
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            lightboxCounter.textContent = `1 / ${allImages.length}`;
         });
     </script>
 </body>
