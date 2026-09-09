@@ -1141,6 +1141,93 @@
             font-size: 1rem;
             margin-top: 40px;
         }
+
+        /* ===== PROCESS SECTION (Speaking to the player) ===== */
+        .process-section {
+            
+            border-radius: 15px;
+            padding: 40px;
+            
+            margin-bottom: 60px;
+        }
+
+        .process-section .section-title {
+            margin-bottom: 30px;
+        }
+
+        .process-block {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .process-block:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .process-title {
+            font-size: 2rem;
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .process-text {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .process-text p {
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .process-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-grid-2 .process-item {
+            width: 100%;
+        }
+
+        .process-grid-2 .process-label {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .process-grid-2 .process-media {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .process-grid-2 .process-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
         
         /* ===== RESPONSIVE OTTIMIZZATO ===== */
         @media (max-width: 1200px) {
@@ -1179,6 +1266,13 @@
             .contributions-compact-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .process-grid-2 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .process-grid-2 .process-item:last-child {
+                margin-top: 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1212,7 +1306,8 @@
                 font-size: 2.2rem;
             }
             .about-section, .trailer-section, .gallery-section,
-            .contributions-compact, .insights-section, .design-section {
+            .contributions-compact, .insights-section, .design-section,
+            .process-section {
                 padding: 30px;
             }
             .action-buttons {
@@ -1229,6 +1324,12 @@
             }
             .contributions-compact-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+            .process-title {
+                font-size: 1.6rem;
+            }
+            .process-grid-2 {
+                gap: 25px;
             }
         }
         
@@ -1251,6 +1352,9 @@
             }
             .contributions-compact-grid {
                 grid-template-columns: 1fr;
+            }
+            .process-title {
+                font-size: 1.4rem;
             }
         }
         
@@ -1394,6 +1498,66 @@
                     <div class="contribution-description">Refined visual & audio feedback systems</div>
                 </div>
             </div>
+        </section>
+        
+        <!-- ===== THE ITERATIVE PROCESS SECTION (SPEAKING TO THE PLAYER) ===== -->
+        <section class="process-section">
+            <h2 class="section-title">The Iterative Process</h2>
+            
+            <!-- ===== "Speaking to the player" ===== -->
+            <div class="process-block">
+                <h3 class="process-title">"Rework"</h3>
+                
+                <div class="process-text">
+                    <p>One of the <span class="highlight-yellow"> core mechanics </span> in Still Hear is the resonance, used to shatter crystals or interact with objects.</p>
+                    <p>The  <span class="highlight-yellow"> initial version </span> involved aligning two circles for a set number of seconds, but after several playtests, we realized the mechanic was difficult to grasp, unintuitive, and not very fun.</p>
+                    <p>Consequently, I   <span class="highlight-yellow"> redesigned </span>  the mechanic with the aim of making it more satisfying, intuitive  and  <span class="highlight-yellow"> enjoyable</span>.</p>
+                    <p>To perform the resonance, the player must press the button at the right moment when the circles (moving continuously vertically) collide.</p>
+                </div>
+                
+                <div class="process-grid-2">
+                    <div class="process-item">
+                        <div class="process-label">BEFORE</div>
+                        <div class="process-media">
+                            <img src="Photos/OldRes.gif" alt="Before - Single color LiDAR">
+                        </div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-label">AFTER</div>
+                        <div class="process-media">
+                            <img src="Photos/NewResonanceP.gif" alt="After - Color-coded LiDAR highlighting key objects">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-block" style="margin-bottom: 0; margin-top: 60px; border-top: 1px solid var(--border-color); padding-top: 60px;">
+                <h3 class="process-title" style="font-size: 2rem;">"Working on the levels"</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto;">
+                    <!-- Testo a sinistra -->
+                    <div class="process-text" style="max-width: 100%;">
+                        <p>For the most part, I was <span class="highlight-yellow"> responsible for setting up levels </span> to ensure they were playable, <span class="highlight-yellow">coordinating</span> with level designers and programmers regarding object placement and tools.</p>
+                        <p>This involved placing checkpoints, navmeshes, patrol points, triggers, puzzles and gameplay objects.</p>
+                    </div>
+                    
+                    <!-- Immagine/GIF a destra -->
+                    <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
+                        <img src="Photos/NewFeedback.gif" alt="More Cards system - scalable power-up system" style="width: 100%; height: auto; display: block; background: rgba(0,0,0,0.3);">
+                    </div>
+                </div>
+            </div>
+
+            
+         
+
+            <div class="process-block">
+                <h3 class="process-title">"The importance of feedback and playtesting"</h3>
+                
+                <div class="process-text">
+                    <p>Throughout the project, we conducted both internal and external <span class="highlight-yellow">playtests</span>.</p>  
+                    <p>The feedback was varied and valuable; it provided positive direction to the entire team and was especially<span class="highlight-yellow"> crucial for me</span>, as I was <span class="highlight-yellow">responsible</span> for tuning abilities and puzzles, ensuring that all values were balanced to deliver a proper, well-paced user experience.</p>  
+                </div>
         </section>
         
         <!-- Implementation Insights Section 1: Puzzle Design -->
